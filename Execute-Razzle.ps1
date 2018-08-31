@@ -20,6 +20,9 @@ param (
 ## Support to get out and get in of razzle
 ##
 
+if ($env:_BuildArch -ne $null) {$arch=$env:_BuildArch;}
+if ($env:_BuildType -ne $null) {$flavor=$env:_BuildType;}
+
 $global:UnRazzleEnv = (Get-ChildItem env:*);
 $global:RazzleEnv = $null;
 
@@ -170,15 +173,13 @@ function global:Get-BranchCustomId()
     return ($branch.Split("/") | select -last 1)
 }
 
-function global:Retarget-Razzle($binariesRoot = ("w:\"+(Get-BranchCustomId)), $srcRoot = $env:OSBuildRoot)
+function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
 {
     echo ("Retargeting $srcRoot -> $binariesRoot")
 
     pushd ($srcRoot+"\src")
-    $branchId = (Get-BranchCustomId)
     $binRoot = $srcRoot.Replace("f:","w:")
     $binRoot = $binRoot.Replace("F:","w:")
-    echo "Branch id is $branchId"
     echo "Branch binRoot is $binRoot"
     popd
 
@@ -202,9 +203,16 @@ function global:Retarget-Razzle($binariesRoot = ("w:\"+(Get-BranchCustomId)), $s
 
     New-RazzleLink ($binRoot+"\src") ($srcRoot+"\src")
 
-    new-item env:_TargetedBinRoot -Value ("w:\"+$branchId) -Force > $null
-
-    New-RazzleLink $env:_TargetedBinRoot $binRoot
+    New-RazzleLink "c:\Symbols" "w:\Symbols"
+    New-RazzleLink "c:\Symcache" "w:\Symbols"
+    New-RazzleLink "c:\Sym" "w:\Symbols"
+    New-RazzleLink "c:\Temp" "w:\Temp"
+    New-RazzleLink "c:\Logs" "w:\Logs"
+    New-RazzleLink "c:\CrashDumps" "w:\CrashDumps"
+    New-RazzleLink "c:\VHDs" "w:\VHDs"
+    New-RazzleLink "c:\Debuggers" "f:\Debuggers"
+    New-RazzleLink "f:\Debuggers\Sym" "w:\Symbols"
+    New-RazzleLink "f:\Debuggers\Wow64\Sym" "w:\Symbols"
 
     echo ("Retargeting done")
 }
@@ -317,7 +325,7 @@ function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
                     [string]$extraArgs
                     $args |% { $extraArgs += " " + $_ }
 
-                    $extraArgs += " developer_dir ~\Documents\WindowsPowerShell\ "
+                    $extraArgs += " developer_dir ~\Documents\Razzle\ "
 
                     if ( $kind -eq "Phone" )
                     {
@@ -325,6 +333,7 @@ function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
                     }
                     else
                     {
+                      Write-Host ".$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt"
                       .$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt
                     }
 

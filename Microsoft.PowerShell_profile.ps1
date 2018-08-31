@@ -313,7 +313,8 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
     }
 }
 
-. $myhome\WindowsPowerShell\VSO-Helpers.ps1
+$env:PSRazzleDir = ($myhome+'\Razzle')
+. $env:PSRazzleDir\VSO-Helpers.ps1
 
 Compress-Path "C:\" 1>$null 2>&1 3>&1 4>&1
 
