@@ -149,10 +149,15 @@ function global:Use-InstalledCLR
 }
 
 # SD settings
-$vimCmd = (get-command vim*)
-if ($vimCmd -ne $null)
+$vimCmd = get-command vim 2> Out-Null
+$codeCmd = get-command code 2> Out-Null
+if ($null -ne $codeCmd)
 {
-  $vimCmd = (get-command vim)
+  $env:SDEDITOR=$codeCmd.definition
+  $env:SDUEDITOR=$codeCmd.definition
+}
+elseif ($null -ne $vimCmd)
+{
   $env:SDEDITOR=$vimCmd.definition
   $env:SDUEDITOR=$vimCmd.definition
 }
@@ -251,12 +256,12 @@ set-alias go                 Goto-KnownLocation                 -scope global
 
 function global:Edit()
 {
-    vim $args
+  .$env:SDEDITOR $args
 }
 
 function global:View()
 {
-    vim $args
+  .$env:SDEDITOR $args
 }
 
 function global:_up ([int] $count = 1)
