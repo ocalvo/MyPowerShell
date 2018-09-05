@@ -21,9 +21,9 @@ function VsInstallDir($version=$vsVersion)
     }
   }
 
-  if ($VSKey -eq $null -or [string]::IsNullOrEmpty($VsKey.InstallDir) )
+  if (($null -eq $VSKey) -or ([string]::IsNullOrEmpty($VsKey.InstallDir)) )
   {
-    echo "Warning: Visual Studio not installed"
+    Write-Host "Warning: Visual Studio not installed"
   }
   else
   {
