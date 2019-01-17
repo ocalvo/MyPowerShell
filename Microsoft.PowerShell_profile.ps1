@@ -28,6 +28,9 @@ function global:Setup-Host
 }
 #Setup-Host
 
+Import-Module PSReadLine
+Set-PSReadLineOption –HistoryNoDuplicates:$True
+
 $env:_NT_SYMBOL_PATH='SRV*c:\dd\symbols*http://symweb'
 $env:ChocolateyInstall='C:\ProgramData\Chocolatey'
 $env:path += ';' + $env:ChocolateyInstall + '\bin'
@@ -47,11 +50,10 @@ function global:Lock-WorkStation {
   $LockWorkStation::LockWorkStation() | Out-Null
 }
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
-function strip-extension ([string] $filename) { [system.io.path]::getfilenamewithoutextension($filename) }
-function cd.. { cd ..  }
+function cd.. { Set-Location ..  }
 function lsf { get-childitem | ? { $_.PSIsContainer -eq $false } }
 function lsd { get-childitem | ? { $_.PSIsContainer -eq $true } }
-function ie { & $env:programfiles"\Internet Explorer\iexplore.exe" $args }
+
 function global:isadmin
 {
     $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -149,8 +151,8 @@ function global:Use-InstalledCLR
 }
 
 # SD settings
-$vimCmd = get-command vim 2> Out-Null
-$codeCmd = get-command code 2> Out-Null
+$vimCmd = get-command vim 2> $null
+$codeCmd = get-command code 2> $null
 if ($null -ne $codeCmd)
 {
   $env:SDEDITOR=$codeCmd.definition
