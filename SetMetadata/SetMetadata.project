@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="SetMetadata" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <UsingTask AssemblyFile="WMVConvert.dll" TaskName="SetMetadata"/>
+  <PropertyGroup>
+    <ForceMetadata Condition=" '$(ForceMetadata)' == '' " >false</ForceMetadata>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(VideoFolder)' == '' " >
+    <InputVideo Include="d:\Shares\Videos\**\*.wmv" />
+    <InputVideo Include="d:\Shares\Photos\**\*.wmv" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(VideoFolder)' != '' " >
+    <InputVideo Include="$(VideoFolder)\**\*.wmv" /> 
+  </ItemGroup>
+  <PropertyGroup>
+    <SetMetadataDependsOn></SetMetadataDependsOn>
+  </PropertyGroup>
+  <Target Name="SetMetadata" DependsOnTargets="$(SetMetadataDependsOn)">
+    <SetMetadata InputVideo="@(InputVideo)" Force="$(ForceMetadata)" />
+  </Target>
+</Project>
