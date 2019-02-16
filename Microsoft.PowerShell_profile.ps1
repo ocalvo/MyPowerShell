@@ -44,11 +44,7 @@ $env:path += ';' + $env:ChocolateyInstall + '\bin'
 ########################################################
 # Helper Functions
 function ff ([string] $glob) { get-childitem -recurse -filter $glob }
-function logout { shutdown /l /t 0 }
-function halt { shutdown /s /t 5 }
-function restart { shutdown /r /t 5 }
-function reboot { shutdown /r /t 0 }
-function sleep { RunDll.exe PowrProf.dll,SetSuspendState }
+function Sleep-Computer { RunDll.exe PowrProf.dll,SetSuspendState }
 function global:Lock-WorkStation {
   $signature = "[DllImport(`"user32.dll`", SetLastError = true)] public static extern bool LockWorkStation();"
 
@@ -57,8 +53,6 @@ function global:Lock-WorkStation {
 }
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
-function lsf { get-childitem | ? { $_.PSIsContainer -eq $false } }
-function lsd { get-childitem | ? { $_.PSIsContainer -eq $true } }
 
 function global:isadmin
 {
@@ -66,22 +60,8 @@ function global:isadmin
     $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
     $wp.IsInRole("Administrators") -eq 1
 }
-function Del-Dir
-{
-  dir -Directory |% {
-    echo $_.FullName
-    if (test-path $_)
-    {
-      pushd $_
-      Del-Dir
-      dir -file -include hidden | del -force
-      popd
-      RmDir $_ -force -rec
-    }
-  }
-}
 
-function Execute-Elevated
+function Open-Elevated
 {
   param([switch]$wait)
   $file, [string]$arguments = $args;
@@ -94,15 +74,15 @@ function Execute-Elevated
       $p.WaitForExit()
   }
 }
-set-alias elevate Execute-Elevated -scope global
+set-alias elevate Open-Elevated -scope global
 
 $global:myhome = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]'MyDocuments')
 $global:scriptFolder = $global:myhome +'\WindowsPowerShell'
 $env:REMOTE_HOME = $myHome
 $localHome = $env:HOMEDRIVE + $env:HOMEPATH + '\Documents'
-if (!(test-path $localHome) -and (isadmin))
+if (!(test-path $localHome))
 {
-  cmd /c mklink /d $localHome $myhome
+  New-Item $localHome -ItemType SymbolicLink -Target $myhome
 }
 if (test-path $localHome)
 {
@@ -117,7 +97,7 @@ if (!(test-path $vimRC))
 
 function global:Install-Chocolatey
 {
-   iex ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'))
+   Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'))
 }
 
 set-alias dd                  $myhome'\Tools\dd\dd.exe'                          -scope global
@@ -133,7 +113,7 @@ set-alias sudo                elevate                                           
 set-alias vsvars32            $scriptFolder'\vsvars32.ps1'                       -scope global
 set-alias windbg              $scriptFolder'\debug.ps1'                          -scope global
 set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
-set-alias ztw                 $myhome'\Tools\Ztree\ztw64.exe'                    -scope global
+set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
 
 set-alias update-phonesdk     '\\javascripttools\Public\wpblue\UpdateSdk.bat'                                         -scope global
 set-alias update-xap          '\\winphonelabs\securestorage\Blue\Project\DevPlat\VijayKr\AppUpdater\XapUpdaterEx.exe' -scope global
