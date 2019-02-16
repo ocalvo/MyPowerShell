@@ -122,7 +122,7 @@ function global:Install-Chocolatey
 
 set-alias dd                  $myhome'\Tools\dd\dd.exe'                          -scope global
 set-alias cabarc              $myhome'\Tools\cab\cabarc.exe'                     -scope global
-set-alias bcomp               $myhome'\Tools\Beyond Compare 3\bcomp.com'         -scope global
+set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
 set-alias razzle              $scriptFolder'\Execute-Razzle.ps1'                 -scope global
 set-alias Invoke-CmdScript    $scriptFolder'\Invoke-CmdScript.ps1'               -scope global
 set-alias junction            $myhome'\Tools\x86\junction.exe'                   -scope global
@@ -131,7 +131,6 @@ set-alias sdp                 $myhome'\Tools\sdpack\sdp.bat'                    
 set-alias su                  $scriptFolder'\su.ps1'                             -scope global
 set-alias sudo                elevate                                            -scope global
 set-alias vsvars32            $scriptFolder'\vsvars32.ps1'                       -scope global
-set-alias xde                 'C:\Program Files (x86)\Microsoft XDE\8.1\xde'     -scope global
 set-alias windbg              $scriptFolder'\debug.ps1'                          -scope global
 set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
 set-alias ztw                 $myhome'\Tools\Ztree\ztw64.exe'                    -scope global
@@ -154,6 +153,17 @@ function global:Use-InstalledCLR
 {
   reg add hklm\software\microsoft\.netframework /v OnlyUseLatestCLR /t REG_DWORD /d 0
   reg add hklm\software\wow6432node\microsoft\.netframework /v OnlyUseLatestCLR /t REG_DWORD /d 0
+}
+
+function global:Set-GitGlobals()
+{
+  if ((Get-Command bcomp) -ne $null)
+  {
+    git config --global diff.tool bc4
+    git config --global difftool.bc4.cmd "\"c:/program files/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\""
+    git config --global difftool.prompt false
+    git config --global mergetool.bc4.path "\"c:/program files/beyond compare 4/bcomp.exe\""
+  }
 }
 
 # SD settings
