@@ -82,7 +82,8 @@ namespace CalvoSoftware
 
         private static Dictionary<int, PropertyTagType> descriptors = new Dictionary<int, PropertyTagType>()
         {
-            { 0x0132, new PropertyTagTypeDateTime("DateTaken") },
+            { 0x0132, new PropertyTagTypeDateTime("CustomDateTaken") },
+            { 0x9003, new PropertyTagTypeDateTime("DateTaken") },
         };
 
         private class Property
