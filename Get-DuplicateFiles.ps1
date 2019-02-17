@@ -1,49 +1,55 @@
 #requires -version 3
 [CmdletBinding()]
 param (
-    [string]
-    $Path
+    [string[]] $inputDirs,
+    [string] $hashStore = $env:temp
 )
 
-function Get-MD5 {
-    param (
-        [Parameter(Mandatory)]
-        [string] 
-        $Path
-    )
-    # This Get-MD5 function sourced from:
-    # http://blogs.msdn.com/powershell/archive/2006/04/25/583225.aspx
-    $HashAlgorithm = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
-    $Stream = [System.IO.File]::OpenRead($Path)
-    try {
-        $HashByteArray = $HashAlgorithm.ComputeHash($Stream)
-    } finally {
-        $Stream.Dispose()
-    }
-
-    return [System.BitConverter]::ToString($HashByteArray).ToLowerInvariant() -replace '-',''
+$hashRootDir = ($hashStore+"\Dupes\Hash\")
+if (!(test-path $hashRootDir))
+{
+    mkdir $hashRootDir
 }
 
-if (-not $Path) {
-    if ((Get-Location).Provider.Name -ne 'FileSystem') {
-        Write-Error 'Specify a file system path explicitly, or change the current location to a file system path.'
-        return
-    }
-    $Path = (Get-Location).ProviderPath
+$hashResultsDir = ($hashStore+"\Dupes\Results\")
+if (!(test-path $hashResultsDir))
+{
+    mkdir $hashResultsDir
 }
 
-Get-ChildItem -Path $Path -Recurse -File |
+Get-ChildItem ([string[]]$inputDirs) -Recurse -File |
     Where-Object { $_.Length -gt 0 } |
-    Group-Object -Property Length |
-    Where-Object { $_.Count -gt 1 } |
     ForEach-Object {
-        $_.Group |
+        $fullName = $_.FullName
+        Write-Progress -Id 1 -Activity "Finding duplicates" -Status "Getting hash for $fullName"
+        $hash = Get-FileHash $_.FullName -Algorithm MD5
+        $h = $hash.Hash
+        $hashDir = ($hashRootDir + "\" + $h)
+        $name = $_.Name
+        if (!(test-path $hashDir))
+        {
+            Write-Output "Found new hash $h=>$name"
+            mkdir $hashDir | Out-Null
+        }
+        $currentDupes = Get-ChildItem -Path $hashDir -File |
+            Select-Object -Property Target |
             ForEach-Object {
-                $_ |
-                    Add-Member -MemberType NoteProperty -Name ContentHash -Value (Get-MD5 -Path $_.FullName)
+                Get-Item $_.Target
             }
-
-        $_.Group |
-            Group-Object -Property ContentHash |
-            Where-Object { $_.Count -gt 1 }
+        $dupe = $currentDupes | Where-Object -Property FullName -EQ $fullName;
+        if ($dupe -EQ $null)
+        {
+            $guid = [guid]::NewGuid();
+            $dupe = New-Item -Path $hashDir -Name $guid -ItemType SymbolicLink -Target $fullName
+            if ($currentDupes.Count -NE 0)
+            {
+                Write-Output "Found duplicate for $fullName with hash $h"
+                $resultPath = $hashResultsDir + "\" + $h
+                if (!(test-path $resultPath))
+                {
+                   New-Item -Path $hashResultsDir -Name $h -ItemType SymbolicLink -Target $hashDir
+                }
+            }
+        }
     }
+
