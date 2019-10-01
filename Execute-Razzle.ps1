@@ -230,6 +230,8 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     New-RazzleLink "c:\Symbols" "w:\Symbols"
     New-RazzleLink "c:\Symcache" "w:\Symbols"
     New-RazzleLink "c:\Sym" "w:\Symbols"
+    New-RazzleLink $env:temp "w:\Temp"
+    New-RazzleLink $env:HOMEDRIVE$env:HOMEPATH\.nuget w:\NuGet
     New-RazzleLink "c:\Temp" "w:\Temp"
     New-RazzleLink "c:\Logs" "w:\Logs"
     New-RazzleLink "c:\CrashDumps" "w:\CrashDumps"
@@ -237,6 +239,9 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     New-RazzleLink "c:\Debuggers" "f:\Debuggers"
     New-RazzleLink "f:\Debuggers\Sym" "w:\Symbols"
     New-RazzleLink "f:\Debuggers\Wow64\Sym" "w:\Symbols"
+    New-RazzleLink "c:\ProgramData\dbg\Sym" "w:\Symbols"
+    New-RazzleLink "c:\ProgramData\dbg\Src" "w:\Src"
+    New-RazzleLink "c:\Polaris" "w:\Polaris"
 
     $enlistNumber = $srcRoot.Substring($srcRoot.LastIndexOf("os")+2,1)
     $workspaceFolder = "F:\os$enlistNumber"

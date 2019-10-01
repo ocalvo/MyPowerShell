@@ -104,6 +104,7 @@ set-alias dd                  $myhome'\Tools\dd\dd.exe'                         
 set-alias cabarc              $myhome'\Tools\cab\cabarc.exe'                     -scope global
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
 set-alias razzle              $scriptFolder'\Execute-Razzle.ps1'                 -scope global
+set-alias vsvars              $scriptFolder'\Enter-VSShell.ps1'                  -scope global
 set-alias Invoke-CmdScript    $scriptFolder'\Invoke-CmdScript.ps1'               -scope global
 set-alias junction            $myhome'\Tools\x86\junction.exe'                   -scope global
 set-alias logon               $scriptFolder'\logon.ps1'                          -scope global
@@ -276,26 +277,6 @@ function global:time
 {
   $st = ""; $args | % { $st = $st + $_ + " " }; $st = $st + " | out-host"
   "Execution time:"+(measure-command {invoke-expression $st})
-}
-
-function global:Gac-PowerShell
-{
-  vsvars32
-  [AppDomain]::CurrentDomain.GetAssemblies() |
-  where { ($_.Location -ne $null) -and ($_.Location -ne "") -and (test-path $_.Location) } |
-  sort {Split-path $_.location -leaf} |
-  %{
-    $Name = (Split-Path $_.location -leaf)
-    if ([System.Runtime.InteropServices.RuntimeEnvironment]::FromGlobalAccessCache($_))
-    {
-      Write-Host "Already GACed: $Name"
-    }
-    else
-    {
-      Write-Host -ForegroundColor Yellow "NGENing : $Name"
-      ngen install $_.location /nologo |%{"`t$_"}
-    }
-  }
 }
 
 function Compress-Path($Path, $Length=20)

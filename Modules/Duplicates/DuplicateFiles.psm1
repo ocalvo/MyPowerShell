@@ -1,3 +1,5 @@
+$hashRootDir = $null
+$hashResultsDir = $null
 
 function Get-Duplicates()
 {
@@ -56,7 +58,74 @@ function Get-Duplicates()
         }
 }
 
+[ScriptBlock] $findFunction = { $true }
+
+function Get-Duplicate
+{
+    param (
+        [Parameter(
+            Position=0,
+            Mandatory=$true,
+            ValueFromPipeline=$true,
+            ValueFromPipelineByPropertyName=$true)]
+        $h
+    )
+    process {
+        Get-ChildItem -Path $h.FullName -File |
+            Select-Object -Property ('DirectoryName','Target','Name') |
+            Where-Object { Test-Path $_.Target }
+    }
+}
+
+function Process-Duplicate
+{
+    param (
+        [Parameter(
+            Position=0, 
+            Mandatory=$true, 
+            ValueFromPipeline=$true,
+            ValueFromPipelineByPropertyName=$true)]
+        [string]$h
+    )
+    process {
+        Write-Progress -Id 1 -Activity "Finding duplicates" -Status "Getting hash for $h"
+        $hashDir = ($hashResultsDir + $h)
+        Get-ChildItem -Path $hashDir -File |
+            Select-Object -Property Target |
+            ForEach-Object {
+                Get-Item $_.Target
+            } |
+            Where-Object { (test-path $_) } |
+            Add-Member -MemberType NoteProperty -Name ContentHash -Value $h
+    }
+}
+
+function Find-Duplicates
+{
+    [CmdletBinding()]
+    param (
+        [string] $hashStore = $env:temp,
+        [ScriptBlock] $filter
+    )
+
+    if ($filter -NE $null)
+    {
+        $findFunction = $filter;
+    }
+
+    $hashResultsDir = ($hashStore+"\Dupes\Results\")
+    if (!(test-path $hashResultsDir))
+    {
+        Write-Error "No hash store was found, run Get-Duplicates first"
+        return;
+    }
+
+    Get-ChildItem $hashResultsDir -Directory |
+        Get-Duplicate
+}
+
 Export-ModuleMember -Function "Get-*"
+Export-ModuleMember -Function "Find-*"
 
 
 
