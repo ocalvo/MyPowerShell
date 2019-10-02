@@ -91,7 +91,11 @@ function Execute-Razzle32($flavor="chk",$enlistment)
   Execute-Elevated $process $args
 }
 
-[hashtable]$razzleKind = [ordered]@{ DevDiv = "\src\tools\razzle.ps1"; Windows = "\developer\razzle.ps1"; Phone = "\wm\tools\bat\WPOpen.ps1" }
+[hashtable]$razzleKind = [ordered]@{
+  DevDiv = "\src\tools\razzle.ps1";
+  Windows = "\developer\razzle.ps1";
+  Lifted = "\init.cmd";
+  Phone = "\wm\tools\bat\WPOpen.ps1" }
 
 function Get-RazzleProbeDir($kind, $srcDir)
 {
@@ -100,15 +104,15 @@ function Get-RazzleProbeDir($kind, $srcDir)
 
 function Get-RazzleKind($srcDir)
 {
-  if ($device -eq $null)
-  {
-    return "Windows"
-  }
-  $kind = $razzleKind.Keys | where { (test-path (Get-RazzleProbeDir $_ $srcDir)) } | select -first 1
+  $kind = $razzleKind.Keys |
+    where {
+      (test-path (Get-RazzleProbeDir $_ $srcDir))
+    } |
+      select -first 1
   return $kind
 }
 
-$global:ddDir = "c:\dd"
+$global:ddDir = "f:"
 $global:ddIni = ($ddDir+"\dd.ini")
 
 function global:Get-RazzleProbes()
@@ -376,12 +380,19 @@ function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
 
           $extraArgs += " developer_dir ~\Documents\Razzle\ "
 
-          if ( $kind -eq "Phone" )
-          {
+          if ( $kind -eq "Phone" ) {
             .$razzle $device ($arch+$flavor) $phoneOptions $extraArgs
           }
-          else
-          {
+          elseif ( $kind -eq "Lifted" ) {
+            New-RazzleLink ($srcDir+"\bin") ($srcDir+"\..\bin")
+            New-RazzleLink ($srcDir+"\obj") ($srcDir+"\..\obj")
+            $env:SDXROOT = $srcDir
+            pushd $env:SDXROOT
+            vsvars
+            Write-Output ".$razzle $arch$flavor"
+            Invoke-CmdScript -script $razzle -parameters (($arch+$flavor),"/2019")
+          }
+          else {
             Write-Output ".$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt"
             .$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt
           }

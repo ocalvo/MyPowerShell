@@ -11,3 +11,23 @@ $devShellModule = Join-Path $ver.Path "Common7\Tools\Microsoft.VisualStudio.DevS
 Import-Module $devShellModule
 Enter-VsDevShell -VsInstallPath $ver.Path -SkipAutomaticLocation
 
+$env:_MSBUILD_VERBOSITY = "m"
+$env:_VSINSTALLDIR = Split-path ((Split-Path ((get-command msbuild).Definition) -Parent)+"\..\..\") -Resolve
+
+function global:msb()
+{
+  msbuild /bl /nologo /v:$env:_MSBUILD_VERBOSITY $args
+}
+
+function global:build()
+{
+  msb /target:Build
+}
+
+function global:buildclean()
+{
+  msb /target:ReBuild
+}
+
+set-alias b build -scope global
+
