@@ -37,7 +37,7 @@ Import-Module PowerTab
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
 
-$env:_NT_SYMBOL_PATH='SRV*c:\dd\symbols*http://symweb'
+$env:_NT_SYMBOL_PATH='SRV*w:\symbols*http://symweb'
 $env:ChocolateyInstall='C:\ProgramData\Chocolatey'
 $env:path += ';' + $env:ChocolateyInstall + '\bin'
 
@@ -100,57 +100,46 @@ function global:Install-Chocolatey
    Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'))
 }
 
-set-alias dd                  $myhome'\Tools\dd\dd.exe'                          -scope global
-set-alias cabarc              $myhome'\Tools\cab\cabarc.exe'                     -scope global
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
 set-alias razzle              $scriptFolder'\Execute-Razzle.ps1'                 -scope global
 set-alias vsvars              $scriptFolder'\Enter-VSShell.ps1'                  -scope global
 set-alias Invoke-CmdScript    $scriptFolder'\Invoke-CmdScript.ps1'               -scope global
-set-alias junction            $myhome'\Tools\x86\junction.exe'                   -scope global
 set-alias logon               $scriptFolder'\logon.ps1'                          -scope global
-set-alias sdp                 $myhome'\Tools\sdpack\sdp.bat'                     -scope global
 set-alias su                  $scriptFolder'\su.ps1'                             -scope global
 set-alias sudo                elevate                                            -scope global
-set-alias vsvars32            $scriptFolder'\vsvars32.ps1'                       -scope global
 set-alias windbg              $scriptFolder'\debug.ps1'                          -scope global
 set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
 set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
-
-set-alias update-phonesdk     '\\javascripttools\Public\wpblue\UpdateSdk.bat'                                         -scope global
-set-alias update-xap          '\\winphonelabs\securestorage\Blue\Project\DevPlat\VijayKr\AppUpdater\XapUpdaterEx.exe' -scope global
-set-alias CopyAndPrep-VHD     '\\jevan\public\TestMachineScripts\Scripts\CopyAndPrepVHD.ps1'                          -scope global
 
 $env:psmodulepath = $myhome + '\WindowsPowerShell\Modules;'+ $env:psmodulepath.SubString($env:psmodulepath.IndexOf(";"))
 
 function  global:mklink       { cmd /c mklink $args }
 
-function global:Use-LatestCLR
-{
-  reg add hklm\software\microsoft\.netframework /v OnlyUseLatestCLR /t REG_DWORD /d 1
-  reg add hklm\software\wow6432node\microsoft\.netframework /v OnlyUseLatestCLR /t REG_DWORD /d 1
-}
-
-function global:Use-InstalledCLR
-{
-  reg add hklm\software\microsoft\.netframework /v OnlyUseLatestCLR /t REG_DWORD /d 0
-  reg add hklm\software\wow6432node\microsoft\.netframework /v OnlyUseLatestCLR /t REG_DWORD /d 0
-}
-
 function global:Set-GitGlobals()
 {
+  git config --global user.name "Oscar Calvo"
+  git config --global user.email "ocalvo@microsoft.com"
+  git config --global log.date local
+  git config --global core.autocrlf true
   if ((Get-Command bcomp) -ne $null)
   {
-    git config --global diff.tool bc4
-    git config --global difftool.bc4.cmd "\"c:/program files/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\""
+    git config --global diff.tool bc
     git config --global difftool.prompt false
-    git config --global mergetool.bc4.path "\"c:/program files/beyond compare 4/bcomp.exe\""
+    git config --global difftool.bc trustExitCode true
+    
+    git config --global merge.tool bc
+    git config --global mergetool.prompt false
+    git config --global mergetool.bc trustExitCode true
+        
+    git config --global difftool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
+    git config --global mergetool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
   }
 }
 
 # SD settings
 $vimCmd = get-command vim 2> $null
 $codeCmd = get-command code 2> $null
-if ($null -ne $codeCmd)
+if (($null -ne $codeCmd) -and ($env:TERM_PROGRAM -eq "vscode"))
 {
   $env:SDEDITOR=$codeCmd.definition
   $env:SDUEDITOR=$codeCmd.definition
@@ -258,11 +247,6 @@ function global:Edit()
   .$env:SDEDITOR $args
 }
 
-function global:View()
-{
-  .$env:SDEDITOR $args
-}
-
 function global:_up ([int] $count = 1)
 {
     push-location -path .
@@ -270,14 +254,7 @@ function global:_up ([int] $count = 1)
 }
 
 set-alias e edit -scope global
-set-alias v view -scope global
 set-alias up _up -scope global
-
-function global:time
-{
-  $st = ""; $args | % { $st = $st + $_ + " " }; $st = $st + " | out-host"
-  "Execution time:"+(measure-command {invoke-expression $st})
-}
 
 function Compress-Path($Path, $Length=20)
 {
