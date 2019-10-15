@@ -16,7 +16,7 @@ $env:_VSINSTALLDIR = Split-path ((Split-Path ((get-command msbuild).Definition) 
 
 function global:msb()
 {
-  msbuild /bl /nologo /v:$env:_MSBUILD_VERBOSITY $args
+  msbuild /bl /nologo /v:$env:_MSBUILD_VERBOSITY /m $args
 }
 
 function global:build()

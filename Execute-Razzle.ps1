@@ -8,6 +8,7 @@ param (
   $arch="x86",
   $device=$null,
   $binaries = "c:\dd\bin\",
+  $vsVersion = "Enterprise",
   [switch]$bl_ok,
   [switch]$oacr,
   [switch]$opt,
@@ -234,7 +235,7 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     New-RazzleLink "c:\Symbols" "w:\Symbols"
     New-RazzleLink "c:\Symcache" "w:\Symbols"
     New-RazzleLink "c:\Sym" "w:\Symbols"
-    New-RazzleLink $env:temp "w:\Temp"
+    #New-RazzleLink $env:temp "w:\Temp"
     New-RazzleLink $env:HOMEDRIVE$env:HOMEPATH\.nuget w:\NuGet
     New-RazzleLink "c:\Temp" "w:\Temp"
     New-RazzleLink "c:\Logs" "w:\Logs"
@@ -380,15 +381,19 @@ function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
 
           $extraArgs += " developer_dir ~\Documents\Razzle\ "
 
+          $env:_XROOT = $srcDir
+
           if ( $kind -eq "Phone" ) {
             .$razzle $device ($arch+$flavor) $phoneOptions $extraArgs
           }
           elseif ( $kind -eq "Lifted" ) {
             New-RazzleLink ($srcDir+"\bin") ($srcDir+"\..\bin")
             New-RazzleLink ($srcDir+"\obj") ($srcDir+"\..\obj")
-            $env:SDXROOT = $srcDir
-            pushd $env:SDXROOT
-            vsvars
+            New-RazzleLink ($srcDir+"\temp") ($srcDir+"\..\temp")
+            New-RazzleLink ($srcDir+"\log") ($srcDir+"\..\out")
+            New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
+            Push-Location $env:SDXROOT
+            vsvars -vsVersion $vsVersion
             Write-Output ".$razzle $arch$flavor"
             Invoke-CmdScript -script $razzle -parameters (($arch+$flavor),"/2019")
           }

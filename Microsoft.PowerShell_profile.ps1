@@ -164,20 +164,20 @@ function _sd
   import-module ~\Documents\WindowsPowerShell\Modules\SearchDir\SearchDir.dll
 
   [string[]]$sd
-  if ($env:SDXROOT -ne $null )
+  if ($env:_XROOT -ne $null )
   {
-    $sd = $env:SDXROOT
+    $sd = $env:_XROOT
   }
   else
   {
     $sd = (get-location)
   }
   [string[]]$exDirs=("objd","obj","objr","objc")
-  if ($env:SDXROOT -ne $null )
+  if ($env:_XROOT -ne $null )
   {
-    $exDirs+=$env:SDXROOT+"\SetupAuthoring"
-    $exDirs+=$env:SDXROOT+"\Tools"
-    $exDirs+=$env:SDXROOT+"\public"
+    $exDirs+=$env:_XROOT+"\SetupAuthoring"
+    $exDirs+=$env:_XROOT+"\Tools"
+    $exDirs+=$env:_XROOT+"\public"
   }
   if ($env:init -ne $null )
   {
@@ -285,9 +285,9 @@ function global:Get-LocationForPrompt
 {
   [string]$p = Get-Location
 
-  if ( ($env:SDXROOT -ne $null) -and ($p -like ($env:SDXROOT+'\*')) )
+  if ( ($env:_XROOT -ne $null) -and ($p -like ($env:_XROOT+'\*')) )
   {
-      $index = ($env:SDXROOT).Length + 1
+      $index = ($env:_XROOT).Length + 1
       $p = $p.SubString($index)
   }
   else
@@ -306,9 +306,9 @@ function prompt
     $nextId = (get-history -count 1).Id + 1;
 
     $srcId = $null
-    if ($env:sdxroot -ne $null)
+    if ($env:_xroot -ne $null)
     {
-        $srcId = $env:sdxroot.Replace("\src","").ToCharArray() | select -last 1
+        $srcId = $env:_xroot.Replace("\src","").ToCharArray() | select-object -last 1
     }
 
     if (test-path env:_BuildArch)
