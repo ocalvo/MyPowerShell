@@ -9,6 +9,7 @@ param (
   $device=$null,
   $binaries = "c:\dd\bin\",
   $vsVersion = "Enterprise",
+  $ddDir = "f:",
   [switch]$bl_ok,
   [switch]$oacr,
   [switch]$opt,
@@ -16,6 +17,9 @@ param (
   [switch]$nobtok,
   [switch]$gitVersionCheck,
   $enlistment = $env:SDXROOT)
+
+set-alias Enter-VSShell ($PSScriptRoot+'\Enter-VSShell.ps1')
+set-alias Invoke-CmdScript ($PSScriptRoot+'\Invoke-CmdScript.ps1')
 
 ##
 ## Support to get out and get in of razzle
@@ -113,7 +117,6 @@ function Get-RazzleKind($srcDir)
   return $kind
 }
 
-$global:ddDir = "f:"
 $global:ddIni = ($ddDir+"\dd.ini")
 
 function global:Get-RazzleProbes()
@@ -188,7 +191,10 @@ function global:New-RazzleLink($linkName, $binaries)
 function global:Get-BranchCustomId()
 {
     [string]$branch = git branch | Where-Object { $_.StartsWith("*") };
-    return ($branch.Split("/") | select -last 1)
+    if ($null -ne $branch)
+    {
+      return ($branch.Split("/") | select -last 1)
+    }
 }
 
 function Remove-InvalidFileNameChars
@@ -393,7 +399,7 @@ function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
             New-RazzleLink ($srcDir+"\log") ($srcDir+"\..\out")
             New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
             Push-Location $env:SDXROOT
-            vsvars -vsVersion $vsVersion
+            Enter-VSShell -vsVersion $vsVersion
             Write-Output ".$razzle $arch$flavor"
             Invoke-CmdScript -script $razzle -parameters (($arch+$flavor),"/2019")
           }
