@@ -53,6 +53,7 @@ function global:Lock-WorkStation {
 }
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
+function .. { Set-Location ..  }
 
 function global:isadmin
 {
@@ -60,21 +61,6 @@ function global:isadmin
     $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
     $wp.IsInRole("Administrators") -eq 1
 }
-
-function Open-Elevated
-{
-  param([switch]$wait)
-  $file, [string]$arguments = $args;
-  $psi = new-object System.Diagnostics.ProcessStartInfo $file;
-  $psi.Arguments = $arguments;
-  $psi.Verb = "runas";
-  $p = [System.Diagnostics.Process]::Start($psi);
-  if ($wait.IsPresent)
-  {
-      $p.WaitForExit()
-  }
-}
-set-alias elevate Open-Elevated -scope global
 
 $global:myhome = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]'MyDocuments')
 $global:scriptFolder = $global:myhome +'\WindowsPowerShell'
@@ -105,15 +91,12 @@ set-alias razzle              $scriptFolder'\Execute-Razzle.ps1'                
 set-alias vsvars              $scriptFolder'\Enter-VSShell.ps1'                  -scope global
 set-alias Invoke-CmdScript    $scriptFolder'\Invoke-CmdScript.ps1'               -scope global
 set-alias logon               $scriptFolder'\logon.ps1'                          -scope global
-set-alias su                  $scriptFolder'\su.ps1'                             -scope global
-set-alias sudo                elevate                                            -scope global
+set-alias sudo                $scriptFolder'\Elevate.ps1'                        -scope global
 set-alias windbg              $scriptFolder'\debug.ps1'                          -scope global
 set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
 set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
 
 $env:psmodulepath = $myhome + '\WindowsPowerShell\Modules;'+ $env:psmodulepath.SubString($env:psmodulepath.IndexOf(";"))
-
-function  global:mklink       { cmd /c mklink $args }
 
 function global:Set-GitGlobals()
 {
@@ -126,14 +109,23 @@ function global:Set-GitGlobals()
     git config --global diff.tool bc
     git config --global difftool.prompt false
     git config --global difftool.bc trustExitCode true
-    
+
     git config --global merge.tool bc
     git config --global mergetool.prompt false
     git config --global mergetool.bc trustExitCode true
-        
+
     git config --global difftool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
     git config --global mergetool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
   }
+}
+
+function global:Enable-SSH
+{
+  Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+  Set-Service -Name sshd -StartupType 'Automatic'
+  New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+  New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
+  Start-Service sshd
 }
 
 # SD settings
@@ -149,98 +141,6 @@ elseif ($null -ne $vimCmd)
   $env:SDEDITOR=$vimCmd.definition
   $env:SDUEDITOR=$vimCmd.definition
 }
-
-########################################################
-# 'go' command and targets
-if( $global:go_locations -eq $null )
-{
-  $global:go_locations = @{};
-}
-
-function _sd
-{
-  param([string] $pattern,[switch]$All)
-
-  import-module ~\Documents\WindowsPowerShell\Modules\SearchDir\SearchDir.dll
-
-  [string[]]$sd
-  if ($env:_XROOT -ne $null )
-  {
-    $sd = $env:_XROOT
-  }
-  else
-  {
-    $sd = (get-location)
-  }
-  [string[]]$exDirs=("objd","obj","objr","objc")
-  if ($env:_XROOT -ne $null )
-  {
-    $exDirs+=$env:_XROOT+"\SetupAuthoring"
-    $exDirs+=$env:_XROOT+"\Tools"
-    $exDirs+=$env:_XROOT+"\public"
-  }
-  if ($env:init -ne $null )
-  {
-    $exDirs+=$env:init
-  }
-  if ( $all.IsPresent )
-  {
-    Search-Directory -Search $sd -ExcludeDirectories $exDirs -Pattern $pattern -All
-  }
-  else
-  {
-    Search-Directory -Search $sd -ExcludeDirectories $exDirs -Pattern $pattern
-  }
-}
-
-function _gosd
-{
-  param([string] $pattern)
-  $dir = $null
-  if (test-path $pattern)
-  {
-    $dir = (gi $pattern)
-  }
-  else
-  {
-    $dir = (_sd $pattern)
-  }
-
-  if (!($dir -eq $null))
-  {
-    $fn= $dir.FullName
-    pushd $fn
-    return $true
-  }
-
-  return $false
-}
-
-function global:Goto-KnownLocation([string] $location)
-{
-  if ( $go_locations.ContainsKey($location) )
-  {
-    set-location $go_locations[$location];
-  }
-  else
-  {
-    if (!(_gosd $location))
-    {
-      write-output "The following locations are defined:";
-      write-output $go_locations;
-    }
-  }
-}
-$go_locations["home"]="~"
-$go_locations["dl"]="\\server\Downloads"
-$go_locations["dev"]="C:\dd"
-$go_locations["scripts"]="~\Documents\WindowsPowerShell"
-$go_locations["tools"]="~\Documents\Tools"
-$go_locations["public"]=$env:public
-
-set-alias go                 Goto-KnownLocation                 -scope global
-
-########################################################
 
 function global:Edit()
 {
@@ -274,8 +174,11 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
     }
 }
 
-$env:PSRazzleDir = ($myhome+'\Razzle')
+$env:PSRazzleDir = ($scriptFolder+'\Razzle')
 . $env:PSRazzleDir\VSO-Helpers.ps1
+. $scriptFolder\SpVoice.ps1
+. $scriptFolder\GoLocations.ps1
+. $scriptFolder\Elevate.ps1
 
 Compress-Path "C:\" 1>$null 2>&1 3>&1 4>&1
 
@@ -344,25 +247,6 @@ function prompt
     }
 
     return "> "
-}
-
-$spVoice = new-object -ComObject "SAPI.SpVoice"
-
-function Speak-String {
-    param([string]$message)
-    $spVoice.Speak($message, 1);
-}
-
-function Speak-Result {
-    param([ScriptBlock]$script)
-    try {
-        $script.Invoke();
-    }
-    catch [Exception] {
-        Speak-String $_.Exception.Message;
-        throw;
-    }
-    Speak-String ($script.ToString() + "  succeeded");
 }
 
 # Chocolatey profile

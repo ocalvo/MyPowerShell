@@ -9,7 +9,8 @@ param (
   $device=$null,
   $binaries = "c:\dd\bin\",
   $vsVersion = "Enterprise",
-  $ddDir = "f:",
+  $ddDir = $env:LOCALAPPDATA,
+  [switch]$symbolicLinks = $true,
   [switch]$bl_ok,
   [switch]$oacr,
   [switch]$opt,
@@ -123,12 +124,14 @@ function global:Get-RazzleProbes()
 {
   [string[]]$razzleProbe = $null
 
-  if (test-path $ddIni)
+  if ((test-path $ddIni) -and ($null -eq $enlistment))
   {
-    if ($null -eq $enlistment)
-    {
-      $enlistment = (get-content $ddIni)
-    }
+    $enlistment = (get-content $ddIni)
+    $razzleProbe += $enlistment
+    return $razzleProbe
+  }
+  else
+  {
     if (($enlistment -ne $null) -and (test-path $enlistment))
     {
       $razzleProbe += $enlistment
@@ -136,20 +139,7 @@ function global:Get-RazzleProbes()
     }
   }
 
-  if (($enlistment -ne $null) -and (test-path ($ddDir+"\"+$enlistment)))
-  {
-    $razzleProbe += ($ddDir+"\"+$enlistment)
-    return $razzleProbe
-  }
-
-  [string[]]$additionalProbes = $null
-  $additionalProbes = (dir $ddDir ) | where { test-path ($_.FullName) } |% { $_.FullName }
-  if (!($additionalProbes -eq $null))
-  {
-    $razzleProbe += $additionalProbes
-  }
-
-  return $razzleProbe
+  throw "Enlistment not provided"
 }
 
 function Get-BranchName($razzleDirName)
@@ -168,6 +158,10 @@ function Get-BranchName($razzleDirName)
 
 function global:New-RazzleLink($linkName, $binaries)
 {
+  if (!($enableLinks.IsPresent))
+  {
+     return;
+  }
   echo "Linking $linkName -> $binaries ..."
 
   if (!(test-path $binaries))
@@ -279,37 +273,37 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
 
 function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
 {
-  if (!(IsAdmin))
-  {
-    Write-Error "Admin required to unblock BitLocker"
-    return
-  }
-
   if ( ($gitVersionCheck.IsPresent) )
   {
     Write-Host "Checking git version..."
     .'\\ntdev\sourcetools\release\Setup.cmd' -Canary
   }
-  else
-  {
-    Write-Host "Not Checking git version"
-  }
 
-  if ((Get-BitLockerVolume -MountPoint "F:").LockStatus -eq "Locked")
+  if (!(test-path $enlistment))
   {
-    Write-Host "Unlocking drive F:..."
-    $pass = ConvertTo-SecureString (Get-Content ~\Documents\Passwords\Bitlocker.txt) -AsPlainText -Force
-    Unlock-BitLocker -MountPoint "F:" -Password $pass
+    if (!(IsAdmin))
+    {
+       Write-Error "Admin required to unblock BitLocker"
+       return
+    }
+
+    if ((Get-BitLockerVolume -MountPoint "F:").LockStatus -eq "Locked")
+    {
+      Write-Host "Unlocking drive F:..."
+      $pass = ConvertTo-SecureString (Get-Content ~\Documents\Passwords\Bitlocker.txt) -AsPlainText -Force
+      Unlock-BitLocker -MountPoint "F:" -Password $pass
+    }
   }
 
   $popDir = Get-Location
 
   Undo-Razzle
 
-  [string[]]$razzleProbe = Get-RazzleProbes
+  $razzleProbe = (Get-RazzleProbes)
 
   foreach ($driveEnlistRoot in $razzleProbe)
   {
+    echo $driveEnlistRoot
     if (test-path $driveEnlistRoot)
     {
       $razzleDirName = split-path $driveEnlistRoot -leaf

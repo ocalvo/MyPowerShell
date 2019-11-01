@@ -1,3 +1,5 @@
+set fileformat=dos
+
 " Oscar Calvo <oscar@calvonet.com> vimrc file
 "  To use copy this file to $home\_vimrc and edit
 
