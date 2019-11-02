@@ -192,7 +192,7 @@ function global:Get-LocationForPrompt
 if ($null -ne $env:SSH_CLIENT)
 {
   $remoteIp = ($env:SSH_CLIENT.Split(" ") | select -first 1)
-  if ("::1" -ne $remoteIp)
+  if (("::1" -ne $remoteIp) -and ("127.0.0.1" -ne $remoteIp))
   {
     $localHostName = $env:COMPUTERNAME
   }
