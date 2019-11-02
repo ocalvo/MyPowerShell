@@ -47,7 +47,7 @@ function global:Add-AdministratorsAuthorizedKeys()
   $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
   if ($null -ne $newKey)
   {
-    Set-Content -Value $newKey $serverKeys -Encoding UTF8 -Force
+    Add-Content -Value $newKey $serverKeys -Encoding UTF8 -Force
   }
   $acl = Get-Acl $serverKeys
   $acl.SetAccessRuleProtection($true, $false)
@@ -62,7 +62,7 @@ function global:Enable-Execute-Elevated
 {
   if (!(Test-IsAdmin))
   {
-     Open-Elevated powershell -c Enable-Execute-Elevated
+     Open-Elevated -wait powershell -c Enable-Execute-Elevated
      return;
   }
 
@@ -74,12 +74,10 @@ function global:Enable-Execute-Elevated
 
   $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
   $keyfilePub =  $keyfile+'.pub'
-  if (test-path $keyfile)
+  if (!(test-path $keyfile))
   {
-    Remove-Item $keyfile -Force
-    Remove-Item $keyfilePub -Force
+    ssh-keygen -t rsa -f $keyfile -q -P `"`"
   }
-  ssh-keygen -t rsa -f $keyfile -q -P `"`"
   #Start-Service ssh-agent
   #ssh-add $keyfilePub
 
@@ -92,12 +90,11 @@ function global:Execute-Elevated {
 
   if (!(Test-IsAdmin))
   {
-    $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
-    if (!(Test-Path $serverKeys))
+    $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
+    if (!(Test-Path $keyfile))
     {
       Setup-Sudo
     }
-    $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
     ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
   }
   else
