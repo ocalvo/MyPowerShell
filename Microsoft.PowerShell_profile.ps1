@@ -91,7 +91,6 @@ set-alias razzle              $scriptFolder'\Execute-Razzle.ps1'                
 set-alias vsvars              $scriptFolder'\Enter-VSShell.ps1'                  -scope global
 set-alias Invoke-CmdScript    $scriptFolder'\Invoke-CmdScript.ps1'               -scope global
 set-alias logon               $scriptFolder'\logon.ps1'                          -scope global
-set-alias sudo                $scriptFolder'\Elevate.ps1'                        -scope global
 set-alias windbg              $scriptFolder'\debug.ps1'                          -scope global
 set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
 set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
@@ -117,15 +116,6 @@ function global:Set-GitGlobals()
     git config --global difftool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
     git config --global mergetool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
   }
-}
-
-function global:Enable-SSH
-{
-  Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-  Set-Service -Name sshd -StartupType 'Automatic'
-  New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
-  New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
-  Start-Service sshd
 }
 
 # SD settings
