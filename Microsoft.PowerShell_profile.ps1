@@ -55,20 +55,21 @@ function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
 function .. { Set-Location ..  }
 
-function global:isadmin
+function test-isadmin
 {
     $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
     $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
     $wp.IsInRole("Administrators") -eq 1
 }
 
+$isAdmin = (test-isadmin)
 $global:myhome = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]'MyDocuments')
 $global:scriptFolder = $global:myhome +'\WindowsPowerShell'
 $env:REMOTE_HOME = $myHome
 $localHome = $env:HOMEDRIVE + $env:HOMEPATH + '\Documents'
 if (!(test-path $localHome))
 {
-  if (isadmin)
+  if ($isAdmin)
   {
     New-Item $localHome -ItemType SymbolicLink -Target $myhome
   }
@@ -188,6 +189,15 @@ function global:Get-LocationForPrompt
   (Compress-Path $p 45)
 }
 
+if ($null -ne $env:SSH_CLIENT)
+{
+  $remoteIp = ($env:SSH_CLIENT.Split(" ") | select -first 1)
+  if ("::1" -ne $remoteIp)
+  {
+    $localHostName = $env:COMPUTERNAME
+  }
+}
+
 ########################################################
 # Prompt
 function prompt
@@ -209,7 +219,7 @@ function prompt
       }
     }
 
-    if ( isadmin )
+    if ( $isadmin )
     {
         $color = "Red"
         if ( $title -ne $null )
@@ -224,8 +234,12 @@ function prompt
 
     write-host ("[") -NoNewLine -ForegroundColor Green
     write-host $nextId -NoNewLine -ForegroundColor $color
-    write-host (Get-BranchName) -NoNewLine -ForegroundColor Green
-    write-host (" "+ (Get-LocationForPrompt) + "]") -NoNewLine -ForegroundColor Green
+    write-host ((Get-BranchName) + " ") -NoNewLine -ForegroundColor Green
+    if ($null -ne $localHostName)
+    {
+      Write-host ($localHostName+"@") -NoNewLine -ForegroundColor Green
+    }
+    Write-host ((Get-LocationForPrompt) + "]") -NoNewLine -ForegroundColor Green
 
     if ( $title -ne $null )
     {
