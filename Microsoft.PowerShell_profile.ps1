@@ -68,7 +68,10 @@ $env:REMOTE_HOME = $myHome
 $localHome = $env:HOMEDRIVE + $env:HOMEPATH + '\Documents'
 if (!(test-path $localHome))
 {
-  New-Item $localHome -ItemType SymbolicLink -Target $myhome
+  if (isadmin)
+  {
+    New-Item $localHome -ItemType SymbolicLink -Target $myhome
+  }
 }
 if (test-path $localHome)
 {
