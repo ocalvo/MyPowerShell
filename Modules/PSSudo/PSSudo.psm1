@@ -1,4 +1,7 @@
 
+$keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa_sudo'
+$keyfilePub =  $keyfile+'.pub'
+
 function global:Test-IsAdmin
 {
     $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -47,6 +50,8 @@ function global:Add-AdministratorsAuthorizedKeys()
   $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
   if ($null -ne $newKey)
   {
+    $when = [datetime]::Now.ToString("y/MM/dd HH:mm:ss");
+    Add-Content -Value "# Added by PSSudo.psm1 on $when for key $keyFile" $serverKeys -Encoding UTF8 -Force
     Add-Content -Value $newKey $serverKeys -Encoding UTF8 -Force
   }
   $acl = Get-Acl $serverKeys
@@ -72,8 +77,6 @@ function global:Enable-Execute-Elevated
     Enable-SSH
   }
 
-  $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
-  $keyfilePub =  $keyfile+'.pub'
   if (!(test-path $keyfile))
   {
     ssh-keygen -t rsa -f $keyfile -q -P `"`"
@@ -90,10 +93,9 @@ function global:Execute-Elevated {
 
   if (!(Test-IsAdmin))
   {
-    $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
     if (!(Test-Path $keyfile))
     {
-      Setup-Sudo
+       Enable-Execute-Elevated
     }
     ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
   }
