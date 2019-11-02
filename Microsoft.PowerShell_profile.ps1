@@ -237,7 +237,7 @@ function prompt
     write-host ((Get-BranchName) + " ") -NoNewLine -ForegroundColor Green
     if ($null -ne $localHostName)
     {
-      Write-host ($localHostName+"@") -NoNewLine -ForegroundColor Green
+      Write-host ($localHostName+":") -NoNewLine -ForegroundColor Green
     }
     Write-host ((Get-LocationForPrompt) + "]") -NoNewLine -ForegroundColor Green
 
