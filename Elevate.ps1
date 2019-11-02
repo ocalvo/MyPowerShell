@@ -63,8 +63,8 @@ function global:Setup-Sudo
     Remove-Item $keyfilePub -Force
   }
   ssh-keygen -t rsa -f $keyfile -q -P `"`"
-  Start-Service ssh-agent
-  ssh-add $keyfile
+  #Start-Service ssh-agent
+  #ssh-add $keyfilePub
 
   $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
   Set-Content -Value (Get-Content $keyfilePub) $serverKeys -Encoding UTF8 -Force

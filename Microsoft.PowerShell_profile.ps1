@@ -28,12 +28,13 @@ function global:Setup-Host
 }
 #Setup-Host
 
-$psTab = Get-Module PowerTab -ListAvailable
-if ($null -eq $psTab)
-{
-  Find-Module PowerTab | Install-Module -Force
-}
-Import-Module PowerTab
+#$psTab = Get-Module PowerTab -ListAvailable
+#if ($null -eq $psTab)
+#{
+#  Find-Module PowerTab | Install-Module -Force
+#}
+#Import-Module PowerTab
+
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
 
