@@ -1,5 +1,3 @@
-param([switch]$wait)
-$file, [string]$arguments = $args;
 
 function global:Test-IsAdmin
 {
@@ -29,7 +27,6 @@ function global:Open-Elevated
     & $file $args
   }
 }
-set-alias elevate Open-Elevated -scope global
 
 function global:Enable-SSH
 {
@@ -43,11 +40,11 @@ function global:Enable-SSH
   Start-Service sshd
 }
 
-function global:Setup-Sudo
+function global:Enable-Execute-Elevated
 {
   if (!(Test-IsAdmin))
   {
-     Open-Elevated powershell -c Setup-Sudo
+     Open-Elevated powershell -c Enable-Execute-Elevated
      return;
   }
 
@@ -79,17 +76,30 @@ function global:Setup-Sudo
   $acl | Set-Acl
 }
 
-if (!(Test-IsAdmin))
-{
-  $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
-  if (!(Test-Path $serverKeys))
+function global:Execute-Elevated {
+  param([switch]$wait)
+  $file, [string]$arguments = $args;
+
+  if (!(Test-IsAdmin))
   {
-     Setup-Sudo
+    $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
+    if (!(Test-Path $serverKeys))
+    {
+      Setup-Sudo
+    }
+    $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
+    ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
   }
-  $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
-  ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
+  else
+  {
+    & $file $args
+  }
 }
-else
-{
-  & $file $args
-}
+
+Export-ModuleMember -Function Enable-Execute-Elevated
+Export-ModuleMember -Function Execute-Elevated
+Export-ModuleMember -Function Open-Elevated
+
+set-alias elevate Open-Elevated -scope global
+set-alias sudo Execute-Elevated -scope global
+

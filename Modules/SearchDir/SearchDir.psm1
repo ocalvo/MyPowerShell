@@ -10,7 +10,7 @@ function _sd
 {
   param([string] $pattern,[switch]$All)
 
-  import-module ~\Documents\WindowsPowerShell\Modules\SearchDir\SearchDir.dll
+  import-module ($PSScriptRoot+'\SearchDir.dll')
 
   [string[]]$sd
   if ($env:_XROOT -ne $null )
@@ -87,5 +87,5 @@ $go_locations["scripts"]="~\Documents\WindowsPowerShell"
 $go_locations["tools"]="~\Documents\Tools"
 $go_locations["public"]=$env:public
 
-set-alias go                 Goto-KnownLocation                 -scope global
+Export-ModuleMember -Function Goto-KnownLocation
 

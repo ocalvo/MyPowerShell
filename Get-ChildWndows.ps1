@@ -1,4 +1,4 @@
-function Get-ChildWindows
+function global:Get-ChildWindows
 {
     [CmdletBinding()]
     Param (
@@ -14,11 +14,9 @@ function Get-ChildWindows
             Param
             (
                 [OutputType([Type])]
-            
                 [Parameter( Position = 0)]
                 [Type[]]
                 $Parameters = (New-Object Type[](0)),
-            
                 [Parameter( Position = 1 )]
                 [Type]
                 $ReturnType = [Void]
@@ -45,7 +43,7 @@ function Get-ChildWindows
                                                        $Parameters)
 
             $MethodBuilder.SetImplementationFlags('Runtime, Managed')
-        
+
             Write-Output $TypeBuilder.CreateType()
         }
 
@@ -101,7 +99,7 @@ function Get-ChildWindows
 
                 $WindowTitle = $WindowTitleSB.ToString()
             }
-            
+
             $Result = New-Object PSObject -Property @{ Handle = $hwnd; WindowTitle = $WindowTitle }
 
             $Global:WindowInfo += $Result

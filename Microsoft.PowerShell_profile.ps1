@@ -1,6 +1,5 @@
 ﻿########################################################
 # Oscar Calvo's PowerShell Profile (oscar@calvonet.com)
-#  Last update: 2010-03-20
 #
 
 function global:Setup-Host
@@ -28,11 +27,11 @@ function global:Setup-Host
 }
 #Setup-Host
 
-#$psTab = Get-Module PowerTab -ListAvailable
-#if ($null -eq $psTab)
-#{
-#  Find-Module PowerTab | Install-Module -Force
-#}
+$psTab = Get-Module PowerTab -ListAvailable
+if ($null -eq $psTab)
+{
+  Find-Module PowerTab | Install-Module -Force
+}
 #Import-Module PowerTab
 
 Import-Module PSReadLine
@@ -88,13 +87,12 @@ function global:Install-Chocolatey
 }
 
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
-set-alias razzle              $scriptFolder'\Execute-Razzle.ps1'                 -scope global
-set-alias vsvars              $scriptFolder'\Enter-VSShell.ps1'                  -scope global
-set-alias Invoke-CmdScript    $scriptFolder'\Invoke-CmdScript.ps1'               -scope global
-set-alias logon               $scriptFolder'\logon.ps1'                          -scope global
-set-alias windbg              $scriptFolder'\debug.ps1'                          -scope global
+set-alias razzle              Execute-Razzle                                     -scope global
+set-alias vsvars              Enter-VSShell                                      -scope global
 set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
 set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
+set-alias sudo                Execute-Elevated                                   -scope global
+set-alias go                  Goto-KnownLocation                                 -scope global
 
 $env:psmodulepath = $myhome + '\WindowsPowerShell\Modules;'+ $env:psmodulepath.SubString($env:psmodulepath.IndexOf(";"))
 
@@ -164,13 +162,6 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
         Throw "Unable to compact path"
     }
 }
-
-$env:PSRazzleDir = ($scriptFolder+'\Razzle')
-. $env:PSRazzleDir\VSO-Helpers.ps1
-. $scriptFolder\SpVoice.ps1
-. $scriptFolder\GoLocations.ps1
-#. $scriptFolder\Elevate.ps1
-set-alias sudo $scriptFolder\Elevate.ps1 -scope global
 
 Compress-Path "C:\" 1>$null 2>&1 3>&1 4>&1
 
