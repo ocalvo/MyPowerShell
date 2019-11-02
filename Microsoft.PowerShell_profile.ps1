@@ -169,7 +169,8 @@ $env:PSRazzleDir = ($scriptFolder+'\Razzle')
 . $env:PSRazzleDir\VSO-Helpers.ps1
 . $scriptFolder\SpVoice.ps1
 . $scriptFolder\GoLocations.ps1
-. $scriptFolder\Elevate.ps1
+#. $scriptFolder\Elevate.ps1
+set-alias sudo $scriptFolder\Elevate.ps1 -scope global
 
 Compress-Path "C:\" 1>$null 2>&1 3>&1 4>&1
 

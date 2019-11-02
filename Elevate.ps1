@@ -1,3 +1,5 @@
+param([switch]$wait)
+$file, [string]$arguments = $args;
 
 function global:Test-IsAdmin
 {
@@ -77,24 +79,17 @@ function global:Setup-Sudo
   $acl | Set-Acl
 }
 
-function global:sudo
+if (!(Test-IsAdmin))
 {
-  param([switch]$wait)
-  $file, [string]$arguments = $args;
-
-  if (!(Test-IsAdmin))
+  $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
+  if (!(Test-Path $serverKeys))
   {
-    $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
-    if (!(Test-Path $serverKeys))
-    {
-       Setup-Sudo
-    }
-    $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
-    ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
+     Setup-Sudo
   }
-  else
-  {
-    & $file $args
-  }
+  $keyfile = $env:HOMEDRIVE+$env:HOMEPATH+'/.ssh/id_rsa'
+  ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
 }
-
+else
+{
+  & $file $args
+}
