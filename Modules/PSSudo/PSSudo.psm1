@@ -40,6 +40,24 @@ function global:Enable-SSH
   Start-Service sshd
 }
 
+function global:Add-AdministratorsAuthorizedKeys()
+{
+  param($newKey)
+
+  $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
+  if ($null -ne $newKey)
+  {
+    Set-Content -Value $newKey $serverKeys -Encoding UTF8 -Force
+  }
+  $acl = Get-Acl $serverKeys
+  $acl.SetAccessRuleProtection($true, $false)
+  $administratorsRule = New-Object system.security.accesscontrol.filesystemaccessrule("Administrators","FullControl","Allow")
+  $systemRule = New-Object system.security.accesscontrol.filesystemaccessrule("SYSTEM","FullControl","Allow")
+  $acl.SetAccessRule($administratorsRule)
+  $acl.SetAccessRule($systemRule)
+  $acl | Set-Acl
+}
+
 function global:Enable-Execute-Elevated
 {
   if (!(Test-IsAdmin))
@@ -65,15 +83,7 @@ function global:Enable-Execute-Elevated
   #Start-Service ssh-agent
   #ssh-add $keyfilePub
 
-  $serverKeys = "C:\ProgramData\ssh\administrators_authorized_keys"
-  Set-Content -Value (Get-Content $keyfilePub) $serverKeys -Encoding UTF8 -Force
-  $acl = Get-Acl $serverKeys
-  $acl.SetAccessRuleProtection($true, $false)
-  $administratorsRule = New-Object system.security.accesscontrol.filesystemaccessrule("Administrators","FullControl","Allow")
-  $systemRule = New-Object system.security.accesscontrol.filesystemaccessrule("SYSTEM","FullControl","Allow")
-  $acl.SetAccessRule($administratorsRule)
-  $acl.SetAccessRule($systemRule)
-  $acl | Set-Acl
+  Add-AdministratorsAuthorizedKeys (Get-Content $keyfilePub)
 }
 
 function global:Execute-Elevated {
@@ -99,6 +109,7 @@ function global:Execute-Elevated {
 Export-ModuleMember -Function Enable-Execute-Elevated
 Export-ModuleMember -Function Execute-Elevated
 Export-ModuleMember -Function Open-Elevated
+Export-ModuleMember -Function Add-AdministratorsAuthorizedKeys
 
 set-alias elevate Open-Elevated -scope global
 set-alias sudo Execute-Elevated -scope global
