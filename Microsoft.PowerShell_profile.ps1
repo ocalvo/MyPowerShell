@@ -198,11 +198,19 @@ function prompt
       $host.UI.RawUI.WindowTitle = $title;
     }
 
-    return "> "
+    if ($isadmin)
+    {
+      Write-host "#" -NoNewLine -ForegroundColor Red
+    }
+    else
+    {
+      Write-host ">" -NoNewLine -ForegroundColor Green
+    }
+    return " "
 }
 
 $serverModules='\\server\Company\Scripts\Modules'
-if (test-path $serverModules)
+if (test-path $serverModules -ErrorAction Ignore)
 {
   $env:psmodulepath+=(';'+$serverModules)
 }
