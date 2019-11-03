@@ -154,8 +154,6 @@ if ($null -ne $env:SSH_CLIENT)
 # Prompt
 function prompt
 {
-    $nextId = (get-history -count 1).Id + 1;
-
     $srcId = $null
     if ($env:_xroot -ne $null)
     {
@@ -185,26 +183,17 @@ function prompt
     }
 
     write-host ("[") -NoNewLine -ForegroundColor Green
-    write-host $nextId -NoNewLine -ForegroundColor $color
-    write-host ((Get-BranchName) + " ") -NoNewLine -ForegroundColor Green
+    write-host ((Get-BranchName)) -NoNewLine -ForegroundColor Green
     if ($null -ne $localHostName)
     {
       Write-host ($localHostName+":") -NoNewLine -ForegroundColor Green
     }
     Write-host ((Get-LocationForPrompt) + "]") -NoNewLine -ForegroundColor Green
+    Write-host ">" -NoNewLine -ForegroundColor $color
 
     if ( $title -ne $null )
     {
       $host.UI.RawUI.WindowTitle = $title;
-    }
-
-    if ($isadmin)
-    {
-      Write-host "#" -NoNewLine -ForegroundColor Red
-    }
-    else
-    {
-      Write-host ">" -NoNewLine -ForegroundColor Green
     }
     return " "
 }
