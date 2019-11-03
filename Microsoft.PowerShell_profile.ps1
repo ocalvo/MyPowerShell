@@ -56,7 +56,7 @@ if (test-path $localHome)
   $myHome = $localHome
 }
 
-$vimRC = ($env:HOMEDRIVE + $env:HOMEPATH + '\_vimrc')
+$vimRC = ($env:USERPROFILE + '\_vimrc')
 if (!(test-path $vimRC))
 {
   set-content -path $vimRC "source <sfile>:p:h\Documents\WindowsPowerShell\profile.vim"
