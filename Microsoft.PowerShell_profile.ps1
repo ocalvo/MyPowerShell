@@ -201,6 +201,12 @@ function prompt
     return "> "
 }
 
+$serverModules='\\server\Company\Scripts\Modules'
+if (test-path $serverModules)
+{
+  $env:psmodulepath+=(';'+$serverModules)
+}
+
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
