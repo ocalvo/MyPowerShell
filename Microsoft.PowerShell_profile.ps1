@@ -2,31 +2,6 @@
 # Oscar Calvo's PowerShell Profile (oscar@calvonet.com)
 #
 
-function global:Setup-Host
-{
-  param($width = 160, $height = 50, $lineBuffer = 3000)
-
-  cls
-  try
-  {
-    $bufferSize = new-object System.Management.Automation.Host.Size -prop @{Width=$width; Height = $lineBuffer}
-    $host.UI.RawUI.BufferSize = $bufferSize
-
-    $size = new-object System.Management.Automation.Host.Size -prop @{Width=$width; Height = $height}
-    $host.UI.RawUI.WindowSize = $size
-
-    $host.UI.RawUI.ForegroundColor = 'White'
-    $host.UI.RawUI.BackgroundColor = 'DarkMagenta'
-
-    $host.UI.RawUI.WindowPosition = new-object System.Management.Automation.Host.Coordinates
-  }
-  finally
-  {
-    cls
-  }
-}
-#Setup-Host
-
 $psTab = Get-Module PowerTab -ListAvailable
 if ($null -eq $psTab)
 {
@@ -37,9 +12,12 @@ if ($null -eq $psTab)
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
 
-$env:_NT_SYMBOL_PATH='SRV*w:\symbols*http://symweb'
-$env:ChocolateyInstall='C:\ProgramData\Chocolatey'
-$env:path += ';' + $env:ChocolateyInstall + '\bin'
+$symbolsPath = "w:\symbols"
+if (test-path $symbolsPath)
+{
+  $env:_NT_SYMBOL_PATH='SRV*$symbolsPath*http://symweb'
+}
+$env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
 
 ########################################################
 # Helper Functions
@@ -61,7 +39,6 @@ function test-isadmin
     $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
     $wp.IsInRole("Administrators") -eq 1
 }
-
 $isAdmin = (test-isadmin)
 $global:myhome = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]'MyDocuments')
 $global:scriptFolder = $global:myhome +'\WindowsPowerShell'
@@ -93,33 +70,10 @@ function global:Install-Chocolatey
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
 set-alias razzle              Execute-Razzle                                     -scope global
 set-alias vsvars              Enter-VSShell                                      -scope global
-set-alias zip                 $myhome'\Tools\7-zip\7z.exe'                       -scope global
+set-alias zip                 7z                                                 -scope global
 set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
 set-alias sudo                Execute-Elevated                                   -scope global
 set-alias go                  Goto-KnownLocation                                 -scope global
-
-$env:psmodulepath = $myhome + '\WindowsPowerShell\Modules;'+ $env:psmodulepath.SubString($env:psmodulepath.IndexOf(";"))
-
-function global:Set-GitGlobals()
-{
-  git config --global user.name "Oscar Calvo"
-  git config --global user.email "ocalvo@microsoft.com"
-  git config --global log.date local
-  git config --global core.autocrlf true
-  if ((Get-Command bcomp) -ne $null)
-  {
-    git config --global diff.tool bc
-    git config --global difftool.prompt false
-    git config --global difftool.bc trustExitCode true
-
-    git config --global merge.tool bc
-    git config --global mergetool.prompt false
-    git config --global mergetool.bc trustExitCode true
-
-    git config --global difftool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
-    git config --global mergetool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
-  }
-}
 
 # SD settings
 $vimCmd = get-command vim 2> $null
@@ -166,8 +120,6 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
         Throw "Unable to compact path"
     }
 }
-
-Compress-Path "C:\" 1>$null 2>&1 3>&1 4>&1
 
 function global:Get-BranchName { "" }
 
