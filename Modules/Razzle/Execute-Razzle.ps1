@@ -42,8 +42,6 @@ if ($null -ne $env:_BuildType) {$flavor=$env:_BuildType;}
 $global:UnRazzleEnv = (Get-ChildItem env:*);
 $global:RazzleEnv = $null;
 
-set-item env:psmodulepath ([System.Environment]::GetEnvironmentVariable("PSModulePath", "Machine"))
-
 function global:Undo-Razzle
 {
   Remove-Item env:*;
