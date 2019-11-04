@@ -198,7 +198,7 @@ function prompt
     return " "
 }
 
-$serverModules='\\server\Company\Scripts\Modules'
+$serverModules='S:\ServerFolders\Company\Scripts\Modules'
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $env:psmodulepath+=(';'+$serverModules)

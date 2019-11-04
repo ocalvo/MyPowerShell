@@ -23,19 +23,29 @@ param (
 ## Support to get out and get in of razzle
 ##
 
+$global:ddIni = ($ddDir+"\dd.ini")
+
 if ($null -eq $enlistment)
 {
-  $currentDir = Get-Location;
-  Write-Host "Checking current dir $currentDir for enlistment"
-  $rootDir = $currentDir.Path.Split('\') | select-object -First 3
-  [string]$dirs = "";
-  $rootDir |ForEach-Object { $dirs += ($_+"\") }
-  if (($null -ne $dirs) -and ($dirs -like "f:\os*\src\"))
+  if (test-path $global:ddIni)
   {
-    Write-Host "Current dir is enlistment $dirs"
-    $enlistment = $dirs
+     $enlistment = (Get-Content $global:ddIni)
+  }
+  else
+  {
+     throw "Enlistment parameter not specified"
   }
 }
+if (!(test-path $enlistment))
+{
+  sudo Unlock-MyBitlocker
+}
+
+if (test-path $enlistment)
+{
+  pushd $enlistment
+}
+
 if ($null -ne $env:_BuildArch) {$arch=$env:_BuildArch;}
 if ($null -ne $env:_BuildType) {$flavor=$env:_BuildType;}
 
@@ -113,8 +123,6 @@ function Get-RazzleKind($srcDir)
   return $kind
 }
 
-$global:ddIni = ($ddDir+"\dd.ini")
-
 function global:Get-RazzleProbes()
 {
   [string[]]$razzleProbe = $null
@@ -153,7 +161,7 @@ function Get-BranchName($razzleDirName)
 
 function global:New-RazzleLink($linkName, $binaries)
 {
-  if (!($enableLinks.IsPresent))
+  if (!($symbolicLinks.IsPresent))
   {
      return;
   }
@@ -173,7 +181,7 @@ function global:New-RazzleLink($linkName, $binaries)
   if (($currentTarget -eq $null) -or ($currentTarget -ne $binaries))
   {
      echo "Making new link $linkName -> $binaries"
-     New-Item $linkName -ItemType SymbolicLink -Target $binaries -Force > $null
+     sudo New-Item $linkName -ItemType SymbolicLink -Target $binaries -Force
   }
 }
 
@@ -266,28 +274,12 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     Write-Output ("Retargeting done")
 }
 
-function Execute-Razzle($flavor="chk",$arch="x86",$enlistment)
+function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
 {
   if ( ($gitVersionCheck.IsPresent) )
   {
     Write-Host "Checking git version..."
     .'\\ntdev\sourcetools\release\Setup.cmd' -Canary
-  }
-
-  if (!(test-path $enlistment))
-  {
-    if (!(IsAdmin))
-    {
-       Write-Error "Admin required to unblock BitLocker"
-       return
-    }
-
-    if ((Get-BitLockerVolume -MountPoint "F:").LockStatus -eq "Locked")
-    {
-      Write-Host "Unlocking drive F:..."
-      $pass = ConvertTo-SecureString (Get-Content ~\Documents\Passwords\Bitlocker.txt) -AsPlainText -Force
-      Unlock-BitLocker -MountPoint "F:" -Password $pass
-    }
   }
 
   $popDir = Get-Location
@@ -437,5 +429,5 @@ if (!(test-path "W:\Temp"))
    mkdir W:\Temp
 }
 
-Execute-Razzle -flavor $flavor -arch $arch -enlistment $enlistment
+Execute-Razzle-Internal -flavor $flavor -arch $arch -enlistment $enlistment
 
