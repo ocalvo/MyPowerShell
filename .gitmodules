@@ -2,3 +2,6 @@
 	path = .\\vimfiles
 	url = https://github.com/tpope/vim-pathogen.git
 	branch = master
+[submodule "Modules/PowerTab/1.1.0"]
+	path = Modules/PowerTab/1.1.0
+	url = https://github.com/jasonmarcher/PowerTab

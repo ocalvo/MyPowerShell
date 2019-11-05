@@ -7,10 +7,6 @@ if ($null -eq $psTab)
 {
   Find-Module PowerTab | Install-Module -Force
 }
-#Import-Module PowerTab
-
-Import-Module PSReadLine
-Set-PSReadLineOption –HistoryNoDuplicates:$True
 
 $symbolsPath = "w:\symbols"
 if (test-path $symbolsPath)
@@ -202,7 +198,14 @@ $serverModules='S:\ServerFolders\Company\Scripts\Modules'
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $env:psmodulepath+=(';'+$serverModules)
+  Import-Module PersonalMedia
 }
+
+#Import-Module PowerTab
+Import-Module PSReadLine
+Set-PSReadLineOption –HistoryNoDuplicates:$True
+Import-Module SearchDir
+Import-Module Razzle
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
