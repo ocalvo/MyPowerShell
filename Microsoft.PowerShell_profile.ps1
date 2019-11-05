@@ -204,6 +204,7 @@ if (test-path $serverModules -ErrorAction Ignore)
 #Import-Module PowerTab
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
+Import-Module PSSudo
 Import-Module SearchDir
 Import-Module Razzle
 
