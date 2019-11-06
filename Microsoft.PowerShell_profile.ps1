@@ -121,7 +121,7 @@ function global:Get-BranchName { "" }
 
 function global:Get-LocationForPrompt
 {
-  [string]$p = Get-Location
+  [string]$p = (Get-Location).ProviderPath
 
   if ( ($env:_XROOT -ne $null) -and ($p -like ($env:_XROOT+'\*')) )
   {
