@@ -88,8 +88,9 @@ function global:Enable-Execute-Elevated
 }
 
 function global:Execute-Elevated {
-  param([switch]$wait)
-  $file, [string]$arguments = $args;
+  param([switch]$wait,$cmd)
+
+  [string]$arguments = $args;
 
   if (!(Test-IsAdmin))
   {
@@ -97,11 +98,23 @@ function global:Execute-Elevated {
     {
        Enable-Execute-Elevated
     }
-    ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $args
+    $service = get-service sshd* | select -first 1
+    if ($null -eq $service)
+    {
+       throw "Failed to start SSHD"
+    }
+    else
+    {
+        if ($service.Status -ne 'Running')
+        {
+           Open-Elevated -wait powershell -c Start-Service SSHD
+        }
+    }
+    ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $cmd $args
   }
   else
   {
-    & $file $args
+    & $cmd $args
   }
 }
 

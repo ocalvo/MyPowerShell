@@ -43,6 +43,7 @@ if (!(test-path $enlistment))
 
 if (test-path $enlistment)
 {
+  Set-Location $enlistment
   pushd $enlistment
 }
 
@@ -93,13 +94,6 @@ function Get-Batchfile ($file)
     $p, $v = $_.split('=')
     Set-Item -path env:$p -value $v
   }
-}
-
-function Execute-Razzle32($flavor="chk",$enlistment)
-{
-  $process = 'C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe'
-  $args = '-executionpolicy bypass -noexit -c Razzle '+$flavor+' '+$enlistment
-  Execute-Elevated $process $args
 }
 
 [hashtable]$razzleKind = [ordered]@{
@@ -262,12 +256,12 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
       $workSpaceFile = "$workspaceFolder\$fileName.code-workspace"
       if (!(test-path $workSpaceFile))
       {
-        new-item -ItemType SymbolicLink $workSpaceFile -Target $realWorkspaceFile
+        #sudo new-item -ItemType SymbolicLink $workSpaceFile -Target $realWorkspaceFile
       }
       $otherLinks = Get-ChildItem $workspaceFolder\*.code-workspace | Where-Object -Property LinkType -eq SymbolicLink | Where-Object -Property BaseName -ne $fileName
       if ($null -ne $otherLinks)
       {
-        $otherLinks | ForEach-Object { Write-Warning "Deleting $_"; Remove-item $_ }
+        $otherLinks | ForEach-Object { $item = $_;  Write-Warning ("Deleting "+$item.FullName); $item.Delete() }
       }
     }
 
@@ -279,7 +273,8 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
   if ( ($gitVersionCheck.IsPresent) )
   {
     Write-Host "Checking git version..."
-    .'\\ntdev\sourcetools\release\Setup.cmd' -Canary
+    gvfs upgrade
+    #open-elevated -wait cmd /c '\\ntdev\sourcetools\release\Setup.cmd' -Canary
   }
 
   $popDir = Get-Location
@@ -300,6 +295,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
       if ($depotRoot -like "*\os*\src")
       {
         Write-Host "gvfs mount $depotRoot..."
+        sudo Start-Service GVFS.Service -ErrorAction Ignore
         gvfs mount $depotRoot
       }
 
@@ -366,7 +362,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
           [string]$extraArgs
           $args |ForEach-Object { $extraArgs += " " + $_ }
 
-          $extraArgs += " developer_dir ~\Documents\Razzle\ "
+          $extraArgs += " developer_dir ~\Documents\WindowsPowerShell\Razzle\ "
 
           $env:_XROOT = $srcDir
 
@@ -404,7 +400,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
           }
 
           $title = Get-WindowTitleSuffix
-          Write-Host "Branch:$title" -ForegroundColor Yellow
+          Write-Host ("Branch:"+$title) -ForegroundColor Yellow
           return
         }
         Write-Output $razzle

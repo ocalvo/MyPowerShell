@@ -54,8 +54,7 @@ function global:Get-WorkItemTitle($workId)
 
 function global:Get-GitBranchState()
 {
-
-  Unlock-MyBitLocker;
+  sudo Unlock-MyBitLocker;
   1..4 |ForEach-Object {
     Push-Location f:\os$_\src;
     gvfs mount > $null

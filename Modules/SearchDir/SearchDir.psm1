@@ -10,6 +10,7 @@ function _sd
 {
   param([string] $pattern,[switch]$All)
 
+  $pattern = $pattern.Replace("/","\\");
   import-module ($PSScriptRoot+'\SearchDir.dll')
 
   [string[]]$sd

@@ -11,7 +11,7 @@ if ($null -eq $psTab)
 $symbolsPath = "w:\symbols"
 if (test-path $symbolsPath)
 {
-  $env:_NT_SYMBOL_PATH='SRV*$symbolsPath*http://symweb'
+  $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
 }
 $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
 
@@ -199,6 +199,16 @@ if (test-path $serverModules -ErrorAction Ignore)
 {
   $env:psmodulepath+=(';'+$serverModules)
   Import-Module PersonalMedia
+}
+
+$global:wt_profile = ($env:LocalAppData+'\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json')
+
+function global:Open-CodeFlow
+{
+  param([string]$webUrl)
+  #\\codeflow\public\cf.cmd help openGitHubPr
+  \\codeflow\public\cf.cmd openGitHubPr -webUrl $webUrl
+  #\\codeflow\public\cf.cmd openGitHubPr -account <account> -GitHubProject <project> -prId <prId>
 }
 
 #Import-Module PowerTab
