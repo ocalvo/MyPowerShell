@@ -4,7 +4,7 @@
 # ocalvo@microsoft.com
 #
 param (
-  $flavor="chk",
+  $flavor="fre",
   $arch="x86",
   $device=$null,
   $binaries = "c:\dd\bin\",
@@ -295,7 +295,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
       if ($depotRoot -like "*\os*\src")
       {
         Write-Host "gvfs mount $depotRoot..."
-        sudo Start-Service GVFS.Service -ErrorAction Ignore
+        sudo Start-Service GVFS.Service
         gvfs mount $depotRoot
       }
 
