@@ -201,10 +201,10 @@ if (test-path $serverModules -ErrorAction Ignore)
   Import-Module PersonalMedia
 }
 
-$winBuilds='\\wexfs\users\evkoschi\scripts\psrazzle.psm1'
-if (test-path $winBuilds -ErrorAction Ignore)
+$psScripts = ($PSScriptRoot+'\Modules\scripts\PSRazzle.psm1')
+if (test-path $psScripts -ErrorAction Ignore)
 {
-  Import-Module $winBuilds
+  Import-Module $psScripts
 }
 
 $global:wt_profile = ($env:LocalAppData+'\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json')
