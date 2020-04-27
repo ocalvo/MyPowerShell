@@ -114,7 +114,7 @@ function global:Execute-Elevated {
   }
   else
   {
-    & $cmd $args
+    powershell -c $cmd $args
   }
 }
 

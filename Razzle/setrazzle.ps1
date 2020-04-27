@@ -33,47 +33,6 @@ function global:pusheen
   . $env:SDXROOT\onecoreuap\windows\dxaml\scripts\pusheen.cmd $a
 }
 
-function global:Get-BuildErrors()
-{
-    $buildErrorsDir = ".\"
-    $buildErrorsFile = ($buildErrorsDir + "build" + $env:_BuildType + ".err")
-    if (!(Test-Path $buildErrorsFile))
-    {
-        return;
-    }
-    Get-Content .\build$env:_BuildType.err | where-object { $_ -like "*(*) : error *" } |ForEach-Object {
-        $fileStart = $_.IndexOf(">")
-        $fileEnd = $_.IndexOf("(")
-        $fileName = $_.SubString($fileStart + 1, $fileEnd - $fileStart - 1)
-        $fileNumberEnd =  $_.IndexOf(")")
-        $fileNumber = $_.SubString($fileEnd + 1, $fileNumberEnd - $fileEnd - 1)
-        $errorStart = $_.IndexOf(" : ");
-        $errorD = $_.SubString($errorStart + 3);
-        [System.Tuple]::Create($fileName,$fileNumber,$errorD)
-    }
-}
-function global:Open-Editor($fileName,$lineNumber)
-{
-  if ($null -ne $env:VSCODE_CWD)
-  {
-    $codeParam = ($fileName+":"+$lineNumber)
-    code --goto $codeParam
-  }
-  elseif ($null -ne (get-command edit))
-  {
-    edit $fileName ("+"+$lineNumber)
-  }
-  else
-  {
-    .$env:SDEDITOR $fileName
-  }
-}
-
-function global:Edit-BuildErrors($first=1,$skip=0)
-{
-  Get-BuildErrors | Select-Object -First $first -Skip $skip |ForEach-Object { Open-Editor $_.Item1 $_.Item2 }
-}
-
 function global:Build-MyPublics()
 {
   go onecore\windows\AppCompat\db;build;Pop-Location

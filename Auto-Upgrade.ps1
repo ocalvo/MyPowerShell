@@ -45,7 +45,7 @@ while ($true)
   [int]$nextBuild = 0
   $nextBuildShare = ""
 
-  $build = dir ($buildShare + "\" + $branchName) -Dir | where { test-path ($_.FullName+"\amd64fre\media\enterprise_en-us_vl") } | select -last 1
+  $build = dir ($buildShare + "\" + $branchName) -Dir | select -last 10 | where { test-path ($_.FullName+"\amd64fre\media\enterprise_en-us_vl") } | select -last 1
   #$build = dir ($buildShare + "\" + $branchName) -Dir | select -last 1
   $nextBuildShare = $build.FullName
   $nextBuild = [int]$build.Name.Substring(0, $build.Name.IndexOf("."))

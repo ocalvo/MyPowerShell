@@ -16,7 +16,8 @@ $env:_VSINSTALLDIR = Split-path ((Split-Path ((get-command msbuild).Definition) 
 
 function global:msb()
 {
-  msbuild /bl /nologo /v:$env:_MSBUILD_VERBOSITY /m $args
+  $logFileName = ("build"+$env:_BuildType)
+  msbuild /bl /nologo /v:$env:_MSBUILD_VERBOSITY /m $args "-flp2:logfile=$logFileName.err;errorsonly" "-flp3:logfile=$logFileName.wrn;warningsonly"
 }
 
 function global:build()

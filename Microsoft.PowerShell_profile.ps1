@@ -211,6 +211,12 @@ Import-Module DirColors
 
 $global:wt_profile = ($env:LocalAppData+'\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json')
 
+function global:Execute-PowerShell32
+{
+  c:\Windows\SysWoW64\WindowsPowerShell\v1.0\powershell.exe -nologo $args
+}
+set-alias ps32 Execute-PowerShell32 -scope global
+
 function global:Open-CodeFlow
 {
   param([string]$webUrl)
