@@ -30,5 +30,6 @@ function global:buildclean()
   msb /target:ReBuild
 }
 
-set-alias b build -scope global
+set-alias b  build -scope global
+set-alias bc buildclean -scope global
 
