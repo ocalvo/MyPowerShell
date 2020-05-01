@@ -228,6 +228,7 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     New-RazzleLink ($srcRoot+"\utilities") ($binRoot+"\utilities")
 
     New-RazzleLink ($binRoot+"\src") ($srcRoot+"\src")
+    New-RazzleLink ($srcRoot+"\src\buildOutput") ($binRoot+"\buildOutput")
 
     New-RazzleLink "c:\Symbols" "w:\Symbols"
     New-RazzleLink "c:\Symcache" "w:\Symbols"
@@ -379,6 +380,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
             Enter-VSShell -vsVersion $vsVersion
             Write-Output ".$razzle $arch$flavor"
             Invoke-CmdScript -script $razzle -parameters (($arch+$flavor),"/2019")
+            .$PSScriptRoot\MSBuild-Alias.ps1 -msBuildAlias
           }
           else {
             Write-Output ".$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt"
