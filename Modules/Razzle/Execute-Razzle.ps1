@@ -228,7 +228,7 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     New-RazzleLink ($srcRoot+"\utilities") ($binRoot+"\utilities")
 
     New-RazzleLink ($binRoot+"\src") ($srcRoot+"\src")
-    New-RazzleLink ($srcRoot+"\src\buildOutput") ($binRoot+"\buildOutput")
+    New-RazzleLink ($srcRoot+"\TestPayload") ($binRoot+"\TestPayload")
 
     New-RazzleLink "c:\Symbols" "w:\Symbols"
     New-RazzleLink "c:\Symcache" "w:\Symbols"
@@ -376,6 +376,8 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
             New-RazzleLink ($srcDir+"\temp") ($srcDir+"\..\temp")
             New-RazzleLink ($srcDir+"\log") ($srcDir+"\..\out")
             New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
+            New-RazzleLink ($srcDir+"\buildOutput") ($srcDir+"\..\bin")
+            New-RazzleLink ($srcDir+"\TestPayload") ($srcDir+"\..\TestPayLoad")
             Push-Location $env:SDXROOT
             Enter-VSShell -vsVersion $vsVersion
             Write-Output ".$razzle $arch$flavor"

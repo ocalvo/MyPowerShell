@@ -8,7 +8,7 @@ if ($null -eq $psTab)
   Find-Module PowerTab | Install-Module -Force
 }
 
-$symbolsPath = "w:\symbols"
+$symbolsPath = "c:\dd\symbols"
 if (test-path $symbolsPath)
 {
   $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
@@ -117,6 +117,12 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
     }
 }
 
+function FirstTime-Setup()
+{
+  sudo fsutil behavior set symlinkEvaluation R2R:1
+  sudo fsutil behavior set symlinkEvaluation L2R:1
+}
+
 function global:Get-BranchName { "" }
 
 function global:Get-LocationForPrompt
@@ -194,7 +200,7 @@ function prompt
     return " "
 }
 
-$serverModules='S:\ServerFolders\Company\Scripts\Modules'
+$serverModules='\\nas.calvonet.local\Company\Scripts\Modules'
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $env:psmodulepath+=(';'+$serverModules)
