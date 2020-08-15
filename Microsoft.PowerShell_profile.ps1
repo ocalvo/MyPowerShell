@@ -125,36 +125,7 @@ function FirstTime-Setup()
 
 function global:Get-BranchName { "" }
 
-function global:Get-LocationForPrompt
-{
-  [string]$p = (Get-Location).ProviderPath
-
-  if ( ($env:_XROOT -ne $null) -and ($p -like ($env:_XROOT+'\*')) )
-  {
-      $index = ($env:_XROOT).Length + 1
-      $p = $p.SubString($index)
-  }
-  else
-  {
-    $hStr = (get-item ~).FullName
-    $p = $p.Replace($hStr, "~")
-  }
-
-  (Compress-Path $p 45)
-}
-
-if ($null -ne $env:SSH_CLIENT)
-{
-  $remoteIp = ($env:SSH_CLIENT.Split(" ") | select -first 1)
-  if (("::1" -ne $remoteIp) -and ("127.0.0.1" -ne $remoteIp))
-  {
-    $localHostName = $env:COMPUTERNAME
-  }
-}
-
-########################################################
-# Prompt
-function prompt
+function Get-WindowTitle
 {
     $srcId = $null
     if ($env:_xroot -ne $null)
@@ -173,32 +144,20 @@ function prompt
 
     if ( $isadmin )
     {
-        $color = "Red"
         if ( $title -ne $null )
         {
           $title += " (Admin)"
         }
     }
-    else
-    {
-        $color = "Green"
-    }
 
-    write-host ("[") -NoNewLine -ForegroundColor Green
-    write-host ((Get-BranchName)) -NoNewLine -ForegroundColor Green
-    if ($null -ne $localHostName)
-    {
-      Write-host ($localHostName+":") -NoNewLine -ForegroundColor Green
-    }
-    Write-host ((Get-LocationForPrompt) + "]") -NoNewLine -ForegroundColor Green
-    Write-host ">" -NoNewLine -ForegroundColor $color
-
-    if ( $title -ne $null )
-    {
-      $host.UI.RawUI.WindowTitle = $title;
-    }
-    return " "
+    return $title
 }
+
+Set-PowerLinePrompt -PowerLineFont -Title { Get-WindowTitle }
+Import-Module posh-git
+Import-Module oh-my-posh
+Set-Theme Agnoster
+#Set-Theme Paradox
 
 $serverModules='\\nas.calvonet.local\Company\Scripts\Modules'
 if (test-path $serverModules -ErrorAction Ignore)
