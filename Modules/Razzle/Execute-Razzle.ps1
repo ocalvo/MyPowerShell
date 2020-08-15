@@ -7,7 +7,7 @@ param (
   $flavor="fre",
   $arch="x86",
   $device=$null,
-  $binaries = "c:\dd\bin\",
+  $binaries = "w:\",
   $vsVersion = "Enterprise",
   $ddDir = $env:LOCALAPPDATA,
   [switch]$symbolicLinks = $true,
@@ -199,7 +199,30 @@ function Remove-InvalidFileNameChars
   return [RegEx]::Replace($Name, "[{0}]" -f ([RegEx]::Escape([String][System.IO.Path]::GetInvalidFileNameChars())), ' ')
 }
 
-function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
+function global:Retarget-Razzle
+{
+    Write-Output ("Retargeting common paths")
+
+    New-RazzleLink "c:\Symbols" "w:\Symbols"
+    New-RazzleLink "c:\Symcache" "w:\Symbols"
+    New-RazzleLink "c:\Sym" "w:\Symbols"
+    #New-RazzleLink $env:temp "w:\Temp"
+    New-RazzleLink $env:HOMEDRIVE$env:HOMEPATH\.nuget w:\NuGet
+    New-RazzleLink "c:\Temp" "w:\Temp"
+    New-RazzleLink "c:\Logs" "w:\Logs"
+    New-RazzleLink "c:\CrashDumps" "w:\CrashDumps"
+    New-RazzleLink "c:\VHDs" "w:\VHDs"
+    New-RazzleLink "c:\Debuggers" "c:\dd\Debuggers"
+    New-RazzleLink "c:\dd\Debuggers\Sym" "w:\Symbols"
+    New-RazzleLink "c:\dd\Debuggers\Wow64\Sym" "w:\Symbols"
+    New-RazzleLink "c:\ProgramData\dbg\Sym" "w:\Symbols"
+    New-RazzleLink "c:\ProgramData\dbg\Src" "w:\Src"
+    New-RazzleLink "c:\Polaris" "w:\Polaris"
+
+    Write-Output ("Retargeting done")
+}
+
+function global:Retarget-OSRazzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
 {
     Write-Output ("Retargeting $srcRoot -> $binariesRoot")
 
@@ -230,21 +253,6 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     New-RazzleLink ($binRoot+"\src") ($srcRoot+"\src")
     New-RazzleLink ($srcRoot+"\TestPayload") ($binRoot+"\TestPayload")
 
-    New-RazzleLink "c:\Symbols" "w:\Symbols"
-    New-RazzleLink "c:\Symcache" "w:\Symbols"
-    New-RazzleLink "c:\Sym" "w:\Symbols"
-    #New-RazzleLink $env:temp "w:\Temp"
-    New-RazzleLink $env:HOMEDRIVE$env:HOMEPATH\.nuget w:\NuGet
-    New-RazzleLink "c:\Temp" "w:\Temp"
-    New-RazzleLink "c:\Logs" "w:\Logs"
-    New-RazzleLink "c:\CrashDumps" "w:\CrashDumps"
-    New-RazzleLink "c:\VHDs" "w:\VHDs"
-    New-RazzleLink "c:\Debuggers" "f:\Debuggers"
-    New-RazzleLink "f:\Debuggers\Sym" "w:\Symbols"
-    New-RazzleLink "f:\Debuggers\Wow64\Sym" "w:\Symbols"
-    New-RazzleLink "c:\ProgramData\dbg\Sym" "w:\Symbols"
-    New-RazzleLink "c:\ProgramData\dbg\Src" "w:\Src"
-    New-RazzleLink "c:\Polaris" "w:\Polaris"
 
     $enlistNumber = $srcRoot.Substring($srcRoot.LastIndexOf("os")+2,1)
     $workspaceFolder = "F:\os$enlistNumber"
@@ -267,6 +275,22 @@ function global:Retarget-Razzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     }
 
     Write-Output ("Retargeting done")
+}
+
+function global:Retarget-LiftedRazzle
+{
+    $_srcName = Split-Path $enlistment -Leaf
+    $binRoot = ("w:\"+$_srcName)
+    $srcRoot = ("c:\src\"+$_srcName)
+    Write-Output "Branch binRoot is $binRoot, srcRoot is $srcRoot"
+
+    New-RazzleLink ($srcDir+"\bin") ($binRoot+"\bin")
+    New-RazzleLink ($srcDir+"\obj") ($binRoot+"\obj")
+    New-RazzleLink ($srcDir+"\temp") ($binRoot+"\temp")
+    New-RazzleLink ($srcDir+"\log") ($binRoot+"\out")
+    New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
+    New-RazzleLink ($srcDir+"\buildOutput") ($binRoot+"\bin")
+    New-RazzleLink ($srcDir+"\TestPayload") ($binRoot+"\TestPayLoad")
 }
 
 function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
@@ -301,7 +325,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
       }
 
       $srcDir = $depotRoot;
-      $kind = Get-RazzleKind $srcDir
+      $global:kind = Get-RazzleKind $srcDir
       if ($null -ne $kind)
       {
         Push-Location $srcDir
@@ -338,10 +362,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
             $env:RazzleOptions += " output_dir " + $binaries + "\out "
             $env:RazzleOptions += "  temp " + $tempDir
           }
-          else
-          {
-            Retarget-Razzle $binaries (Get-item $depotRoot).Parent.FullName
-          }
+          Retarget-Razzle
 
           if ($nobtok.IsPresent)
           {
@@ -371,13 +392,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
             .$razzle $device ($arch+$flavor) $phoneOptions $extraArgs
           }
           elseif ( $kind -eq "Lifted" ) {
-            New-RazzleLink ($srcDir+"\bin") ($srcDir+"\..\bin")
-            New-RazzleLink ($srcDir+"\obj") ($srcDir+"\..\obj")
-            New-RazzleLink ($srcDir+"\temp") ($srcDir+"\..\temp")
-            New-RazzleLink ($srcDir+"\log") ($srcDir+"\..\out")
-            New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
-            New-RazzleLink ($srcDir+"\buildOutput") ($srcDir+"\..\bin")
-            New-RazzleLink ($srcDir+"\TestPayload") ($srcDir+"\..\TestPayLoad")
+            Retarget-LiftedRazzle
             Push-Location $env:SDXROOT
             Enter-VSShell -vsVersion $vsVersion
             Write-Output ".$razzle $arch$flavor"
@@ -385,6 +400,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
             .$PSScriptRoot\MSBuild-Alias.ps1 -msBuildAlias
           }
           else {
+            Retarget-OSRazzle $binaries (Get-item $depotRoot).Parent.FullName
             Write-Output ".$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt"
             .$razzle $flavor $arch $env:RazzleOptions $extraArgs noprompt
           }
