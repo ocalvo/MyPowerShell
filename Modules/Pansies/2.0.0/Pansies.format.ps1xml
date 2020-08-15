@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- *******************************************************************
+This is Joel "Jaykul" Bennett's coloring format file for PowerShell 5.1
+******************************************************************** -->
+<Configuration>
+  <SelectionSets>
+    <SelectionSet>
+      <Name>Text</Name>
+      <Types>
+        <TypeName>PoshCode.Pansies.Text</TypeName>
+        <TypeName>Microsoft.PowerShell.Console.Text</TypeName>
+      </Types>
+    </SelectionSet>
+    <SelectionSet>
+      <Name>Color</Name>
+      <Types>
+        <TypeName>PoshCode.Pansies.RgbColor</TypeName>
+        <TypeName>PoshCode.Pansies.ColorSpaces.ColorSpace</TypeName>
+      </Types>
+    </SelectionSet>
+  </SelectionSets>
+  <ViewDefinitions>
+    <View>
+      <Name>Text</Name>
+      <ViewSelectedBy>
+        <SelectionSetName>Text</SelectionSetName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Width>35</Width>
+            <Label>BackgroundColor</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>35</Width>
+            <Label>ForegroundColor</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Object</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ToString</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $_.BackgroundColor.ToVtEscapeSequence($true) + " $([char]27)[0m " + $_.BackgroundColor.ToString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $_.ForegroundColor.ToVtEscapeSequence($true) + " $([char]27)[0m " + $_.ForegroundColor.ToString()
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  [System.Management.Automation.LanguagePrimitives]::ConvertTo($_.Object, [string]) + "$([char]27)[0m"
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $_.ToString() + "$([char]27)[0m"
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Color</Name>
+      <ViewSelectedBy>
+        <SelectionSetName>Color</SelectionSetName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Width>14</Width> <!-- LightGoldenrodYellow? -->
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>9</Width>
+            <Alignment>Left</Alignment>
+            <Label>RGB (hex)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>20</Width>
+            <Alignment>Left</Alignment>
+            <Label>X11ColorName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Ordinals</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>11</Width>
+            <Alignment>Left</Alignment>
+            <Label>XTerm Index</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>12</Width>
+            <Alignment>Left</Alignment>
+            <Label>ConsoleColor</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>
+                  ([PoshCode.Pansies.RgbColor]$_).ToVtEscapeSequence($true) + " $([char]27)[0m " +
+                  $(if ($_ -is [PoshCode.Pansies.RgbColor]) { $_.Mode } else { $_.GetType().Name })
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>"#{0:X6}" -f ([PoshCode.Pansies.RgbColor]$_).RGB</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>([PoshCode.Pansies.RgbColor]$_).X11ColorName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>([PoshCode.Pansies.ColorSpaces.ColorSpace]$_).ToString()</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>([PoshCode.Pansies.RgbColor]$_).XTerm256Index</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>([PoshCode.Pansies.RgbColor]$_).ConsoleColor</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Color</Name>
+      <ViewSelectedBy>
+        <SelectionSetName>Color</SelectionSetName>
+      </ViewSelectedBy>
+      <WideControl>
+        <WideEntries>
+          <WideEntry>
+            <WideItem>
+              <ScriptBlock>
+                  ([PoshCode.Pansies.RgbColor]$_).ToVtEscapeSequence($true) + " $([char]27)[0m" + ("#{0:X6}" -f ([PoshCode.Pansies.RgbColor]$_).RGB)
+              </ScriptBlock>
+            </WideItem>
+          </WideEntry>
+        </WideEntries>
+      </WideControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

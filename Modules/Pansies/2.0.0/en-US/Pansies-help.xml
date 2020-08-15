@@ -1,0 +1,1108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Convert-ConsolePalette</command:name>
+      <command:verb>Convert</command:verb>
+      <command:noun>ConsolePalette</command:noun>
+      <maml:description>
+        <maml:para>Converts the current 16 Color console palette by shifting either the dark or light colors to darker or lighter shades.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Converts a 16 Color console palette by shifting either the dark or light colors to darker or lighter shades.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Convert-ConsolePalette</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>BrightShift</maml:name>
+          <maml:Description>
+            <maml:para>How much to shift the bright colors. Positive values make the colors brighter, negative values make them darker</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Copy</maml:name>
+          <maml:Description>
+            <maml:para>By default, the colors are modified in-place. If copy is set: - the dark colors start with the value of the bright colors</maml:para>
+            <maml:para>- the light colors start at the value of the dark colors</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Convert-ConsolePalette</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>DarkShift</maml:name>
+          <maml:Description>
+            <maml:para>How much to shift the dark colors. Positive values make the colors brighter, negative values make them darker</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Copy</maml:name>
+          <maml:Description>
+            <maml:para>By default, the colors are modified in-place. If copy is set: - the dark colors start with the value of the bright colors</maml:para>
+            <maml:para>- the light colors start at the value of the dark colors</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:Description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>BrightShift</maml:name>
+        <maml:Description>
+          <maml:para>How much to shift the bright colors. Positive values make the colors brighter, negative values make them darker</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Copy</maml:name>
+        <maml:Description>
+          <maml:para>By default, the colors are modified in-place. If copy is set: - the dark colors start with the value of the bright colors</maml:para>
+          <maml:para>- the light colors start at the value of the dark colors</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>DarkShift</maml:name>
+        <maml:Description>
+          <maml:para>How much to shift the dark colors. Positive values make the colors brighter, negative values make them darker</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:Description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Convert-ConsolePalette -BrightShift 20 -Copy</dev:code>
+        <dev:remarks>
+          <maml:para>Copies the Dark* colors from the console palette to the bright side and brightens them by 20 (of 100) luminance.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-Complement</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>Complement</command:noun>
+      <maml:description>
+        <maml:para>Get the Hue complement color</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Returns a color that is 180 degrees opposite around the Hue component of the HSL color space.</maml:para>
+      <maml:para>The primary reason for Get-Complement to exist is for generating contrasting colors for foreground and background. For that reason, it's usually called with `-HighContrast` mode, which changes the lightness or darkness to increase the contrast of the returned color.</maml:para>
+      <maml:para>It also has a `-BlackAndWhite` switch that causes it to assume only 16 colors will work (PowerLine currently uses this mode by default because so many terminals don't support more --including Windows 10 prior to Creators Update). In BlackAndWhite mode, it always returns White or Black.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-Complement</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+          <maml:name>Color</maml:name>
+          <maml:Description>
+            <maml:para>The source color to calculate the complement of</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>HighContrast</maml:name>
+          <maml:Description>
+            <maml:para>Force the luminance to have "enough" contrast</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>BlackAndWhite</maml:name>
+          <maml:Description>
+            <maml:para>Returns either black or white to get a readable contrast color.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Passthru</maml:name>
+          <maml:Description>
+            <maml:para>If set, output the input $Color before the complement</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="none">
+        <maml:name>Color</maml:name>
+        <maml:Description>
+          <maml:para>The source color to calculate the complement of</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>HighContrast</maml:name>
+        <maml:Description>
+          <maml:para>Force the luminance to have "enough" contrast</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>BlackAndWhite</maml:name>
+        <maml:Description>
+          <maml:para>Returns either black or white to get a readable contrast color.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Passthru</maml:name>
+        <maml:Description>
+          <maml:para>If set, output the input $Color before the complement</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>PoshCode.Pansies.RgbColor</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>The color to find a complement for</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PoshCode.Pansies.RgbColor</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>The complement of the input color</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>---- Example 1 -------------------------------------------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Complement Cyan</dev:code>
+        <dev:remarks>
+          <maml:para>Gets the color Red back, as the complement for Cyan.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>---- Example 2 -------------------------------------------------------------</maml:title>
+        <dev:code>PS C:\&gt; $Background, $Foreground = Get-Complement Cyan -Passthru -BlackAndWhite
+PS C:\&gt; Microsoft.PowerShell.Utility\Write-Host " Hello World " -Foreground $Foreground.ConsoleColor -Background $Background.ConsoleColor</dev:code>
+        <dev:remarks>
+          <maml:para>This example shows how using `-Passthru` returns both the original color and the contrasting color, and how using `-BlackAndWhite` results in a better contrast when you're being forced to use BlackAndWhite (as with the built-in Write-Host command).</maml:para>
+          <maml:para>You can try the example without `-BlackAndWhite` to see the difference: with it, you'll get Black on Cyan, without, you'll get Red on Cyan. Note that using -HighContrast will make almost no difference if you're using the `BlackAndWhite` property, because downsampling to 16 colors has to result in either Red or DarkRed...</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-Gradient</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>Gradient</command:noun>
+      <maml:description>
+        <maml:para>Get a range of colors between two colors</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Get an array (or multiple arrays, one per line) of RgbColor values for a gradient from the start Color to the end Color.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-Gradient</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>StartColor</maml:name>
+          <maml:Description>
+            <maml:para>The left color to start the gradient from.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>EndColor</maml:name>
+          <maml:Description>
+            <maml:para>The right color to end the gradient at.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="Length, Count, Steps">
+          <maml:name>Width</maml:name>
+          <maml:Description>
+            <maml:para>The number of columns to generate in the gradient. Defaults to the width of the console.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>$Host.UI.RawUI.WindowSize.Width</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Height</maml:name>
+          <maml:Description>
+            <maml:para>The number of rows to generate in the gradient. Defaults to 1</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>$Host.UI.RawUI.WindowSize.Height</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ColorSpace</maml:name>
+          <maml:Description>
+            <maml:para>A color space to render the gradient in. Defaults to HunterLab, which generates gradients that are very consistent in their brightness, but can be any of CMY, CMYK, LAB, LCH, LUV, HunterLAB, HSL, HSV, HSB, RGB, XYZ, YXY</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>HunterLab</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Reverse</maml:name>
+          <maml:Description>
+            <maml:para>For color spaces with Hue (HSL, HSV, HSB), setting this generates the gradient the long way, creating a rainbow effect.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Flatten</maml:name>
+          <maml:Description>
+            <maml:para>Flattens the 2D array to a single array.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>StartColor</maml:name>
+        <maml:Description>
+          <maml:para>The left color to start the gradient from.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>EndColor</maml:name>
+        <maml:Description>
+          <maml:para>The right color to end the gradient at.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="Length, Count, Steps">
+        <maml:name>Width</maml:name>
+        <maml:Description>
+          <maml:para>The number of columns to generate in the gradient. Defaults to the width of the console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>$Host.UI.RawUI.WindowSize.Width</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>Height</maml:name>
+        <maml:Description>
+          <maml:para>The number of rows to generate in the gradient. Defaults to 1</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>$Host.UI.RawUI.WindowSize.Height</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ColorSpace</maml:name>
+        <maml:Description>
+          <maml:para>A color space to render the gradient in. Defaults to HunterLab, which generates gradients that are very consistent in their brightness, but can be any of CMY, CMYK, LAB, LCH, LUV, HunterLAB, HSL, HSV, HSB, RGB, XYZ, YXY</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>HunterLab</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Reverse</maml:name>
+        <maml:Description>
+          <maml:para>For color spaces with Hue (HSL, HSV, HSB), setting this generates the gradient the long way, creating a rainbow effect.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Flatten</maml:name>
+        <maml:Description>
+          <maml:para>Flattens the 2D array to a single array.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You must pass a start and end RgbColor</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>With -Flatten, returns a simple array of colors between the start and end color</maml:para>
+          <maml:para>Otherwise, returns a two dimensional array of colors of the specified height and width</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>---- Example 1 -------------------------------------------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Gradient Red Blue -Count 10 -Flatten</dev:code>
+        <dev:remarks>
+          <maml:para>Gets a simple array of ten colors between Red and Blue.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>---- Example 2 -------------------------------------------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Gradient Red Blue</dev:code>
+        <dev:remarks>
+          <maml:para>Gets a 2D gradient from the ConsoleColor Red to Blue, with as many colors as the current width of the console.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-Text</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>Text</command:noun>
+      <maml:description>
+        <maml:para>Create a Text object with specified background and foreground colors</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Create a Text object with specified background and foreground colors, and rendering HTML-style entities.  When this object is rendered to the host with .ToString(), it inserts ANSI Virtual Terminal escape sequences for the specified colors,  and by default, outputs escape sequences to clear those colors after the text.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-Text</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none">
+          <maml:name>Object</maml:name>
+          <maml:Description>
+            <maml:para>Specifies objects to display in the console.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Bg">
+          <maml:name>BackgroundColor</maml:name>
+          <maml:Description>
+            <maml:para>The background color. You may specify it as CSS hex "#RRGGBB" (or just "RRGGBB") or as an XTerm index "xt123" (or just "123") or as a ConsoleColor like "Red" or "DarkRed"...</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Fg">
+          <maml:name>ForegroundColor</maml:name>
+          <maml:Description>
+            <maml:para>The foreground color. You may specify it as CSS hex "#RRGGBB" (or just "RRGGBB") or as an XTerm index "xt123" (or just "123") or as a ConsoleColor like "Red" or "DarkRed"...</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>IgnoreEntities</maml:name>
+          <maml:Description>
+            <maml:para>If set, don't render the HTML Entities to characters (i.e. leave "&amp;hearts;" as "&amp;hearts;" instead of as "♥")</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>LeaveColor</maml:name>
+          <maml:Description>
+            <maml:para>If set, don't clear the colors at the end of the output.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Separator</maml:name>
+          <maml:Description>
+            <maml:para>Specifies a separator string to the output between objects displayed on the console.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Bg">
+        <maml:name>BackgroundColor</maml:name>
+        <maml:Description>
+          <maml:para>The background color. You may specify it as CSS hex "#RRGGBB" (or just "RRGGBB") or as an XTerm index "xt123" (or just "123") or as a ConsoleColor like "Red" or "DarkRed"...</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Fg">
+        <maml:name>ForegroundColor</maml:name>
+        <maml:Description>
+          <maml:para>The foreground color. You may specify it as CSS hex "#RRGGBB" (or just "RRGGBB") or as an XTerm index "xt123" (or just "123") or as a ConsoleColor like "Red" or "DarkRed"...</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>IgnoreEntities</maml:name>
+        <maml:Description>
+          <maml:para>If set, don't render the HTML Entities to characters (i.e. leave "&amp;hearts;" as "&amp;hearts;" instead of as "♥")</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>LeaveColor</maml:name>
+        <maml:Description>
+          <maml:para>If set, don't clear the colors at the end of the output.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none">
+        <maml:name>Object</maml:name>
+        <maml:Description>
+          <maml:para>Specifies objects to display in the console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Separator</maml:name>
+        <maml:Description>
+          <maml:para>Specifies a separator string to the output between objects displayed on the console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; New-Text "&amp;hearts;" -ForegroundColor Red
+
+
+BackgroundColor ForegroundColor Object       ToString
+--------------- --------------- ------       --------
+                `e[101m `e[0m Red &amp;hearts;`e[0m `e[91m?`e[39m`e[0m</dev:code>
+        <dev:remarks>
+          <maml:para>Generates a text object with the hearts symbol (♥) in red. The output will show the BackgroundColor, ForegroundColor, Text (with the entity text in it) and the rendered output of `.ToString()` where the entity will be replaced with the hearts symbol.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; "I $(New-Text "&amp;hearts;" -ForegroundColor "#F00") PS"
+
+I `e[38;2;255;0;0m?`e[39m PS</dev:code>
+        <dev:remarks>
+          <maml:para>Outputs the text "I ♥ PS" with the heart in red.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Write-Host</command:name>
+      <command:verb>Write</command:verb>
+      <command:noun>Host</command:noun>
+      <maml:description>
+        <maml:para>Backwards compatible Write-Host replacement which writes customized output to a host, but using full RGB color values.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Write-Host cmdlet customizes output. You can specify the color of text by using the ForegroundColor parameter, and you can specify the background color by using the BackgroundColor parameter. The Separator parameter lets you specify a string to use to separate displayed objects. The particular result depends on the program that is hosting Windows PowerShell.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Write-Host</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>Object</maml:name>
+          <maml:Description>
+            <maml:para>Specifies objects to display in the console.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>BackgroundColor</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the background color.  There is no default. The acceptable values for this parameter are:</maml:para>
+            <maml:para>CSS Hex representations of RGB colors like "#FF00FF" or "FF00FF"</maml:para>
+            <maml:para>XTerm indexes like "xt138" or "123"</maml:para>
+            <maml:para>Console Color names:</maml:para>
+            <maml:para>- Black</maml:para>
+            <maml:para>- DarkBlue</maml:para>
+            <maml:para>- DarkGreen</maml:para>
+            <maml:para>- DarkCyan</maml:para>
+            <maml:para>- DarkRed</maml:para>
+            <maml:para>- DarkMagenta</maml:para>
+            <maml:para>- DarkYellow</maml:para>
+            <maml:para>- Gray</maml:para>
+            <maml:para>- DarkGray</maml:para>
+            <maml:para>- Blue</maml:para>
+            <maml:para>- Green</maml:para>
+            <maml:para>- Cyan</maml:para>
+            <maml:para>- Red</maml:para>
+            <maml:para>- Magenta</maml:para>
+            <maml:para>- Yellow</maml:para>
+            <maml:para>- White</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ForegroundColor</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the text color. There is no default. The acceptable values for this parameter are:</maml:para>
+            <maml:para>CSS Hex representations of RGB colors like "#FF00FF" or "FF00FF"</maml:para>
+            <maml:para>XTerm indexes like "xt138" or "123"</maml:para>
+            <maml:para>Console Color names:</maml:para>
+            <maml:para>- Black</maml:para>
+            <maml:para>- DarkBlue</maml:para>
+            <maml:para>- DarkGreen</maml:para>
+            <maml:para>- DarkCyan</maml:para>
+            <maml:para>- DarkRed</maml:para>
+            <maml:para>- DarkMagenta</maml:para>
+            <maml:para>- DarkYellow</maml:para>
+            <maml:para>- Gray</maml:para>
+            <maml:para>- DarkGray</maml:para>
+            <maml:para>- Blue</maml:para>
+            <maml:para>- Green</maml:para>
+            <maml:para>- Cyan</maml:para>
+            <maml:para>- Red</maml:para>
+            <maml:para>- Magenta</maml:para>
+            <maml:para>- Yellow</maml:para>
+            <maml:para>- White</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">PoshCode.Pansies.RgbColor</command:parameterValue>
+          <dev:type>
+            <maml:name>PoshCode.Pansies.RgbColor</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>NoNewline</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that the content displayed in the console does not end with a newline character.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Separator</maml:name>
+          <maml:Description>
+            <maml:para>Specifies a separator string to the output between objects displayed on the console.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>BackgroundColor</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the background color.  There is no default. The acceptable values for this parameter are:</maml:para>
+          <maml:para>CSS Hex representations of RGB colors like "#FF00FF" or "FF00FF"</maml:para>
+          <maml:para>XTerm indexes like "xt138" or "123"</maml:para>
+          <maml:para>Console Color names:</maml:para>
+          <maml:para>- Black</maml:para>
+          <maml:para>- DarkBlue</maml:para>
+          <maml:para>- DarkGreen</maml:para>
+          <maml:para>- DarkCyan</maml:para>
+          <maml:para>- DarkRed</maml:para>
+          <maml:para>- DarkMagenta</maml:para>
+          <maml:para>- DarkYellow</maml:para>
+          <maml:para>- Gray</maml:para>
+          <maml:para>- DarkGray</maml:para>
+          <maml:para>- Blue</maml:para>
+          <maml:para>- Green</maml:para>
+          <maml:para>- Cyan</maml:para>
+          <maml:para>- Red</maml:para>
+          <maml:para>- Magenta</maml:para>
+          <maml:para>- Yellow</maml:para>
+          <maml:para>- White</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ForegroundColor</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the text color. There is no default. The acceptable values for this parameter are:</maml:para>
+          <maml:para>CSS Hex representations of RGB colors like "#FF00FF" or "FF00FF"</maml:para>
+          <maml:para>XTerm indexes like "xt138" or "123"</maml:para>
+          <maml:para>Console Color names:</maml:para>
+          <maml:para>- Black</maml:para>
+          <maml:para>- DarkBlue</maml:para>
+          <maml:para>- DarkGreen</maml:para>
+          <maml:para>- DarkCyan</maml:para>
+          <maml:para>- DarkRed</maml:para>
+          <maml:para>- DarkMagenta</maml:para>
+          <maml:para>- DarkYellow</maml:para>
+          <maml:para>- Gray</maml:para>
+          <maml:para>- DarkGray</maml:para>
+          <maml:para>- Blue</maml:para>
+          <maml:para>- Green</maml:para>
+          <maml:para>- Cyan</maml:para>
+          <maml:para>- Red</maml:para>
+          <maml:para>- Magenta</maml:para>
+          <maml:para>- Yellow</maml:para>
+          <maml:para>- White</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">PoshCode.Pansies.RgbColor</command:parameterValue>
+        <dev:type>
+          <maml:name>PoshCode.Pansies.RgbColor</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>NoNewline</maml:name>
+        <maml:Description>
+          <maml:para>Specifies that the content displayed in the console does not end with a newline character.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>Object</maml:name>
+        <maml:Description>
+          <maml:para>Specifies objects to display in the console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Separator</maml:name>
+        <maml:Description>
+          <maml:para>Specifies a separator string to the output between objects displayed on the console.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe objects to be written to the host.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Write-Host sends the objects to the host. It does not return any objects. However, the host might display the objects that Write-Host sends to it.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--- Example 1: Write to the console and include a separator ---</maml:title>
+        <dev:code>PS C:\&gt; Write-Host (2,4,6,8,10,12) -Separator ", +2= "
+2, +2= 4, +2= 6, +2= 8, +2= 10, +2= 12</dev:code>
+        <dev:remarks>
+          <maml:para>This command displays the even numbers from 2 through 12. The Separator parameter is used to add the string ", +2= " (comma, space, +, 2, =, space).</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-- Example 2: Write with different text and background colors --</maml:title>
+        <dev:code>PS C:\&gt; Write-Host (2,4,6,8,10,12) -Separator ", -&gt; " -ForegroundColor DarkGreen -BackgroundColor white</dev:code>
+        <dev:remarks>
+          <maml:para>This command displays the even numbers from 2 through 12. It uses the ForegroundColor parameter to output dark green text and the BackgroundColor parameter to display a white background.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-- Example 3: Write with different text and background colors --</maml:title>
+        <dev:code>PS C:\&gt; Write-Host "Red on white text." -ForegroundColor "#FF0000" -BackgroundColor "#FFFFFF"
+Red on white text.</dev:code>
+        <dev:remarks>
+          <maml:para>This command displays the string "Red on white text." The text is red, as defined by the ForegroundColor parameter. The background is white, as defined by the BackgroundColor parameter.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Clear-Host</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Write-Debug</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Write-Error</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Write-Output</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Write-Progress</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Write-Verbose</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Write-Warning</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

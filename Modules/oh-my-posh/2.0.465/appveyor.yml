@@ -1,0 +1,33 @@
+skip_tags: true
+skip_commits:
+  files:
+    - .github/*
+    - README.md
+environment:
+  GH_KEY:
+    secure: 7CipYchiaJLIPf5MRNnJ2+Nk7dm+FxWkEHlASCcskJbMz+jbdz/qiseUeKCkQKHC
+  NG_KEY:
+    secure: tN2AWqN8DMHjaUvl6AbwwMK1GrF6K0xPiCSGRh1SWZGex4kgVAx+Rri1AxxPYmBg
+  CA_KEY:
+    secure: 3kVQxECrq007jkGdai1dUpk35w+YigWkfk5C5aXi2lAX0zU+oOI1SYkGo2o6NbIp
+version: 2.0.{build}
+image:
+  - Visual Studio 2019
+  - Ubuntu
+build_script:
+  - pwsh: (Get-Content '.\oh-my-posh.psd1' -Raw).Replace('1.0.0.0', $ENV:APPVEYOR_BUILD_VERSION) | Out-File -Encoding 'UTF8' '.\oh-my-posh.psd1'
+before_test:
+  - pwsh: .\Build\setup_test_env.ps1
+test_script:
+  - pwsh: >-
+      if ($isWindows) {
+        .\Build\test_windows.ps1
+      }
+      else {
+        Invoke-Pester
+      }
+deploy_script:
+  - pwsh: >-
+      if ($isWindows) {
+        .\Build\release.ps1
+      }

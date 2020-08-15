@@ -1,0 +1,126 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/win10",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/win10": {
+      "Pansies/1.0.0": {
+        "dependencies": {
+          "CodeOwls.PowerShell.Paths": "1.0.0",
+          "CodeOwls.PowerShell.Provider": "1.0.0",
+          "NETStandard.Library": "2.0.3",
+          "PowerShellStandard.Library": "5.1.0-preview-04"
+        },
+        "runtime": {
+          "Pansies.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "PowerShellStandard.Library/5.1.0-preview-04": {
+        "runtime": {
+          "lib/netstandard2.0/System.Management.Automation.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        }
+      },
+      "System.Security.AccessControl/4.5.0": {
+        "dependencies": {
+          "System.Security.Principal.Windows": "4.5.0"
+        },
+        "runtime": {
+          "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.24705.1"
+          }
+        }
+      },
+      "System.Security.Principal.Windows/4.5.0": {
+        "runtime": {
+          "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.6.24705.1"
+          }
+        }
+      },
+      "CodeOwls.PowerShell.Paths/1.0.0": {
+        "dependencies": {
+          "PowerShellStandard.Library": "5.1.0-preview-04",
+          "System.Security.AccessControl": "4.5.0"
+        },
+        "runtime": {
+          "CodeOwls.PowerShell.Paths.dll": {}
+        }
+      },
+      "CodeOwls.PowerShell.Provider/1.0.0": {
+        "dependencies": {
+          "CodeOwls.PowerShell.Paths": "1.0.0",
+          "PowerShellStandard.Library": "5.1.0-preview-04"
+        },
+        "runtime": {
+          "CodeOwls.PowerShell.Provider.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Pansies/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "PowerShellStandard.Library/5.1.0-preview-04": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rmyvn3ernYJgKMuFaOC8W19dO9zAO8GAUYJUmw4oPooSKFrZy7yG8L9NaiNWUwTslmdclB2jM+HhosCputK8Tg==",
+      "path": "powershellstandard.library/5.1.0-preview-04",
+      "hashPath": "powershellstandard.library.5.1.0-preview-04.nupkg.sha512"
+    },
+    "System.Security.AccessControl/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
+      "path": "system.security.accesscontrol/4.5.0",
+      "hashPath": "system.security.accesscontrol.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
+      "path": "system.security.principal.windows/4.5.0",
+      "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
+    },
+    "CodeOwls.PowerShell.Paths/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CodeOwls.PowerShell.Provider/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
