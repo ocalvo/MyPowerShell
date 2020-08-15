@@ -153,7 +153,7 @@ function global:Get-MyWindowTitle
     return $title
 }
 
-Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
+#Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
 Import-Module posh-git
 Import-Module oh-my-posh
 Set-Theme Agnoster
