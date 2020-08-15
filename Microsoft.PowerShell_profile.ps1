@@ -125,7 +125,7 @@ function FirstTime-Setup()
 
 function global:Get-BranchName { "" }
 
-function Get-WindowTitle
+function global:Get-MyWindowTitle
 {
     $srcId = $null
     if ($env:_xroot -ne $null)
@@ -153,7 +153,7 @@ function Get-WindowTitle
     return $title
 }
 
-Set-PowerLinePrompt -PowerLineFont -Title { Get-WindowTitle }
+Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
 Import-Module posh-git
 Import-Module oh-my-posh
 Set-Theme Agnoster
