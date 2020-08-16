@@ -203,6 +203,11 @@ function global:Open-CodeFlow
   #\\codeflow\public\cf.cmd openGitHubPr -account <account> -GitHubProject <project> -prId <prId>
 }
 
+function global:Setup-MyBash
+{
+  wsl -- wget https://raw.githubusercontent.com/ocalvo/MyBash/master/setup.sh -O /tmp/setup.sh; bash /tmp/setup.sh
+}
+
 #Import-Module PowerTab
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
