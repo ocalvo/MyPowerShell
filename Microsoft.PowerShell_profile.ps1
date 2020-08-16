@@ -210,6 +210,8 @@ Import-Module PSSudo
 Import-Module SearchDir
 Import-Module Razzle
 
+$global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
+
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
