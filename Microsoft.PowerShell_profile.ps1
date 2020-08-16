@@ -125,6 +125,8 @@ function FirstTime-Setup()
 
 function global:Get-BranchName { "" }
 
+$global:initialTitle = $Host.UI.RawUI.WindowTitle
+
 function global:Get-MyWindowTitle
 {
     $srcId = $null
@@ -135,10 +137,15 @@ function global:Get-MyWindowTitle
 
     if (test-path env:_BuildArch)
     {
-      $razzleTitle = "Razzle: "+ $srcId + " " + $env:_BuildArch + "/" + $env:_BuildType + " "
-      if ($razzleTitle -ne $null )
+      $currentPath = (get-item ((pwd).path) -ErrorAction Ignore)
+      if ($null -ne $currentPath)
       {
-        $title = $razzleTitle + (Get-WindowTitleSuffix)
+        $repoRoot = (get-item $env:_XROOT).FullName
+        if ($currentPath.FullName.StartsWith($repoRoot))
+        {
+          $razzleTitle = "Razzle: "+ $srcId + " " + $env:_BuildArch + "/" + $env:_BuildType + " "
+          $title = $razzleTitle + (Get-WindowTitleSuffix)
+        }
       }
     }
 
@@ -150,14 +157,20 @@ function global:Get-MyWindowTitle
         }
     }
 
+    if ($null -eq $title)
+    {
+      return $initialTitle
+    }
+
     return $title
 }
 
-Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
 Import-Module posh-git
 Import-Module oh-my-posh
-Set-Theme Agnoster
-#Set-Theme Paradox
+
+#Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
+$ThemeSettings.Options.ConsoleTitle = $false
+Set-Theme MyAgnoster
 
 $serverModules='\\nas.calvonet.local\Company\Scripts\Modules'
 if (test-path $serverModules -ErrorAction Ignore)
