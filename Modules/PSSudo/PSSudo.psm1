@@ -110,8 +110,11 @@ function global:Execute-Elevated {
            Open-Elevated -wait powershell -c Start-Service SSHD
         }
     }
-    [string[]]$command = ("cd",(pwd).Path,";",$cmd)
-    $command+=$args
+    if ($null -ne $cmd)
+    {
+      [string[]]$command = ("cd",(pwd).Path,";",$cmd)
+      $command+=$args
+    }
     ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $command
   }
   else
