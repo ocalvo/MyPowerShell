@@ -1,0 +1,6 @@
+* text=auto
+
+*.ps1 text eol=lf
+*.vim text eol=lf
+*.sh text eol=lf
+
