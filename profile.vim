@@ -9,8 +9,8 @@ if v:progname =~? "evim"
   finish
 endif
 
-source $VIMRUNTIME\\evim.vim
-source <sfile>:p:h\vimfiles\autoload\pathogen.vim
+source $VIMRUNTIME/evim.vim
+source <sfile>:p:h/vimfiles/autoload/pathogen.vim
 
 execute pathogen#infect()
 
