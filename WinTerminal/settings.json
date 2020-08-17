@@ -84,7 +84,7 @@
       },
       {
         "name": "Razzle (amd64)",
-        "commandline": "powershell.exe /nologo -Ex ByPass /noexit /c razzle -arch amd64",
+        "commandline": "powershell.exe /nologo -Ex ByPass /noexit /c razzle -arch amd64 -flavor ret -vsVersion Preview",
         "icon": "%USERPROFILE%\\OneDrive\\Apps\\Razzle\\Razzle.ico",
         "useAcrylic": true,
         "hidden": false,
@@ -93,7 +93,7 @@
       },
       {
         "name": "Razzle (x86)",
-        "commandline": "powershell.exe /nologo -Ex ByPass /noexit /c razzle -arch x86",
+        "commandline": "powershell.exe /nologo -Ex ByPass /noexit /c razzle -arch x86 -flavor chk -vsVersion Preview",
         "icon": "%USERPROFILE%\\OneDrive\\Apps\\Razzle\\Razzle.ico",
         "useAcrylic": true,
         "hidden": false,
