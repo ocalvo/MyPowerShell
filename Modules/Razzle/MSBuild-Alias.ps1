@@ -8,13 +8,14 @@ if ($null -eq $env:_msBuildPath)
 
 $env:_MSBUILD_VERBOSITY = "m"
 $env:_VSINSTALLDIR = Split-path ((Split-Path ($env:_msBuildPath) -Parent)+"\..\..\") -Resolve
+$env:_MSBUILD_EXTRAPARAMS = "/p:NuGetInteractive=`"true`""
 
 function global:msb()
 {
   ps msbuild* | where { $_.StartInfo.EnvironmentVariables['RepoRoot'] -eq $env:RepoRoot } | kill -force
   $global:lastBuildErrors = $null
   $logFileName = ("build"+$env:_BuildType)
-  .$env:_msBuildPath /bl /nologo /v:$env:_MSBUILD_VERBOSITY /m $args "-flp2:logfile=$logFileName.err;errorsonly" "-flp3:logfile=$logFileName.wrn;warningsonly"
+  .$env:_msBuildPath /bl /nologo /v:$env:_MSBUILD_VERBOSITY $env:_MSBUILD_EXTRAPARAMS /m $args "-flp2:logfile=$logFileName.err;errorsonly" "-flp3:logfile=$logFileName.wrn;warningsonly"
   $global:lastBuildErrors = Get-BuildErrors
   if ($null -ne $global:lastBuildErrors)
   {
