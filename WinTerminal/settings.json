@@ -36,7 +36,8 @@
         "name": "Windows PowerShell",
         "commandline": "powershell.exe -nologo -Ex ByPass",
         "fontFace": "Cascadia Code PL",
-        "hidden": false
+        "hidden": false,
+        "acrylicOpacity": 0.90
       },
       {
         // Make changes here to the cmd.exe profile.
@@ -50,22 +51,25 @@
         "hidden": false,
         "name": "Azure Cloud Shell",
         "fontFace": "Cascadia Code PL",
-        "source": "Windows.Terminal.Azure"
+        "source": "Windows.Terminal.Azure",
+        "acrylicOpacity": 0.90
       },
       {
         "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
         "hidden": false,
         "name": "Ubuntu-20.04",
         "fontFace": "Cascadia Code PL",
-        "source": "Windows.Terminal.Wsl"
+        "source": "Windows.Terminal.Wsl",
+        "acrylicOpacity": 0.90
       },
       {
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
-        "name": "PowerShell",
+        "name": "PowerShell Core",
         "source": "Windows.Terminal.PowershellCore",
         "fontFace": "Cascadia Code PL",
-        "commandline": "pwsh.exe -nologo -Ex ByPass"
+        "commandline": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe -nologo -Ex ByPass",
+        "acrylicOpacity": 0.90
       },
       {
         "name": "ZTW",
@@ -77,6 +81,24 @@
         "fontFace": "Cascadia Code PL",
         "fontSize": 12,
         "padding": "4,4,4,0"
+      },
+      {
+        "name": "Razzle (amd64)",
+        "commandline": "powershell.exe /nologo -Ex ByPass /noexit /c razzle -arch amd64",
+        "icon": "%USERPROFILE%\\OneDrive\\Apps\\Razzle\\Razzle.ico",
+        "useAcrylic": true,
+        "hidden": false,
+        "fontFace": "Cascadia Code PL",
+        "acrylicOpacity": 0.90
+      },
+      {
+        "name": "Razzle (x86)",
+        "commandline": "powershell.exe /nologo -Ex ByPass /noexit /c razzle -arch x86",
+        "icon": "%USERPROFILE%\\OneDrive\\Apps\\Razzle\\Razzle.ico",
+        "useAcrylic": true,
+        "hidden": false,
+        "fontFace": "Cascadia Code PL",
+        "acrylicOpacity": 0.90
       },
       {
         "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
