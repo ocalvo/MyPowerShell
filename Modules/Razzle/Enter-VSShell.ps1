@@ -7,6 +7,10 @@ $vsVersions = $installPath |
     @{Name='Path';Expression={$_}}
 
 $ver = $vsVersions | Where-Object {$_.Version -eq $vsVersion }
+if ($null -eq $ver)
+{
+  throw "Visual Studio version $vsVersion not found"
+}
 $devShellModule = Join-Path $ver.Path "Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
 Import-Module $devShellModule
 Enter-VsDevShell -VsInstallPath $ver.Path -SkipAutomaticLocation
