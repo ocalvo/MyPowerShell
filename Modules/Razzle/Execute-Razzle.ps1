@@ -386,7 +386,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
 
           $extraArgs += " developer_dir ~\Documents\WindowsPowerShell\Razzle\ "
 
-          $env:_XROOT = $srcDir
+          $env:_XROOT = $srcDir.Trim("\")
 
           if ( $kind -eq "Phone" ) {
             .$razzle $device ($arch+$flavor) $phoneOptions $extraArgs
