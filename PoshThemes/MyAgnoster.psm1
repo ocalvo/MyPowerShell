@@ -1,5 +1,42 @@
 #requires -Version 2 -Modules posh-git
 
+function Compress-Path($Path, $Length=20)
+{
+    $newType = @'
+[DllImport("shlwapi.dll", CharSet = CharSet.Auto, SetLastError = true)]
+public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, string pszSrc, Int32 cchMax, Int32 dwFlags);
+'@
+    try { Add-Type -MemberDefinition $newType -name StringFunctions -namespace Win32 } catch {}
+    $sb = New-Object System.Text.StringBuilder(260)
+    if ([Win32.StringFunctions]::PathCompactPathEx($sb , $Path , $Length+1, 0))
+    {
+        $sb.ToString()
+    }
+    else
+    {
+        Throw "Unable to compact path"
+    }
+}
+
+function global:Get-LocationForPrompt
+{
+  [string]$p = (Get-Location).ProviderPath
+
+  if ( ($env:_XROOT -ne $null) -and ($p -like ($env:_XROOT+'\*')) )
+  {
+      $index = ($env:_XROOT).Length + 1
+      $p = $p.SubString($index)
+  }
+  else
+  {
+    $hStr = (get-item ~).FullName
+    $p = $p.Replace($hStr, "~")
+  }
+
+  (Compress-Path $p 45)
+}
+
+
 function Write-Theme {
 
     param(
@@ -43,7 +80,7 @@ function Write-Theme {
     }
 
     # Writes the drive portion
-    $prompt += Write-Prompt -Object (Get-ShortPath -dir $pwd) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+    $prompt += Write-Prompt -Object (Get-LocationForPrompt) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
     $prompt += Write-Prompt -Object ' ' -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
 
     $status = Get-VCSStatus
