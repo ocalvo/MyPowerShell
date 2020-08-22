@@ -211,7 +211,7 @@ function global:Setup-MyBash
 #Import-Module PowerTab
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
-Import-Module PSSudo
+Import-Module PwrSudo
 Import-Module SearchDir
 Import-Module Razzle
 
