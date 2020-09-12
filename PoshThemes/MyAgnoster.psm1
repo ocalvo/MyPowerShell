@@ -36,6 +36,7 @@ function global:Get-LocationForPrompt
   (Compress-Path $p 45)
 }
 
+$prevCommandTime = [Datetime]::Now
 
 function Write-Theme {
 
@@ -78,6 +79,15 @@ function Write-Theme {
     else {
         $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
     }
+
+    $newCommandTime = [Datetime]::Now
+    $prevElapsedTime = $newCommandTime - $prevCommandTime
+    $prevCommandTime = $newCommandTime
+    $commandTimeStr = $prevCommandTime.ToString("HH:mm.ss")
+
+    # Writes the time portion
+    $prompt += Write-Prompt -Object $commandTimeStr -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+    $prompt += Write-Prompt -Object ' ' -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
 
     # Writes the drive portion
     $prompt += Write-Prompt -Object (Get-LocationForPrompt) -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
