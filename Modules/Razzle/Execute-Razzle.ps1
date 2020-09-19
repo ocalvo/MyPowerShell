@@ -289,7 +289,7 @@ function global:Retarget-LiftedRazzle
     New-RazzleLink ($srcDir+"\temp") ($binRoot+"\temp")
     New-RazzleLink ($srcDir+"\log") ($binRoot+"\out")
     New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
-    New-RazzleLink ($srcDir+"\buildOutput") ($binRoot+"\bin")
+    New-RazzleLink ($srcDir+"\buildOutput") ($binRoot+"\obj")
     New-RazzleLink ($srcDir+"\TestPayload") ($binRoot+"\TestPayLoad")
 }
 
