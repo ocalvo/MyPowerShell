@@ -101,7 +101,12 @@ function global:Execute-Elevated {
     $service = get-service sshd* | select -first 1
     if ($null -eq $service)
     {
-       throw "Failed to start SSHD"
+       Open-Elevated -wait powershell -c Enable-Execute-Elevated
+       $service = get-service sshd* | select -first 1
+       if ($null -eq $service)
+       {
+           throw "Failed to start SSHD"
+       }
     }
     else
     {
