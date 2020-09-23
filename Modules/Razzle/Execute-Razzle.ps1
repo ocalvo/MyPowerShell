@@ -284,13 +284,13 @@ function global:Retarget-LiftedRazzle
     $srcRoot = ("c:\src\"+$_srcName)
     Write-Output "Branch binRoot is $binRoot, srcRoot is $srcRoot"
 
+    New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
+    New-RazzleLink ($srcDir+"\buildOutput") ($binRoot)
+    New-RazzleLink ($srcDir+"\TestPayload") ($binRoot+"\TestPayLoad")
     New-RazzleLink ($srcDir+"\bin") ($binRoot+"\bin")
     New-RazzleLink ($srcDir+"\obj") ($binRoot+"\obj")
     New-RazzleLink ($srcDir+"\temp") ($binRoot+"\temp")
     New-RazzleLink ($srcDir+"\log") ($binRoot+"\out")
-    New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
-    New-RazzleLink ($srcDir+"\buildOutput") ($binRoot+"\obj")
-    New-RazzleLink ($srcDir+"\TestPayload") ($binRoot+"\TestPayLoad")
 }
 
 function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
