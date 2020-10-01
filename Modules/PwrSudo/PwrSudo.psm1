@@ -106,7 +106,7 @@ function global:Execute-Elevated {
     $service = get-service sshd* | select -first 1
     if ($null -eq $service)
     {
-       Open-Elevated -wait powershell -c Enable-Execute-Elevated
+       Open-Elevated -wait powershell -Ex bypass -c Enable-Execute-Elevated
        $service = get-service sshd* | select -first 1
        if ($null -eq $service)
        {
