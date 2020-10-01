@@ -37,7 +37,12 @@ function global:Enable-SSH
   Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
   Set-Service -Name sshd -StartupType 'Automatic'
   Set-Service -Name ssh-agent -StartupType 'Automatic'
-  New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+  New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 -Force
+  if (!(Test-Path "HKLM:\SOFTWARE\OpenSSH"))
+  {
+     mkdir "HKLM:\SOFTWARE\OpenSSH"
+  }
+
   New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
   Start-Service ssh-agent
   Start-Service sshd
@@ -67,7 +72,7 @@ function global:Enable-Execute-Elevated
 {
   if (!(Test-IsAdmin))
   {
-     Open-Elevated -wait powershell -c Enable-Execute-Elevated
+     Open-Elevated -wait powershell -Ex ByPass -c Enable-Execute-Elevated
      return;
   }
 
