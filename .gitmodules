@@ -1,5 +1,5 @@
-[submodule ".\\vimfiles"]
-    path = .\\vimfiles
+[submodule "vimfiles"]
+    path = vimfiles
     url = https://github.com/tpope/vim-pathogen.git
 [submodule "Modules/PowerTab/1.1.0"]
     path = Modules/PowerTab/1.1.0
@@ -13,3 +13,6 @@
 [submodule "Modules/PwrSudo"]
     path = Modules/PwrSudo
     url = https://github.com/ocalvo/PwrSudo
+[submodule "Scripts"]
+	path = Scripts
+	url = https://github.com/ocalvo/Scripts.git
