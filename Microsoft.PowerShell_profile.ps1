@@ -172,7 +172,7 @@ Import-Module oh-my-posh
 $ThemeSettings.Options.ConsoleTitle = $false
 Set-Theme MyAgnoster
 
-$serverModules='\\nas.calvonet.local\Company\Scripts\Modules'
+$serverModules = ($PSScriptRoot+'\Scripts\Modules')
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $env:psmodulepath+=(';'+$serverModules)
