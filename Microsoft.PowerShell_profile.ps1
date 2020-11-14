@@ -63,6 +63,11 @@ function global:Install-Chocolatey
    Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'))
 }
 
+function global:Install-Scoop
+{
+  iwr -useb get.scoop.sh | iex
+}
+
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
 set-alias razzle              Execute-Razzle                                     -scope global
 set-alias vsvars              Enter-VSShell                                      -scope global
