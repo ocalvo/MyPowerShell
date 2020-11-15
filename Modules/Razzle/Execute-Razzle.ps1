@@ -229,10 +229,11 @@ function global:Retarget-OSRazzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     Push-Location ($srcRoot+"\src")
     $binRoot = $srcRoot.Replace("f:","w:")
     $binRoot = $binRoot.Replace("F:","w:")
+    $binRoot = $binRoot.Replace("c:\src","w:")
+    $binRoot = $binRoot.Replace("C:\src","w:")
     Write-Output "Branch binRoot is $binRoot"
     Pop-Location
 
-    New-RazzleLink "f:\os" $srcRoot
     New-RazzleLink "w:\os" $binRoot
     New-RazzleLink ($srcRoot+"\bin") ($binRoot+"\bin")
     New-RazzleLink ($srcRoot+"\bldcache") ($binRoot+"\bldcache")
@@ -396,7 +397,9 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
             Push-Location $env:SDXROOT
             Enter-VSShell -vsVersion $vsVersion
             Write-Output ".$razzle $arch$flavor"
-            Invoke-CmdScript -script $razzle -parameters (($arch+$flavor),"/2019")
+            $initParams = (($arch+$flavor),"/2019")
+            $initParams = (($arch+$flavor))
+            Invoke-CmdScript -script $razzle -parameters $initParams
             .$PSScriptRoot\MSBuild-Alias.ps1 -msBuildAlias
           }
           else {
