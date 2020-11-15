@@ -76,61 +76,29 @@ function global:Enable-Execute-Elevated
      return;
   }
 
-  $service = get-service sshd* | select -first 1
-  if ($null -eq $service)
-  {
-    Enable-SSH
-  }
+  $gsudoCmd = (get-command gsudo -ErrorAction Ignore)
 
-  if (!(test-path $keyfile))
+  if ($null -eq $gsudoCmd)
   {
-    ssh-keygen -t rsa -f $keyfile -q -P `"`"
+    $scoopCmd = (get-command scoop -ErrorAction Ignore)
+    if ($null -eq $scoopCmd)
+    {
+      Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+    }
+    scoop install gsudo
+    gsudo config cachemode auto
+    gsudo cache on
   }
-  #Start-Service ssh-agent
-  #ssh-add $keyfilePub
-
-  Add-AdministratorsAuthorizedKeys (Get-Content $keyfilePub)
 }
 
 function global:Execute-Elevated {
-  param([switch]$wait,$cmd)
-
-  [string]$arguments = $args;
-
-  if (!(Test-IsAdmin))
+  param()
+  $gsudoCmd = (get-command gsudo -ErrorAction Ignore)
+  if ($null -eq $gsudoCmd)
   {
-    if (!(Test-Path $keyfile))
-    {
-       Enable-Execute-Elevated
-    }
-    $service = get-service sshd* | select -first 1
-    if ($null -eq $service)
-    {
-       Open-Elevated -wait powershell -Ex bypass -c Enable-Execute-Elevated
-       $service = get-service sshd* | select -first 1
-       if ($null -eq $service)
-       {
-           throw "Failed to start SSHD"
-       }
-    }
-    else
-    {
-        if ($service.Status -ne 'Running')
-        {
-           Open-Elevated -wait powershell -c Start-Service SSHD
-        }
-    }
-    if ($null -ne $cmd)
-    {
-      [string[]]$command = ("cd",(pwd).Path,";",$cmd)
-      $command+=$args
-    }
-    ssh -i $keyfile $env:USERDOMAIN\$env:USERNAME@localhost $command
+    Enable-Execute-Elevated
   }
-  else
-  {
-    powershell -c $cmd $args
-  }
+  gsudo $args
 }
 
 Export-ModuleMember -Function Enable-Execute-Elevated
