@@ -15,6 +15,29 @@ if (test-path $symbolsPath)
 }
 $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
 
+if ((get-command sudo -erroraction ignore) -eq $null)
+{
+  Enable-Execute-Elevated
+  $env:path += ";~\scoop\apps"
+}
+
+if ((get-command choco -erroraction ignore) -eq $null)
+{
+  Install-Chocolatey
+}
+
+if ((get-command git -erroraction ignore) -eq $null)
+{
+  sudo choco install git -y
+  $env:path += ";C:\Program Files\Git\cmd"
+  ."$PSScriptRoot\Set-Git-Config.ps1"
+}
+
+if ((get-command vim -erroraction ignore) -eq $null)
+{
+  sudo choco install vim -y
+}
+
 ########################################################
 # Helper Functions
 function ff ([string] $glob) { get-childitem -recurse -filter $glob }
@@ -60,7 +83,7 @@ if (!(test-path $vimRC))
 
 function global:Install-Chocolatey
 {
-   Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'))
+   sudo { Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1')); choco feature enable -n allowGlobalConfirmation }
 }
 
 function global:Install-Scoop
