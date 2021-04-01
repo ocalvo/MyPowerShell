@@ -82,11 +82,10 @@ function global:Goto-KnownLocation([string] $location)
   }
 }
 $go_locations["home"]="~"
-$go_locations["dl"]="\\server\Downloads"
-$go_locations["dev"]="C:\dd"
-$go_locations["scripts"]="~\Documents\WindowsPowerShell"
+$go_locations["src"]="C:\src"
+$go_locations["bin"]="C:\bin"
+$go_locations["scripts"]=((get-item $profile).Directory.FullName)
 $go_locations["tools"]="~\Documents\Tools"
-$go_locations["public"]=$env:public
 
 Export-ModuleMember -Function Goto-KnownLocation
 
