@@ -97,6 +97,7 @@ function global:Execute-Elevated {
   if ($null -eq $gsudoCmd)
   {
     Enable-Execute-Elevated
+    $env:path += ";~\scoop\shims\"
   }
   gsudo $args
 }
