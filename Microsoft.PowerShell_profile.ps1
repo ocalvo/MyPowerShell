@@ -2,6 +2,32 @@
 # Oscar Calvo's PowerShell Profile (oscar@calvonet.com)
 #
 
+if ((get-command sudo -erroraction ignore) -eq $null)
+{
+  Enable-Execute-Elevated
+  $env:path += ";~\scoop\apps"
+}
+
+$global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
+
+function global:Install-Chocolatey
+{
+   sudo {
+     Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'));
+     $env:path += ";C:\ProgramData\chocolatey\bin"
+     choco feature enable -n allowGlobalConfirmation
+     choco install cascadiafonts
+     choco install pwsh --pre
+     cp $PSScriptRoot\WinTerminal\settings.json $terminalSettings
+   }
+   $env:path += ";C:\ProgramData\chocolatey\bin"
+}
+
+function global:Install-Scoop
+{
+  iwr -useb get.scoop.sh | iex
+}
+
 $psTab = Get-Module PowerTab -ListAvailable
 if ($null -eq $psTab)
 {
@@ -15,12 +41,6 @@ if (test-path $symbolsPath)
 }
 $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
 
-if ((get-command sudo -erroraction ignore) -eq $null)
-{
-  Enable-Execute-Elevated
-  $env:path += ";~\scoop\apps"
-}
-
 if ((get-command choco -erroraction ignore) -eq $null)
 {
   Install-Chocolatey
@@ -30,12 +50,29 @@ if ((get-command git -erroraction ignore) -eq $null)
 {
   sudo choco install git -y
   $env:path += ";C:\Program Files\Git\cmd"
-  ."$PSScriptRoot\Set-Git-Config.ps1"
+  ."$PSScriptRoot\Set-GitConfig.ps1"
 }
 
 if ((get-command vim -erroraction ignore) -eq $null)
 {
   sudo choco install vim -y
+}
+
+if (!(test-path ~\Documents\PowerShell))
+{
+  sudo {
+    $workOneDriveDir = "~\OneDrive - Microsoft"
+    $oneDriveDir = "~\OneDrive"
+    $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
+    if ($useWorkOneDrive)
+    {
+      if (test-path ~\OneDrive) { mv ~\OneDrive ~\OneDrive.bak }
+      new-item ~\OneDrive -ItemType SymbolicLink -Target $workOneDriveDir
+      $oneDriveDir = $workOneDriveDir
+    }
+    if (test-path ~\Documents) { mv ~\Documents ~\Documents.bak }
+    new-item ~\Documents -ItemType SymbolicLink -Target $oneDriveDir\Documents
+  }
 }
 
 ########################################################
@@ -79,16 +116,6 @@ $vimRC = ($env:USERPROFILE + '\_vimrc')
 if (!(test-path $vimRC))
 {
   set-content -path $vimRC "source <sfile>:p:h\Documents\WindowsPowerShell\profile.vim"
-}
-
-function global:Install-Chocolatey
-{
-   sudo { Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1')); choco feature enable -n allowGlobalConfirmation }
-}
-
-function global:Install-Scoop
-{
-  iwr -useb get.scoop.sh | iex
 }
 
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
@@ -242,8 +269,6 @@ Set-PSReadLineOption –HistoryNoDuplicates:$True
 Import-Module PwrSudo
 Import-Module SearchDir
 Import-Module Razzle
-
-$global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
