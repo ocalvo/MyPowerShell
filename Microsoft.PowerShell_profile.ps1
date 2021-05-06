@@ -28,11 +28,13 @@ function global:Install-Scoop
   iwr -useb get.scoop.sh | iex
 }
 
-$psTab = Get-Module PowerTab -ListAvailable
-if ($null -eq $psTab)
-{
-  Find-Module PowerTab | Install-Module -Force
-}
+#$psTab = Get-Module PowerTab -ListAvailable
+#if ($null -eq $psTab)
+#{
+#  sudo {
+#    Find-Module PowerTab | Install-Module -Force
+#  }
+#}
 
 $symbolsPath = "c:\dd\symbols"
 if (test-path $symbolsPath)
@@ -264,8 +266,9 @@ function global:Setup-MyBash
 }
 
 #Import-Module PowerTab
-Import-Module PSReadLine
+Import-Module PSReadLine -RequiredVersion 2.1.0
 Set-PSReadLineOption –HistoryNoDuplicates:$True
+Set-PSReadLineOption -PredictionSource History
 Import-Module PwrSudo
 Import-Module SearchDir
 Import-Module Razzle
