@@ -6,5 +6,6 @@ git clone https://github.com/ocalvo/MyPowerShell.git ($env:HOMEDRIVE+$env:HOMEPA
 new-Item ~\Documents\PowerShell -ItemType SymbolicLink -Target ~\Documents\WindowsPowerShell
 
 choco install cascadiafonts
+choco install pwsh
 
 .$profile
