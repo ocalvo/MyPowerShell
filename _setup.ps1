@@ -5,6 +5,6 @@ $env:path+=(";"+"C:\Program Files\Git\bin\")
 git clone https://github.com/ocalvo/MyPowerShell.git ($env:HOMEDRIVE+$env:HOMEPATH+"\Documents\WindowsPowerShell")
 new-Item ~\Documents\PowerShell -ItemType SymbolicLink -Target ~\Documents\WindowsPowerShell
 
-choco install cacadiafonts
+choco install cascadiafonts
 
 .$profile
