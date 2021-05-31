@@ -8,6 +8,7 @@ new-Item ~\Documents\PowerShell -ItemType SymbolicLink -Target ~\Documents\Windo
 
 cd $_psD
 git submodule update --init .\vimfiles\
+git submodule update --init .\Scripts\
 
 choco install microsoft-windows-terminal --pre
 choco install cascadiafonts
