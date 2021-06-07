@@ -34,7 +34,7 @@ if(!($isVM))
 $buildShare = "\\winbuilds\release"
 
 [int]$currentBuild = [System.Environment]::OSVersion.Version.Build
-[int]$currentQFE = (Get-ItemProperty -Path C:\Windows\System32\hal.dll).VersionInfo.FilePrivatePart
+[int]$currentQFE = (Get-ItemProperty -Path C:\Windows\System32\ntoskrnl.exe).VersionInfo.FilePrivatePart
 
 #Lock-WorkStation
 
