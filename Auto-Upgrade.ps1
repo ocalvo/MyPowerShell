@@ -3,7 +3,7 @@
 # ocalvo@microsoft.com
 #
 param (
-  $branchName="rs_onecore_dep_uxp"
+  $branchName="co_release"
 )
 
 function log

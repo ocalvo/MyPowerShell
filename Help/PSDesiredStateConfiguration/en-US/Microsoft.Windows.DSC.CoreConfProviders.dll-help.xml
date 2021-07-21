@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Invoke-DscResource</command:name>
+      <command:verb>Invoke</command:verb>
+      <command:noun>DscResource</command:noun>
+      <maml:description>
+        <maml:para>Runs a method of a specified PowerShell Desired State Configuration (DSC) resource.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The `Invoke-DscResource` cmdlet runs a method of a specified PowerShell Desired State Configuration (DSC) resource.</maml:para>
+      <maml:para>This cmdlet invokes a DSC resource directly, without creating a configuration document. Using this cmdlet, configuration management products can manage windows or Linux by using DSC resources. This cmdlet also enables debugging of resources when the DSC engine is running with debugging enabled.</maml:para>
+      <maml:para>&gt; [!NOTE] &gt; `Invoke-DscResource` is an experimental feature in PowerShell 7. To use the cmdlet, you must &gt; enable it using the following command. &gt; &gt; `Enable-ExperimentalFeature PSDesiredStateConfiguration.InvokeDscResource`</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-DscResource</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the DSC resource to start.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+          <maml:name>Method</maml:name>
+          <maml:description>
+            <maml:para>Specifies the method of the resource that this cmdlet invokes. The acceptable values for this parameter are: Get , Set , and Test .</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">Get</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">Set</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">Test</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>ModuleName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the module from which this cmdlet invokes the specified resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ModuleSpecification</command:parameterValue>
+          <dev:type>
+            <maml:name>ModuleSpecification</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>Property</maml:name>
+          <maml:description>
+            <maml:para>Specifies the resource property name and its value in a hash table as key and value, respectively.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
+        <maml:name>Method</maml:name>
+        <maml:description>
+          <maml:para>Specifies the method of the resource that this cmdlet invokes. The acceptable values for this parameter are: Get , Set , and Test .</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>ModuleName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the module from which this cmdlet invokes the specified resource.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ModuleSpecification</command:parameterValue>
+        <dev:type>
+          <maml:name>ModuleSpecification</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the DSC resource to start.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>Property</maml:name>
+        <maml:description>
+          <maml:para>Specifies the resource property name and its value in a hash table as key and value, respectively.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Management.Infrastructure.CimInstance, System.Boolean</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>- Previously, Windows PowerShell 5.1 resources ran under System context unless specified with user context using the key PsDscRunAsCredential . In PowerShell 7.0, Resources run in the user's context, and PsDscRunAsCredential is no longer supported. Previous configurations using this key will throw an exception.</maml:para>
+        <maml:para>- As of PowerShell 7, `Invoke-DscResource` no longer supports invoking WMI DSC resources. This   includes the File and Log resources in PSDesiredStateConfiguration .</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Invoke the Set method of a resource by specifying its mandatory properties</maml:title>
+        <dev:code>Invoke-DscResource -Name WindowsProcess -Method Set -ModuleName PSDesiredStateConfiguration -Property @{
+  Path = 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+  Arguments = ''
+}</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Invoke the Test method of a resource for a specified module</maml:title>
+        <dev:code>$SplatParam = @{
+  Name = 'WindowsProcess'
+  ModuleName = 'PSDesiredStateConfiguration'
+  Property = @{Path = 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'; Arguments = ''}
+  Method = Test
+}
+
+Invoke-DscResource @SplatParam</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/invoke-dscresource?view=powershell-7&amp;WT.mc_id=ps-gethelp</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Windows PowerShell Desired State Configuration Overview</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-DscResource</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

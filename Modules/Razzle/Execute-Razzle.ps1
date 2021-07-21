@@ -7,7 +7,7 @@ param (
   $flavor="fre",
   $arch="x86",
   $device=$null,
-  $binaries = "w:\",
+  $binaries = "c:\bin",
   $vsVersion = "Enterprise",
   $ddDir = $env:LOCALAPPDATA,
   [switch]$symbolicLinks = $true,
@@ -203,21 +203,21 @@ function global:Retarget-Razzle
 {
     Write-Output ("Retargeting common paths")
 
-    New-RazzleLink "c:\Symbols" "w:\Symbols"
-    New-RazzleLink "c:\Symcache" "w:\Symbols"
-    New-RazzleLink "c:\Sym" "w:\Symbols"
-    #New-RazzleLink $env:temp "w:\Temp"
-    New-RazzleLink $env:HOMEDRIVE$env:HOMEPATH\.nuget w:\NuGet
-    New-RazzleLink "c:\Temp" "w:\Temp"
-    New-RazzleLink "c:\Logs" "w:\Logs"
-    New-RazzleLink "c:\CrashDumps" "w:\CrashDumps"
-    New-RazzleLink "c:\VHDs" "w:\VHDs"
+    New-RazzleLink "c:\Symbols" "c:\bin\Symbols"
+    New-RazzleLink "c:\Symcache" "c:\bin\Symbols"
+    New-RazzleLink "c:\Sym" "c:\bin\Symbols"
+    #New-RazzleLink $env:temp "c:\bin\Temp"
+    New-RazzleLink $env:HOMEDRIVE$env:HOMEPATH\.nuget c:\bin\NuGet
+    New-RazzleLink "c:\Temp" "c:\bin\Temp"
+    New-RazzleLink "c:\Logs" "c:\bin\Logs"
+    New-RazzleLink "c:\CrashDumps" "c:\bin\CrashDumps"
+    New-RazzleLink "c:\VHDs" "c:\bin\VHDs"
     New-RazzleLink "c:\Debuggers" "c:\dd\Debuggers"
-    New-RazzleLink "c:\dd\Debuggers\Sym" "w:\Symbols"
-    New-RazzleLink "c:\dd\Debuggers\Wow64\Sym" "w:\Symbols"
-    New-RazzleLink "c:\ProgramData\dbg\Sym" "w:\Symbols"
-    New-RazzleLink "c:\ProgramData\dbg\Src" "w:\Src"
-    New-RazzleLink "c:\Polaris" "w:\Polaris"
+    New-RazzleLink "c:\dd\Debuggers\Sym" "c:\bin\Symbols"
+    New-RazzleLink "c:\dd\Debuggers\Wow64\Sym" "c:\bin\Symbols"
+    New-RazzleLink "c:\ProgramData\dbg\Sym" "c:\bin\Symbols"
+    New-RazzleLink "c:\ProgramData\dbg\Src" "c:\bin\src"
+    New-RazzleLink "c:\Polaris" "c:\bin\Polaris"
 
     Write-Output ("Retargeting done")
 }
@@ -234,7 +234,7 @@ function global:Retarget-OSRazzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
     Write-Output "Branch binRoot is $binRoot"
     Pop-Location
 
-    New-RazzleLink "w:\os" $binRoot
+    New-RazzleLink "c:\bin\os" $binRoot
     New-RazzleLink ($srcRoot+"\bin") ($binRoot+"\bin")
     New-RazzleLink ($srcRoot+"\bldcache") ($binRoot+"\bldcache")
     New-RazzleLink ($srcRoot+"\bldout") ($binRoot+"\bldout")
@@ -281,11 +281,11 @@ function global:Retarget-OSRazzle($binariesRoot, $srcRoot = $env:OSBuildRoot)
 function global:Retarget-LiftedRazzle
 {
     $_srcName = Split-Path $enlistment -Leaf
-    $binRoot = ("w:\"+$_srcName)
+    $binRoot = ("c:\bin\"+$_srcName)
     $srcRoot = ("c:\src\"+$_srcName)
     Write-Output "Branch binRoot is $binRoot, srcRoot is $srcRoot"
 
-    New-RazzleLink ($srcDir+"\packages") ("w:\NuGet\packages")
+    New-RazzleLink ($srcDir+"\packages") ("c:\bin\NuGet\packages")
     New-RazzleLink ($srcDir+"\buildOutput") ($binRoot)
     New-RazzleLink ($srcDir+"\TestPayload") ($binRoot+"\TestPayLoad")
     New-RazzleLink ($srcDir+"\bin") ($binRoot+"\bin")
@@ -352,7 +352,7 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
           }
 
           $binaries += $razzleDirName
-          $binaries = ("w:\"+(Get-BranchName $razzleDirName))
+          $binaries = ("c:\bin\"+(Get-BranchName $razzleDirName))
           $tempDir = ($binaries + "\temp")
 
           if ($noDeep.IsPresent)
@@ -433,19 +433,19 @@ function Execute-Razzle-Internal($flavor="chk",$arch="x86",$enlistment)
   throw "Razzle not found"
 }
 
-if (!(test-path "W:\Symbols"))
+if (!(test-path "c:\bin\Symbols"))
 {
-   mkdir W:\Symbols
+   mkdir c:\bin\Symbols
 }
 
-if (!(test-path "W:\SymCache"))
+if (!(test-path "c:\bin\SymCache"))
 {
-   mkdir W:\SymCache
+   mkdir c:\bin\SymCache
 }
 
-if (!(test-path "W:\Temp"))
+if (!(test-path "c:\bin\Temp"))
 {
-   mkdir W:\Temp
+   mkdir c:\bin\Temp
 }
 
 Execute-Razzle-Internal -flavor $flavor -arch $arch -enlistment $enlistment
