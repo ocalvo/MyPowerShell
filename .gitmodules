@@ -16,3 +16,6 @@
 [submodule "Scripts"]
 	path = Scripts
 	url = https://github.com/ocalvo/Scripts.git
+[submodule ".\\Modules\\PwrRazzle"]
+	path = .\\Modules\\PwrRazzle
+	url = https://github.com/ocalvo/PwrRazzle.git
