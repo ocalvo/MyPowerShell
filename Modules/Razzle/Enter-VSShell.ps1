@@ -3,7 +3,7 @@ param(
   [Parameter(Mandatory=$false)][switch]$x64 = $false
 )
 
-$installPath = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -version 16.0 -prerelease -property installationpath
+$installPath = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -version 16.0 -prerelease -all -products * -property installationpath
 $vsVersions = $installPath |
   Select-Object @{Name='Version';Expression={Split-Path $_ -Leaf | Select-Object -First 1}},
     @{Name='Path';Expression={$_}}
