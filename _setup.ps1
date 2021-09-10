@@ -16,7 +16,7 @@ Get-NetFirewallRule -Name *ssh*
 #
 # There should be a firewall rule named "OpenSSH-Server-In-TCP", which should be enabled
 # If the firewall does not exist, create one
-New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 -ErrorAction Ignore
 
 New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
 
@@ -35,23 +35,27 @@ if ($null -eq (get-command git*))
 
 $env:path+=(";"+"C:\Program Files\Git\bin\")
 $_psHOME=($env:HOMEDRIVE+$env:HOMEPATH+"\Documents\")
-$_psD = ($_psHOME+"WindowsPowerShell")
+$_psD = Split-path $profile
+$_psDWin = ($_psHOME+"WindowsPowerShell")
 $_psDCore = ($_psHOME+"PowerShell")
 
-if (!(Test-path $_psD))
+if (!(Test-path $profile))
 {
   git clone https://github.com/ocalvo/MyPowerShell.git $_psD
 }
 
-if (!(Test-Path $_psDCore))
-{
-  new-Item $_psDCore -ItemType SymbolicLink -Target $_psD
-}
-
 if ("Core" -eq $PSEdition) {
+  if (!(Test-path $_psDWin))
+  {
+    new-Item $_psDWin -ItemType SymbolicLink -Target $_psDCore
+  }
   cd $_psDCore
 } else {
-  cd $_psD
+  if (!(Test-path $_psDCore))
+  {
+    new-Item $_psDCore -ItemType SymbolicLink -Target $_psDWin
+  }
+  cd $_psDWin
 }
 
 git submodule update --init .\vimfiles\
@@ -70,3 +74,5 @@ If (Test-Path "C:\Program Files\openssh-win64\Set-SSHDefaultShell.ps1") {
 
 .\Set-GitConfig.ps1
 
+$tSettings = $_psD+"\WinTerminal\settings.json"
+cp $tSettings $terminalSettings
