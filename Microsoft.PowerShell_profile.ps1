@@ -271,7 +271,7 @@ Set-PSReadLineOption –HistoryNoDuplicates:$True
 Set-PSReadLineOption -PredictionSource History
 Import-Module PwrSudo
 Import-Module SearchDir
-Import-Module Razzle
+Import-Module PwrRazzle
 
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
