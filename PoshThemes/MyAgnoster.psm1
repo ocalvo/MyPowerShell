@@ -1,5 +1,7 @@
 #requires -Version 2 -Modules posh-git
 
+. ($PSScriptRoot+'\VSO-Helpers.ps1')
+
 function Compress-Path($Path, $Length=20)
 {
     $newType = @'
