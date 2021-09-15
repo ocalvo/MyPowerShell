@@ -19,3 +19,6 @@
 [submodule "Modules/PwrSudo"]
 	path = Modules/PwrSudo
 	url = https://github.com/ocalvo/PwrSudo.git
+[submodule "Modules/PwrSearch"]
+	path = Modules/PwrSearch
+	url = https://github.com/ocalvo/PwrSearch.git
