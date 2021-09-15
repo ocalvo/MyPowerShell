@@ -16,3 +16,6 @@
 [submodule "Modules/PwrRazzle"]
     path = Modules/PwrRazzle
     url = https://github.com/ocalvo/PwrRazzle.git
+[submodule "Modules/PwrSudo"]
+	path = Modules/PwrSudo
+	url = https://github.com/ocalvo/PwrSudo.git
