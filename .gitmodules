@@ -10,9 +10,6 @@
 [submodule "Modules/scripts"]
     path = Modules/scripts
     url = https://evkoschi@dev.azure.com/evkoschi/scripts/_git/scripts
-[submodule "Modules/PwrSudo"]
-    path = Modules/PwrSudo
-    url = https://github.com/ocalvo/PwrSudo
 [submodule "Scripts"]
     path = Scripts
     url = https://github.com/ocalvo/Scripts.git
