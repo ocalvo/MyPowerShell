@@ -121,12 +121,9 @@ if (!(test-path $vimRC))
 }
 
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
-set-alias razzle              Execute-Razzle                                     -scope global
 set-alias vsvars              Enter-VSShell                                      -scope global
 set-alias zip                 7z                                                 -scope global
 set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
-set-alias sudo                Execute-Elevated                                   -scope global
-set-alias go                  Goto-KnownLocation                                 -scope global
 
 # SD settings
 $vimCmd = get-command vim 2> $null
@@ -270,7 +267,7 @@ Import-Module PSReadLine -RequiredVersion 2.1.0
 Set-PSReadLineOption –HistoryNoDuplicates:$True
 Set-PSReadLineOption -PredictionSource History
 Import-Module PwrSudo
-Import-Module SearchDir
+Import-Module PwrSearch
 Import-Module PwrRazzle
 
 # Chocolatey profile

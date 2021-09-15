@@ -87,5 +87,6 @@ $go_locations["bin"]="C:\bin"
 $go_locations["scripts"]=((get-item $profile).Directory.FullName)
 $go_locations["tools"]="~\Documents\Tools"
 
-Export-ModuleMember -Function Goto-KnownLocation
+set-alias go                  Goto-KnownLocation                                 -scope global
 
+Export-ModuleMember -Function Goto-KnownLocation
