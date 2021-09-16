@@ -227,7 +227,6 @@ $ThemeSettings.Options.ConsoleTitle = $false
 Set-Theme MyAgnoster
 
 $serverModules = ($PSScriptRoot+'\..\PSModules')
-Echo $serverModules
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $_fd = (get-item $serverModules).FullName
