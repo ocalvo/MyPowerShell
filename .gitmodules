@@ -4,21 +4,15 @@
 [submodule "Modules/PowerTab/1.1.0"]
     path = Modules/PowerTab/1.1.0
     url = https://github.com/jasonmarcher/PowerTab
-[submodule "Modules/IXPTools"]
-    path = Modules/IXPTools
-    url = https://microsoft.visualstudio.com/IXPTools/_git/IXPTools
 [submodule "Modules/scripts"]
     path = Modules/scripts
     url = https://evkoschi@dev.azure.com/evkoschi/scripts/_git/scripts
-[submodule "Scripts"]
-    path = Scripts
-    url = https://github.com/ocalvo/Scripts.git
 [submodule "Modules/PwrRazzle"]
     path = Modules/PwrRazzle
     url = https://github.com/ocalvo/PwrRazzle.git
 [submodule "Modules/PwrSudo"]
-	path = Modules/PwrSudo
-	url = https://github.com/ocalvo/PwrSudo.git
+    path = Modules/PwrSudo
+    url = https://github.com/ocalvo/PwrSudo.git
 [submodule "Modules/PwrSearch"]
-	path = Modules/PwrSearch
-	url = https://github.com/ocalvo/PwrSearch.git
+    path = Modules/PwrSearch
+    url = https://github.com/ocalvo/PwrSearch.git
