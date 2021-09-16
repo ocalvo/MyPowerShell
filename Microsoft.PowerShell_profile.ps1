@@ -226,17 +226,13 @@ Import-Module oh-my-posh
 $ThemeSettings.Options.ConsoleTitle = $false
 Set-Theme MyAgnoster
 
-$serverModules = ($PSScriptRoot+'\Scripts\Modules')
+$serverModules = ($PSScriptRoot+'\..\PSModules')
+Echo $serverModules
 if (test-path $serverModules -ErrorAction Ignore)
 {
-  $env:psmodulepath+=(';'+$serverModules)
-  Import-Module PersonalMedia
-}
-
-$psScripts = ($PSScriptRoot+'\Modules\scripts\PSRazzle.psm1')
-if (test-path $psScripts -ErrorAction Ignore)
-{
-  Import-Module $psScripts
+  $_fd = (get-item $serverModules).FullName
+  $env:psmodulepath+=(';'+$_fd)
+  dir $_fd -dir |% { Import-Module $_.Name }
 }
 
 Import-Module DirColors
