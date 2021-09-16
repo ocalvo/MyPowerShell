@@ -1,6 +1,6 @@
 
 
-ABOUT COMPARISON OPERATORS
+ABOUT_COMPARISON_OPERATORS
 
 
 Short description
@@ -37,10 +37,11 @@ specified patterns. PowerShell includes the following comparison operators:
 
 Common features
 
-By default, all comparison operators are case-insensitive. To make a
+By default, string comparisons are case-insensitive. The equality operators
+have explicit case-sensitive and case-insensitive forms. To make a
 comparison operator case-sensitive, add a c after the -. For example, -ceq
 is the case-sensitive version of -eq. To make the case-insensitivity
-explicit, add an i before -. For example, -ieq is the explicitly
+explicit, add an i after -. For example, -ieq is the explicitly
 case-insensitive version of -eq.
 
 When the input of an operator is a scalar value, the operator returns a
@@ -70,7 +71,7 @@ Equality operators
 
 When the left-hand side is scalar, -eq returns TRUE if the right-hand side
 is an exact match, otherwise, -eq returns FALSE. -ne does the opposite; it
-returns FALSE when both sides match; otherwise, -ne returns True.
+returns FALSE when both sides match; otherwise, -ne returns TRUE.
 
 Example:
 
@@ -117,7 +118,7 @@ equality test result is FALSE because they are different objects. To create
 comparable classes, you need to implement System.IEquatable<T> in your
 class. The following example demonstrates the partial implementation of a
 MYFILEINFOSET class that implements System.IEquatable<T> and has two
-properties, FILE and SIZE. The Equals() method returns True if the File and
+properties, FILE and SIZE. The Equals() method returns TRUE if the File and
 Size properties of two MYFILEINFOSET objects are the same.
 
     class MyFileInfoSet : System.IEquatable[Object] {
@@ -170,7 +171,7 @@ they return TRUE or FALSE depending on how the two sides compare:
   -lt        The left-hand side is smaller
   -le        The left-hand side is smaller or equal
 
-In the following examples, all statements return True.
+In the following examples, all statements return TRUE.
 
     8 -gt 6  # Output: True
     8 -ge 8  # Output: True
@@ -310,7 +311,7 @@ Scalar examples:
     'bag'        -notmatch 'b[iou]g'   # Output: True
 
 If the input is a collection, the operators return the matching members of
-that collection and the $Matches automatic variable is $null.
+that collection.
 
 Collection examples:
 
@@ -326,12 +327,12 @@ Collection examples:
     "Bag", "Beg", "Big", "Bog", "Bug"  -notmatch 'b[iou]g'
     #Output: Bag, Beg
 
--match and -notmatch support regex capture groups. Each time they run, they
-overwrite the $Matches automatic variable. When <input> is a collection the
-$Matches variable is $null. $Matches is a HASHTABLE that always has a key
-named '0', which stores the entire match. If the regular expression
-contains capture groups, the $Matches contains additional keys for each
-group.
+-match and -notmatch support regex capture groups. Each time they run on
+scalar input, and the -match result is TRUE, or the -notmatch result is
+FALSE, they overwrite the $Matches automatic variable. $Matches is a
+HASHTABLE that always has a key named '0', which stores the entire match.
+If the regular expression contains capture groups, the $Matches contains
+additional keys for each group.
 
 Example:
 
@@ -360,7 +361,20 @@ Example:
     User name:
     jsmith
 
-For details, see about_Regular_Expressions.
+When the -match result is FALSE, or the -notmatch result is TRUE, or when
+the input is a collection, the $Matches automatic variable is not
+overwritten. Consequently, it will contain the previously set value, or
+$null if the variable has not been set. When referencing $Matches after
+invoking one of these operators, consider verifying that the variable was
+set by the current operator invocation by using a condition statement.
+
+Example:
+
+    if ("<version>1.0.0</version>" -match '<version>(.*?)</version>') {
+        $Matches
+    }
+
+For details, see about_Regular_Expressions and about_Automatic_Variables.
 
 
 Replacement operator
@@ -495,7 +509,7 @@ Syntax:
 -contains and -notcontains
 
 These operators tell whether a set includes a certain element. -contains
-returns True when the right-hand side (test object) matches one of the
+returns TRUE when the right-hand side (test object) matches one of the
 elements in the set. -notcontains returns False instead. When the test
 object is a collection, these operators use reference equality, i.e. they
 check whether one of the set's elements is the same instance of the test
@@ -526,14 +540,14 @@ More complex examples:
 -in and -notin
 
 The -in and -notin operators were introduced in PowerShell 3 as the
-syntactic reverse of the of contains and -notcontain operators. -in returns
-TRUE when the left-hand side <test-object> matches one of the elements in
-the set. -notin returns FALSE instead. When the test object is a set, these
-operators use reference equality to check whether one of the set's elements
-is the same instance of the test object.
+syntactic reverse of the of -contains and -notcontains operators. -in
+returns TRUE when the left-hand side <test-object> matches one of the
+elements in the set. -notin returns FALSE instead. When the test object is
+a set, these operators use reference equality to check whether one of the
+set's elements is the same instance of the test object.
 
-The following examples do the same thing that the examples for -contain and
--notcontain do, but they are written with -in and -notin instead.
+The following examples do the same thing that the examples for -contains
+and -notcontains do, but they are written with -in and -notin instead.
 
     "def" -in "abc", "def"                  # Output: True
     "def" -notin "abc", "def"               # Output: False
@@ -584,3 +598,4 @@ SEE ALSO
 -   Compare-Object
 -   Foreach-Object
 -   Where-Object
+-   about_Booleans

@@ -5019,7 +5019,7 @@ Import-PackageProvider -Name "Nuget" -RequiredVersion "2.8.5.201" -Verbose</dev:
       <maml:para>This cmdlet also installs matching Package Management providers that are available using the Package Management bootstrapping application.</maml:para>
       <maml:para>This cmdlet also installs matching Package Management providers that are available in the Package Management Azure Blob store. Use the bootstrapper provider to find and install them.</maml:para>
       <maml:para>In order to execute the first time, PackageManagement requires an internet connection to download the NuGet package provider. However, if your computer does not have an internet connection and you need to use the NuGet or PowerShellGet provider, you can download them on another computer and copy them to your target computer. Use the following steps to do this:</maml:para>
-      <maml:para>1. Run `Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force` to install the    provider from a computer with an internet connection. 1. After the install, you can find the provider installed in    `$env:ProgramFiles\PackageManagement\ReferenceAssemblies&lt;ProviderName&gt;&lt;ProviderVersion&gt;` or    `$env:LOCALAPPDATA\PackageManagement\ProviderAssemblies&lt;ProviderName&gt;&lt;ProviderVersion&gt;`. 1. Place the `&lt;ProviderName&gt;` folder, which in this case is the NuGet folder, in the corresponding    location on your target computer. If your target computer is a Nano server, you need to run    `Install-PackageProvider` from Nano Server to download the correct NuGet binaries. 1. Restart PowerShell to auto-load the package provider. Alternatively, run    `Get-PackageProvider -ListAvailable` to list all the package providers available on the computer.    Then use `Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201` to import the provider    to the current Windows PowerShell session.</maml:para>
+      <maml:para>1. Run `Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force` to install the    provider from a computer with an internet connection. 1. After the install, you can find the provider installed in    `$env:ProgramFiles\PackageManagement\ProviderAssemblies&lt;ProviderName&gt;&lt;ProviderVersion&gt;` or    `$env:LOCALAPPDATA\PackageManagement\ProviderAssemblies&lt;ProviderName&gt;&lt;ProviderVersion&gt;`. 1. Place the `&lt;ProviderName&gt;` folder, which in this case is the NuGet folder, in the corresponding    location on your target computer. If your target computer is a Nano server, you need to run    `Install-PackageProvider` from Nano Server to download the correct NuGet binaries. 1. Restart PowerShell to auto-load the package provider. Alternatively, run    `Get-PackageProvider -ListAvailable` to list all the package providers available on the computer.    Then use `Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201` to import the provider    to the current Windows PowerShell session.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -10300,20 +10300,20 @@ PS&gt; Install-Package C:\LocalPkg\NuGet.Core.2.14.0.nupkg</dev:code>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>`Uninstall-Package` accepts **SoftwareIdentity** objects from the pipeline as input.</maml:name>
+          <maml:name>SoftwareIdentity</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>`Uninstall-Package` accepts SoftwareIdentity objects from the pipeline as input.</maml:para>
         </maml:description>
       </command:inputType>
     </command:inputTypes>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>`Uninstall-Package` doesn't generate any output.</maml:name>
+          <maml:name>SoftwareIdentity</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>`Uninstall-Package` returns a SoftwareIdentity object for each package uninstalled.</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>

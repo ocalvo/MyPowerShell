@@ -1,6 +1,6 @@
 
 
-CERTIFICATE PROVIDER
+ABOUT_CERTIFICATE_PROVIDER
 
 
 Provider name
@@ -522,7 +522,7 @@ see the cmdlet references provided throughout this article.
 
 Getting help
 
-Beginning in Windows PowerShell 3.0, you can get customized help topics for
+Beginning in PowerShell 3.0, you can get customized help topics for
 provider cmdlets that explain how those cmdlets behave in a file system
 drive.
 

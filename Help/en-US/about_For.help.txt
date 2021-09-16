@@ -1,6 +1,6 @@
 
 
-ABOUT FOR
+ABOUT_FOR
 
 
 Short description
@@ -74,7 +74,7 @@ The following syntaxes are supported for multiple assignment operations in
 the REPEAT statement:
 
     # Comma separated assignment expressions.
-    for (($i = 0), ($j = 0); $i -lt 10; $i++)
+    for (($i = 0), ($j = 0); $i -lt 10; $i++, $j++)
     {
         "`$i:$i"
         "`$j:$j"
@@ -153,9 +153,9 @@ instead, as follows.
 This statement will still repeat indefinitely until you break out of the
 command by pressing CTRL+C.
 
-You can terminate the For loop using a _condition_. You can place a
-condition using the CONDITION portion of the For statement. The For loop
-terminates when the condition evaluates to $false.
+You can terminate the For loop using a CONDITION. You can place a condition
+using the CONDITION portion of the For statement. The For loop terminates
+when the condition evaluates to $false.
 
 In the following example, the For loop runs while the value of $i is less
 than or equal to 10.

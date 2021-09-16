@@ -1,6 +1,6 @@
 
 
-ABOUT CIMSESSION
+ABOUT_CIMSESSION
 
 
 Short description

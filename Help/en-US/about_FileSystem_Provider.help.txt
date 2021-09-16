@@ -1,6 +1,6 @@
 
 
-FILESYSTEM PROVIDER
+ABOUT_FILESYSTEM_PROVIDER
 
 
 Provider name
@@ -10,7 +10,7 @@ FileSystem
 
 Drives
 
-C:, D: ...
+C:, D:, Temp: ...
 
 
 Capabilities
@@ -32,11 +32,11 @@ The FILESYSTEM drives are a hierarchical namespace containing the
 directories and files on your computer. A FILESYSTEM drive can be a logical
 or physical drive, directory, or mapped network share.
 
-A drive called TEMP: will be mapped to the user's temporary directory path.
-
-  [!NOTE] Contents in the TEMP: drive are not automatically removed by
-  PowerShell and is up to the user or operating system to manage. This
-  Feature was moved out of experimental features in PowerShell Version 7.0
+Beginning in PowerShell Version 7.0, a drive called TEMP: is mapped to the
+user's temporary directory path. PowerShell uses the .NET GetTempPath()
+method to determine the location of the temporary folder. On Windows, the
+location is the same as $env:TEMP. On non-Windows systems, the location is
+the same as $env:TMPDIR or /tmp if the environment variable is not defined.
 
 The FILESYSTEM provider supports the following cmdlets, which are covered
 in this article.

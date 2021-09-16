@@ -1,6 +1,6 @@
 
 
-ABOUT VARIABLES
+ABOUT_VARIABLES
 
 
 Short description
@@ -120,8 +120,9 @@ To delete the variable, use Remove-Variable or Remove-Item.
 
     Remove-Item -Path Variable:\MyVariable
 
-It is also possible to values to multiple variables with one statement. The
-following examples assigns the same value to multiple variables:
+It is also possible to assign values to multiple variables with one
+statement. The following examples assigns the same value to multiple
+variables:
 
     $a = $b = $c = 0
 

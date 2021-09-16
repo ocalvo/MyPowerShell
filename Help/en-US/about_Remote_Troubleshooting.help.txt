@@ -1,6 +1,6 @@
 
 
-ABOUT REMOTE TROUBLESHOOTING
+ABOUT_REMOTE_TROUBLESHOOTING
 
 
 Short description
@@ -160,6 +160,11 @@ access from any location, run the following command:
     Set-NetFirewallRule -Name "WINRM-HTTP-In-TCP-PUBLIC" -RemoteAddress Any
 
 The Set-NetFirewallRule cmdlet is exported by the NetSecurity module.
+
+  [!NOTE] The name of the firewall rule can be different for different
+  versions of Windows. Use Get-NetFirewallRule to see a list of rules.
+  Before enabling the firewall rule, view the security settings in the rule
+  to verify that the configuration is appropriate for your environment.
 
   [!NOTE] In Windows PowerShell 2.0, on computers running server versions
   of Windows, Enable-PSRemoting creates firewall rules that allow remote

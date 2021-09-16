@@ -1,6 +1,6 @@
 
 
-ABOUT REMOTE VARIABLES
+ABOUT_REMOTE_VARIABLES
 
 
 Short description

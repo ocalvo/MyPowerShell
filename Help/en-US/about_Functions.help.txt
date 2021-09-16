@@ -1,6 +1,6 @@
 
 
-ABOUT FUNCTIONS
+ABOUT_FUNCTIONS
 
 
 Short description
@@ -44,9 +44,16 @@ about_Functions_Advanced.
 
 Syntax
 
-The following is the syntax for a function:
+The following are the syntax for a function:
 
     function [<scope:>]<name> [([type]$parameter1[,[type]$parameter2])]
+    {
+      begin {<statement list>}
+      process {<statement list>}
+      end {<statement list>}
+    }
+
+    function [<scope:>]<name>
     {
       param([type]$parameter1 [,[type]$parameter2])
       dynamicparam {<statement list>}
@@ -129,11 +136,11 @@ Named Parameters
 You can define any number of named parameters. You can include a default
 value for named parameters, as described later in this topic.
 
-You can define parameters inside the braces using the Param keyword, as
+You can define parameters inside the braces using the param keyword, as
 shown in the following sample syntax:
 
     function <name> {
-      param ([type]$parameter1[,[type]$parameter2])
+      param ([type]$parameter1 [,[type]$parameter2])
       <statement list>
     }
 
@@ -146,7 +153,7 @@ keyword, as shown in the following sample syntax:
 
 Below is an example of this alternative syntax.
 
-    Function Add-Numbers($one, $two) {
+    function Add-Numbers([int]$one, [int]$two) {
         $one + $two
     }
 

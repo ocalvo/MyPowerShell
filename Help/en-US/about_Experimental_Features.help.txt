@@ -1,6 +1,6 @@
 
 
-EXPERIMENTAL FEATURES
+ABOUT_EXPERIMENTAL_FEATURES
 
 
 The Experimental Features support in PowerShell provides a mechanism for

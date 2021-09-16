@@ -1,14 +1,14 @@
 
 
-ABOUT LANGUAGE KEYWORDS
+ABOUT_LANGUAGE_KEYWORDS
 
 
-SHORT DESCRIPTION
+Short description
 
 Describes the keywords in the PowerShell scripting language.
 
 
-LONG DESCRIPTION
+Long description
 
 PowerShell has the following language keywords. For more information, see
 the about topic for the keyword and the information that follows the table.
@@ -51,7 +51,16 @@ the about topic for the keyword and the information that follows the table.
   Var            Reserved for future use
   While          about_While, about_Do
 
-Language Keywords
+The following keywords are used by PowerShell workflows:
+
+-   InlineScript
+-   Parallel
+-   Sequence
+-   Workflow
+
+PowerShell workflows are only supported in PowerShell 5.1. For more
+information about workflows, see Running PowerShell Commands in a Workflow.
+
 
 Begin
 
@@ -67,6 +76,7 @@ Syntax:
         process {<statement list>}
         end {<statement list>}
     }
+
 
 Break
 
@@ -84,6 +94,7 @@ Syntax:
        <statements>
     }
 
+
 Catch
 
 Specifies a statement list to run if an error occurs in the accompanying
@@ -94,6 +105,7 @@ Syntax:
 
     try {<statement list>}
     catch [[<error type>]] {<statement list>}
+
 
 Class
 
@@ -106,6 +118,7 @@ Syntax:
         [<class-name>([argument-list>]) {<constructor-statement-list>} ...]
         [[hidden] [static] <method-definition> ...]
     }
+
 
 Continue
 
@@ -124,6 +137,7 @@ Syntax:
        <statements>
     }
 
+
 Data
 
 In a script, defines a section that isolates data from the script logic.
@@ -132,6 +146,7 @@ Can also include If statements and some limited commands.
 Syntax:
 
     data <variable> [-supportedCommand <cmdlet-name>] {<permitted content>}
+
 
 Do
 
@@ -145,6 +160,7 @@ Syntax for While:
 Syntax for Until:
 
     do {<statement list>} until (<condition>)
+
 
 DynamicParam
 
@@ -160,6 +176,7 @@ Syntax:
        end {<statement list>}
     }
 
+
 Else
 
 Used with the If keyword to specify the default statement list.
@@ -168,6 +185,7 @@ Syntax:
 
     if (<condition>) {<statement list>}
     else {<statement list>}
+
 
 Elseif
 
@@ -179,6 +197,7 @@ Syntax:
     if (<condition>) {<statement list>}
     elseif (<condition>) {<statement list>}
     else {<statement list>}
+
 
 End
 
@@ -195,6 +214,7 @@ Syntax:
        end {<statement list>}
     }
 
+
 Enum
 
 enum is used to declare an enumeration; a distinct type that consists of a
@@ -206,6 +226,7 @@ Syntax:
         <label> [= <int-value>]
         ...
     }
+
 
 Exit
 
@@ -259,6 +280,7 @@ argument used with the exit command. If the script has no exit statement,
 the exit code is always 0 when the script completes without error or 1 when
 the script terminates from an unhandled exception.
 
+
 Filter
 
 Specifies a function in which the statement list runs one time for each
@@ -268,6 +290,7 @@ Process block.
 Syntax:
 
     filter <name> {<statement list>}
+
 
 Finally
 
@@ -281,6 +304,7 @@ Syntax:
     catch [<error type>] {<statement list>}
     finally {<statement list>}
 
+
 For
 
 Defines a loop by using a condition.
@@ -288,6 +312,7 @@ Defines a loop by using a condition.
 Syntax:
 
     for (<initialize>; <condition>; <iterate>) { <statement list> }
+
 
 ForEach
 
@@ -297,9 +322,11 @@ Syntax:
 
     ForEach (<item> in <collection>) { <statement list> }
 
+
 From
 
 Reserved for future use.
+
 
 Function
 
@@ -330,6 +357,7 @@ Syntax:
        end {<statement list>}
     }
 
+
 If
 
 Defines a conditional.
@@ -337,6 +365,7 @@ Defines a conditional.
 Syntax:
 
     if (<condition>) {<statement list>}
+
 
 Hidden
 
@@ -347,6 +376,7 @@ Syntax:
 
     Hidden [data type] $member_name
 
+
 In
 
 Used in a ForEach statement to create a loop that uses each member of a
@@ -356,30 +386,6 @@ Syntax:
 
     ForEach (<item> in <collection>){<statement list>}
 
-InlineScript
-
-Runs workflow commands in a shared PowerShell session. This keyword is
-valid only in a PowerShell Workflow.
-
-Syntax:
-
-    workflow <verb>-<noun>
-    {
-       InlineScript
-       {
-          <Command/Expression>
-          ...
-
-       }
-    }
-
-The InlineScript keyword indicates an InlineScript activity, which runs
-commands in a shared standard (non-workflow) session. You can use the
-InlineScript keyword to run commands that are not otherwise valid in a
-workflow, and to run commands that share data. By default, the commands in
-an InlineScript script block run in a separate process.
-
-For more information, see Running PowerShell Commands in a Workflow.
 
 Param
 
@@ -391,6 +397,7 @@ Syntax:
        param ([type]<$pname1>[, [[type]<$pname2>]])
        <statement list>
     }
+
 
 Process
 
@@ -410,6 +417,7 @@ Syntax:
        end {<statement list>}
     }
 
+
 Return
 
 Causes PowerShell to leave the current scope, such as a script or function,
@@ -419,12 +427,14 @@ Syntax:
 
     return [<expression>]
 
+
 Static
 
 Specifies the property or method defined is common to all instances of the
 class in which is defined.
 
 See Class for usage examples.
+
 
 Switch
 
@@ -456,6 +466,7 @@ Syntax 2:
        default {<statement list>}
     }
 
+
 Throw
 
 Throws an object as an error.
@@ -463,6 +474,7 @@ Throws an object as an error.
 Syntax:
 
     throw [<object>]
+
 
 Trap
 
@@ -473,6 +485,7 @@ error type is optional.
 Syntax:
 
     trap [[<error type>]] {<statement list>}
+
 
 Try
 
@@ -487,6 +500,7 @@ Syntax:
     catch [[<error type>]] {<statement list>}
     finally {<statement list>}
 
+
 Until
 
 Used in a Do statement as a looping construct where the statement list is
@@ -495,6 +509,7 @@ executed at least one time.
 Syntax:
 
     do {<statement list>} until (<condition>)
+
 
 Using
 
@@ -509,6 +524,7 @@ Syntax #1:
 Syntax #2:
 
     using module <module-name>
+
 
 While
 
@@ -530,7 +546,7 @@ Do loop Syntax:
     do {<statement list>} while (<condition>)
 
 
-SEE ALSO
+See also
 
 -   about_Special_Characters
 -   about_Wildcards

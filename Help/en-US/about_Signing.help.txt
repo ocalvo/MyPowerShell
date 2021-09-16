@@ -1,6 +1,6 @@
 
 
-ABOUT SIGNING
+ABOUT_SIGNING
 
 
 Short description
@@ -138,6 +138,16 @@ cmdlet in the PKI module. This module is introduced in PowerShell 3.0 and
 is included in Windows 8 and Windows Server 2012. For more information, see
 the help topic for the New-SelfSignedCertificate cmdlet.
 
+    $params = @{
+        Subject = 'CN=PowerShell Code Signing Cert'
+        Type = 'CodeSigning'
+        CertStoreLocation = 'Cert:\CurrentUser\My'
+        HashAlgorithm = 'sha256'
+    }
+    $cert = New-SelfSignedCertificate @params
+
+Using Makecert.exe
+
 To create a self-signed certificate in earlier versions of Windows, use the
 Certificate Creation tool MakeCert.exe. This tool is included in the
 Microsoft .NET SDK (versions 1.1 and later) and in the Microsoft Windows
@@ -149,18 +159,17 @@ MakeCert.exe tool, see Certificate Creation Tool (MakeCert.exe).
 To use the MakeCert.exe tool to create a certificate, run the following
 commands in an SDK Command Prompt window.
 
-Note: The first command creates a local certification authority for your
-computer. The second command generates a personal certificate from the
-certification authority.
+  [!NOTE] The first command creates a local certification authority for
+  your computer. The second command generates a personal certificate from
+  the certification authority. You can copy or type the commands exactly as
+  they appear. No substitutions are necessary, although you can change the
+  certificate name.
 
-Note: You can copy or type the commands exactly as they appear. No
-substitutions are necessary, although you can change the certificate name.
-
-    makecert -n "CN=PowerShell Local Certificate Root" -a sha1 `
+    makecert -n "CN=PowerShell Local Certificate Root" -a sha256 `
     -eku 1.3.6.1.5.5.7.3.3 -r -sv root.pvk root.cer `
     -ss Root -sr localMachine
 
-    makecert -pe -n "CN=PowerShell User" -ss MY -a sha1 `
+    makecert -pe -n "CN=PowerShell User" -ss MY -a sha256 `
     -eku 1.3.6.1.5.5.7.3.3 -iv root.pvk -ic root.cer
 
 The MakeCert.exe tool will prompt you for a private key password. The

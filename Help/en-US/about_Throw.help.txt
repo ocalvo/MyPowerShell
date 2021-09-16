@@ -1,6 +1,6 @@
 
 
-ABOUT THROW
+ABOUT_THROW
 
 
 Short description

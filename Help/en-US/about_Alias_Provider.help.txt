@@ -1,6 +1,6 @@
 
 
-ALIAS PROVIDER
+ABOUT_ALIAS_PROVIDER
 
 
 Provider name
@@ -81,9 +81,9 @@ To reference an alias from another location, use the Alias: drive name in
 the path.
 
   [!NOTE] PowerShell uses aliases to allow you a familiar way to work with
-  provider paths. Commands such as dir and ls are now aliases for
-  Get-ChildItem, cd is an alias for Set-Location. and pwd is an alias for
-  Get-Location.
+  provider paths. Commands such as dir and ls are now aliases on Windows
+  and dir on Linux and macOS for Get-ChildItem, cd is an alias for
+  Set-Location. and pwd is an alias for Get-Location.
 
 Displaying the Contents of the Alias: drive
 

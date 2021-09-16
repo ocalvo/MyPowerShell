@@ -1,6 +1,6 @@
 
 
-ABOUT EXECUTION POLICIES
+ABOUT_EXECUTION_POLICIES
 
 
 Short Description
@@ -248,13 +248,13 @@ is RESTRICTED, which is the default for Windows clients.
 
 Set a different policy for one session
 
-You can use the EXECUTIONPOLICY parameter of PWSH.EXE to set an execution
+You can use the EXECUTIONPOLICY parameter of pwsh.exe to set an execution
 policy for a new PowerShell session. The policy affects only the current
 session and child sessions.
 
 To set the execution policy for a new session, start PowerShell at the
-command line, such as CMD.EXE or from PowerShell, and then use the
-EXECUTIONPOLICY parameter of PWSH.EXE to set the execution policy.
+command line, such as cmd.exe or from PowerShell, and then use the
+EXECUTIONPOLICY parameter of pwsh.exe to set the execution policy.
 
 For example:
 
@@ -305,8 +305,7 @@ Administrative Templates\Windows Components\Windows PowerShell
 
 For Windows Vista and later versions of Windows:
 
-Administrative Templates\Classic Administrative Templates
-Windows Components\Windows PowerShell
+Administrative Templates\Classic Administrative Templates\Windows Components\Windows PowerShell
 
 Policies set in the Computer Configuration node take precedence over
 policies set in the User Configuration node.
@@ -318,11 +317,11 @@ Execution policy precedence
 When determining the effective execution policy for a session, PowerShell
 evaluates the execution policies in the following precedence order:
 
--   Group Policy: MachinePolicy
--   Group Policy: UserPolicy
--   Execution Policy: Process (or pwsh.exe -ExecutionPolicy)
--   Execution Policy: CurrentUser
--   Execution Policy: LocalMachine
+    Group Policy: MachinePolicy
+    Group Policy: UserPolicy
+    Execution Policy: Process (or pwsh.exe -ExecutionPolicy)
+    Execution Policy: CurrentUser
+    Execution Policy: LocalMachine
 
 
 Manage signed and unsigned scripts
@@ -389,7 +388,7 @@ Get-ExecutionPolicy
 
 Get-Item
 
-Pwsh Console Help
+about_Pwsh
 
 Set-ExecutionPolicy
 

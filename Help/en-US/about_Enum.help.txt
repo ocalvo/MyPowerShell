@@ -1,6 +1,6 @@
 
 
-ABOUT ENUM
+ABOUT_ENUM
 
 
 SHORT DESCRIPTION
@@ -64,6 +64,7 @@ The GetEnumNames() method returns the list of the labels for the
 enumeration.
 
     [MediaTypes].GetEnumNames()
+
     unknown
     music
     mp3
@@ -85,6 +86,7 @@ The GetEnumValues() method returns the list of the values for the
 enumeration.
 
     [MediaTypes].GetEnumValues()
+
     unknown
     music
     mp3
@@ -102,18 +104,26 @@ enumeration.
     avi
     m4v
 
-NOTE: GetEnumNames() and GetEnumValues() seem to return the same results.
-However, internally, PowerShell is changing values into labels. Read the
-list carefully and you'll notice that oga and mogg are mentioned under the
-'Get Names' results, but not under the 'Get Values' similar output for jpg,
-jpeg, and mpg, mpeg.
+  [!NOTE] GetEnumNames() and GetEnumValues() seem to return the same
+  results; a list of named values. However, internally, GetEnumValues()
+  enumerates the values, then maps values into names. Read the list
+  carefully and you'll notice that ogg, oga, and mogg appear in the output
+  of GetEnumNames(), but the output of GetEnumValues() only shows oga. The
+  same thing happens for jpg, jpeg, and mpg, mpeg.
+
+The GetEnumName() method can be used to get a name associated with a
+specific value. If there are multiple names associated with a value, the
+method returns the alphabetically-first name.
 
     [MediaTypes].GetEnumName(15)
     oga
 
+The following example shows how to map each name to its value.
+
     [MediaTypes].GetEnumNames() | ForEach-Object {
       "{0,-10} {1}" -f $_,[int]([MediaTypes]::$_)
     }
+
     unknown    0
     music      10
     mp3        11

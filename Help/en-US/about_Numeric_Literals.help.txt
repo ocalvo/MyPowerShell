@@ -1,6 +1,6 @@
 
 
-ABOUT NUMERIC LITERALS
+ABOUT_NUMERIC_LITERALS
 
 
 There are two kinds of numeric literals: integer and real. Both can have

@@ -1,6 +1,6 @@
 
 
-ABOUT UPDATABLE HELP
+ABOUT_UPDATABLE_HELP
 
 
 Short description

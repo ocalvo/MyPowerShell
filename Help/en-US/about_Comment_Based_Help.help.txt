@@ -1,6 +1,6 @@
 
 
-ABOUT COMMENT-BASED HELP
+ABOUT_COMMENT_BASED_HELP
 
 
 Short description

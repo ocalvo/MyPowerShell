@@ -1,6 +1,6 @@
 
 
-ABOUT IF
+ABOUT_IF
 
 
 SHORT DESCRIPTION
@@ -32,6 +32,8 @@ When you run an If statement, PowerShell evaluates the <test1> conditional
 expression as true or false. If <test1> is true, <statement list 1> runs,
 and PowerShell exits the If statement. If <test1> is false, PowerShell
 evaluates the condition specified by the <test2> conditional statement.
+
+For more information about boolean evaluation, see about_Booleans.
 
 If <test2> is true, <statement list 2> runs, and PowerShell exits the If
 statement. If both <test1> and <test2> evaluate to false, the
@@ -115,6 +117,6 @@ status is not RUNNING, it is started.
 
 SEE ALSO
 
-about_Comparison_Operators
-
-about_Switch
+-   about_Comparison_Operators
+-   about_Switch
+-   about_Booleans

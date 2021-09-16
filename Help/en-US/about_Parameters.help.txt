@@ -1,6 +1,6 @@
 
 
-ABOUT PARAMETERS
+ABOUT_PARAMETERS
 
 
 Short description
@@ -97,8 +97,8 @@ prompts you for a value for the parameter.
 
 Parameter Position
 
-If the Position setting is set to a positive integer, the parameter name is
-not required. This type of parameter is referred to as a positional
+If the Position setting is set to a non-negative integer, the parameter
+name is not required. This type of parameter is referred to as a positional
 parameter, and the number indicates the position in which the parameter
 must appear in relation to other positional parameters. A named parameter
 can be listed in any position after the cmdlet name. If you include the

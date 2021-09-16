@@ -1,6 +1,6 @@
 
 
-ABOUT OPERATOR PRECEDENCE
+ABOUT_OPERATOR_PRECEDENCE
 
 
 SHORT DESCRIPTION
@@ -59,7 +59,7 @@ precedence.
   -split (binary)           about_Split
   -join (binary)            about_Join
   -is -isnot -as            about_Type_Operators
-  -eq -ne -gt -gt -lt -le   about_Comparison_Operators
+  -eq -ne -gt -ge -lt -le   about_Comparison_Operators
   -like -notlike            about_Comparison_Operators
   -match -notmatch          about_Comparison_Operators
   -in -notIn                about_Comparison_Operators

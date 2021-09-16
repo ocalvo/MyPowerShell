@@ -1,6 +1,6 @@
 
 
-ABOUT DO
+ABOUT_DO
 
 
 SHORT DESCRIPTION
@@ -23,8 +23,8 @@ Like a DO-WHILE loop, a DO-UNTIL loop always runs at least once before the
 condition is evaluated. However, the script block runs only while the
 condition is false.
 
-The _Continue_ and _Break_ flow control keywords can be used in a DO-WHILE
-loop or in a DO-UNTIL loop.
+The Continue and Break flow control keywords can be used in a DO-WHILE loop
+or in a DO-UNTIL loop.
 
 Syntax
 
@@ -39,24 +39,25 @@ The following shows the syntax of the DO-UNTIL statement:
 The statement list contains one or more statements that run each time the
 loop is entered or repeated.
 
-The condition portion of the statement resolves to true or false.
+The condition portion of the statement resolves to true or false. For more
+information about how booleans are evaluated, see about_Booleans.
 
 Example
 
 The following example of a Do statement counts the items in an array until
 it reaches an item with a value of 0.
 
-    C:\PS> $x = 1,2,78,0
-    C:\PS> do { $count++; $a++; } while ($x[$a] -ne 0)
-    C:\PS> $count
+    PS> $x = 1,2,78,0
+    PS> do { $count++; $a++; } while ($x[$a] -ne 0)
+    PS> $count
     3
 
 The following example uses the Until keyword. Notice that the not equal to
 operator (-ne) is replaced by the equal to operator (-eq).
 
-    C:\PS> $x = 1,2,78,0
-    C:\PS> do { $count++; $a++; } until ($x[$a] -eq 0)
-    C:\PS> $count
+    PS> $x = 1,2,78,0
+    PS> do { $count++; $a++; } until ($x[$a] -eq 0)
+    PS> $count
     3
 
 The following example writes all the values of an array, skipping any value
@@ -71,14 +72,10 @@ that is less than zero.
 
 SEE ALSO
 
-about_While
-
-about_Operators
-
-about_Assignment_Operators
-
-about_Comparison_Operators
-
-about_Break
-
-about_Continue
+-   about_While
+-   about_Operators
+-   about_Assignment_Operators
+-   about_Comparison_Operators
+-   about_Break
+-   about_Continue
+-   about_Booleans

@@ -1,6 +1,6 @@
 
 
-ABOUT OPERATORS
+ABOUT_OPERATORS
 
 
 Short description
@@ -13,6 +13,7 @@ Long description
 An operator is a language element that you can use in a command or
 expression. PowerShell supports several types of operators to help you
 manipulate values.
+
 
 Arithmetic Operators
 
@@ -31,6 +32,7 @@ bit patterns in values.
 
 For more information, see about_Arithmetic_Operators.
 
+
 Assignment Operators
 
 Use assignment operators (=, +=, -=, *=, /=, %=) to assign, change, or
@@ -38,6 +40,7 @@ append values to variables. You can combine arithmetic operators with
 assignment to assign the result of the arithmetic operation to a variable.
 
 For more information, see about_Assignment_Operators.
+
 
 Comparison Operators
 
@@ -57,6 +60,7 @@ given type.
 
 For more information, see about_Comparison_Operators.
 
+
 Logical Operators
 
 Use logical operators (-and, -or, -xor, -not, !) to connect conditional
@@ -65,6 +69,7 @@ logical -and operator to create an object filter with two different
 conditions.
 
 For more information, see about_Logical_Operators.
+
 
 Redirection Operators
 
@@ -76,6 +81,7 @@ redirect output.
 
 For more information, see about_Redirection
 
+
 Split and Join Operators
 
 The -split and -join operators divide and combine substrings. The -split
@@ -84,6 +90,7 @@ multiple strings into a single string.
 
 For more information, see about_Split and about_Join.
 
+
 Type Operators
 
 Use the type operators (-is, -isnot, -as) to find or change the .NET
@@ -91,11 +98,15 @@ Framework type of an object.
 
 For more information, see about_Type_Operators.
 
+
 Unary Operators
 
-Use unary operators to increment or decrement variables or object
-properties and to set integers to positive or negative numbers. For
-example, to increment the variable $a from 9 to 10, you type $a++.
+Use the unary ++ and -- operators to increment or decrement values and -
+for negation. For example, to increment the variable $a from 9 to 10, you
+type $a++.
+
+For more information, see about_Arithmetic_Operators.
+
 
 Special Operators
 
@@ -137,10 +148,27 @@ results of command in a string expression.
 
 Array subexpression operator @( )
 
-Returns the result of one or more statements as an array. If there is only
-one item, the array has only one member.
+Returns the result of one or more statements as an array. The result is
+always an array of 0 or more objects.
 
-    @(Get-CimInstance win32_logicalDisk)
+    PS> $list = @(Get-Process | Select-Object -First 10; Get-Service | Select-Object -First 10 )
+    PS> $list.GetType()
+
+    IsPublic IsSerial Name                                     BaseType
+    -------- -------- ----                                     --------
+    True     True     Object[]                                 System.Array
+
+    PS> $list.Count
+    20
+    PS> $list = @(Get-Service | Where-Object Status -eq Starting )
+    PS> $list.GetType()
+
+    IsPublic IsSerial Name                                     BaseType
+    -------- -------- ----                                     --------
+    True     True     Object[]                                 System.Array
+
+    PS> $list.Count
+    0
 
 Hash table literal syntax @{}
 

@@ -1,6 +1,6 @@
 
 
-ABOUT WHILE
+ABOUT_WHILE
 
 
 SHORT DESCRIPTION
@@ -27,7 +27,8 @@ When you run a While statement, PowerShell evaluates the <condition>
 section of the statement before entering the <statement list> section. The
 condition portion of the statement resolves to either true or false. As
 long as the condition remains true, PowerShell reruns the <statement list>
-section.
+section. For more information about how booleans are evaluated, see
+about_Booleans.
 
 The <statement list> section of the statement contains one or more commands
 that are run each time the loop is entered or repeated.
@@ -43,10 +44,10 @@ created and initialized to 0.
     }
 
 In this example, the condition ($val is not equal to 3) is true while $val
-= 0, 1, 2. Each time through the loop, $val is incremented by 1 using the
-++ unary increment operator ($val++). The last time through the loop, $val
-= 3. When $val equals 3, the condition statement evaluates to false, and
-the loop exits.
+is equal to 0, 1, and 2. Each time through the loop, $val is incremented by
+1 using the ++ unary increment operator. The last time through the loop
+$val is set to 3, the condition statement evaluates to false, and the loop
+exits.
 
 To conveniently write this command at the PowerShell command prompt, you
 can enter it in the following way:
@@ -59,12 +60,9 @@ from the second command that writes the value of $val to the console.
 
 SEE ALSO
 
-about_Comparison_Operators
-
-about_Do
-
-about_Foreach
-
-about_For
-
-about_Language_Keywords
+-   about_Comparison_Operators
+-   about_Do
+-   about_Foreach
+-   about_For
+-   about_Language_Keywords
+-   about_Booleans
