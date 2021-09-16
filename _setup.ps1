@@ -41,7 +41,7 @@ $_psDCore = ($_psHOME+"PowerShell")
 
 if (!(Test-path $profile))
 {
-  git clone https://github.com/ocalvo/MyPowerShell.git $_psD
+  git clone --recursive https://github.com/ocalvo/MyPowerShell.git $_psD
 }
 
 if ("Core" -eq $PSEdition) {
@@ -59,7 +59,6 @@ if ("Core" -eq $PSEdition) {
 }
 
 git submodule update --init .\vimfiles\
-git submodule update --init .\Scripts\
 git submodule update --init .\Modules\PowerTab\1.1.0
 git submodule update --init .\Modules\PwrRazzle
 git submodule update --init .\Modules\PwrSudo
