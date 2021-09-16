@@ -7,12 +7,6 @@
 [submodule "Modules/IXPTools"]
     path = Modules/IXPTools
     url = https://microsoft.visualstudio.com/IXPTools/_git/IXPTools
-[submodule "Modules/scripts"]
-    path = Modules/scripts
-    url = https://evkoschi@dev.azure.com/evkoschi/scripts/_git/scripts
-[submodule "Scripts"]
-    path = Scripts
-    url = https://github.com/ocalvo/Scripts.git
 [submodule "Modules/PwrRazzle"]
     path = Modules/PwrRazzle
     url = https://github.com/ocalvo/PwrRazzle.git
