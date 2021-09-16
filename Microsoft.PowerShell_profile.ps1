@@ -231,7 +231,7 @@ if (test-path $serverModules -ErrorAction Ignore)
 {
   $_fd = (get-item $serverModules).FullName
   $env:psmodulepath+=(';'+$_fd)
-  get-content ($_fd+"\..\.preload") |% { Import-Module $_ }
+  get-content ($_fd+"\..\.preload") -ErrorAction Ignore |% { Import-Module $_ }
 }
 
 Import-Module DirColors
