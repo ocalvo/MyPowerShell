@@ -226,12 +226,12 @@ Import-Module oh-my-posh
 $ThemeSettings.Options.ConsoleTitle = $false
 Set-Theme MyAgnoster
 
-$serverModules = ($PSScriptRoot+'\..\PSModules')
+$serverModules = ($PSScriptRoot+'\..\PSModules\Modules')
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $_fd = (get-item $serverModules).FullName
   $env:psmodulepath+=(';'+$_fd)
-  dir $_fd -dir |% { Import-Module $_.Name }
+  get-content ($_fd+"\..\.preload") |% { Import-Module $_ }
 }
 
 Import-Module DirColors
