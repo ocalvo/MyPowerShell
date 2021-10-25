@@ -59,7 +59,6 @@ if ("Core" -eq $PSEdition) {
 }
 
 git submodule update --init .\vimfiles\
-git submodule update --init .\Modules\PowerTab\1.1.0
 git submodule update --init .\Modules\PwrRazzle
 git submodule update --init .\Modules\PwrSudo
 git submodule update --init .\Modules\PwrSearch

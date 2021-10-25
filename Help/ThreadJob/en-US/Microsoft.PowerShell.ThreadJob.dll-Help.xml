@@ -381,7 +381,7 @@ NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
 
 Id   Name   PSJobTypeName   State         HasMoreData     Location      Command
 --   ----   -------------   -----         -----------     --------      -------
-7    Job7   ThreadJob       NotStarted    False           PowerShell    Read-Host 'Say hello'; …
+7    Job7   ThreadJob       NotStarted    False           PowerShell    Read-Host 'Say hello'; ...
 
 PS&gt; Say hello: Hello
 WARNING: Warning output

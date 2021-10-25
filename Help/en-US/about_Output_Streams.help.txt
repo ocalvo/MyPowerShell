@@ -1,6 +1,6 @@
 
 
-ABOUT OUTPUT STREAMS
+ABOUT_OUTPUT_STREAMS
 
 
 Short description

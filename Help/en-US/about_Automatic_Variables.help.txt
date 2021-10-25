@@ -1,6 +1,6 @@
 
 
-ABOUT AUTOMATIC VARIABLES
+ABOUT_AUTOMATIC_VARIABLES
 
 
 Short description
@@ -98,6 +98,22 @@ To prevent an error from being added to the $Error array, use the
 ERRORACTION common parameter with a value of IGNORE. For more information,
 see about_CommonParameters.
 
+$ErrorView
+
+Contains the value controlling the view in which errors are displayed. The
+$ErrorView variable accepts strings or ERRORVIEW objects and has a default
+value of ConciseView. If a string other than an accepted value is defined,
+an error is thrown.
+
+Accepted values:
+
+-   CategoryView - Only displays the error category information.
+-   ConciseView - Only displays the error message. If the error is a parser
+    error or comes from a script, a location pointer is included. This view
+    was added in PowerShell 7.0
+-   NormalView - Provides a standard PowerShell error view containing the
+    error message, location, category info and more.
+
 $Event
 
 Contains a PSEVENTARGS object that represents the event that is being
@@ -179,7 +195,7 @@ blocks (which are unnamed functions).
       [!NOTE] You cannot use the $input variable inside both the Process
       block and the End block in the same function or script block.
 
-Since $input is an enumerator, accessing any of it's properties causes
+Since $input is an enumerator, accessing any of its properties causes
 $input to no longer be available. You can store $input in another variable
 to reuse the $input properties.
 
@@ -215,11 +231,11 @@ system. Otherwise contains $FALSE.
 
 $LastExitCode
 
-Contains the exit code of the last Windows-based program that was run.
+Contains the exit code of the last native program that was run.
 
 $Matches
 
-The Matches variable works with the -match and -notmatch operators. When
+The $Matches variable works with the -match and -notmatch operators. When
 you submit scalar input to the -match or -notmatch operator, and either one
 detects a match, they return a Boolean value and populate the $Matches
 automatic variable with a hash table of any string values that were
@@ -234,6 +250,11 @@ The $Matches variable also works in a switch statement with the -Regex
 parameter. It's populated the same way as the -match and -notmatch
 operators. For more information about the switch statement, see
 about_Switch.
+
+  [!NOTE] When $Matches is populated in a session, it retains the matched
+  value until it's overwritten by another match. If -match is used again
+  and no match is found, it doesn't reset $Matches to $null. The previously
+  matched value is kept in $Matches until another match is found.
 
 $MyInvocation
 
@@ -252,15 +273,12 @@ particularly useful for finding the name of the current script.
 
 Beginning in PowerShell 3.0, MyInvocation has the following new properties.
 
-  Property        Description
-  --------------- -----------------------------------------------------
-  PSSCRIPTROOT    Contains the full path to the script that invoked
-                  the current command. The value of this property is
-                  populated only when the caller is a script.
-  PSCOMMANDPATH   Contains the full path and file name of the script
-                  that invoked the current command. The value of this
-                  property is populated only when the caller is a
-                  script.
+-   PSSCRIPTROOT - Contains the full path to the script that invoked the
+    current command. The value of this property is populated only when the
+    caller is a script.
+-   PSCOMMANDPATH - Contains the full path and file name of the script that
+    invoked the current command. The value of this property is populated
+    only when the caller is a script.
 
 Unlike the $PSScriptRoot and $PSCommandPath automatic variables, the
 PSSCRIPTROOT and PSCOMMANDPATH properties of the $MyInvocation automatic
@@ -451,7 +469,7 @@ selected objects in a pipeline.
 
 $PSScriptRoot
 
-Contains the directory from which a script is being run.
+Contains the full path of the executing script's parent directory.
 
 In PowerShell 2.0, this variable is valid only in script modules (.psm1).
 Beginning in PowerShell 3.0, it's valid in all scripts.
@@ -483,28 +501,22 @@ Contains a read-only hash table that displays details about the version of
 PowerShell that is running in the current session. The table includes the
 following items:
 
-  Property                    Description
-  --------------------------- -----------------------------------------------
-  PSVERSION                   The PowerShell version number
-  PSEDITION                   This property has the value of 'Desktop' for
-                              PowerShell 4 and below as well as PowerShell
-                              5.1 on full-featured Windows editions.
-                              This property has the value of 'Core' for
-                              PowerShell 6 and above as well as PowerShell
-                              PowerShell 5.1 on reduced-footprint editions
-                              like Windows Nano Server or Windows IoT.
-  GITCOMMITID                 The commit Id of the source files, in GitHub,
-  OS                          Description of the operating system that
-                              PowerShell is running on.
-  PLATFORM                    Platform that the operating system is running
-                              on. The value on Linux and macOS is UNIX.
-                              See $IsMacOs and $IsLinux.
-  PSCOMPATIBLEVERSIONS        Versions of PowerShell that are compatible
-                              with the current version
-  PSREMOTINGPROTOCOLVERSION   The version of the PowerShell remote
-                              management protocol.
-  SERIALIZATIONVERSION        The version of the serialization method
-  WSMANSTACKVERSION           The version number of the WS-Management stack
+-   PSVERSION - The PowerShell version number
+-   PSEDITION This property has the value of 'Desktop' for PowerShell 4 and
+    below as well as PowerShell 5.1 on full-featured Windows editions. This
+    property has the value of Core for PowerShell 6 and above as well as
+    PowerShell PowerShell 5.1 on reduced-footprint editions like Windows
+    Nano Server or Windows IoT.
+-   GITCOMMITID - The commit Id of the source files, in GitHub,
+-   OS - Description of the operating system that PowerShell is running on.
+-   PLATFORM - Platform that the operating system is running on. The value
+    on Linux and macOS is UNIX. See $IsMacOs and $IsLinux.
+-   PSCOMPATIBLEVERSIONS - Versions of PowerShell that are compatible with
+    the current version
+-   PSREMOTINGPROTOCOLVERSION - The version of the PowerShell remote
+    management protocol.
+-   SERIALIZATIONVERSION - The version of the serialization method
+-   WSMANSTACKVERSION - The version number of the WS-Management stack
 
 $PWD
 
@@ -568,7 +580,7 @@ enumerators isn't considered best practice.
     preferred.
 
 -   Within functions that accept pipeline input, it's best practice to use
-    Parameters with the VALUEFROMPIPELINE or
+    parameters with the VALUEFROMPIPELINE or
     VALUEFROMPIPELINEBYPROPERTYNAME attributes.
 
     For more information, see about_Functions_Advanced_Parameters.
@@ -576,10 +588,10 @@ enumerators isn't considered best practice.
 MoveNext
 
 The MoveNext method advances the enumerator to the next element of the
-collection. MOVENEXT returns TRUE if the enumerator was successfully
-advanced, FALSE if the enumerator has passed the end of the collection.
+collection. MOVENEXT returns True if the enumerator was successfully
+advanced, False if the enumerator has passed the end of the collection.
 
-  [!NOTE] The BOOLEAN value returned my MOVENEXT is sent to the output
+  [!NOTE] The BOOLEAN value returned by MOVENEXT is sent to the output
   stream. You can suppress the output by typecasting it to [void] or piping
   it to Out-Null.
 
@@ -786,7 +798,7 @@ the collection ($Num).
     Num has not changed: two
 
 Using the RESET method resets the current element in the collection. The
-following example loops through the first two elements TWICE because the
+following example loops through the first two elements _twice_ because the
 RESET method is called. After the first two loops, the if statement fails
 and the loop iterates through all three elements normally.
 

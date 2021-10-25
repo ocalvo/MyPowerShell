@@ -1,6 +1,6 @@
 
 
-ABOUT ARRAYS
+ABOUT_ARRAYS
 
 
 Short Description
@@ -63,10 +63,10 @@ integer array named $ia containing four integers (1500, 2230, 3350, and
 
 As a result, the $ia array can contain only integers.
 
-You can create arrays that are cast to any supported type in the Microsoft
-.NET Framework. For example, the objects that Get-Process retrieves to
-represent processes are of the SYSTEM.DIAGNOSTICS.PROCESS type. To create a
-strongly typed array of process objects, enter the following command:
+You can create arrays that are cast to any supported type in the .NET. For
+example, the objects that Get-Process retrieves to represent processes are
+of the SYSTEM.DIAGNOSTICS.PROCESS type. To create a strongly typed array of
+process objects, enter the following command:
 
     [Diagnostics.Process[]]$zz = Get-Process
 
@@ -260,7 +260,7 @@ in the $a array while the array index is less than 4, type:
     $a = 0..9
     $i=0
     while($i -lt 4) {
-      $a[$i];
+      $a[$i]
       $i++
     }
 
@@ -274,8 +274,8 @@ Properties of arrays
 
 Count or Length or LongLength
 
-To determine how many items are in an array, use the Length property or its
-Count alias. Longlength is useful if the array contains more than
+To determine how many items are in an array, use the LENGTH property or its
+COUNT alias. LONGLENGTH is useful if the array contains more than
 2,147,483,647 elements.
 
     $a = 0..9
@@ -299,7 +299,7 @@ multidimensional array like the following example:
 
     "`$a rank: $($a.Rank)"
     "`$a length: $($a.Length)"
-    "`$a length: $($a.Length)"
+    "`$a[2] length: $($a[2].Length)"
     "Process `$a[2][1]: $($a[2][1].ProcessName)"
 
 In this example, you are creating a single-dimensional array that contains
@@ -417,7 +417,7 @@ This method was added in PowerShell v4.
   optional if the scriptblock is the only parameter. Also, there must not
   be a space between the method and the opening parenthesis or brace.
 
-The following example shows how use the foreach method. In this case the
+The following example shows how use the ForEach method. In this case the
 intent is to generate the square value of the elements in the array.
 
     $a = @(0 .. 3)
@@ -475,20 +475,21 @@ the collection.
     TWO
     THREE
 
-Just like the -ArgumentList parameter of ForEach-Object, the arguments
-parameter allows the passing of an array of arguments to a script block
+Just like the -ArgumentList parameter of ForEach-Object, the Arguments
+parameter allows the passing of an array of values to a script block
 configured to accept them.
 
   [!NOTE] Starting in Windows PowerShell 3.0 retrieving properties and
   executing methods for each item in a collection can also be accomplished
-  using "Methods of scalar objects and collections" You can read more about
-  that here about_methods.
+  using "Methods of scalar objects and collections". You can read more
+  about that here about_methods.
 
 Where
 
 Allows to filter or select the elements of the array. The script must
 evaluate to anything different than: zero (0), empty string, $false or
-$null for the element to show after the Where
+$null for the element to show after the Where. For more information about
+boolean evaluation, see about_Booleans.
 
 There is one definition for the Where method.
 
@@ -641,6 +642,9 @@ returned in the second collection.
     Stopped  AppIDSvc           Application Identity
     ...
 
+  [!NOTE] Both foreach and where methods are intrinsic members. For more
+  information about intrinsic members, see about_Instrinsic_Members
+
 
 Get the members of an array
 
@@ -780,6 +784,67 @@ single object when passed through the pipeline or by parameters that
 support arrays of objects.
 
 For more information, see System.Tuple.
+
+
+Member enumeration
+
+You can use member enumeration to get property values from all members of a
+collection. When you use the member access operator (.) with a member name
+on a collection object, such as an array, if the collection object does not
+have a member of that name, the items of the collection are enumerated and
+PowerShell looks for that member on each item. This applies to both
+property and method members.
+
+The following example creates two new files and stores the resulting
+objects in the array variable $files. Since the array object does not have
+the LASTWRITETIME member, the value of LASTWRITETIME is returned for each
+item in the array.
+
+    $files = (New-Item -Type File -Force '/temp/t1.txt'),
+             (New-Item -Force -Type File '/temp/t2.txt')
+    $files.LastWriteTime
+
+    Friday, June 25, 2021 1:21:17 PM
+    Friday, June 25, 2021 1:21:17 PM
+
+Member enumeration can be used to _get_ values from items in a collection,
+but it cannot be used to _set_ values on items in a collection. For
+example:
+
+    $files.LastWriteTime = (Get-Date).AddDays(-1)
+
+    InvalidOperation: The property 'LastWriteTime' cannot be found on this object.
+    Verify that the property exists and can be set.
+
+To set the values you must use a method.
+
+    $files.set_LastWriteTime((Get-Date).AddDays(-1))
+    $files.LastWriteTime
+
+    Thursday, June 24, 2021 1:23:30 PM
+    Thursday, June 24, 2021 1:23:30 PM
+
+The set_LastWriteTime() method is a _hidden_ member of the FILEINFO object.
+The following example shows how to find members that have a _hidden_ set
+method.
+
+    $files | Get-Member | Where-Object Definition -like '*set;*'
+
+       TypeName: System.IO.FileInfo
+
+    Name              MemberType Definition
+    ----              ---------- ----------
+    Attributes        Property   System.IO.FileAttributes Attributes {get;set;}
+    CreationTime      Property   datetime CreationTime {get;set;}
+    CreationTimeUtc   Property   datetime CreationTimeUtc {get;set;}
+    IsReadOnly        Property   bool IsReadOnly {get;set;}
+    LastAccessTime    Property   datetime LastAccessTime {get;set;}
+    LastAccessTimeUtc Property   datetime LastAccessTimeUtc {get;set;}
+    LastWriteTime     Property   datetime LastWriteTime {get;set;}
+    LastWriteTimeUtc  Property   datetime LastWriteTimeUtc {get;set;}
+
+  [!CAUTION] Since the method is executed for each item in the collection,
+  care should be taken when calling methods using member enumeration.
 
 
 See also

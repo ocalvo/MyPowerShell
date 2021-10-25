@@ -1,6 +1,6 @@
 
 
-WSMAN PROVIDER
+ABOUT_WSMAN_PROVIDER
 
 
 Provider name

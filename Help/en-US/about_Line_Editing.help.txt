@@ -1,6 +1,6 @@
 
 
-ABOUT LINE EDITING
+ABOUT_LINE_EDITING
 
 
 Short description

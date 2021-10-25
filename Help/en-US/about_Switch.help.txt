@@ -1,6 +1,6 @@
 
 
-ABOUT SWITCH
+ABOUT_SWITCH
 
 
 Short description

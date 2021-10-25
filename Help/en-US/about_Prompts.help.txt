@@ -1,6 +1,6 @@
 
 
-ABOUT PROMPTS
+ABOUT_PROMPTS
 
 
 Short description

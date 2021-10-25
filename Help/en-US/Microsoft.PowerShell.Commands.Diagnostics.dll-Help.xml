@@ -14,6 +14,7 @@
       <maml:para>You can use the `Get-Counter` parameters to specify one or more computers, list the performance counter sets and the instances they contain, set the sample intervals, and specify the maximum number of samples. Without parameters, `Get-Counter` gets performance counter data for a set of system counters.</maml:para>
       <maml:para>Many counter sets are protected by access control lists (ACL). To see all counter sets, open PowerShell with the Run as administrator option.</maml:para>
       <maml:para>This cmdlet was reintroduced in PowerShell 7.</maml:para>
+      <maml:para>&gt; [!NOTE] &gt; Performance counter names are localized. The examples shown here use the English names of the &gt; performance objects, counters, and instances. The names will be different on a system that uses &gt; another language. Use the `Get-Counter -ListSet` command to see the localized names.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>

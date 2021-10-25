@@ -1,14 +1,14 @@
 
 
-ABOUT ARITHMETIC OPERATORS
+ABOUT_ARITHMETIC_OPERATORS
 
 
-SHORT DESCRIPTION
+Short description
 
 Describes the operators that perform arithmetic in PowerShell.
 
 
-LONG DESCRIPTION
+Long description
 
 Arithmetic operators calculate numeric values. You can use one or more
 arithmetic operators to add, subtract, multiply, and divide values, and to
@@ -55,7 +55,7 @@ PowerShell supports the following arithmetic operators:
 The bitwise operators only work on integer types.
 
 
-OPERATOR PRECEDENCE
+Operator precedence
 
 PowerShell processes arithmetic operators in the following order:
 
@@ -105,7 +105,7 @@ The above code is equivalent to:
     $b[$a] = $tmp
 
 
-DIVISION AND ROUNDING
+Division and rounding
 
 When the quotient of a division operation is an integer, PowerShell rounds
 the value to the nearest integer. When the value is .5, it rounds to the
@@ -133,7 +133,7 @@ You can use the [Math] class to get different rounding behavior.
 For more information, see the Math.Round method.
 
 
-ADDING AND MULTIPLYING NON-NUMERIC TYPES
+Adding and multiplying non numeric types
 
 You can add numbers, strings, arrays, and hash tables. And, you can
 multiply numbers, strings, and arrays. However, you cannot multiply hash
@@ -160,11 +160,11 @@ For example, the following commands create two arrays and then add them:
 
 You can also perform arithmetic operations on objects of different types.
 The operation that PowerShell performs is determined by the Microsoft .NET
-Framework type of the leftmost object in the operation. PowerShell tries to
-convert all the objects in the operation to the .NET Framework type of the
-first object. If it succeeds in converting the objects, it performs the
-operation appropriate to the .NET Framework type of the first object. If it
-fails to convert any of the objects, the operation fails.
+type of the leftmost object in the operation. PowerShell tries to convert
+all the objects in the operation to the .NET type of the first object. If
+it succeeds in converting the objects, it performs the operation
+appropriate to the .NET type of the first object. If it fails to convert
+any of the objects, the operation fails.
 
 The following examples demonstrate the use of the addition and
 multiplication operators; in operations that include different object
@@ -268,10 +268,10 @@ assignment operator to add items to an array:
     2
 
 
-TYPE CONVERSION TO ACCOMMODATE RESULT
+Type conversion to accommodate result
 
-PowerShell automatically selects the .NET Framework numeric type that best
-expresses the result without losing precision. For example:
+PowerShell automatically selects the .NET numeric type that best expresses
+the result without losing precision. For example:
 
     2 + 3.1
 
@@ -302,9 +302,9 @@ Int32:
 
 In this example, Int64 can accommodate both types.
 
-The System.Decimal type is an exception. If either operand has the Decimal
+The System.Decimal type is an exception. If either operand has the DECIMAL
 type, the result will be of the Decimal type. If the result is too large
-for the Decimal type, it will not be cast to Double. Instead, an error
+for the DECIMAL type, it will not be cast to DOUBLE. Instead, an error
 results.
 
   Expression                Result
@@ -314,7 +314,7 @@ results.
                             Decimal.
 
 
-ARITHMETIC OPERATORS AND VARIABLES
+Arithmetic operators and variables
 
 You can also use arithmetic operators with variables. The operators act on
 the values of the variables. The following examples demonstrate the use of
@@ -326,7 +326,7 @@ arithmetic operators with variables:
   $a = "Power"$b = "Shell"$a + $b   PowerShell
 
 
-ARITHMETIC OPERATORS AND COMMANDS
+Arithmetic operators and commands
 
 Typically, you use the arithmetic operators in expressions with numbers,
 strings, and arrays. However, you can also use arithmetic operators with
@@ -337,8 +337,8 @@ expressions with PowerShell commands:
 
     (get-date) + (new-timespan -day 1)
 
-The parenthesis operator forces the evaluation of the get-date cmdlet and
-the evaluation of the new-timespan -day 1 cmdlet expression, in that order.
+The parenthesis operator forces the evaluation of the Get-Date cmdlet and
+the evaluation of the New-TimeSpan -Day 1 cmdlet expression, in that order.
 Both results are then added using the + operator.
 
     Get-Process | Where-Object { ($_.ws * 2) -gt 50mb }
@@ -357,7 +357,7 @@ by 2; and, the result, compared against 50mb to see if it is greater than
 that.
 
 
-Bitwise Operators
+Bitwise operators
 
 PowerShell supports the standard bitwise operators, including bitwise-AND
 (-bAnd), the inclusive and exclusive bitwise-OR operators (-bOr and -bXor),
@@ -466,7 +466,7 @@ right operand determine how many bits of the left operand are shifted.
   -1 -shr 1                -1                        0xFFFFFFFF
 
 
-SEE ALSO
+See also
 
 -   about_arrays
 -   about_assignment_operators

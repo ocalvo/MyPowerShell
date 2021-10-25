@@ -33,7 +33,7 @@
           <maml:name>AsPlainText</maml:name>
           <maml:description>
             <maml:para>When set, `ConvertFrom-SecureString` will convert secure strings to the decrypted plaintext string as output.</maml:para>
-            <maml:para>This paramater was added in PowerShell 7.0.</maml:para>
+            <maml:para>This parameter was added in PowerShell 7.0.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -102,7 +102,7 @@
         <maml:name>AsPlainText</maml:name>
         <maml:description>
           <maml:para>When set, `ConvertFrom-SecureString` will convert secure strings to the decrypted plaintext string as output.</maml:para>
-          <maml:para>This paramater was added in PowerShell 7.0.</maml:para>
+          <maml:para>This parameter was added in PowerShell 7.0.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
         <dev:type>
@@ -493,69 +493,6 @@ $Secure2 = Get-Content Encrypted.txt | ConvertTo-SecureString -Key (1..16)</dev:
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-Acl</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Path</maml:name>
-          <maml:description>
-            <maml:para>Specifies the path to a resource. `Get-Acl` gets the security descriptor of the resource indicated by the path. Wildcards are permitted. If you omit the Path parameter, `Get-Acl` gets the security descriptor of the current directory.</maml:para>
-            <maml:para>The parameter name ("Path") is optional.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String[]</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Audit</maml:name>
-          <maml:description>
-            <maml:para>Gets the audit data for the security descriptor from the system access control list (SACL).</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Exclude</maml:name>
-          <maml:description>
-            <maml:para>Omits the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as `*.txt`. Wildcards are permitted.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String[]</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Filter</maml:name>
-          <maml:description>
-            <maml:para>Specifies a filter in the provider's format or language. The value of this parameter qualifies the Path parameter. The syntax of the filter, including the use of wildcards, depends on the provider. Filters are more efficient than other parameters, because the provider applies them when getting the objects, rather than having PowerShell filter the objects after they are retrieved.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Include</maml:name>
-          <maml:description>
-            <maml:para>Gets only the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as `*.txt`. Wildcards are permitted.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String[]</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Get-Acl</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Audit</maml:name>
           <maml:description>
@@ -681,6 +618,69 @@ $Secure2 = Get-Content Encrypted.txt | ConvertTo-SecureString -Key (1..16)</dev:
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-Acl</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path to a resource. `Get-Acl` gets the security descriptor of the resource indicated by the path. Wildcards are permitted. If you omit the Path parameter, `Get-Acl` gets the security descriptor of the current directory.</maml:para>
+            <maml:para>The parameter name ("Path") is optional.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Audit</maml:name>
+          <maml:description>
+            <maml:para>Gets the audit data for the security descriptor from the system access control list (SACL).</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Exclude</maml:name>
+          <maml:description>
+            <maml:para>Omits the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as `*.txt`. Wildcards are permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>Specifies a filter in the provider's format or language. The value of this parameter qualifies the Path parameter. The syntax of the filter, including the use of wildcards, depends on the provider. Filters are more efficient than other parameters, because the provider applies them when getting the objects, rather than having PowerShell filter the objects after they are retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Include</maml:name>
+          <maml:description>
+            <maml:para>Gets only the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as `*.txt`. Wildcards are permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
@@ -731,19 +731,6 @@ $Secure2 = Get-Content Encrypted.txt | ConvertTo-SecureString -Key (1..16)</dev:
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-        <maml:name>Path</maml:name>
-        <maml:description>
-          <maml:para>Specifies the path to a resource. `Get-Acl` gets the security descriptor of the resource indicated by the path. Wildcards are permitted. If you omit the Path parameter, `Get-Acl` gets the security descriptor of the current directory.</maml:para>
-          <maml:para>The parameter name ("Path") is optional.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
-        <dev:type>
-          <maml:name>System.String[]</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>InputObject</maml:name>
         <maml:description>
@@ -763,6 +750,19 @@ $Secure2 = Get-Content Encrypted.txt | ConvertTo-SecureString -Key (1..16)</dev:
         <maml:description>
           <maml:para>Specifies the path to a resource. Unlike Path , the value of the LiteralPath parameter is used exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell PowerShell not to interpret any characters as escape sequences.</maml:para>
           <maml:para>This parameter is introduced in Windows PowerShell 3.0.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>System.String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>Specifies the path to a resource. `Get-Acl` gets the security descriptor of the resource indicated by the path. Wildcards are permitted. If you omit the Path parameter, `Get-Acl` gets the security descriptor of the current directory.</maml:para>
+          <maml:para>The parameter name ("Path") is optional.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
         <dev:type>
@@ -1387,23 +1387,6 @@ Try the new Break All command</dev:code>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>$c = Get-Credential
-Get-CimInstance Win32_DiskDrive -ComputerName Server01 -Credential $c</dev:code>
-        <dev:remarks>
-          <maml:para>These commands use a credential object that the `Get-Credential` cmdlet returns to authenticate a user on a remote computer so they can use Windows Management Instrumentation (WMI) to manage the computer.</maml:para>
-          <maml:para>The first command gets a credential object and saves it in the `$c` variable. The second command uses the credential object in a `Get-CimInstance` command. This command gets information about the disk drives on the Server01 computer.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
-        <dev:code>Get-CimInstance Win32_BIOS -ComputerName Server01 -Credential (Get-Credential -Credential Domain01\User01)</dev:code>
-        <dev:remarks>
-          <maml:para>This command shows how to include a `Get-Credential` command in a  `Get-CimInstance` command.</maml:para>
-          <maml:para>This command uses the `Get-CimInstance` cmdlet to get information about the BIOS on the Server01 computer. It uses the Credential parameter to authenticate the user, Domain01\User01, and a `Get-Credential` command as the value of the Credential parameter.</maml:para>
-        </dev:remarks>
-      </command:example>
-      <command:example>
-        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
         <dev:code>$c = Get-Credential -credential User01
 $c.Username
 User01</dev:code>
@@ -1413,7 +1396,7 @@ User01</dev:code>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
         <dev:code>$Credential = $host.ui.PromptForCredential("Need credentials", "Please enter your user name and password.", "", "NetBiosUserName")</dev:code>
         <dev:remarks>
           <maml:para>This command uses the PromptForCredential method to prompt the user for their user name and password. The command saves the resulting credentials in the `$Credential` variable.</maml:para>
@@ -1422,7 +1405,7 @@ User01</dev:code>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 6 --------------------------</maml:title>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
         <dev:code>$User = "Domain01\User01"
 $PWord = ConvertTo-SecureString -String "P@sSwOrd" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord</dev:code>
@@ -1433,7 +1416,7 @@ $Credential = New-Object -TypeName System.Management.Automation.PSCredential -Ar
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 7 --------------------------</maml:title>
+        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
         <dev:code>Get-Credential -Message "Credential are required for access to the \\Server1\Scripts file share." -User Server01\PowerUser
 
 PowerShell Credential Request
@@ -1444,7 +1427,7 @@ Password for user Server01\PowerUser:</dev:code>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 8 --------------------------</maml:title>
+        <maml:title>-------------------------- Example 6 --------------------------</maml:title>
         <dev:code>Invoke-Command -ComputerName Server01 {Get-Credential Domain01\User02}
 
 PowerShell Credential Request : PowerShell Credential Request
@@ -3013,6 +2996,122 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>Content</maml:name>
+          <maml:description>
+            <maml:para>This parameter appears in the syntax listing because it is defined in the base class that `Set-AuthenticodeSignature` is derived from. However, support for this parameter is not implemented in `Set-AuthenticodeSignature`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.Byte[]</command:parameterValue>
+          <dev:type>
+            <maml:name>System.Byte[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Allows the cmdlet to append a signature to a read-only file. Even using the Force parameter, the cmdlet cannot override security restrictions.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>HashAlgorithm</maml:name>
+          <maml:description>
+            <maml:para>Specifies the hashing algorithm that Windows uses to compute the digital signature for the file.</maml:para>
+            <maml:para>For PowerShell 3.0, the default is SHA256, which is the Windows default hashing algorithm. For PowerShell 2.0, the default is SHA1. Files that are signed with a different hashing algorithm might not be recognized on other systems. Which algorithms are supported depends on the version of the operating system.</maml:para>
+            <maml:para>For a list of possible values, see HashAlgorithmName Struct (/dotnet/api/system.security.cryptography.hashalgorithmname?view=netframework-4.7.2#properties).</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>SHA256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>IncludeChain</maml:name>
+          <maml:description>
+            <maml:para>Determines which certificates in the certificate trust chain are included in the digital signature. NotRoot is the default.</maml:para>
+            <maml:para>Valid values are:</maml:para>
+            <maml:para>- Signer: Includes only the signer's certificate.</maml:para>
+            <maml:para>- NotRoot: Includes all of the certificates in the certificate chain, except for the root authority.</maml:para>
+            <maml:para>- All: Includes all the certificates in the certificate chain.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>NotRoot</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
+          <maml:name>SourcePathOrExtension</maml:name>
+          <maml:description>
+            <maml:para>This parameter appears in the syntax listing because it is defined in the base class that `Set-AuthenticodeSignature` is derived from. However, support for this parameter is not implemented in `Set-AuthenticodeSignature`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>TimestampServer</maml:name>
+          <maml:description>
+            <maml:para>Uses the specified time stamp server to add a time stamp to the signature. Type the URL of the time stamp server as a string.</maml:para>
+            <maml:para>The time stamp represents the exact time that the certificate was added to the file. A time stamp prevents the script from failing if the certificate expires because users and programs can verify that the certificate was valid at the time of signing.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-AuthenticodeSignature</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Certificate</maml:name>
+          <maml:description>
+            <maml:para>Specifies the certificate that will be used to sign the script or file. Enter a variable that stores an object representing the certificate or an expression that gets the certificate.</maml:para>
+            <maml:para>To find a certificate, use `Get-PfxCertificate` or use the `Get-ChildItem` cmdlet in the Certificate `Cert:` drive. If the certificate is not valid or does not have `code-signing` authority, the command fails.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">System.Security.Cryptography.X509Certificates.X509Certificate2</command:parameterValue>
+          <dev:type>
+            <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>FilePath</maml:name>
           <maml:description>
@@ -3158,19 +3257,6 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
           </dev:type>
           <dev:defaultValue>NotRoot</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>TimestampServer</maml:name>
-          <maml:description>
-            <maml:para>Uses the specified time stamp server to add a time stamp to the signature. Type the URL of the time stamp server as a string.</maml:para>
-            <maml:para>The time stamp represents the exact time that the certificate was added to the file. A time stamp prevents the script from failing if the certificate expires because users and programs can verify that the certificate was valid at the time of signing.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="PSPath">
           <maml:name>LiteralPath</maml:name>
           <maml:description>
@@ -3183,85 +3269,6 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
-          <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
-          <maml:name>WhatIf</maml:name>
-          <maml:description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Set-AuthenticodeSignature</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
-          <maml:name>Certificate</maml:name>
-          <maml:description>
-            <maml:para>Specifies the certificate that will be used to sign the script or file. Enter a variable that stores an object representing the certificate or an expression that gets the certificate.</maml:para>
-            <maml:para>To find a certificate, use `Get-PfxCertificate` or use the `Get-ChildItem` cmdlet in the Certificate `Cert:` drive. If the certificate is not valid or does not have `code-signing` authority, the command fails.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Security.Cryptography.X509Certificates.X509Certificate2</command:parameterValue>
-          <dev:type>
-            <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Allows the cmdlet to append a signature to a read-only file. Even using the Force parameter, the cmdlet cannot override security restrictions.</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>HashAlgorithm</maml:name>
-          <maml:description>
-            <maml:para>Specifies the hashing algorithm that Windows uses to compute the digital signature for the file.</maml:para>
-            <maml:para>For PowerShell 3.0, the default is SHA256, which is the Windows default hashing algorithm. For PowerShell 2.0, the default is SHA1. Files that are signed with a different hashing algorithm might not be recognized on other systems. Which algorithms are supported depends on the version of the operating system.</maml:para>
-            <maml:para>For a list of possible values, see HashAlgorithmName Struct (/dotnet/api/system.security.cryptography.hashalgorithmname?view=netframework-4.7.2#properties).</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>SHA256</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>IncludeChain</maml:name>
-          <maml:description>
-            <maml:para>Determines which certificates in the certificate trust chain are included in the digital signature. NotRoot is the default.</maml:para>
-            <maml:para>Valid values are:</maml:para>
-            <maml:para>- Signer: Includes only the signer's certificate.</maml:para>
-            <maml:para>- NotRoot: Includes all of the certificates in the certificate chain, except for the root authority.</maml:para>
-            <maml:para>- All: Includes all the certificates in the certificate chain.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>NotRoot</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>TimestampServer</maml:name>
           <maml:description>
@@ -3271,30 +3278,6 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
             <maml:name>System.String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
-          <maml:name>SourcePathOrExtension</maml:name>
-          <maml:description>
-            <maml:para>Path to the file or file type of the content for which the digital signature is added. This parameter is used with Content where file content is passed as a byte array.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String[]</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Content</maml:name>
-          <maml:description>
-            <maml:para>Contents of a file as a byte array for which the digital signature is added. This parameter must be used with SourcePathOrExtension parameter. The contents of the file must be in Unicode (UTF-16LE) format.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Byte[]</command:parameterValue>
-          <dev:type>
-            <maml:name>System.Byte[]</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3333,6 +3316,18 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
         <command:parameterValue required="true" variableLength="false">System.Security.Cryptography.X509Certificates.X509Certificate2</command:parameterValue>
         <dev:type>
           <maml:name>System.Security.Cryptography.X509Certificates.X509Certificate2</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>Content</maml:name>
+        <maml:description>
+          <maml:para>This parameter appears in the syntax listing because it is defined in the base class that `Set-AuthenticodeSignature` is derived from. However, support for this parameter is not implemented in `Set-AuthenticodeSignature`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">System.Byte[]</command:parameterValue>
+        <dev:type>
+          <maml:name>System.Byte[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3391,19 +3386,6 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
         </dev:type>
         <dev:defaultValue>NotRoot</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>TimestampServer</maml:name>
-        <maml:description>
-          <maml:para>Uses the specified time stamp server to add a time stamp to the signature. Type the URL of the time stamp server as a string.</maml:para>
-          <maml:para>The time stamp represents the exact time that the certificate was added to the file. A time stamp prevents the script from failing if the certificate expires because users and programs can verify that the certificate was valid at the time of signing.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-        <dev:type>
-          <maml:name>System.String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="PSPath">
         <maml:name>LiteralPath</maml:name>
         <maml:description>
@@ -3419,7 +3401,7 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
         <maml:name>SourcePathOrExtension</maml:name>
         <maml:description>
-          <maml:para>Path to the file or file type of the content for which the digital signature is added. This parameter is used with Content where file content is passed as a byte array.</maml:para>
+          <maml:para>This parameter appears in the syntax listing because it is defined in the base class that `Set-AuthenticodeSignature` is derived from. However, support for this parameter is not implemented in `Set-AuthenticodeSignature`.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
         <dev:type>
@@ -3428,14 +3410,15 @@ Set-Acl -Path "C:\Pets\Dog.txt" -AclObject $NewAcl</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-        <maml:name>Content</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>TimestampServer</maml:name>
         <maml:description>
-          <maml:para>Contents of a file as a byte array for which the digital signature is added. This parameter must be used with SourcePathOrExtension parameter. The contents of the file must be in Unicode (UTF-16LE) format.</maml:para>
+          <maml:para>Uses the specified time stamp server to add a time stamp to the signature. Type the URL of the time stamp server as a string.</maml:para>
+          <maml:para>The time stamp represents the exact time that the certificate was added to the file. A time stamp prevents the script from failing if the certificate expires because users and programs can verify that the certificate was valid at the time of signing.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Byte[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
-          <maml:name>System.Byte[]</maml:name>
+          <maml:name>System.String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3574,7 +3557,7 @@ Set-AuthenticodeSignature -FilePath ServerProps.ps1 -Certificate $cert</dev:code
           <maml:description>
             <maml:para>Specifies the execution policy. If there are no Group Policies and each scope's execution policy is set to Undefined , then Restricted becomes the effective policy for all users.</maml:para>
             <maml:para>The acceptable execution policy values are as follows:</maml:para>
-            <maml:para>- AllSigned . Requires that all scripts and configuration files are signed by a trusted   publisher, including scripts written on the local computer. - Bypass . Nothing is blocked and there are no warnings or prompts. - Default . Sets the default execution policy. Restricted for Windows clients or RemoteSigned for Windows servers. - RemoteSigned . Requires that all scripts and configuration files downloaded from the Internet   are signed by a trusted publisher. The default execution policy for Windows server computers. - Restricted . Doesn't load configuration files or run scripts. The default execution policy   Windows client computers. - Undefined . No execution policy is set for the scope. Removes an assigned execution policy from   a scope that is not set by a Group Policy. If the execution policy in all scopes is Undefined ,   the effective execution policy is Restricted . - Unrestricted . Beginning in PowerShell 6.0, this is the default execution policy for   non-Windows computers and can't be changed. Loads all configuration files and runs all scripts. If   you run an unsigned script that was downloaded from the internet, you're prompted for permission   before it runs.</maml:para>
+            <maml:para>- AllSigned . Requires that all scripts and configuration files are signed by a trusted   publisher, including scripts written on the local computer. - Bypass . Nothing is blocked and there are no warnings or prompts. - Default . Sets the default execution policy. Restricted for Windows clients or RemoteSigned for Windows servers. - RemoteSigned . Requires that all scripts and configuration files downloaded from the Internet   are signed by a trusted publisher. The default execution policy for Windows server computers. - Restricted . Doesn't load configuration files or run scripts. The default execution policy for   Windows client computers. - Undefined . No execution policy is set for the scope. Removes an assigned execution policy from   a scope that is not set by a Group Policy. If the execution policy in all scopes is Undefined ,   the effective execution policy is Restricted . - Unrestricted . Beginning in PowerShell 6.0, this is the default execution policy for   non-Windows computers and can't be changed. Loads all configuration files and runs all scripts. If   you run an unsigned script that was downloaded from the internet, you're prompted for permission   before it runs.</maml:para>
           </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">AllSigned</command:parameterValue>
@@ -3616,10 +3599,10 @@ Set-AuthenticodeSignature -FilePath ServerProps.ps1 -Certificate $cert</dev:code
           </dev:type>
           <dev:defaultValue>LocalMachine</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Suppresses all the confirmation prompts. Use caution with this parameter to avoid unexpected results.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -3627,10 +3610,10 @@ Set-AuthenticodeSignature -FilePath ServerProps.ps1 -Certificate $cert</dev:code
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Force</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
           <maml:description>
-            <maml:para>Suppresses all the confirmation prompts. Use caution with this parameter to avoid unexpected results.</maml:para>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -3652,24 +3635,12 @@ Set-AuthenticodeSignature -FilePath ServerProps.ps1 -Certificate $cert</dev:code
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-        <maml:name>Confirm</maml:name>
-        <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>ExecutionPolicy</maml:name>
         <maml:description>
           <maml:para>Specifies the execution policy. If there are no Group Policies and each scope's execution policy is set to Undefined , then Restricted becomes the effective policy for all users.</maml:para>
           <maml:para>The acceptable execution policy values are as follows:</maml:para>
-          <maml:para>- AllSigned . Requires that all scripts and configuration files are signed by a trusted   publisher, including scripts written on the local computer. - Bypass . Nothing is blocked and there are no warnings or prompts. - Default . Sets the default execution policy. Restricted for Windows clients or RemoteSigned for Windows servers. - RemoteSigned . Requires that all scripts and configuration files downloaded from the Internet   are signed by a trusted publisher. The default execution policy for Windows server computers. - Restricted . Doesn't load configuration files or run scripts. The default execution policy   Windows client computers. - Undefined . No execution policy is set for the scope. Removes an assigned execution policy from   a scope that is not set by a Group Policy. If the execution policy in all scopes is Undefined ,   the effective execution policy is Restricted . - Unrestricted . Beginning in PowerShell 6.0, this is the default execution policy for   non-Windows computers and can't be changed. Loads all configuration files and runs all scripts. If   you run an unsigned script that was downloaded from the internet, you're prompted for permission   before it runs.</maml:para>
+          <maml:para>- AllSigned . Requires that all scripts and configuration files are signed by a trusted   publisher, including scripts written on the local computer. - Bypass . Nothing is blocked and there are no warnings or prompts. - Default . Sets the default execution policy. Restricted for Windows clients or RemoteSigned for Windows servers. - RemoteSigned . Requires that all scripts and configuration files downloaded from the Internet   are signed by a trusted publisher. The default execution policy for Windows server computers. - Restricted . Doesn't load configuration files or run scripts. The default execution policy for   Windows client computers. - Undefined . No execution policy is set for the scope. Removes an assigned execution policy from   a scope that is not set by a Group Policy. If the execution policy in all scopes is Undefined ,   the effective execution policy is Restricted . - Unrestricted . Beginning in PowerShell 6.0, this is the default execution policy for   non-Windows computers and can't be changed. Loads all configuration files and runs all scripts. If   you run an unsigned script that was downloaded from the internet, you're prompted for permission   before it runs.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Microsoft.PowerShell.ExecutionPolicy</command:parameterValue>
         <dev:type>
@@ -3706,6 +3677,18 @@ Set-AuthenticodeSignature -FilePath ServerProps.ps1 -Certificate $cert</dev:code
           <maml:uri />
         </dev:type>
         <dev:defaultValue>LocalMachine</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
@@ -3964,17 +3947,6 @@ Task 1:</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
-          <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Detailed</maml:name>
           <maml:description>
@@ -3997,6 +3969,17 @@ Task 1:</dev:code>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
           <maml:name>WhatIf</maml:name>
@@ -4023,18 +4006,6 @@ Task 1:</dev:code>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-        <maml:name>Confirm</maml:name>
-        <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Detailed</maml:name>
@@ -4071,6 +4042,18 @@ Task 1:</dev:code>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>

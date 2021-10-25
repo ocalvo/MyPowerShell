@@ -1,6 +1,6 @@
 
 
-ABOUT SPLATTING
+ABOUT_SPLATTING
 
 
 Short description

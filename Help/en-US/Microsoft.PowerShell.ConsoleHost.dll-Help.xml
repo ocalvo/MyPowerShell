@@ -62,10 +62,10 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>UseMinimalHeader</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="NoOverwrite">
+          <maml:name>NoClobber</maml:name>
           <maml:description>
-            <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
+            <maml:para>Indicates that this cmdlet will not overwrite of an existing file. By default, if a transcript file exists in the specified path, `Start-Transcript` overwrites the file without warning.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -73,10 +73,10 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="NoOverwrite">
-          <maml:name>NoClobber</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UseMinimalHeader</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet will not overwrite of an existing file. By default, if a transcript file exists in the specified path, `Start-Transcript` overwrites the file without warning.</maml:para>
+            <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -154,10 +154,10 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>UseMinimalHeader</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="NoOverwrite">
+          <maml:name>NoClobber</maml:name>
           <maml:description>
-            <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
+            <maml:para>Indicates that this cmdlet will not overwrite of an existing file. By default, if a transcript file exists in the specified path, `Start-Transcript` overwrites the file without warning.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -165,10 +165,10 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="NoOverwrite">
-          <maml:name>NoClobber</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UseMinimalHeader</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet will not overwrite of an existing file. By default, if a transcript file exists in the specified path, `Start-Transcript` overwrites the file without warning.</maml:para>
+            <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -248,10 +248,10 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>UseMinimalHeader</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="NoOverwrite">
+          <maml:name>NoClobber</maml:name>
           <maml:description>
-            <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
+            <maml:para>Indicates that this cmdlet will not overwrite of an existing file. By default, if a transcript file exists in the specified path, `Start-Transcript` overwrites the file without warning.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -259,10 +259,10 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="NoOverwrite">
-          <maml:name>NoClobber</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>UseMinimalHeader</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet will not overwrite of an existing file. By default, if a transcript file exists in the specified path, `Start-Transcript` overwrites the file without warning.</maml:para>
+            <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -331,18 +331,6 @@
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>UseMinimalHeader</maml:name>
-        <maml:description>
-          <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="PSPath, LP">
         <maml:name>LiteralPath</maml:name>
         <maml:description>
@@ -392,6 +380,18 @@
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>UseMinimalHeader</maml:name>
+        <maml:description>
+          <maml:para>Prepend a short header to the transcript, instead of the detailed header included by default. This parameter was added in PowerShell 6.2.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
         <maml:name>Confirm</maml:name>

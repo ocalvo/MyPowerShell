@@ -1,6 +1,6 @@
 
 
-ABOUT SCRIPT BLOCKS
+ABOUT_SCRIPT_BLOCKS
 
 
 Short description

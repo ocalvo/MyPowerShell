@@ -1,6 +1,6 @@
 
 
-ABOUT FORMAT.PS1XML
+ABOUT_FORMAT.PS1XML
 
 
 Short description

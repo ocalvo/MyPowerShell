@@ -1,6 +1,6 @@
 
 
-ABOUT GROUP POLICY SETTINGS
+ABOUT_GROUP_POLICY_SETTINGS
 
 
 Short description
@@ -237,8 +237,6 @@ about_Group_Policies about_GroupPolicy
 
 
 See also
-
-PowerShell Core Policy RFC
 
 about_Execution_Policies
 

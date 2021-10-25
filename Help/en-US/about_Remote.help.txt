@@ -1,6 +1,6 @@
 
 
-ABOUT REMOTE
+ABOUT_REMOTE
 
 
 SHORT DESCRIPTION
@@ -197,7 +197,7 @@ FOR MORE INFORMATION
 
 -   For information about how remoting works, how to manage remote data,
     special configurations, security issues, and other frequently asked
-    questions, see about_Remote_FAQ.
+    questions, see PowerShell Remoting FAQ.
 
 -   For help in resolving remoting errors, see
     about_Remote_Troubleshooting.
@@ -221,7 +221,7 @@ about_Remote_Disconnected_Sessions
 
 about_Remote_Requirements
 
-about_Remote_FAQ
+PowerShell Remoting FAQ
 
 about_Remote_TroubleShooting
 

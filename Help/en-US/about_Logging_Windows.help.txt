@@ -1,6 +1,6 @@
 
 
-ABOUT LOGGING WINDOWS
+ABOUT_LOGGING_WINDOWS
 
 
 Short description

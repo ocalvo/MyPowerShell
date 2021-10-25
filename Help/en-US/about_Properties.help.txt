@@ -1,6 +1,6 @@
 
 
-ABOUT PROPERTIES
+ABOUT_PROPERTIES
 
 
 Short description
