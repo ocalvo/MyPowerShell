@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 param($crashFolder = 'c:\CrashDumps')
 
 $regKey = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
