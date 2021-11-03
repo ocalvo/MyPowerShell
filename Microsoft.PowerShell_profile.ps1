@@ -123,7 +123,7 @@ if (test-path $localHome)
 $vimRC = ($env:USERPROFILE + '\_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h\Documents\WindowsPowerShell\profile.vim"
+  set-content -path $vimRC "source <sfile>:p:h\\Documents\\WindowsPowerShell\\profile.vim"
 }
 
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
