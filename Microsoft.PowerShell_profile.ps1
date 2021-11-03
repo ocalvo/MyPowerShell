@@ -36,6 +36,12 @@ function global:Install-Scoop
 #  }
 #}
 
+$pythonPath = "C:\Python310"
+if (test-path $pythonPath)
+{
+  $env:path =  $pythonPath + ";" + $env:path
+}
+
 $symbolsPath = "c:\dd\symbols"
 if (test-path $symbolsPath)
 {
