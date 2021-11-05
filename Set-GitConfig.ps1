@@ -1,13 +1,15 @@
+param([switch]$vim)
+
 function Set-GitGlobals()
 {
   git config --global user.name "Oscar Calvo"
-  if ($env:USERNAME -eq "Oscar")
+  if ($env:USERNAME -eq "ocalvo")
   {
-    git config --global user.email "oscar@calvonet.com"
+    git config --global user.email "ocalvo@microsoft.com"
   }
   else
   {
-    git config --global user.email "ocalvo@microsoft.com"
+    git config --global user.email "oscar@calvonet.com"
   }
   git config --global log.date local
   git config --global core.autocrlf true
@@ -23,6 +25,11 @@ function Set-GitGlobals()
 
     git config --global difftool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
     git config --global mergetool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
+
+    if ($vim.IsPresent)
+    {
+      git config --global diff.tool vimdiff
+    }
   }
 }
 
