@@ -11,8 +11,11 @@ function Set-GitGlobals()
   {
     git config --global user.email "oscar@calvonet.com"
   }
+
   git config --global log.date local
   git config --global core.autocrlf true
+  git config --global submodule.recurse true
+
   if ((Get-Command bcomp) -ne $null)
   {
     git config --global diff.tool bc
