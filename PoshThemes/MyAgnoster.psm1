@@ -4,6 +4,9 @@
 
 function Compress-Path($Path, $Length=20)
 {
+  if (Test-IsUnix) {
+    return $Path
+  } else {
     $newType = @'
 [DllImport("shlwapi.dll", CharSet = CharSet.Auto, SetLastError = true)]
 public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, string pszSrc, Int32 cchMax, Int32 dwFlags);
@@ -18,6 +21,7 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
     {
         Throw "Unable to compact path"
     }
+  }
 }
 
 function global:Get-LocationForPrompt

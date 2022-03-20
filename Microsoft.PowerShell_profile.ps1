@@ -169,6 +169,12 @@ set-alias up _up -scope global
 
 function Compress-Path($Path, $Length=20)
 {
+  if (Test-IsUnix)
+  {
+    return $Path
+  }
+  else
+  {
     $newType = @'
 [DllImport("shlwapi.dll", CharSet = CharSet.Auto, SetLastError = true)]
 public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, string pszSrc, Int32 cchMax, Int32 dwFlags);
@@ -183,6 +189,7 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
     {
         Throw "Unable to compact path"
     }
+  }
 }
 
 function FirstTime-Setup()
@@ -286,9 +293,12 @@ Import-Module PwrSudo
 Import-Module PwrSearch
 Import-Module PwrRazzle
 
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
+if (!(Test-IsUnix))
+{
+  # Chocolatey profile
+  $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+  if (Test-Path($ChocolateyProfile)) {
+    Import-Module "$ChocolateyProfile"
+  }
 }
 
