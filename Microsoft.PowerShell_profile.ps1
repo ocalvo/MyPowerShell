@@ -2,106 +2,113 @@
 # Oscar Calvo's PowerShell Profile (oscar@calvonet.com)
 #
 
-if ((get-command sudo -erroraction ignore) -eq $null)
+function global:Test-IsUnix
 {
-  Enable-Execute-Elevated
-  $env:path += ";~\scoop\apps"
+  return (($PSVersionTable.PSEdition -eq 'Core') -and ($PSVersionTable.Platform -eq 'Unix'))
 }
 
-$global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
+if (!(Test-IsUnix)) {
+  if ((get-command sudo -erroraction ignore) -eq $null)
+  {
+    Enable-Execute-Elevated
+    $env:path += ";~\scoop\apps"
+  }
 
-function global:Install-Chocolatey
-{
-   sudo {
-     Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'));
-     $env:path += ";C:\ProgramData\chocolatey\bin"
-     choco feature enable -n allowGlobalConfirmation
-     choco install cascadiafonts
-     choco install pwsh --pre
-     cp $PSScriptRoot\WinTerminal\settings.json $terminalSettings
-   }
-   $env:path += ";C:\ProgramData\chocolatey\bin"
-}
+  $global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
 
-function global:Install-Scoop
-{
-  iwr -useb get.scoop.sh | iex
-}
-
-#$psTab = Get-Module PowerTab -ListAvailable
-#if ($null -eq $psTab)
-#{
-#  sudo {
-#    Find-Module PowerTab | Install-Module -Force
-#  }
-#}
-
-$pythonPath = "C:\Python310"
-if (test-path $pythonPath)
-{
-  $env:path =  $pythonPath + ";" + $env:path
-}
-
-$symbolsPath = "c:\dd\symbols"
-if (test-path $symbolsPath)
-{
-  $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
-}
-$env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
-
-if ((get-command choco -erroraction ignore) -eq $null)
-{
-  Install-Chocolatey
-}
-
-if ((get-command git -erroraction ignore) -eq $null)
-{
-  sudo choco install git -y
-  $env:path += ";C:\Program Files\Git\cmd"
-  ."$PSScriptRoot\Set-GitConfig.ps1"
-}
-
-if ((get-command vim -erroraction ignore) -eq $null)
-{
-  sudo choco install vim -y
-}
-
-if (!(test-path ~\Documents\PowerShell))
-{
-  sudo {
-    $workOneDriveDir = "~\OneDrive - Microsoft"
-    $oneDriveDir = "~\OneDrive"
-    $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
-    if ($useWorkOneDrive)
-    {
-      if (test-path ~\OneDrive) { mv ~\OneDrive ~\OneDrive.bak }
-      new-item ~\OneDrive -ItemType SymbolicLink -Target $workOneDriveDir
-      $oneDriveDir = $workOneDriveDir
+  function global:Install-Chocolatey
+  {
+    if (Test-IsUnix) { return; }
+    sudo {
+      Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'));
+      $env:path += ";C:\ProgramData\chocolatey\bin"
+      choco feature enable -n allowGlobalConfirmation
+      choco install cascadiafonts
+      choco install pwsh --pre
+      cp $PSScriptRoot\WinTerminal\settings.json $terminalSettings
     }
-    if (test-path ~\Documents) { mv ~\Documents ~\Documents.bak }
-    new-item ~\Documents -ItemType SymbolicLink -Target $oneDriveDir\Documents
+    $env:path += ";C:\ProgramData\chocolatey\bin"
+  }
+
+  function global:Install-Scoop
+  {
+    iwr -useb get.scoop.sh | iex
+  }
+
+  $pythonPath = "C:\Python310"
+  if (test-path $pythonPath)
+  {
+    $env:path =  $pythonPath + ";" + $env:path
+  }
+
+  $symbolsPath = "c:\dd\symbols"
+  if (test-path $symbolsPath)
+  {
+    $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
+  }
+
+  $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\" 
+
+  if ((get-command choco -erroraction ignore) -eq $null)
+  {
+    Install-Chocolatey
+  }
+
+  if ((get-command git -erroraction ignore) -eq $null)
+  {
+    sudo choco install git -y
+    $env:path += ";C:\Program Files\Git\cmd"
+    ."$PSScriptRoot\Set-GitConfig.ps1"
+  }
+
+  if ((get-command vim -erroraction ignore) -eq $null)
+  {
+    sudo choco install vim -y
+  }
+
+  if (!(test-path ~\Documents\PowerShell))
+  {
+    sudo {
+      $workOneDriveDir = "~\OneDrive - Microsoft"
+      $oneDriveDir = "~\OneDrive"
+      $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
+      if ($useWorkOneDrive)
+      {
+        if (test-path ~\OneDrive) { mv ~\OneDrive ~\OneDrive.bak }
+        new-item ~\OneDrive -ItemType SymbolicLink -Target $workOneDriveDir
+        $oneDriveDir = $workOneDriveDir
+      }
+      if (test-path ~\Documents) { mv ~\Documents ~\Documents.bak }
+      new-item ~\Documents -ItemType SymbolicLink -Target $oneDriveDir\Documents
+    }
+  }
+
+  ########################################################
+  # Helper Functions
+  function ff ([string] $glob) { get-childitem -recurse -filter $glob }
+  function Sleep-Computer { RunDll.exe PowrProf.dll,SetSuspendState }
+  function global:Lock-WorkStation {
+    $signature = "[DllImport(`"user32.dll`", SetLastError = true)] public static extern bool LockWorkStation();"
+
+    $LockWorkStation = Add-Type -memberDefinition $signature -name "Win32LockWorkStation" -namespace Win32Functions -passthru
+    $LockWorkStation::LockWorkStation() | Out-Null
   }
 }
 
-########################################################
-# Helper Functions
-function ff ([string] $glob) { get-childitem -recurse -filter $glob }
-function Sleep-Computer { RunDll.exe PowrProf.dll,SetSuspendState }
-function global:Lock-WorkStation {
-  $signature = "[DllImport(`"user32.dll`", SetLastError = true)] public static extern bool LockWorkStation();"
-
-  $LockWorkStation = Add-Type -memberDefinition $signature -name "Win32LockWorkStation" -namespace Win32Functions -passthru
-  $LockWorkStation::LockWorkStation() | Out-Null
-}
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
 function .. { Set-Location ..  }
 
 function test-isadmin
 {
+  $isUnix = Test-IsUnix
+  if ($isUnix) {
+    return ((id -u) -eq 0)
+  } else {
     $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
     $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
-    $wp.IsInRole("Administrators") -eq 1
+    return $wp.IsInRole("Administrators") -eq 1
+  }
 }
 $isAdmin = (test-isadmin)
 $global:myhome = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]'MyDocuments')
@@ -120,10 +127,11 @@ if (test-path $localHome)
   $myHome = $localHome
 }
 
-$vimRC = ($env:USERPROFILE + '\_vimrc')
+$myHome = (get-item ~/.).FullName
+$vimRC = ($myHome + '/_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h\\Documents\\WindowsPowerShell\\profile.vim"
+  set-content -path $vimRC "source <sfile>:p:h/OneDrive/Documents/PowerShell/profile.vim"
 }
 
 set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
@@ -223,6 +231,13 @@ function global:Get-MyWindowTitle
     }
 
     return $title
+}
+
+if (!$env:PSModulePath.Contains("OneDrive"))
+{
+  $separator = ";"
+  if (Test-IsUnix) { $separator = ":" }
+  $env:PSModulePath += $separator+$myHome+"/OneDrive/Documents/PowerShell/Modules"
 }
 
 Import-Module posh-git
