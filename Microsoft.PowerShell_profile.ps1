@@ -8,6 +8,7 @@ function global:Test-IsUnix
 }
 
 if (!(Test-IsUnix)) {
+
   if ((get-command sudo -erroraction ignore) -eq $null)
   {
     Enable-Execute-Elevated
@@ -92,6 +93,15 @@ if (!(Test-IsUnix)) {
 
     $LockWorkStation = Add-Type -memberDefinition $signature -name "Win32LockWorkStation" -namespace Win32Functions -passthru
     $LockWorkStation::LockWorkStation() | Out-Null
+  }
+} else {
+  if (Test-Path /etc/lsb-release) {
+    $Host.UI.RawUI.WindowTitle = "Ubuntu1"
+    $distroInfo = (Get-Content /etc/lsb-release | where {$_.StartsWith("DISTRIB_ID")} )
+    if ($null -ne $distroInfo -and $distroInfo.Contains('=')) {
+      $distroName = $distroInfo.Split('=')[1]
+      $Host.UI.RawUI.WindowTitle = $distroName
+    }
   }
 }
 
