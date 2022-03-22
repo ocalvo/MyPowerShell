@@ -73,12 +73,10 @@ function Write-Theme {
 
     $user = $sl.CurrentUser
     $computer = $sl.CurrentHostname
+    $atSymbol = "@"
+    if (Test-IsUnix) { $atSymbol = "🐧" }
     if (Test-NotDefaultUser($user)) {
-        $prompt += Write-Prompt -Object "$user@$computer" -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
-    }
-
-    if (Test-IsUnix) {
-      $prompt += Write-Prompt -Object "🐧" -ForegroundColor $sl.Colors.VirtualEnvForegroundColor -BackgroundColor $sl.Colors.VirtualEnvBackgroundColor
+        $prompt += Write-Prompt -Object "$user$atSymbol$computer" -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
     }
 
     if (Test-VirtualEnv) {

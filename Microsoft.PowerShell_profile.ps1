@@ -254,7 +254,8 @@ if (!$env:PSModulePath.Contains("OneDrive"))
 {
   $separator = ";"
   if (Test-IsUnix) { $separator = ":" }
-  $env:PSModulePath += $separator+$myHome+"/OneDrive/Documents/PowerShell/Modules"
+  $_modulePath = ((get-item $profile).Directory.FullName+"/Modules")
+  $env:PSModulePath += $separator+$_modulePath
 }
 
 Import-Module posh-git
@@ -310,5 +311,7 @@ if (!(Test-IsUnix))
   if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
   }
+} else {
+  remove-alias sudo
 }
 
