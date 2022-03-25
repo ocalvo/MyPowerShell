@@ -89,10 +89,11 @@ if (!(Test-IsUnix)) {
 if (!(test-path ~/Documents/PowerShell))
 {
   $workOneDriveDir = "~/OneDrive - Microsoft"
-  $oneDriveDir = "~/OneDrive"
+  $oneDriveDir = (get-item "~/OneDrive").FullName
   $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
   if ($useWorkOneDrive)
   {
+    $workOneDriveDir = (get-item $workOneDriveDir).FullName
     new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
     $oneDriveDir = $workOneDriveDir
   }
@@ -283,7 +284,4 @@ if (!(Test-IsUnix))
   if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
   }
-} else {
-  remove-alias sudo
 }
-
