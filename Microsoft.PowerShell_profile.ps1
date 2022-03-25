@@ -48,7 +48,7 @@ if (!(Test-IsUnix)) {
     $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
   }
 
-  $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\" 
+  $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
 
   if ((get-command choco -erroraction ignore) -eq $null)
   {
@@ -59,29 +59,11 @@ if (!(Test-IsUnix)) {
   {
     sudo choco install git -y
     $env:path += ";C:\Program Files\Git\cmd"
-    ."$PSScriptRoot\Set-GitConfig.ps1"
   }
 
   if ((get-command vim -erroraction ignore) -eq $null)
   {
     sudo choco install vim -y
-  }
-
-  if (!(test-path ~\Documents\PowerShell))
-  {
-    sudo {
-      $workOneDriveDir = "~\OneDrive - Microsoft"
-      $oneDriveDir = "~\OneDrive"
-      $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
-      if ($useWorkOneDrive)
-      {
-        if (test-path ~\OneDrive) { mv ~\OneDrive ~\OneDrive.bak }
-        new-item ~\OneDrive -ItemType SymbolicLink -Target $workOneDriveDir
-        $oneDriveDir = $workOneDriveDir
-      }
-      if (test-path ~\Documents) { mv ~\Documents ~\Documents.bak }
-      new-item ~\Documents -ItemType SymbolicLink -Target $oneDriveDir\Documents
-    }
   }
 
   ########################################################
@@ -96,13 +78,25 @@ if (!(Test-IsUnix)) {
   }
 } else {
   if (Test-Path /etc/lsb-release) {
-    $Host.UI.RawUI.WindowTitle = "Ubuntu1"
     $distroInfo = (Get-Content /etc/lsb-release | where {$_.StartsWith("DISTRIB_ID")} )
     if ($null -ne $distroInfo -and $distroInfo.Contains('=')) {
       $distroName = $distroInfo.Split('=')[1]
       $Host.UI.RawUI.WindowTitle = $distroName
     }
   }
+}
+
+if (!(test-path ~/Documents/PowerShell))
+{
+  $workOneDriveDir = "~/OneDrive - Microsoft"
+  $oneDriveDir = "~/OneDrive"
+  $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
+  if ($useWorkOneDrive)
+  {
+    new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
+    $oneDriveDir = $workOneDriveDir
+  }
+  new-item ~/Documents -ItemType SymbolicLink -Target $oneDriveDir/Documents -force
 }
 
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
@@ -120,34 +114,25 @@ function test-isadmin
     return $wp.IsInRole("Administrators") -eq 1
   }
 }
-$isAdmin = (test-isadmin)
-$global:myhome = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]'MyDocuments')
-$global:scriptFolder = $global:myhome +'\WindowsPowerShell'
-$env:REMOTE_HOME = $myHome
-$localHome = $env:HOMEDRIVE + $env:HOMEPATH + '\Documents'
-if (!(test-path $localHome))
-{
-  if ($isAdmin)
-  {
-    New-Item $localHome -ItemType SymbolicLink -Target $myhome
-  }
-}
-if (test-path $localHome)
-{
-  $myHome = $localHome
-}
 
+$isAdmin = (test-isadmin)
+[string]$global:myhome = '~/Documents'
+[string]$global:scriptFolder = $global:myhome +'/'
+if ($PSEdition -eq "Desktop") { $global:scriptFolder += 'Windows' }
+$global:scriptFolder += 'PowerShell'
 $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h/OneDrive/Documents/PowerShell/profile.vim"
+  set-content -path $vimRC "source <sfile>:p:h/Documents/PowerShell/profile.vim"
 }
 
-set-alias bcomp               $env:ProgramFiles'\Beyond Compare 4\bcomp.com'     -scope global
+set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
 set-alias vsvars              Enter-VSShell                                      -scope global
 set-alias zip                 7z                                                 -scope global
-set-alias ztw                 '~\OneDrive\Apps\ZtreeWin\ztw64.exe'               -scope global
+set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
+
+."$PSScriptRoot\Set-GitConfig.ps1"
 
 # SD settings
 $vimCmd = get-command vim 2> $null
@@ -202,12 +187,6 @@ public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, st
   }
 }
 
-function FirstTime-Setup()
-{
-  sudo fsutil behavior set symlinkEvaluation R2R:1
-  sudo fsutil behavior set symlinkEvaluation L2R:1
-}
-
 function global:Get-BranchName { "" }
 
 $global:initialTitle = $Host.UI.RawUI.WindowTitle
@@ -250,12 +229,13 @@ function global:Get-MyWindowTitle
     return $title
 }
 
-if (!$env:PSModulePath.Contains("OneDrive"))
+$_profilePath = (get-item $profile).Directory.FullName
+$_profileModulesPath = $_profilePath+"/Modules"
+if (!$env:PSModulePath.Contains($_profileModulesPath))
 {
   $separator = ";"
   if (Test-IsUnix) { $separator = ":" }
-  $_modulePath = ((get-item $profile).Directory.FullName+"/Modules")
-  $env:PSModulePath += $separator+$_modulePath
+  $env:PSModulePath += $separator+$_profileModulesPath
 }
 
 Import-Module posh-git
@@ -265,12 +245,12 @@ Import-Module oh-my-posh
 $ThemeSettings.Options.ConsoleTitle = $false
 Set-Theme MyAgnoster
 
-$serverModules = ($PSScriptRoot+'\..\PSModules\Modules')
+$serverModules = ($PSScriptRoot+'/../PSModules/Modules')
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $_fd = (get-item $serverModules).FullName
   $env:psmodulepath+=(';'+$_fd)
-  get-content ($_fd+"\..\.preload") -ErrorAction Ignore |% { Import-Module $_ }
+  get-content ($_fd+"/../.preload") -ErrorAction Ignore |% { Import-Module $_ }
 }
 
 Import-Module DirColors
@@ -282,14 +262,6 @@ function global:Execute-PowerShell32
   c:\Windows\SysWoW64\WindowsPowerShell\v1.0\powershell.exe -nologo $args
 }
 set-alias ps32 Execute-PowerShell32 -scope global
-
-function global:Open-CodeFlow
-{
-  param([string]$webUrl)
-  #\\codeflow\public\cf.cmd help openGitHubPr
-  \\codeflow\public\cf.cmd openGitHubPr -webUrl $webUrl
-  #\\codeflow\public\cf.cmd openGitHubPr -account <account> -GitHubProject <project> -prId <prId>
-}
 
 function global:Setup-MyBash
 {
