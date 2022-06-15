@@ -86,19 +86,32 @@ if (!(Test-IsUnix)) {
   }
 }
 
-if (!(test-path ~/Documents/PowerShell))
+$isWorkMode = ($env:USER -eq "ocalvo")
+if ($isWorkMode)
 {
   $workOneDriveDir = "~/OneDrive - Microsoft"
   $oneDriveDir = (get-item "~/OneDrive").FullName
-  $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
-  if ($useWorkOneDrive)
+  if (!(Test-path ($oneDriveDir+"\Documents")))
   {
     $workOneDriveDir = (get-item $workOneDriveDir).FullName
     new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
     $oneDriveDir = $workOneDriveDir
   }
-  new-item ~/Documents -ItemType SymbolicLink -Target $oneDriveDir/Documents -force
 }
+
+#if (!(test-path ~/Documents/PowerShell))
+#{
+#  $workOneDriveDir = "~/OneDrive - Microsoft"
+#  $oneDriveDir = (get-item "~/OneDrive").FullName
+#  $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
+#  if ($useWorkOneDrive)
+#  {
+#    $workOneDriveDir = (get-item $workOneDriveDir).FullName
+#    new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
+#    $oneDriveDir = $workOneDriveDir
+#  }
+#  new-item ~/Documents -ItemType SymbolicLink -Target $oneDriveDir/Documents -force
+#}
 
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
@@ -125,7 +138,7 @@ $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h/Documents/PowerShell/profile.vim"
+  set-content -path $vimRC "source <sfile>:p:h/OneDrive/Documents/PowerShell/profile.vim"
 }
 
 set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
