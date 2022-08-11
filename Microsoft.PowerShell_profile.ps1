@@ -228,6 +228,14 @@ function global:Get-MyWindowTitle
         }
       }
     }
+    else
+    {
+      $repoName = git config --get remote.origin.url | Split-Path -Leaf | select -first 1
+      if ($null -ne $repoName)
+      {
+        $title = "git $repoName"
+      }
+    }
 
     if ( $isadmin )
     {
