@@ -86,20 +86,20 @@ if (!(Test-IsUnix)) {
   }
 }
 
-$isWorkMode = ($env:USERNAME -eq "ocalvo")
-if ($isWorkMode)
-{
-  $workOneDriveDir = "~/OneDrive - Microsoft"
-  if (!(Test-path "~/OneDrive/Documents"))
-  {
-    $workOneDriveDir = (get-item $workOneDriveDir).FullName
-    if (Test-Path "~/OneDrive")
-    {
-      mv ~/OneDrive ~/OneDrive.old
-    }
-    new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
-  }
-}
+#$isWorkMode = ($env:USERNAME -eq "ocalvo")
+#if ($isWorkMode)
+#{
+#  $workOneDriveDir = "~/OneDrive - Microsoft"
+#  if (!(Test-path "~/OneDrive/Documents"))
+#  {
+#    $workOneDriveDir = (get-item $workOneDriveDir).FullName
+#    if (Test-Path "~/OneDrive")
+#    {
+#      mv ~/OneDrive ~/OneDrive.old
+#    }
+#    new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
+#  }
+#}
 
 #if (!(test-path ~/Documents/PowerShell))
 #{
