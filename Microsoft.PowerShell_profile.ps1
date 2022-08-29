@@ -7,65 +7,19 @@ function global:Test-IsUnix
   return (($PSVersionTable.PSEdition -eq 'Core') -and ($PSVersionTable.Platform -eq 'Unix'))
 }
 
+function global:test-isadmin
+{
+  $isUnix = Test-IsUnix
+  if ($isUnix) {
+    return ((id -u) -eq 0)
+  } else {
+    $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+    $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
+    return $wp.IsInRole("Administrators") -eq 1
+  }
+}
+
 if (!(Test-IsUnix)) {
-
-  if ((get-command sudo -erroraction ignore) -eq $null)
-  {
-    Enable-Execute-Elevated
-    $env:path += ";~\scoop\apps"
-  }
-
-  $global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
-
-  function global:Install-Chocolatey
-  {
-    if (Test-IsUnix) { return; }
-    sudo {
-      Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'));
-      $env:path += ";C:\ProgramData\chocolatey\bin"
-      choco feature enable -n allowGlobalConfirmation
-      choco install cascadiafonts
-      choco install pwsh --pre
-      cp $PSScriptRoot\WinTerminal\settings.json $terminalSettings
-    }
-    $env:path += ";C:\ProgramData\chocolatey\bin"
-  }
-
-  function global:Install-Scoop
-  {
-    iwr -useb get.scoop.sh | iex
-  }
-
-  $pythonPath = "C:\Python310"
-  if (test-path $pythonPath)
-  {
-    $env:path =  $pythonPath + ";" + $env:path
-  }
-
-  $symbolsPath = "c:\dd\symbols"
-  if (test-path $symbolsPath)
-  {
-    $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
-  }
-
-  $env:ChocolateyToolsLocation = "C:\ProgramData\chocolatey\tools\"
-
-  if ((get-command choco -erroraction ignore) -eq $null)
-  {
-    Install-Chocolatey
-  }
-
-  if ((get-command git -erroraction ignore) -eq $null)
-  {
-    sudo choco install git -y
-    $env:path += ";C:\Program Files\Git\cmd"
-  }
-
-  if ((get-command vim -erroraction ignore) -eq $null)
-  {
-    sudo choco install vim -y
-  }
-
   ########################################################
   # Helper Functions
   function ff ([string] $glob) { get-childitem -recurse -filter $glob }
@@ -86,50 +40,9 @@ if (!(Test-IsUnix)) {
   }
 }
 
-#$isWorkMode = ($env:USERNAME -eq "ocalvo")
-#if ($isWorkMode)
-#{
-#  $workOneDriveDir = "~/OneDrive - Microsoft"
-#  if (!(Test-path "~/OneDrive/Documents"))
-#  {
-#    $workOneDriveDir = (get-item $workOneDriveDir).FullName
-#    if (Test-Path "~/OneDrive")
-#    {
-#      mv ~/OneDrive ~/OneDrive.old
-#    }
-#    new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
-#  }
-#}
-
-#if (!(test-path ~/Documents/PowerShell))
-#{
-#  $workOneDriveDir = "~/OneDrive - Microsoft"
-#  $oneDriveDir = (get-item "~/OneDrive").FullName
-#  $useWorkOneDrive = (test-path $workOneDriveDir\Documents)
-#  if ($useWorkOneDrive)
-#  {
-#    $workOneDriveDir = (get-item $workOneDriveDir).FullName
-#    new-item ~/OneDrive -ItemType SymbolicLink -Target $workOneDriveDir -force
-#    $oneDriveDir = $workOneDriveDir
-#  }
-#  new-item ~/Documents -ItemType SymbolicLink -Target $oneDriveDir/Documents -force
-#}
-
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
 function .. { Set-Location ..  }
-
-function test-isadmin
-{
-  $isUnix = Test-IsUnix
-  if ($isUnix) {
-    return ((id -u) -eq 0)
-  } else {
-    $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-    $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
-    return $wp.IsInRole("Administrators") -eq 1
-  }
-}
 
 $isAdmin = (test-isadmin)
 [string]$global:myhome = '~/Documents'
@@ -140,7 +53,7 @@ $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h/OneDrive/Documents/PowerShell/profile.vim"
+  set-content -path $vimRC "source <sfile>:p:h/Documents/PowerShell/profile.vim"
 }
 
 set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
