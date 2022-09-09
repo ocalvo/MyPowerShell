@@ -1,29 +1,23 @@
 
 if (!(Test-IsUnix)) {
 
-  if ((get-command sudo -erroraction ignore) -eq $null)
-  {
-    Enable-Execute-Elevated
-    $env:path += ";~\scoop\apps"
-  }
-
   $global:terminalSettings = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
 
   function global:Install-Chocolatey
   {
     if (Test-IsUnix) { return; }
 
-    if (!(test-isadmin))
-    {
-       Write-Error "Not admin"
-       return
-    }
+    #if (!(test-isadmin))
+    #{
+    #   Write-Error "Not admin"
+    #   return
+    #}
 
-    Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1'));
+    sudo { Invoke-Expression ((new-object net.webclient).DownloadString(' https://chocolatey.org/install.ps1')) }
     $env:path += ";C:\ProgramData\chocolatey\bin"
-    choco feature enable -n allowGlobalConfirmation
-    #choco install cascadiafonts
-    #choco install pwsh --pre
+    sudo choco feature enable -n allowGlobalConfirmation
+    choco install cascadiafonts
+    choco install pwsh --pre
     cp $PSScriptRoot\WinTerminal\settings.json $terminalSettings
     $env:path += ";C:\ProgramData\chocolatey\bin"
   }
@@ -44,42 +38,42 @@ if (!(Test-IsUnix)) {
     }
     if ((get-command pwsh*) -eq $null)
     {
-      sudo scoop install pwsh
-      git clone http://github.com/ocalvo/MyPowerShell ($env:HOMEDRIVE+$env:HOMEPATH+"\Documents\PowerShell") --recursive
+      sudo scoop install pwsh -g
+      #git clone http://github.com/ocalvo/MyPowerShell ($env:HOMEDRIVE+$env:HOMEPATH+"\Documents\PowerShell") --recursive
     }
     if ((get-command vim*) -eq $null)
     {
-      sudo scoop install vim
+      sudo scoop install vim -g
     }
-    if ((get-command wt*) -eq $null)
-    {
+    #if ((get-command wt*) -eq $null)
+    #{
+      sudo scoop install git -g
       scoop bucket add versions
       scoop install windows-terminal-preview
       cp $PSScriptRoot\WinTerminal\settings.json $terminalSettings
-      git clone 
-    }
+    #}
     if ((get-command python*) -eq $null)
     {
       scoop bucket add versions
-      scoop install python310
+      sudo scoop install python310 -g
     }
-    #if ((get-command choco*) -eq $null)
-    #{
-    #  sudo Install-Chocolatey
-    #}
+    if ((get-command choco*) -eq $null)
+    {
+      sudo Install-Chocolatey
+    }
+
+    if ((get-command git -erroraction ignore) -eq $null)
+    {
+      sudo choco install git -y
+      $env:path += ";C:\Program Files\Git\cmd"
+    }
   }
 
-  $symbolsPath = "c:\dd\symbols"
-  if (test-path $symbolsPath)
-  {
-    $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
-  }
-
-  if ((get-command git -erroraction ignore) -eq $null)
-  {
-    sudo choco install git -y
-    $env:path += ";C:\Program Files\Git\cmd"
-  }
+#  $symbolsPath = "w:\symbols"
+#  if (test-path $symbolsPath)
+#  {
+#    $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
+#  }
 
 }
 
