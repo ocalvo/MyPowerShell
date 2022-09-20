@@ -5,7 +5,8 @@ function global:Get-VSOAuth()
 {
   if ($null -eq $global:baseAK)
   {
-    $accessToken = (Get-Content ~\Documents\Passwords\VSOToken.txt)
+    $tokenPath = ($PSScriptRoot+"\..\..\Passwords\VSOToken.txt")
+    $accessToken = (Get-Content $tokenPath)
     $global:baseAK = [Convert]::ToBase64String([System.Text.ASCIIEncoding]::ASCII.GetBytes(":$AccessToken"))
   }
   return @{
