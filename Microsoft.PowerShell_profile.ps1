@@ -146,7 +146,7 @@ function global:Get-MyWindowTitle
       $repoName = git config --get remote.origin.url | Split-Path -Leaf | select -first 1
       if ($null -ne $repoName)
       {
-        $title = "git $repoName"
+        $title = "git $repoName " + (Get-WindowTitleSuffix)
       }
     }
 

@@ -17,12 +17,8 @@ function global:Get-VSOAuth()
 function global:Get-WorkItemTitle($workId)
 {
   [int]$id = 0;
-  try
-  {
-    $id = [int]::Parse($workId);
-  }
-  catch
-  {
+
+  if (!([int]::TryParse($workId,[ref]$id))) {
     return $workId;
   }
 
@@ -71,11 +67,11 @@ function global:Get-WorkItemIdFromBranch($branch)
   return ($branch.Split("/") | Select-Object -last 1)
 }
 
-function global:Get-GitBranches()
+function global:Get-GitBranchDescription()
 {
-    git branch |% {
+    git branch --show-current |% {
        $id = (Get-WorkItemIdFromBranch $_);
-       return ($_ + " " + (Get-WorkItemTitle $id))
+       return (Get-WorkItemTitle $id)
     }
 }
 
