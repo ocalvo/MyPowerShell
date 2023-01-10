@@ -77,7 +77,7 @@ $script:DirColorsTokensToSchemeProperties = @{
 }
 
 Function New-ColorScheme {
-    Return [PSCustomObject]@{
+    Return @{
         PSTypeName = "ColorScheme";
 
         Default = "0";

@@ -4,7 +4,7 @@
 
 function Compress-Path($Path, $Length=20)
 {
-  if (Test-IsUnix) {
+  if ((Test-IsUnix) -or ("ConstrainedLanguage" -eq $ExecutionContext.SessionState.LanguageMode)) {
     return $Path
   } else {
     $newType = @'

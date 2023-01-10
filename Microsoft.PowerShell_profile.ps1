@@ -13,9 +13,16 @@ function global:test-isadmin
   if ($isUnix) {
     return ((id -u) -eq 0)
   } else {
-    $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-    $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
-    return $wp.IsInRole("Administrators") -eq 1
+    if ("ConstrainedLanguage" -eq $ExecutionContext.SessionState.LanguageMode) {
+       return $false
+    }
+    try {
+      $wi = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+      $wp = new-object 'System.Security.Principal.WindowsPrincipal' $wi
+      return $wp.IsInRole("Administrators") -eq 1
+    } catch {
+      return $false
+    }
   }
 }
 
@@ -91,31 +98,6 @@ function global:_up ([int] $count = 1)
 set-alias e edit -scope global
 set-alias up _up -scope global
 
-function Compress-Path($Path, $Length=20)
-{
-  if (Test-IsUnix)
-  {
-    return $Path
-  }
-  else
-  {
-    $newType = @'
-[DllImport("shlwapi.dll", CharSet = CharSet.Auto, SetLastError = true)]
-public static extern bool PathCompactPathEx(System.Text.StringBuilder pszOut, string pszSrc, Int32 cchMax, Int32 dwFlags);
-'@
-    try { Add-Type -MemberDefinition $newType -name StringFunctions -namespace Win32 } catch {}
-    $sb = New-Object System.Text.StringBuilder(260)
-    if ([Win32.StringFunctions]::PathCompactPathEx($sb , $Path , $Length+1, 0))
-    {
-        $sb.ToString()
-    }
-    else
-    {
-        Throw "Unable to compact path"
-    }
-  }
-}
-
 function global:Get-BranchName { "" }
 
 $global:initialTitle = $Host.UI.RawUI.WindowTitle
@@ -175,12 +157,16 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
   $env:PSModulePath += $separator+$_profileModulesPath
 }
 
-Import-Module posh-git
-Import-Module oh-my-posh
+if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
+  Import-Module posh-git
+  Import-Module oh-my-posh
+
+  $ThemeSettings.Options.ConsoleTitle = $false
+  Set-Theme MyAgnoster
+
+}
 
 #Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
-$ThemeSettings.Options.ConsoleTitle = $false
-Set-Theme MyAgnoster
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')
 if (test-path $serverModules -ErrorAction Ignore)
