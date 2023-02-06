@@ -41,7 +41,7 @@ function global:Get-WorkItemTitle($workId)
 
 function global:Get-BranchCustomId()
 {
-    $fastCmd = (get-command Get-GitBranchFast) 2> $null
+    $fastCmd = (get-command Get-GitBranchFast -ErrorAction Ignore)
     if ($null -ne $fastCmd)
     {
       [string]$branch = Get-GitBranchFast
