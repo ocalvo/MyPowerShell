@@ -198,6 +198,7 @@ Set-PSReadLineOption -PredictionSource History
 Import-Module PwrSudo
 Import-Module PwrSearch
 Import-Module PwrRazzle
+Import-Module Terminal-Icons
 
 if (!(Test-IsUnix))
 {
