@@ -161,12 +161,11 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 }
 
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
-  Import-Module posh-git
-  Import-Module oh-my-posh
-
-  $ThemeSettings.Options.ConsoleTitle = $false
-  Set-Theme MyAgnoster
-
+  if ($null -eq (get-command oh-my-posh*)) {
+    winget install JanDeDobbeleer.OhMyPosh -s winget
+    #Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+  }
+  oh-my-posh init pwsh | Invoke-Expression
 }
 
 #Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
