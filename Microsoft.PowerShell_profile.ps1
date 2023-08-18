@@ -165,7 +165,8 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
     winget install JanDeDobbeleer.OhMyPosh -s winget
     #Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
   }
-  oh-my-posh init pwsh | Invoke-Expression
+  $poshTheme = "markbull"
+  oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$poshTheme.omp.json" | Invoke-Expression
 }
 
 #Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
