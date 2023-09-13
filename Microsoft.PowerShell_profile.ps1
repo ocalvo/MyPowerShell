@@ -48,6 +48,7 @@ if (!(Test-IsUnix)) {
 }
 
 $env:BUILD_TASKBAR_FLASH=1
+$env:BUILD_DASHBOARD=1
 
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
