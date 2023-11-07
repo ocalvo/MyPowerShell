@@ -2,6 +2,8 @@
 # Oscar Calvo's PowerShell Profile (oscar@calvonet.com)
 #
 
+$global:lastInvocation = $MyInvocation
+
 function global:Test-IsUnix
 {
   return (($PSVersionTable.PSEdition -eq 'Core') -and ($PSVersionTable.Platform -eq 'Unix'))
@@ -48,7 +50,7 @@ if (!(Test-IsUnix)) {
 }
 
 $env:BUILD_TASKBAR_FLASH=1
-$env:BUILD_DASHBOARD=1
+#$env:BUILD_DASHBOARD=1
 
 function rmd ([string] $glob) { remove-item -recurse -force $glob }
 function cd.. { Set-Location ..  }
