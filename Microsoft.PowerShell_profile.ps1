@@ -77,8 +77,17 @@ set-alias speak               "$PSScriptRoot\Speak.ps1"
 ."$PSScriptRoot\Set-GitConfig.ps1"
 
 # SD settings
-$vimCmd = get-command vim 2> $null
-$codeCmd = get-command code 2> $null
+$vimCmd = get-command vim -ErrorAction Ignore
+$codeCmd = get-command code -ErrorAction Ignore
+if ($null -eq $vimCmd)
+{
+   winget install vim.vim
+   $vimPath = (dir "C:\Program Files\Vim\vim*\" | select -first 1).FullName
+   $env:path += ";$vimPath"
+   [System.Environment]::SetEnvironmentVariable("PATH", $env:path, [System.EnvironmentVariableTarget]::User)
+   $vimCmd = get-command vim -ErrorAction Ignore
+}
+
 if (($null -ne $codeCmd) -and ($env:TERM_PROGRAM -eq "vscode"))
 {
   $env:SDEDITOR=$codeCmd.definition
@@ -166,7 +175,8 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
   if ($null -eq (get-command oh-my-posh*)) {
     winget install JanDeDobbeleer.OhMyPosh -s winget
-    #Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+    $env:path += ";$env:LOCALAPPDATA\Programs\oh-my-posh\bin\"
+    oh-my-posh font install "Meslo" --user
   }
   $poshTheme = "markbull"
   oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$poshTheme.omp.json" | Invoke-Expression
@@ -203,6 +213,7 @@ Set-PSReadLineOption –HistoryNoDuplicates:$True
 Set-PSReadLineOption -PredictionSource History
 Import-Module PwrSudo
 Import-Module PwrSearch
+Import-Module PwrDev
 Import-Module PwrRazzle
 Import-Module Terminal-Icons
 
