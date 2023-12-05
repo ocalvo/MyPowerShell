@@ -67,22 +67,42 @@ function Process-Output {
       'NewFile' = '\s*New File\s+(\d+(\.\d+)?)?\s*([a-zA-Z]+)?\s+(.+)$';
       'NewDir' = '\s*New Dir\s+(\d+(\.\d+)?)(\s*\S+(\s\S+)*)';
       'Percentage' = '\b(\d+(\.\d+)?)%';
-      'Error' = '.*\bERROR\b.*';
+      'Error' = '^(?<Timestamp>\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2})\s+(?<Severity>ERROR)\s+(?<ErrorCode>\d+)\s+\((?<HexErrorCode>0x[0-9A-Fa-f]+)\)\s+(?<Message>.+)$';
     }
     $lastFolder = $null
     $lastFile = $null
     $sourceDir = ([System.IO.DirectoryInfo]$source).FullName
     $targetDir = ([System.IO.DirectoryInfo]$target).FullName
     $activity = "Copying $sourceDir -> $targetDir"
+    $lastError = $null
+    $oldErrorView = $ErrorView
+    $ErrorView = 'CategoryView'
   }
   process {
     $item = $null
     $match = $patterns.Keys | Where { $InputLine -match $patterns[$_] } | Select -First 1
     if ($null -eq $match) {
-      if ($VerbosePreference -eq 'Continue') {
-        Write-Host "Verbose->$InputLine"
+      if ($null -ne $lastError) {
+        $timestamp = [datetime]::ParseExact($lastError['Timestamp'], 'yyyy/MM/dd HH:mm:ss', $null)
+        $severity = $lastError['Severity']
+        $errorCode = [int]$lastError['ErrorCode']
+        $hexErrorCode = $lastError['HexErrorCode']
+        $errorMessagePath = $lastError['Message']
+        $errorMessage = "$InputLine ($errorMessagePath)"
+
+        $errorRecord = New-Object System.Management.Automation.ErrorRecord -ArgumentList (
+             [Exception]::new($errorMessage),
+             $errorCode,
+             ([System.Management.Automation.ErrorCategory]::WriteError),
+             $errorMessagePath)
+        Write-Error $errorRecord
+        $lastError = $null
       } else {
-        Write-Host "$InputLine"
+        if ($VerbosePreference -eq 'Continue') {
+          Write-Host "Verbose->$InputLine"
+        } else {
+          Write-Host "$InputLine"
+        }
       }
     } else {
       if ("Percentage" -eq $match) {
@@ -97,7 +117,7 @@ function Process-Output {
       } elseif ("NewDir" -eq $match) {
         $item = [System.IO.DirectoryInfo]($Matches[3].Trim())
       } elseif ("Error" -eq $match) {
-        Write-Error -Message "$InputLine"
+        $lastError = $Matches
       } else {
         Write-Warning "Could not process match $match : $InputLine"
       }
@@ -107,6 +127,9 @@ function Process-Output {
 
       return $item
     }
+  }
+  end {
+    $ErrorView = $oldErrorView
   }
 }
 & robocopy.exe @cmd_args | Process-Output

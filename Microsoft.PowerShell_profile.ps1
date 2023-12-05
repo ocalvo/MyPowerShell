@@ -72,7 +72,8 @@ set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'    
 set-alias vsvars              Enter-VSShell                                      -scope global
 set-alias zip                 7z                                                 -scope global
 set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
-set-alias speak               "$PSScriptRoot\Speak.ps1"
+set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
+set-alias copy-robust         "$PSScriptRoot\Copy-Robust.ps1"                    -scope global
 
 ."$PSScriptRoot\Set-GitConfig.ps1"
 
