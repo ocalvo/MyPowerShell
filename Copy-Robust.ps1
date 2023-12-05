@@ -38,7 +38,7 @@ param (
     [string[]] $exclude = $null,
     [string[]] $folder_exclude = $null,
     [string[]] $action = @("/MIR"),
-    [string[]] $options = @("/NP", "/R:2", "/W:1", "/FFT", "/Z", "/XA:H")
+    [string[]] $options = @("/R:2", "/W:1", "/FFT", "/Z", "/XA:H")
 )
 $cmd_args = @($source, $target)
 if ($include) {
@@ -56,7 +56,61 @@ if ($action) {
 if ($options) {
     $cmd_args += $options
 }
-& robocopy.exe @cmd_args
+function Process-Output {
+  [CmdletBinding()]
+  param (
+    [Parameter(ValueFromPipeline=$true)]
+    [String]$InputLine)
+  begin {
+    $patterns = @{
+      'ExistingPath' = '\s*(\d+)\s+(\S+\\[^\\]+)\\?$';
+      'NewFile' = '\s*New File\s+(\d+(\.\d+)?)?\s*([a-zA-Z]+)?\s+(.+)$';
+      'NewDir' = '\s*New Dir\s+(\d+(\.\d+)?)(\s*\S+(\s\S+)*)';
+      'Percentage' = '\b(\d+(\.\d+)?)%';
+      'Error' = '.*\bERROR\b.*';
+    }
+    $lastFolder = $null
+    $lastFile = $null
+    $sourceDir = ([System.IO.DirectoryInfo]$source).FullName
+    $targetDir = ([System.IO.DirectoryInfo]$target).FullName
+    $activity = "Copying $sourceDir -> $targetDir"
+  }
+  process {
+    $item = $null
+    $match = $patterns.Keys | Where { $InputLine -match $patterns[$_] } | Select -First 1
+    if ($null -eq $match) {
+      if ($VerbosePreference -eq 'Continue') {
+        Write-Host "Verbose->$InputLine"
+      } else {
+        Write-Host "$InputLine"
+      }
+    } else {
+      if ("Percentage" -eq $match) {
+        $p = [int]$Matches[1]
+        $f = $lastFile.Name
+        $d = $lastFile.Directory.FullName.Replace($sourceDir,"")
+        Write-Progress -Activity $activity -Status "$p% $f($d)" -PercentComplete $p
+      } elseif ("ExistingPath" -eq $match) {
+        $item = get-item $Matches[2]
+      } elseif ("NewFile" -eq $match) {
+        $item = [System.IO.FileInfo]($lastFolder.FullName+"\"+($Matches[4].Trim()))
+      } elseif ("NewDir" -eq $match) {
+        $item = [System.IO.DirectoryInfo]($Matches[3].Trim())
+      } elseif ("Error" -eq $match) {
+        Write-Error -Message "$InputLine"
+      } else {
+        Write-Warning "Could not process match $match : $InputLine"
+      }
+
+      if ($item -is [System.IO.DirectoryInfo]) { $lastFolder = $item }
+      if ($item -is [System.IO.FileInfo]) { $lastFile = $item }
+
+      return $item
+    }
+  }
+}
+& robocopy.exe @cmd_args | Process-Output
+$robocopyExitCode = $LastExitCode
 $returnCodeMessage = @{
     0x00 = "[INFO]: No errors occurred, and no copying was done. The source and destination directory trees are completely synchronized."
     0x01 = "[INFO]: One or more files were copied successfully (that is, new files have arrived)."
@@ -65,5 +119,5 @@ $returnCodeMessage = @{
     0x08 = "[ERROR]: Some files or directories could not be copied (copy errors occurred and the retry limit was exceeded). Check these errors further."
     0x10 = "[ERROR]: Usage error or an error due to insufficient access privileges on the source or destination directories."
 }
-Write-Host $returnCodeMessage[($returnCodeMessage.Keys | Where { ($_ -band $i) -or ($_ -eq 0x00) } | Select -First 1)]
-exit ($LastExitCode -band 24)
+Write-Host $returnCodeMessage[($returnCodeMessage.Keys | Where { ($_ -band $robocopyExitCode) -or ($_ -eq 0x00) } | Select -First 1)]
+exit ($robocopyExitCode -band 24)
