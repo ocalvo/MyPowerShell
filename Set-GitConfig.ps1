@@ -16,7 +16,7 @@ function Set-GitGlobals()
   git config --global core.autocrlf true
   git config --global submodule.recurse true
 
-  if ((Get-Command bcomp) -ne $null)
+  if ((Get-Command bcomp -ErrorAction Ignore) -ne $null)
   {
     git config --global diff.tool bc
     git config --global difftool.prompt false

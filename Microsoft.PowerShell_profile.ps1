@@ -210,7 +210,7 @@ function global:Setup-MyBash
 }
 
 #Import-Module PowerTab
-Import-Module PSReadLine -RequiredVersion 2.1.0
+Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
 Set-PSReadLineOption -PredictionSource History
 Import-Module PwrSudo
