@@ -174,13 +174,19 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 }
 
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
-  if ($null -eq (get-command oh-my-posh*)) {
-    winget install JanDeDobbeleer.OhMyPosh -s winget
-    $env:path += ";$env:LOCALAPPDATA\Programs\oh-my-posh\bin\"
-    oh-my-posh font install "Meslo" --user
+  if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
+    $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
+    if (Test-IsUnix) {
+      $poshDir = "/home/linuxbrew/.linuxbrew/bin"
+      $env:PATH += ":$poshDir"
+    } else {
+      winget install JanDeDobbeleer.OhMyPosh -s winget
+      $env:PATH += ";$poshDir"
+    }
+    #oh-my-posh font install "Meslo" --user
   }
   $poshTheme = "markbull"
-  oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\$poshTheme.omp.json" | Invoke-Expression
+  ."$poshDir/oh-my-posh" init pwsh --config "$env:POSH_THEMES_PATH\$poshTheme.omp.json" | Invoke-Expression
 }
 
 #Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
