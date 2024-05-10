@@ -18,14 +18,14 @@
           <T>System.Object</T>
         </TN>
         <LST>
-          <S>dlwyatt</S>
           <S>nohwnd</S>
+          <S>fflaten</S>
         </LST>
       </Obj>
       <S N="Copyright">Copyright (c) 2021 by Pester Team, licensed under Apache 2.0 License.</S>
       <DT N="PublishedDate">2023-06-27T16:09:16-07:00</DT>
       <Obj N="InstalledDate" RefId="2">
-        <DT>2024-04-10T11:57:32.0973094-07:00</DT>
+        <DT>2024-05-08T10:58:00.6452782-07:00</DT>
         <MS>
           <Obj N="DisplayHint" RefId="3">
             <TN RefId="2">
@@ -66,8 +66,23 @@
         </TN>
         <DCT>
           <En>
-            <S N="Key">Command</S>
+            <S N="Key">Cmdlet</S>
             <Obj N="Value" RefId="6">
+              <TNRef RefId="1" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="6" />
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="6" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="7">
               <TNRef RefId="1" />
               <LST>
                 <S>Invoke-Pester</S>
@@ -100,26 +115,11 @@
             </Obj>
           </En>
           <En>
-            <S N="Key">Cmdlet</S>
-            <Obj N="Value" RefId="7">
-              <TNRef RefId="1" />
-              <LST />
-            </Obj>
-          </En>
-          <En>
-            <S N="Key">DscResource</S>
-            <Ref N="Value" RefId="7" />
-          </En>
-          <En>
             <S N="Key">Workflow</S>
-            <Ref N="Value" RefId="7" />
+            <Ref N="Value" RefId="6" />
           </En>
           <En>
-            <S N="Key">RoleCapability</S>
-            <Ref N="Value" RefId="7" />
-          </En>
-          <En>
-            <S N="Key">Function</S>
+            <S N="Key">Command</S>
             <Obj N="Value" RefId="8">
               <TNRef RefId="1" />
               <LST>
@@ -174,22 +174,21 @@
           <S N="requireLicenseAcceptance">False</S>
           <S N="releaseNotes">https://github.com/pester/Pester/releases/tag/5.5.0</S>
           <S N="isLatestVersion">True</S>
-          <S N="isAbsoluteLatestVersion">True</S>
-          <S N="versionDownloadCount">1928319</S>
-          <S N="downloadCount">19382098</S>
+          <S N="isAbsoluteLatestVersion">False</S>
+          <S N="versionDownloadCount">2201779</S>
+          <S N="downloadCount">19859359</S>
           <S N="packageSize">313009</S>
           <S N="published">6/27/2023 4:09:16 PM -07:00</S>
           <S N="created">6/27/2023 4:09:16 PM -07:00</S>
-          <S N="lastUpdated">4/10/2024 6:55:51 PM -07:00</S>
-          <S N="tags">powershell unit_testing bdd tdd mocking PSEdition_Core PSEdition_Desktop Windows Linux MacOS PSModule</S>
+          <S N="lastUpdated">5/8/2024 5:53:40 PM -07:00</S>
+          <S N="tags">powershell unit_testing bdd tdd mocking PSEdition_Core PSEdition_Desktop Windows Linux MacOS PSModule PSFunction_Invoke-Pester PSCommand_Invoke-Pester PSFunction_Describe PSCommand_Describe PSFunction_Context PSCommand_Context PSFunction_It PSCommand_It PSFunction_Mock PSCommand_Mock PSFunction_InModuleScope PSCommand_InModuleScope PSFunction_BeforeDiscovery PSCommand_BeforeDiscovery PSFunction_BeforeAll PSCommand_BeforeAll PSFunction_BeforeEach PSCommand_BeforeEach PSFunction_AfterEach PSCommand_AfterEach PSFunction_AfterAll PSCommand_AfterAll PSFunction_Should PSCommand_Should PSFunction_Add-ShouldOperator PSCommand_Add-ShouldOperator PSFunction_Get-ShouldOperator PSCommand_Get-ShouldOperator PSFunction_Export-NUnitReport PSCommand_Export-NUnitReport PSFunction_ConvertTo-NUnitReport PSCommand_ConvertTo-NUnitReport PSFunction_Export-JUnitReport PSCommand_Export-JUnitReport PSFunction_ConvertTo-JUnitReport PSCommand_ConvertTo-JUnitReport PSFunction_ConvertTo-Pester4Result PSCommand_ConvertTo-Pester4Result PSFunction_New-PesterContainer PSCommand_New-PesterContainer PSFunction_New-PesterConfiguration PSCommand_New-PesterConfiguration PSFunction_Assert-VerifiableMock PSCommand_Assert-VerifiableMock PSFunction_Assert-MockCalled PSCommand_Assert-MockCalled PSFunction_Set-ItResult PSCommand_Set-ItResult PSFunction_New-MockObject PSCommand_New-MockObject PSFunction_New-Fixture PSCommand_New-Fixture PSIncludes_Function</S>
           <S N="developmentDependency">False</S>
-          <S N="updated">2024-04-10T18:55:51Z</S>
+          <S N="updated">2024-05-08T17:53:40Z</S>
           <S N="NormalizedVersion">5.5.0</S>
           <S N="Authors">Pester Team</S>
           <S N="IsPrerelease">false</S>
           <S N="ItemType">Module</S>
           <S N="FileList">Pester.nuspec|Pester.Format.ps1xml|Pester.ps1|Pester.psd1|Pester.psm1|PesterConfiguration.Format.ps1xml|bin\net452\Pester.dll|bin\net452\Pester.pdb|bin\netstandard2.0\Pester.dll|bin\netstandard2.0\Pester.pdb|en-US\about_BeforeEach_AfterEach.help.txt|en-US\about_Mocking.help.txt|en-US\about_Pester.help.txt|en-US\about_Should.help.txt|en-US\about_TestDrive.help.txt|schemas\JaCoCo\report.dtd|schemas\JUnit4\junit_schema_4.xsd|schemas\NUnit25\nunit_schema_2.5.xsd|schemas\NUnit3\TestDefinitions.xsd|schemas\NUnit3\TestFilterDefinitions.xsd|schemas\NUnit3\TestResult.xsd</S>
-          <S N="Functions">Invoke-Pester Describe Context It Mock InModuleScope BeforeDiscovery BeforeAll BeforeEach AfterEach AfterAll Should Add-ShouldOperator Get-ShouldOperator Export-NUnitReport ConvertTo-NUnitReport Export-JUnitReport ConvertTo-JUnitReport ConvertTo-Pester4Result New-PesterContainer New-PesterConfiguration Assert-VerifiableMock Assert-MockCalled Set-ItResult New-MockObject New-Fixture</S>
           <S N="GUID">a699dea5-2c73-4616-a270-1f7abb777e71</S>
           <S N="PowerShellVersion">3.0</S>
           <S N="CompanyName">Pester</S>
