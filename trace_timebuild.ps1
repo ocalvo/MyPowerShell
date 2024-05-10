@@ -27,8 +27,9 @@ function Get-TaskDependencies {
     Get-TaskDependencies -task $subTask -level ($level+1)
   }
 
+  Write-Host "$blankString$n"
+
   if ($isLeaf) {
-    Write-Host "$blankString$n"
     return $task
   }
 
