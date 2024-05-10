@@ -181,7 +181,9 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
       $poshDir = "/home/linuxbrew/.linuxbrew/bin"
       $env:PATH += ":$poshDir"
     } else {
-      winget install JanDeDobbeleer.OhMyPosh -s winget
+      if (!(Test-Path $poshDir)) {
+        winget install JanDeDobbeleer.OhMyPosh -s winget
+      }
       $env:PATH += ";$poshDir"
     }
     #oh-my-posh font install "Meslo" --user
