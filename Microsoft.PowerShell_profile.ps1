@@ -175,19 +175,19 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 }
 
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
-  if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
-    $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
-    if (Test-IsUnix) {
-      $poshDir = "/home/linuxbrew/.linuxbrew/bin"
-      $env:PATH += ":$poshDir"
-    } else {
-      if (!(Test-Path $poshDir)) {
-        winget install JanDeDobbeleer.OhMyPosh -s winget
-      }
-      $env:PATH += ";$poshDir"
+  $inPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
+  $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
+  if (Test-IsUnix) {
+    $poshDir = "/home/linuxbrew/.linuxbrew/bin"
+    if (-not $inPath) { $env:PATH += ":$poshDir" }
+  } else {
+    if (!(Test-Path $poshDir)) {
+       winget install JanDeDobbeleer.OhMyPosh -s winget
     }
-    #oh-my-posh font install "Meslo" --user
+    if (-not $inPath) { $env:PATH += ";$poshDir" }
   }
+  #oh-my-posh font install "Meslo" --user
+
   $poshTheme = "markbull"
   ."$poshDir/oh-my-posh" init pwsh --config "$env:POSH_THEMES_PATH\$poshTheme.omp.json" | Invoke-Expression
 }
