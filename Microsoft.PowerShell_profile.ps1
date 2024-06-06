@@ -178,7 +178,7 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
   $inPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
   $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
   if (Test-IsUnix) {
-    $poshDir = "/home/linuxbrew/.linuxbrew/bin"
+    $poshDir = "~/bin"
     if (-not $inPath) { $env:PATH += ":$poshDir" }
   } else {
     if (!(Test-Path $poshDir)) {
