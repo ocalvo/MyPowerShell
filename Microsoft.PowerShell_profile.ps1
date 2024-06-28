@@ -97,19 +97,20 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 }
 
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
-  $inPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
-  $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
+  $notInPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
   if (Test-IsUnix) {
     $poshDir = "~/bin"
-    if (-not $inPath) { $env:PATH += ":$poshDir" }
+    if ($notInPath) { $env:PATH += ":$poshDir" }
   } else {
+    $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
     if (!(Test-Path $poshDir)) {
        winget install JanDeDobbeleer.OhMyPosh -s winget
     }
-    if (-not $inPath) { $env:PATH += ";$poshDir" }
+    if ($notInPath) { $env:PATH += ";$poshDir" }
   }
-  $poshTheme = "markbull"
-  ."$poshDir/oh-my-posh" init pwsh --config "$env:PSScriptRoot\PoshThemes\$poshTheme.omp.json" | Invoke-Expression
+  $poshTheme = "markbull.omp.custom"
+  Write-Host "oh-my-posh init pwsh --config `"$PSScriptRoot\PoshThemes\$poshTheme.json`" | Invoke-Expression"
+  oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme.json" | Invoke-Expression
 }
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')

@@ -113,7 +113,7 @@
       "type": "prompt"
     }
   ],
-  "console_title_template": "{{if .Root}}\u26a1 {{end}}{{.Folder}}",
+  "console_title_template": "{{if .Root}}\u26a1 {{end}}Hola{{.Folder}}",
   "final_space": true,
   "version": 2
 }
