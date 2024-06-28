@@ -85,55 +85,7 @@ function global:Edit()
   .$env:SDEDITOR $args
 }
 
-function global:Get-BranchName { "" }
-
 $global:initialTitle = $Host.UI.RawUI.WindowTitle
-
-function global:Get-MyWindowTitle
-{
-    $srcId = $null
-    if ($env:_xroot -ne $null)
-    {
-        $srcId = $env:_xroot.Replace("\src","").ToCharArray() | select-object -last 1
-    }
-
-    if (test-path env:_BuildArch)
-    {
-      $currentPath = (get-item ((pwd).path) -ErrorAction Ignore)
-      if ($null -ne $currentPath)
-      {
-        $repoRoot = (get-item $env:_XROOT).FullName
-        if ($currentPath.FullName.StartsWith($repoRoot))
-        {
-          $razzleTitle = "Razzle: "+ $srcId + " " + $env:_BuildArch + "/" + $env:_BuildType + " "
-          $title = $razzleTitle + (Get-WindowTitleSuffix)
-        }
-      }
-    }
-    else
-    {
-      $repoName = git config --get remote.origin.url | Split-Path -Leaf | select -first 1
-      if ($null -ne $repoName)
-      {
-        $title = "git $repoName " + (Get-WindowTitleSuffix)
-      }
-    }
-
-    if ( $isadmin )
-    {
-        if ( $title -ne $null )
-        {
-          $title += " (Admin)"
-        }
-    }
-
-    if ($null -eq $title)
-    {
-      return $initialTitle
-    }
-
-    return $title
-}
 
 $_profilePath = (get-item $profile).Directory.FullName
 $_profileModulesPath = $_profilePath+"/Modules"
@@ -156,13 +108,9 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
     }
     if (-not $inPath) { $env:PATH += ";$poshDir" }
   }
-  #oh-my-posh font install "Meslo" --user
-
   $poshTheme = "markbull"
-  ."$poshDir/oh-my-posh" init pwsh --config "$env:POSH_THEMES_PATH\$poshTheme.omp.json" | Invoke-Expression
+  ."$poshDir/oh-my-posh" init pwsh --config "$env:PSScriptRoot\PoshThemes\$poshTheme.omp.json" | Invoke-Expression
 }
-
-#Set-PowerLinePrompt -PowerLineFont -Title { Get-MyWindowTitle }
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')
 if (test-path $serverModules -ErrorAction Ignore)
