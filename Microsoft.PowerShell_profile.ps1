@@ -28,34 +28,17 @@ function global:test-isadmin
   }
 }
 
-if (!(Test-IsUnix)) {
-  ########################################################
-  # Helper Functions
-  function ff ([string] $glob) { get-childitem -recurse -filter $glob }
-  function Sleep-Computer { RunDll.exe PowrProf.dll,SetSuspendState }
-  function global:Lock-WorkStation {
-    $signature = "[DllImport(`"user32.dll`", SetLastError = true)] public static extern bool LockWorkStation();"
-
-    $LockWorkStation = Add-Type -memberDefinition $signature -name "Win32LockWorkStation" -namespace Win32Functions -passthru
-    $LockWorkStation::LockWorkStation() | Out-Null
-  }
-} else {
-  if (Test-Path /etc/lsb-release) {
-    $distroInfo = (Get-Content /etc/lsb-release | where {$_.StartsWith("DISTRIB_ID")} )
-    if ($null -ne $distroInfo -and $distroInfo.Contains('=')) {
-      $distroName = $distroInfo.Split('=')[1]
-      $Host.UI.RawUI.WindowTitle = $distroName
-    }
+if (Test-Path /etc/lsb-release) {
+  $distroInfo = (Get-Content /etc/lsb-release | where {$_.StartsWith("DISTRIB_ID")} )
+  if ($null -ne $distroInfo -and $distroInfo.Contains('=')) {
+    $distroName = $distroInfo.Split('=')[1]
+    $Host.UI.RawUI.WindowTitle = $distroName
   }
 }
 
 $env:BUILD_TASKBAR_FLASH=1
 $env:BUILD_DASHBOARD=1
-#$env:BUILD_LESS_OUTPUT=1
-
-function rmd ([string] $glob) { remove-item -recurse -force $glob }
-function cd.. { Set-Location ..  }
-function .. { Set-Location ..  }
+$env:BUILD_LESS_OUTPUT=1
 
 $isAdmin = (test-isadmin)
 [string]$global:myhome = '~/Documents'
@@ -71,12 +54,9 @@ if (!(test-path $vimRC))
 
 set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
 set-alias vsvars              Enter-VSShell                                      -scope global
-set-alias zip                 7z                                                 -scope global
 set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
 set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
-set-alias copy-robust         "$PSScriptRoot\Copy-Robust.ps1"                    -scope global
-
-."$PSScriptRoot\Set-GitConfig.ps1"
+#."$PSScriptRoot\Set-GitConfig.ps1"
 
 # SD settings
 $vimCmd = get-command vim -ErrorAction Ignore
@@ -86,7 +66,6 @@ if ($null -eq $vimCmd)
    winget install vim.vim
    $vimPath = (dir "C:\Program Files\Vim\vim*\" | select -first 1).FullName
    $env:path += ";$vimPath"
-   [System.Environment]::SetEnvironmentVariable("PATH", $env:path, [System.EnvironmentVariableTarget]::User)
    $vimCmd = get-command vim -ErrorAction Ignore
 }
 
@@ -105,15 +84,6 @@ function global:Edit()
 {
   .$env:SDEDITOR $args
 }
-
-function global:_up ([int] $count = 1)
-{
-    push-location -path .
-    1..$count | % { set-location .. }
-}
-
-set-alias e edit -scope global
-set-alias up _up -scope global
 
 function global:Get-BranchName { "" }
 
@@ -203,19 +173,6 @@ if (test-path $serverModules -ErrorAction Ignore)
 }
 
 Import-Module DirColors
-
-$global:wt_profile = ($env:LocalAppData+'\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json')
-
-function global:Execute-PowerShell32
-{
-  c:\Windows\SysWoW64\WindowsPowerShell\v1.0\powershell.exe -nologo $args
-}
-set-alias ps32 Execute-PowerShell32 -scope global
-
-function global:Setup-MyBash
-{
-  wsl -- wget https://raw.githubusercontent.com/ocalvo/MyBash/master/setup.sh -O /tmp/setup.sh; bash /tmp/setup.sh
-}
 
 #Import-Module PowerTab
 Import-Module PSReadLine
