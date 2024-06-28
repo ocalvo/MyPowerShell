@@ -76,7 +76,7 @@ set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'              
 set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
 set-alias copy-robust         "$PSScriptRoot\Copy-Robust.ps1"                    -scope global
 
-."$PSScriptRoot\Set-GitConfig.ps1"
+# ."$PSScriptRoot\Set-GitConfig.ps1"
 
 # SD settings
 $vimCmd = get-command vim -ErrorAction Ignore
