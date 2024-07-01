@@ -7,7 +7,7 @@
     </TN>
     <MS>
       <S N="Name">Pester</S>
-      <Version N="Version">5.5.0</Version>
+      <Version N="Version">5.6.1</Version>
       <S N="Type">Module</S>
       <S N="Description">Pester provides a framework for running BDD style Tests to execute and validate PowerShell commands inside of PowerShell and offers a powerful set of Mocking Functions that allow tests to mimic and mock the functionality of any command inside of a piece of PowerShell code being tested. Pester tests can execute any command or script that is accessible to a pester test file. This can include functions, Cmdlets, Modules and scripts. Pester can be run in ad hoc style in a console or it can be integrated into the Build scripts of a Continuous Integration system.</S>
       <S N="Author">Pester Team</S>
@@ -22,10 +22,10 @@
           <S>fflaten</S>
         </LST>
       </Obj>
-      <S N="Copyright">Copyright (c) 2021 by Pester Team, licensed under Apache 2.0 License.</S>
-      <DT N="PublishedDate">2023-06-27T16:09:16-07:00</DT>
+      <S N="Copyright">Copyright (c) 2024 by Pester Team, licensed under Apache 2.0 License.</S>
+      <DT N="PublishedDate">2024-07-01T16:11:23-07:00</DT>
       <Obj N="InstalledDate" RefId="2">
-        <DT>2024-06-03T13:43:35.5320633-07:00</DT>
+        <DT>2024-07-01T12:48:36.8323071-07:00</DT>
         <MS>
           <Obj N="DisplayHint" RefId="3">
             <TN RefId="2">
@@ -66,7 +66,7 @@
         </TN>
         <DCT>
           <En>
-            <S N="Key">Command</S>
+            <S N="Key">Function</S>
             <Obj N="Value" RefId="6">
               <TNRef RefId="1" />
               <LST>
@@ -100,7 +100,7 @@
             </Obj>
           </En>
           <En>
-            <S N="Key">Function</S>
+            <S N="Key">Command</S>
             <Obj N="Value" RefId="7">
               <TNRef RefId="1" />
               <LST>
@@ -134,28 +134,28 @@
             </Obj>
           </En>
           <En>
-            <S N="Key">Cmdlet</S>
+            <S N="Key">Workflow</S>
             <Obj N="Value" RefId="8">
               <TNRef RefId="1" />
               <LST />
             </Obj>
           </En>
           <En>
-            <S N="Key">DscResource</S>
-            <Ref N="Value" RefId="8" />
-          </En>
-          <En>
-            <S N="Key">Workflow</S>
-            <Ref N="Value" RefId="8" />
-          </En>
-          <En>
             <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="8" />
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Ref N="Value" RefId="8" />
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
             <Ref N="Value" RefId="8" />
           </En>
         </DCT>
       </Obj>
       <Nil N="PowerShellGetFormatVersion" />
-      <S N="ReleaseNotes">https://github.com/pester/Pester/releases/tag/5.5.0</S>
+      <S N="ReleaseNotes">https://github.com/pester/Pester/releases/tag/5.6.1</S>
       <Obj N="Dependencies" RefId="9">
         <TNRef RefId="1" />
         <LST />
@@ -169,22 +169,22 @@
           <T>System.Object</T>
         </TN>
         <MS>
-          <S N="copyright">Copyright (c) 2021 by Pester Team, licensed under Apache 2.0 License.</S>
+          <S N="copyright">Copyright (c) 2024 by Pester Team, licensed under Apache 2.0 License.</S>
           <S N="description">Pester provides a framework for running BDD style Tests to execute and validate PowerShell commands inside of PowerShell and offers a powerful set of Mocking Functions that allow tests to mimic and mock the functionality of any command inside of a piece of PowerShell code being tested. Pester tests can execute any command or script that is accessible to a pester test file. This can include functions, Cmdlets, Modules and scripts. Pester can be run in ad hoc style in a console or it can be integrated into the Build scripts of a Continuous Integration system.</S>
           <S N="requireLicenseAcceptance">False</S>
-          <S N="releaseNotes">https://github.com/pester/Pester/releases/tag/5.5.0</S>
+          <S N="releaseNotes">https://github.com/pester/Pester/releases/tag/5.6.1</S>
           <S N="isLatestVersion">True</S>
           <S N="isAbsoluteLatestVersion">False</S>
-          <S N="versionDownloadCount">2465410</S>
-          <S N="downloadCount">20285294</S>
-          <S N="packageSize">313009</S>
-          <S N="published">6/27/2023 4:09:16 PM -07:00</S>
-          <S N="created">6/27/2023 4:09:16 PM -07:00</S>
-          <S N="lastUpdated">6/3/2024 8:40:50 PM -07:00</S>
+          <S N="versionDownloadCount">1804</S>
+          <S N="downloadCount">20779201</S>
+          <S N="packageSize">326919</S>
+          <S N="published">7/1/2024 4:11:23 PM -07:00</S>
+          <S N="created">7/1/2024 4:11:23 PM -07:00</S>
+          <S N="lastUpdated">7/1/2024 7:46:32 PM -07:00</S>
           <S N="tags">powershell unit_testing bdd tdd mocking PSEdition_Core PSEdition_Desktop Windows Linux MacOS PSModule PSFunction_Invoke-Pester PSCommand_Invoke-Pester PSFunction_Describe PSCommand_Describe PSFunction_Context PSCommand_Context PSFunction_It PSCommand_It PSFunction_Mock PSCommand_Mock PSFunction_InModuleScope PSCommand_InModuleScope PSFunction_BeforeDiscovery PSCommand_BeforeDiscovery PSFunction_BeforeAll PSCommand_BeforeAll PSFunction_BeforeEach PSCommand_BeforeEach PSFunction_AfterEach PSCommand_AfterEach PSFunction_AfterAll PSCommand_AfterAll PSFunction_Should PSCommand_Should PSFunction_Add-ShouldOperator PSCommand_Add-ShouldOperator PSFunction_Get-ShouldOperator PSCommand_Get-ShouldOperator PSFunction_Export-NUnitReport PSCommand_Export-NUnitReport PSFunction_ConvertTo-NUnitReport PSCommand_ConvertTo-NUnitReport PSFunction_Export-JUnitReport PSCommand_Export-JUnitReport PSFunction_ConvertTo-JUnitReport PSCommand_ConvertTo-JUnitReport PSFunction_ConvertTo-Pester4Result PSCommand_ConvertTo-Pester4Result PSFunction_New-PesterContainer PSCommand_New-PesterContainer PSFunction_New-PesterConfiguration PSCommand_New-PesterConfiguration PSFunction_Assert-VerifiableMock PSCommand_Assert-VerifiableMock PSFunction_Assert-MockCalled PSCommand_Assert-MockCalled PSFunction_Set-ItResult PSCommand_Set-ItResult PSFunction_New-MockObject PSCommand_New-MockObject PSFunction_New-Fixture PSCommand_New-Fixture PSIncludes_Function</S>
           <S N="developmentDependency">False</S>
-          <S N="updated">2024-06-03T20:40:50Z</S>
-          <S N="NormalizedVersion">5.5.0</S>
+          <S N="updated">2024-07-01T19:46:32Z</S>
+          <S N="NormalizedVersion">5.6.1</S>
           <S N="Authors">Pester Team</S>
           <S N="IsPrerelease">false</S>
           <S N="ItemType">Module</S>
@@ -194,7 +194,7 @@
           <S N="CompanyName">Pester</S>
         </MS>
       </Obj>
-      <S N="InstalledLocation">C:\Users\ocalvo\Documents\PowerShell\Modules\Pester\5.5.0</S>
+      <S N="InstalledLocation">C:\Users\ocalvo\Documents\PowerShell\Modules\Pester\5.6.1</S>
     </MS>
   </Obj>
 </Objs>
