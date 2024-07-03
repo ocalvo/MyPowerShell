@@ -28,19 +28,10 @@ function global:test-isadmin
   }
 }
 
-if (Test-Path /etc/lsb-release) {
-  $distroInfo = (Get-Content /etc/lsb-release | where {$_.StartsWith("DISTRIB_ID")} )
-  if ($null -ne $distroInfo -and $distroInfo.Contains('=')) {
-    $distroName = $distroInfo.Split('=')[1]
-    $Host.UI.RawUI.WindowTitle = $distroName
-  }
-}
-
 $env:BUILD_TASKBAR_FLASH=1
 $env:BUILD_DASHBOARD=1
 $env:BUILD_LESS_OUTPUT=1
 
-$isAdmin = (test-isadmin)
 [string]$global:myhome = '~/Documents'
 [string]$global:scriptFolder = $global:myhome +'/'
 if ($PSEdition -eq "Desktop") { $global:scriptFolder += 'Windows' }
@@ -53,7 +44,6 @@ if (!(test-path $vimRC))
 }
 
 set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
-set-alias vsvars              Enter-VSShell                                      -scope global
 set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
 set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
 #."$PSScriptRoot\Set-GitConfig.ps1"
@@ -85,8 +75,6 @@ function global:Edit()
   .$env:SDEDITOR $args
 }
 
-$global:initialTitle = $Host.UI.RawUI.WindowTitle
-
 $_profilePath = (get-item $profile).Directory.FullName
 $_profileModulesPath = $_profilePath+"/Modules"
 if (!$env:PSModulePath.Contains($_profileModulesPath))
@@ -108,8 +96,9 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
     }
     if ($notInPath) { $env:PATH += ";$poshDir" }
   }
-  $poshTheme = "Jandedobbeleer.omp"
-  oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme.json" | Invoke-Expression
+  # $poshTheme = "Jandedobbeleer.omp.json"
+  $poshTheme = "markbull.omp.custom.json"
+  oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme" | Invoke-Expression
 }
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')

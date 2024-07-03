@@ -113,7 +113,7 @@
       "type": "prompt"
     }
   ],
-  "console_title_template": "{{if .Root}}\u26a1 {{end}}Hola{{.Folder}}",
+  "console_title_template": "{{if .Root}}\u26a1 {{end}}{{if .Env._XROOT}}🏭({{.Env._BuildArch}}{{.Env._BuildType}} {{.Env._XROOT}}){{end}}{{if .Env.VSINSTALLDIR}}🏭(MSBuild){{end}} {{ .Folder }}",
   "final_space": true,
   "version": 2
 }
