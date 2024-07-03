@@ -97,7 +97,7 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
     if ($notInPath) { $env:PATH += ";$poshDir" }
   }
   # $poshTheme = "Jandedobbeleer.omp.json"
-  $poshTheme = "markbull.omp.custom.json"
+  $poshTheme = "markbull.omp.custom.yaml"
   oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme" | Invoke-Expression
 }
 
