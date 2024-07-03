@@ -31,6 +31,7 @@ function global:test-isadmin
 $env:BUILD_TASKBAR_FLASH=1
 $env:BUILD_DASHBOARD=1
 $env:BUILD_LESS_OUTPUT=1
+$env:MSBUILD_VERBOSITY='binlog'
 
 [string]$global:myhome = '~/Documents'
 [string]$global:scriptFolder = $global:myhome +'/'
@@ -83,6 +84,8 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
   if (Test-IsUnix) { $separator = ":" }
   $env:PSModulePath += $separator+$_profileModulesPath
 }
+
+[Console]::OutputEncoding = [Text.Encoding]::UTF8
 
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
   $notInPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
