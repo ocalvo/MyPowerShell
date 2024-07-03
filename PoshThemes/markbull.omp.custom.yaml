@@ -10,7 +10,7 @@ blocks:
     foreground: '#1d1626'
     powerline_symbol: 
     style: powerline
-    template: '   {{ if .SSHSession }}  {{ end }}{{ .UserName }}{{ if (eq .OS "windows")}} {{ else }}@{{ end }}{{ .HostName }} '
+    template: '   {{ if .SSHSession }}  {{ end }}{{ .UserName }}{{ if (eq .OS "windows")}} {{ else if (eq .OS "ubuntu") }}🐧{{ else }}@{{ end }}{{ .HostName }} '
     type: session
   - background: '#C678DD'
     foreground: '#fffef9'
