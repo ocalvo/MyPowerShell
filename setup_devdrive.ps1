@@ -8,7 +8,7 @@ param (
 #Format-Volume -DriveLetter $binDrive -DevDrive
 #Format-Volume -DriveLetter $srcDrive -DevDrive
 
-setx /M _NT_SYMBOL_PATH "SRV*$binDrive\symbols*http://symweb"
+setx /M _NT_SYMBOL_PATH "SRV*$binDrive\symbols*https://symweb.azurefd.net"
 setx /M npm_config_cache "$srcDrive\packages\npm"
 setx /M NUGET_PACKAGES "$srcDrive\packages\nuget"
 setx /M VCPKG_DEFAULT_BINARY_CACHE "$srcDrive\packages\vcpkg"

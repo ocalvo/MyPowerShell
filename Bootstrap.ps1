@@ -69,12 +69,6 @@ if (!(Test-IsUnix)) {
     }
   }
 
-#  $symbolsPath = "w:\symbols"
-#  if (test-path $symbolsPath)
-#  {
-#    $env:_NT_SYMBOL_PATH=('SRV*'+$symbolsPath+'*http://symweb')
-#  }
-
 }
 
 #$isWorkMode = ($env:USERNAME -eq "ocalvo")
