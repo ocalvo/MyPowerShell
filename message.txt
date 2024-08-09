@@ -1,2 +1,0 @@
-@$curstack.Frames[0xe].Parameters.Message                 : 0x8456eff9d8 [Type: wchar_t * *]
-    0x272a6e42cb4 : "TryCreateCatalogUntilFatalFailure : CDF path is d:\os\obj\armfre\temp\b19c0d121a50d2e92f1a23d0efb6a102\22gqlqsu.xfe\32\ynjptzfl.lgp\Microsoft-OneCore-WUDependencies-Package_fr-fr~31bf3856ad364e35~arm~fr-fr~10.0.19041.10082 for package Microsoft-OneCore-WUDependencies-Package_fr-fr" [Type: wchar_t *]
