@@ -87,6 +87,7 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
+$poshPromptFile = "$PSScriptRoot\PoshThemes\poshprompt.ps1"
 if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
   $notInPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
   if (Test-IsUnix) {
@@ -101,7 +102,12 @@ if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
   }
   # $poshTheme = "Jandedobbeleer.omp.json"
   $poshTheme = "markbull.omp.custom.yaml"
-  oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme" | Invoke-Expression
+  (@(& oh-my-posh init pwsh --config="$PSScriptRoot\PoshThemes\$poshTheme" --print) -join "`n") | Set-Content -Path $poshPromptFile
+  Invoke-Expression $poshPromptFile
+} else {
+  if (Test-Path $poshPromptFile) {
+    Invoke-Expression $poshPromptFile
+  }
 }
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')
