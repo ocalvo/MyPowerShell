@@ -123,7 +123,7 @@ Import-Module PwrSearch
 Import-Module PwrDev
 Import-Module PwrRazzle
 
-Import-Module Terminal-Icons
+Import-Module Terminal-Icons -ErrorAction Ignore | Out-Null
 if ($null -eq $global:glyphs) {
   $glPath = Split-path (get-module Terminal-Icons).Path
   $global:glyphs = Invoke-Expression "& '$glPath/Data/glyphs.ps1'"
