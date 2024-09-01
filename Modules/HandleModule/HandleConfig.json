@@ -1,0 +1,26 @@
+{
+  "$schema": "https://aka.ms/Crescendo/Schema.json",
+  "Commands": [
+    {
+      "Verb": "Get",
+      "Noun": "OpenFile",
+      "OriginalName": "handle.exe",
+      "Parameters": [
+        {
+          "Name": "FileName",
+          "ParameterType": "string",
+          "Position": 0,
+          "OriginalName": ""
+        }
+      ],
+      "OutputHandlers": [
+        {
+          "ParameterSetName": "Default",
+          "HandlerType": "Function",
+          "Handler": "Parse-HandleOutput"
+        }
+      ]
+    }
+  ]
+}
+
