@@ -1,0 +1,535 @@
+{
+  "files": [
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/Convert-NetshHelp.ps1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-NetshHelp.ps1-0CA7643D26600B9472FBD0E158CF931B76B7470F",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a199ad8e4b7f9efdbf00ed328d1ab2c4590fc4387fe3b466b48b854c87c14f26"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0ca7643d26600b9472fbd0e158cf931b76b7470f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Microsoft.PowerShell.Crescendo.Types.ps1xml",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.Types.ps1xml-27B1917B1FD38F4E4B5C1150C1177A1E1EE5A5F6",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5c98a3ec62368c57a8d1e906ebf3238c93f38da0338e3e484b55ed00903a1989"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "27b1917b1fd38f4e4b5c1150c1177a1e1ee5a5f6"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/dockergetps.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockergetps.Crescendo.json-EFDFD58EF4A663D9B201C9DB4F4FA6189E996645",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1c21f07fd03267ac7d0d1999bf28534a4ecbe465ae0f0deac19f2ea73d2d2365"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "efdfd58ef4a663d9b201c9db4f4fa6189e996645"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Microsoft.PowerShell.Crescendo.Format.ps1xml",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.Format.ps1xml-FE04CD463F976E5F515112AC5C5DCD575852EB83",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9b84a6f9a6e7a031f85fd42663db77a4d6631c2ac7caa5dd84aa59086b9a8264"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "fe04cd463f976e5f515112ac5c5dcd575852eb83"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Microsoft.PowerShell.Crescendo.psd1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.psd1-F6CD34861D26FE2F9C1CAE86E66100FEDDE161F9",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "11d504a25c838ad622311b2a899e3f069fd395cdfdbed03cfb31d07aaffb2fdd"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f6cd34861d26fe2f9c1cae86e66100fedde161f9"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/Convert-WingetHelp.ps1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-WingetHelp.ps1-A1C87FB74B079A6B003B36EA51A6D94B412A329A",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4378a5c9f48927e7e4c2dd7e3ff45886fd87730fcad83f55743e97bf91db609b"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a1c87fb74b079a6b003b36ea51a6d94b412a329a"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/HelpConversion002.gif",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-HelpConversion002.gif-DCE9ADEBCB6BD7291FABEAC8E7EFDAB9B296E9FE",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0df00f61ce6e1f50fff0bf9cdbdd97f9dd2c2072f4683918b5234aff436834f7"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "dce9adebcb6bd7291fabeac8e7efdab9b296e9fe"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/Convert-DockerHelp.ps1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-DockerHelp.ps1-26635798CF34AFA0A174506B0FA175C4C1C15E08",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8673aeeb29d48ee0e5fca988586841eac629def798766d2aac2fc1e524345c9d"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "26635798cf34afa0a174506b0fa175c4c1c15e08"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/dd.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dd.Crescendo.json-6A8F5C307CE3C3E065AD7EA99DE2AF6CA32E9B1C",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c944cb6c837af2610c8149bce537bcb3a940060b531a2c3ca0555592983cf6b2"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6a8f5c307ce3c3e065ad7ea99de2af6ca32e9b1c"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/tar.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-tar.Crescendo.json-C7B1B2DCC1469E779E8E3D20B76EF92C869543E1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5f527accf934d0fdeb5959ca39130a4b5612b7f170ea955ea93df0438d70db82"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "c7b1b2dcc1469e779e8e3d20b76ef92c869543e1"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Microsoft.PowerShell.Crescendo.psm1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.psm1-6F496AEA0F7BF91291DAB499593B0990363833F3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9e560cdb497bceb6d225f0bf6874481e387e9489099420f365086d750b9eb411"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6f496aea0f7bf91291dab499593b0990363833f3"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/HelpConversion002.mp4",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-HelpConversion002.mp4-4E80255411C130206596F103821D13B68F57202E",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ff9fbd3f891a05ad0a2a18a60de3f3775b5d59be217421530450135d13ee3ee0"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "4e80255411c130206596f103821d13b68f57202e"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/ifconfig.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-ifconfig.Crescendo.json-7D41CAB0D81A3BCD7A588175F7F15E2AC5346E48",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9471b00a51197eb97964f9905497f70d6c5d330611da38f261b80d3fae046d8b"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "7d41cab0d81a3bcd7a588175f7f15e2ac5346e48"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/Convert-OpenFaasHelp.ps1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-OpenFaasHelp.ps1-1986C43D9770A9CF101E6AED238D24A8FA55C683",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "209de4582f67857e1b312eaaa1871848050ae8db7146c7d4ae934e5a2eb6b570"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "1986c43d9770a9cf101e6aed238d24a8fa55c683"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/dockerinspectimage.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockerinspectimage.Crescendo.json-0F1A19FB82022143B062121C81989CE1A794E12F",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4752e2e597e32e5dced3641b8ca8adf593484ff623feb3e6648f5e5474ef4f26"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0f1a19fb82022143b062121c81989ce1a794e12f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Schemas/2022-06",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Schemas-2022-06-FDD43E5BC930C122564DBB0781C25ADD706294CB",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3a37b2e9ec1cf27646ae0f527e1c812155ab698a25ba278b09136d27c821bbc4"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "fdd43e5bc930c122564dbb0781c25add706294cb"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/dockerRmImage.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockerRmImage.Crescendo.json-FD5013FC7992BEB750BEF1DA2EB56D7478A04662",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e43eb2075d8d3be480468ddb89d01bcebbdec4ddfa2a7368ff84f73525749e1c"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "fd5013fc7992beb750bef1da2eb56d7478a04662"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/GetFileList.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-GetFileList.Crescendo.json-C8A75E98D10C8919E404D4E21065C3026E1E5070",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "030ba6196ba68ca4e5958b41c7957ba1806c4b24ac28e90d99a324f9a36bde34"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "c8a75e98d10c8919e404d4e21065c3026e1e5070"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Schemas/2021-11",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Schemas-2021-11-D268CF20A1D3B4CF058108C772F284F07D0E2C7A",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5b52e6b54eea64f74bf67ec10e74d40e24c3803d01612daa39eb359c07473946"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "d268cf20a1d3b4cf058108c772f284f07d0e2c7a"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/Convert-KubectlHelp.ps1",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-KubectlHelp.ps1-BAA10592AA4BB708694634CFE9B89352BF02F375",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e6785fe15576251f7e07fc52053a492be344475441a6f2c37fe68ae3066ff5f3"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "baa10592aa4bb708694634cfe9b89352bf02f375"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/dockergetimage.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockergetimage.Crescendo.json-9FFCD53FBF13F31C09263DE526250B5DBCB7905F",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8077d30d373460a3c5534d3069709b971bdc20792d21442f829ff4972a9163bf"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9ffcd53fbf13f31c09263de526250b5dbcb7905f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/who.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-who.Crescendo.json-51E5296BA7C0871AB6CCE7CD29D125943666A940",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d24eccbc75cef1b039bd343a77d48df2326f24b814e27a38c9929dc92861aed7"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "51e5296ba7c0871ab6cce7cd29d125943666a940"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Experimental/HelpParsers/README.md",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-README.md-E09C01AF2132EA325A1463E1E08A91B1B9D75819",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8695f7b9ccb9ff343acc09f27ac043156a67340b3cbacbd6cb7c92d8b53fb461"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e09c01af2132ea325a1463e1e08a91b1b9d75819"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./Microsoft.PowerShell.Crescendo/1.1.0/Samples/ls.Crescendo.json",
+      "SPDXID": "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-ls.Crescendo.json-9829543D16893FBF247C1F119E3BDE8D20D65D48",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2ecdabc6c2f41f9f4e2f4a9f87558143e597a6ec097c2b4251d37501b6fda351"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9829543d16893fbf247c1f119e3bde8d20d65d48"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "packages": [
+    {
+      "name": "Unknown",
+      "SPDXID": "SPDXRef-RootPackage",
+      "downloadLocation": "NOASSERTION",
+      "packageVerificationCode": {
+        "packageVerificationCodeValue": "609272dcbdb144530a43b72c54c187c4d1b8e05f"
+      },
+      "filesAnalyzed": true,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "0.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/Microsoft/sbom.microsoft/Unknown@0.0.0?tag_id=dae0f939-a311-4567-9ede-42fc81a368f7"
+        }
+      ],
+      "supplier": "Organization: Microsoft",
+      "hasFiles": [
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockerRmImage.Crescendo.json-FD5013FC7992BEB750BEF1DA2EB56D7478A04662",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Schemas-2022-06-FDD43E5BC930C122564DBB0781C25ADD706294CB",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockerinspectimage.Crescendo.json-0F1A19FB82022143B062121C81989CE1A794E12F",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-OpenFaasHelp.ps1-1986C43D9770A9CF101E6AED238D24A8FA55C683",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-ls.Crescendo.json-9829543D16893FBF247C1F119E3BDE8D20D65D48",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-ifconfig.Crescendo.json-7D41CAB0D81A3BCD7A588175F7F15E2AC5346E48",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-HelpConversion002.mp4-4E80255411C130206596F103821D13B68F57202E",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.psm1-6F496AEA0F7BF91291DAB499593B0990363833F3",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockergetps.Crescendo.json-EFDFD58EF4A663D9B201C9DB4F4FA6189E996645",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-NetshHelp.ps1-0CA7643D26600B9472FBD0E158CF931B76B7470F",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-GetFileList.Crescendo.json-C8A75E98D10C8919E404D4E21065C3026E1E5070",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-tar.Crescendo.json-C7B1B2DCC1469E779E8E3D20B76EF92C869543E1",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dd.Crescendo.json-6A8F5C307CE3C3E065AD7EA99DE2AF6CA32E9B1C",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-DockerHelp.ps1-26635798CF34AFA0A174506B0FA175C4C1C15E08",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-HelpConversion002.gif-DCE9ADEBCB6BD7291FABEAC8E7EFDAB9B296E9FE",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.psd1-F6CD34861D26FE2F9C1CAE86E66100FEDDE161F9",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-README.md-E09C01AF2132EA325A1463E1E08A91B1B9D75819",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Schemas-2021-11-D268CF20A1D3B4CF058108C772F284F07D0E2C7A",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-who.Crescendo.json-51E5296BA7C0871AB6CCE7CD29D125943666A940",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Samples-dockergetimage.Crescendo.json-9FFCD53FBF13F31C09263DE526250B5DBCB7905F",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-KubectlHelp.ps1-BAA10592AA4BB708694634CFE9B89352BF02F375",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.Types.ps1xml-27B1917B1FD38F4E4B5C1150C1177A1E1EE5A5F6",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Experimental-HelpParsers-Convert-WingetHelp.ps1-A1C87FB74B079A6B003B36EA51A6D94B412A329A",
+        "SPDXRef-File--Microsoft.PowerShell.Crescendo-1.1.0-Microsoft.PowerShell.Crescendo.Format.ps1xml-FE04CD463F976E5F515112AC5C5DCD575852EB83"
+      ]
+    }
+  ],
+  "externalDocumentRefs": [],
+  "relationships": [
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    }
+  ],
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "Unknown 0.0.0",
+  "documentNamespace": "https://sbom.microsoft/1:2QSF7qZlbE-F7QrUJlEo7g:pgynFrSM6UW3TvJ1KeUIYg/1482:405137/Unknown:0.0.0:DG_1KlxTwkaj0TRDBs1Wnw",
+  "creationInfo": {
+    "created": "2023-09-06T17:41:32Z",
+    "creators": [
+      "Organization: Microsoft",
+      "Tool: Microsoft.SBOMTool-1.5.2"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}

@@ -1,0 +1,154 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">Microsoft.PowerShell.Crescendo</S>
+      <Version N="Version">1.1.0</Version>
+      <S N="Type">Module</S>
+      <S N="Description">Module that improves user experience with native commands</S>
+      <S N="Author">Microsoft Corporation</S>
+      <S N="CompanyName">JamesTruher-MSFT</S>
+      <S N="Copyright">(c) Microsoft Corporation. All rights reserved.</S>
+      <DT N="PublishedDate">2023-09-11T17:45:40-07:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2024-08-22T12:40:57.1667003-07:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://github.com/PowerShell/Crescendo/blob/master/LICENSE</URI>
+      <URI N="ProjectUri">https://github.com/PowerShell/Crescendo</URI>
+      <URI N="IconUri">https://raw.githubusercontent.com/PowerShell/Crescendo/master/Assets/Crescendo-x85.ico</URI>
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>Crescendo</S>
+          <S>SoftwareGeneration</S>
+          <S>PSModule</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="2" />
+              <LST>
+                <S>New-ExampleInfo</S>
+                <S>New-CrescendoCommand</S>
+                <S>New-ParameterInfo</S>
+                <S>New-UsageInfo</S>
+                <S>New-OutputHandler</S>
+                <S>Import-CommandConfiguration</S>
+                <S>Export-Schema</S>
+                <S>Export-CrescendoModule</S>
+                <S>Export-CrescendoCommand</S>
+                <S>Test-IsCrescendoCommand</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="7">
+              <TNRef RefId="2" />
+              <LST>
+                <S>New-ExampleInfo</S>
+                <S>New-CrescendoCommand</S>
+                <S>New-ParameterInfo</S>
+                <S>New-UsageInfo</S>
+                <S>New-OutputHandler</S>
+                <S>Import-CommandConfiguration</S>
+                <S>Export-Schema</S>
+                <S>Export-CrescendoModule</S>
+                <S>Export-CrescendoCommand</S>
+                <S>Test-IsCrescendoCommand</S>
+              </LST>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <Nil N="ReleaseNotes" />
+      <Obj N="Dependencies" RefId="8">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="9">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">(c) Microsoft Corporation. All rights reserved.</S>
+          <S N="description">Module that improves user experience with native commands</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">23966</S>
+          <S N="downloadCount">32971</S>
+          <S N="packageSize">764271</S>
+          <S N="published">9/11/2023 5:45:40 PM -07:00</S>
+          <S N="created">9/11/2023 5:45:40 PM -07:00</S>
+          <S N="lastEdited">9/11/2023 11:13:07 PM -07:00</S>
+          <S N="lastUpdated">8/22/2024 7:40:00 PM -07:00</S>
+          <S N="tags">Crescendo SoftwareGeneration PSModule PSFunction_New-ExampleInfo PSCommand_New-ExampleInfo PSFunction_New-CrescendoCommand PSCommand_New-CrescendoCommand PSFunction_New-ParameterInfo PSCommand_New-ParameterInfo PSFunction_New-UsageInfo PSCommand_New-UsageInfo PSFunction_New-OutputHandler PSCommand_New-OutputHandler PSFunction_Import-CommandConfiguration PSCommand_Import-CommandConfiguration PSFunction_Export-Schema PSCommand_Export-Schema PSFunction_Export-CrescendoModule PSCommand_Export-CrescendoModule PSFunction_Export-CrescendoCommand PSCommand_Export-CrescendoCommand PSFunction_Test-IsCrescendoCommand PSCommand_Test-IsCrescendoCommand PSIncludes_Function</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2024-08-22T19:40:00Z</S>
+          <S N="NormalizedVersion">1.1.0</S>
+          <S N="Authors">Microsoft Corporation</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">Microsoft.PowerShell.Crescendo.nuspec|Microsoft.PowerShell.Crescendo.Format.ps1xml|Microsoft.PowerShell.Crescendo.psd1|Microsoft.PowerShell.Crescendo.psm1|Microsoft.PowerShell.Crescendo.Types.ps1xml|Samples\dd.Crescendo.json|Samples\dockergetimage.Crescendo.json|Samples\dockergetps.Crescendo.json|Samples\dockerinspectimage.Crescendo.json|Samples\dockerRmImage.Crescendo.json|Samples\GetFileList.Crescendo.json|Samples\ifconfig.Crescendo.json|Samples\ls.Crescendo.json|Samples\tar.Crescendo.json|Samples\who.Crescendo.json|Schemas\2021-11|Schemas\2022-06|Experimental\HelpParsers\Convert-DockerHelp.ps1|Experimental\HelpParsers\Convert-KubectlHelp.ps1|Experimental\HelpParsers\Convert-NetshHelp.ps1|Experimental\HelpParsers\Convert-OpenFaasHelp.ps1|Experimental\HelpParsers\Convert-WingetHelp.ps1|Experimental\HelpParsers\HelpConversion002.gif|Experimental\HelpParsers\HelpConversion002.mp4|Experimental\HelpParsers\README.md|_manifest\spdx_2.2\bsi.json|_manifest\spdx_2.2\manifest.cat|_manifest\spdx_2.2\manifest.spdx.json|_manifest\spdx_2.2\manifest.spdx.json.sha256</S>
+          <S N="GUID">2dd09744-1ced-4636-a8ce-09a0bf0e566a</S>
+          <S N="PowerShellVersion">7.0</S>
+          <S N="CompanyName">Microsoft Corporation</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">C:\Users\ocalvo\Documents\PowerShell\Modules\Microsoft.PowerShell.Crescendo\1.1.0</S>
+    </MS>
+  </Obj>
+</Objs>
