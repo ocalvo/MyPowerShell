@@ -1,0 +1,25 @@
+{
+   "$schema": "https://aka.ms/PowerShell/Crescendo/Schemas/2021-11",
+   "Commands": [
+        {
+            "Verb": "Invoke",
+            "Noun": "DD",
+            "OriginalName": "/bin/dd",
+            "SupportsShouldProcess": true,
+            "Parameters": [
+                {
+                    "Name": "InputFile",
+                    "OriginalName": "if=",
+                    "NoGap": true,
+                    "ParameterType": "string"
+                },
+                {
+                    "Name": "OutputFile",
+                    "OriginalName": "of=",
+                    "NoGap": true,
+                    "ParameterType": "string"
+                }
+            ]
+        }
+    ]
+}

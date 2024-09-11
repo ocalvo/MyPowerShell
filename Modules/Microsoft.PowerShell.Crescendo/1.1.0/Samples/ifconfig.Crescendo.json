@@ -1,0 +1,33 @@
+{
+   "$schema": "https://aka.ms/PowerShell/Crescendo/Schemas/2021-11",
+   "Commands": [
+        {
+            "Verb": "Invoke",
+            "Noun": "ifconfig1",
+            "Description": "This is a description of the proxy",
+            "OriginalName": "ifconfig",
+            "Aliases": [
+                "Get-NetworkConfiguration"
+            ],
+            "Usage": {
+                "Synopsis": "Run invoke-ifconfig"
+            },
+            "Parameters": [
+                {
+                    "Name": "Interface",
+                    "OriginalName": "",
+                    "Description": "This is the description for a parameter",
+                    "ParameterType": "string"
+                }
+            ],
+            "OutputHandlers": [
+                {
+                    "ParameterSetName": "Default",
+                    "HandlerType": "Inline",
+                    "StreamOutput": true,
+                    "Handler": "$input | jc --ifconfig | ConvertFrom-Json"
+                }
+            ]
+        }
+    ]
+}
