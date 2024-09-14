@@ -1,4 +1,8 @@
-param([switch]$vim)
+[CmdLetBinding()]
+param(
+  [switch]$vim,
+  $beyond = "c:/program files/beyond compare 5/bcomp.exe"
+)
 
 function Set-GitGlobals()
 {
@@ -26,8 +30,8 @@ function Set-GitGlobals()
     git config --global mergetool.prompt false
     git config --global mergetool.bc trustExitCode true
 
-    git config --global difftool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
-    git config --global mergetool.bc.path "c:/program files/beyond compare 4/bcomp.exe"
+    git config --global difftool.bc.path $beyond
+    git config --global mergetool.bc.path $beyond
 
     if ($vim.IsPresent)
     {

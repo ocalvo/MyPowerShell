@@ -16,6 +16,7 @@ setx /M PIP_CACHE_DIR "$srcDrive\packages\pip"
 setx /M CARGO_HOME "$srcDrive\packages\cargo"
 setx /M MAVEN_OPTS "-Dmaven.repo.local=$srcDrive\packages\maven %MAVEN_OPTS%"
 setx /M GRADLE_USER_HOME "$srcDrive\packages\gradle"
+setx /M RUSTUP_HOME "$srcDrive\msrust"
 setx /M MSRUSTUP_HOME "$srcDrive\msrust"
 
 fsutil devdrv trust $binDrive
