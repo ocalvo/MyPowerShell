@@ -20,28 +20,24 @@ begin {
 
 process {
     foreach ($line in $PatchContent) {
-        if ($line -match '^commit (.*)$') {
-            Write-Verbose "Recognized commit line: $line"
+        if ($line -match '^\s*commit (.*)$') {
+            Write-Verbose "Recognized commit line:$line"
             $parsedPatch.Metadata.Commit = $matches[1]
         }
-        elseif ($line -match '^Author: (.*)$') {
-            Write-Verbose "Recognized author line: $line"
+        elseif ($line -match '^\s*Author: (.*)$') {
+            Write-Verbose "Recognized author line:$line"
             $parsedPatch.Metadata.Author = $matches[1]
         }
-        elseif ($line -match '^Date:   (.*)$') {
-            Write-Verbose "Recognized date line: $line"
+        elseif ($line -match '^\s*Date:\s+(.*)$') {
+            Write-Verbose "Recognized date line:$line"
             $parsedPatch.Metadata.Date = [DateTime]::ParseExact($matches[1], 'ddd MMM d HH:mm:ss yyyy', $null)
         }
-        elseif ($line -match '^Subject: (.*)$') {
-            Write-Verbose "Recognized subject line: $line"
+        elseif ($line -match '^\s*Subject: (.*)$') {
+            Write-Verbose "Recognized subject line:$line"
             $parsedPatch.Metadata.Subject = $matches[1]
         }
-        elseif ($line -match '^\s{4}(.*)$' -and -not $currentFile) {
-            Write-Verbose "Recognized description line: $line"
-            $parsedPatch.Metadata.Description += $matches[1]
-        }
         elseif ($line -match '^diff --git a\/(.+) b\/(.+)$') {
-            Write-Verbose "Recognized diff line: $line"
+            Write-Verbose "Recognized diff line:$line"
             $currentFile = @{
                 OldPath = $matches[1]
                 NewPath = $matches[2]
@@ -49,7 +45,20 @@ process {
             }
             $parsedPatch.Files += $currentFile
         }
-        elseif ($line -match '^@@ -(\d+),(\d+) \+(\d+),(\d+) @@ (.*)$') {
+        elseif ($line -match '^\s*index \S+..(\S+) (\d+)$') {
+            Write-Verbose "Recognized index line: $line"
+            $currentFile.Index = $matches[1]
+            $currentFile.Mode = $matches[2]
+        }
+        elseif ($line -match '^\s*--- (.*)$') {
+            Write-Verbose "Recognized original file path: $line"
+            $currentFile.OriginalPath = $matches[1]
+        }
+        elseif ($line -match '^\s*\+\+\+ (.*)$') {
+            Write-Verbose "Recognized new file path: $line"
+            $currentFile.NewPath = $matches[1]
+        }
+        elseif ($line -match '^@@ -(\d+),(\d+) \+(\d+),(\d+) @@(.*)$') {
             Write-Verbose "Recognized hunk line: $line"
             $hunk = @{
                 OldStart = $matches[1]
@@ -61,8 +70,11 @@ process {
             }
             $currentFile.Hunks += $hunk
         }
-        elseif ($currentFile -and $currentFile.Hunks -and $line -match '^\s*([\+|\-|\s])(.*)$') {
-            Write-Verbose "Recognized change line: $line"
+        elseif ($line -match '^([\+|\-])(.*)$') {
+            Write-Verbose "Recognized change line:$line"
+            if (-Not $currentFile) {
+                Write-Error "Current file is null"
+            }
             $hunk = $currentFile.Hunks[-1]
             $hunk.Lines += @{
                 Prefix = $matches[1]
@@ -70,8 +82,12 @@ process {
             }
             $currentFile.Hunks[-1] = $hunk
         }
+        elseif ($currentFile -eq $null) {
+            Write-Verbose "Recognized description line: $line"
+            $parsedPatch.Metadata.Description += $matches[1]
+        }
         else {
-            Write-Warning "Unrecognized line: $line"
+            Write-Warning "Unrecognized line:$line"
         }
     }
 }
