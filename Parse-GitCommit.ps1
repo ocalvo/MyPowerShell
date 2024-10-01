@@ -49,13 +49,14 @@ process {
             }
             $parsedPatch.Files += $currentFile
         }
-        elseif ($line -match '^@@ -(\d+),(\d+) \+(\d+),(\d+) @@$') {
+        elseif ($line -match '^@@ -(\d+),(\d+) \+(\d+),(\d+) @@ (.*)$') {
             Write-Verbose "Recognized hunk line: $line"
             $hunk = @{
                 OldStart = $matches[1]
                 OldLength = $matches[2]
                 NewStart = $matches[3]
                 NewLength = $matches[4]
+                Context = $matches[5]
                 Lines = @()
             }
             $currentFile.Hunks += $hunk
