@@ -1,6 +1,8 @@
 [CmdLetBinding()]
 param(
-  [switch]$OnlyMetadata
+  [switch]$OnlyMetadata,
+  [switch]$Parallel = $true,
+  $ThrottleLimit=32
 )
 
 $location = Get-Location
@@ -13,17 +15,26 @@ $commits = git log --oneline $cDir |% {
 
 Write-Verbose "Found $total commits"
 
-$sr = $PSScriptRoot
 $i = 0;
-$result = $commits | ForEach-Object {
+$lastCommit = $null
+$result = $commits | ForEach-Object -Parallel {
+
     Write-Verbose "Parsing commit $_"
-    if ($OnlyMetadata) {
-        $gitCommit = Parse-GitCommit -Commit $_ -OnlyMetadata
+    if ($true) {
+        ."C:\Users\ocalvo\Documents\PowerShell\Parse-GitCommit.ps1" -Commit $_ -OnlyMetadata
     } else {
-        $gitCommit = Parse-GitCommit -Commit $_
+        ."C:\Users\ocalvo\Documents\PowerShell\Parse-GitCommit.ps1" -Commit $_
     }
+} -ThrottleLimit 32 |% {
+    $gitCommit = $_
     [double]$p = ($i++/$total)*100.0;
-    Write-Progress -PercentComplete $p -Activity ("{0}({1}%)" -f $gitCommit.Commit.SubString(0,8),[int]$p);
+    $cId = $gitCommit.Commit
+    if ($cId.Length -gt 7) {
+        $actName = ("{0}({1}%)" -f $gitCommit.Commit.SubString(0,8),[int]$p)
+        Write-Progress -PercentComplete $p -Activity $actName;
+    } else {
+        Write-Warning ("Invalid commit detected: {0}" -f $gitCommit.Subject)
+    }
     return $gitCommit
 }
 

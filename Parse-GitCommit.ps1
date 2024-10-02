@@ -1,9 +1,7 @@
-[CmdletBinding(DefaultParameterSetName = 'ById')]
+[CmdletBinding()]
 param (
-    [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'ById')]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [string]$Commit,
-    [Parameter(Mandatory, ParameterSetName = 'ByContent')]
-    [string[]]$PatchContent,
     [Parameter()]
     [switch]$OnlyMetadata = $false
 )
