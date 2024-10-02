@@ -1,40 +1,48 @@
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName = 'ById')]
 param (
+    [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'ById')]
+    [string]$Commit,
+    [Parameter(Mandatory, ParameterSetName = 'ByContent')]
     [string[]]$PatchContent
 )
 
 begin {
-    $parsedPatch = @{
-        Files = @()
-        Metadata = @{
-            Commit = $null
-            Author = $null
-            Date = $null
-            Subject = $null
-            Description = @()
-        }
-    }
-
-    $currentFile = $null
 }
 
 process {
+
+    $parsedPatch = @{
+        Files = @()
+        Commit = $null
+        AuthorName = $null
+        AuthorEmail = $null
+        Date = $null
+        Subject = $null
+        Description = @()
+    }
+
+    $currentFile = $null
+
+    if ($null -ne $Commit) {
+      $PatchContent = (git show $Commit)
+    }
+
     foreach ($line in $PatchContent) {
         if ($line -match '^\s*commit (.*)$') {
             Write-Verbose "Recognized commit line:$line"
-            $parsedPatch.Metadata.Commit = $matches[1]
+            $parsedPatch.Commit = $matches[1]
         }
         elseif ($line -match '^\s*Author: (.*)$') {
             Write-Verbose "Recognized author line:$line"
-            $parsedPatch.Metadata.Author = $matches[1]
+            $parsedPatch.AuthorName = $matches[1]
         }
         elseif ($line -match '^\s*Date:\s+(.*)$') {
             Write-Verbose "Recognized date line:$line"
-            $parsedPatch.Metadata.Date = [DateTime]::ParseExact($matches[1], 'ddd MMM d HH:mm:ss yyyy', $null)
+            $parsedPatch.Date = [DateTime]::ParseExact($matches[1], 'ddd MMM d HH:mm:ss yyyy', $null)
         }
         elseif ($line -match '^\s*Subject: (.*)$') {
             Write-Verbose "Recognized subject line:$line"
-            $parsedPatch.Metadata.Subject = $matches[1]
+            $parsedPatch.Subject = $matches[1]
         }
         elseif ($line -match '^diff --git a\/(.+) b\/(.+)$') {
             Write-Verbose "Recognized diff line:$line"
@@ -52,7 +60,15 @@ process {
         }
         elseif ($line -match '^\s*--- (.*)$') {
             Write-Verbose "Recognized original file path: $line"
-            $currentFile.OriginalPath = $matches[1]
+            if (-Not $currentFile) {
+                $currentFile = @{
+                    OldPath = $matches[1]
+                    NewPath = $matches[1]
+                    Hunks = @()
+                }
+            } else {
+                $currentFile.OldPath = $matches[1]
+            }
         }
         elseif ($line -match '^\s*\+\+\+ (.*)$') {
             Write-Verbose "Recognized new file path: $line"
@@ -75,28 +91,35 @@ process {
             if (-Not $currentFile) {
                 Write-Error "Current file is null"
             }
-            $hunk = $currentFile.Hunks[-1]
-            $hunk.Lines += @{
-                Prefix = $matches[1]
-                Content = $matches[2]
+            $hunk = @{
+                Lines = @{
+                    Prefix = $matches[1]
+                    Content = $matches[2]
+                }
             }
-            $currentFile.Hunks[-1] = $hunk
+            $currentFile.Hunks += $hunk
         }
         elseif ($currentFile -eq $null) {
             Write-Verbose "Recognized description line: $line"
-            if ($null -eq $parsedPatch.Metadata.Subject -and $line.Length -gt 2) {
-                $parsedPatch.Metadata.Subject = $line.Trim(" ")
+            if ($null -eq $parsedPatch.Subject -and $line.Length -gt 2) {
+                $parsedPatch.Subject = $line.Trim(" ")
             }
-            $parsedPatch.Metadata.Description += $line
+            $parsedPatch.Description += $line
         }
         else {
-            Write-Warning "Unrecognized line:$line"
+            Write-Verbose "Unrecognized line:$line"
         }
     }
+
+    if ($parsedPatch.AuthorName -match "^(.*)\s<(.+)>$") {
+        $parsedPatch.AuthorName = $matches[1]
+        $parsedPatch.AuthorEmail = $matches[2]
+    }
+
+    # Join description lines into a single string
+    $parsedPatch.Description = $parsedPatch.Description -join "`n"
+    Write-Output $parsedPatch
 }
 
 end {
-    # Join description lines into a single string
-    $parsedPatch.Metadata.Description = $parsedPatch.Metadata.Description -join "`n"
-    Write-Output $parsedPatch
 }
