@@ -3,7 +3,8 @@ param (
     [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'ById')]
     [string]$Commit,
     [Parameter(Mandatory, ParameterSetName = 'ByContent')]
-    [string[]]$PatchContent
+    [string[]]$PatchContent,
+    [switch]$OnlyMetadata
 )
 
 begin {
@@ -108,6 +109,14 @@ process {
         }
         else {
             Write-Verbose "Unrecognized line:$line"
+        }
+
+        if ($OnlyMetadata -and
+            $parsedPatch.Subject -and
+            $parsedPatch.AuthorName -and
+            $parsedPatch.Date -and
+            $parsedPatch.Commit) {
+            break;
         }
     }
 
