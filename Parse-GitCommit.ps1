@@ -84,7 +84,10 @@ process {
         }
         elseif ($currentFile -eq $null) {
             Write-Verbose "Recognized description line: $line"
-            $parsedPatch.Metadata.Description += $matches[1]
+            if ($null -eq $parsedPatch.Metadata.Subject -and $line.Length -gt 2) {
+                $parsedPatch.Metadata.Subject = $line.Trim(" ")
+            }
+            $parsedPatch.Metadata.Description += $line
         }
         else {
             Write-Warning "Unrecognized line:$line"
@@ -95,6 +98,5 @@ process {
 end {
     # Join description lines into a single string
     $parsedPatch.Metadata.Description = $parsedPatch.Metadata.Description -join "`n"
-
     Write-Output $parsedPatch
 }
