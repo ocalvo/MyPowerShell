@@ -4,7 +4,8 @@ param (
     [string]$Commit,
     [Parameter(Mandatory, ParameterSetName = 'ByContent')]
     [string[]]$PatchContent,
-    [switch]$OnlyMetadata
+    [Parameter()]
+    [switch]$OnlyMetadata = $false
 )
 
 begin {
