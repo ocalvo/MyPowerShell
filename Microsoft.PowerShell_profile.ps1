@@ -44,7 +44,7 @@ if (!(test-path $vimRC))
   set-content -path $vimRC "source <sfile>:p:h/Documents/PowerShell/profile.vim"
 }
 
-set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
+set-alias bcomp               $env:ProgramFiles'/Beyond Compare 5/bcomp.com'     -scope global
 set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
 set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
 set-alias Parse-GitCommit     "$PSScriptRoot\Parse-GitCommit.ps1"                -scope global

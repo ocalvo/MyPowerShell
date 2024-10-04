@@ -15,15 +15,16 @@ $commits = git log --oneline $cDir |% {
 
 Write-Verbose "Found $total commits"
 
+$sr = $PSScriptRoot
+$onlyMetadataValue = $OnlyMetadata.IsPresent
+
 $i = 0;
 $lastCommit = $null
 $result = $commits | ForEach-Object -Parallel {
-
-    Write-Verbose "Parsing commit $_"
-    if ($true) {
-        ."C:\Users\ocalvo\Documents\PowerShell\Parse-GitCommit.ps1" -Commit $_ -OnlyMetadata
+    if ($using:OnlyMetadata) {
+      .("{0}\Parse-GitCommit.ps1" -f $using:sr) -Commit $_ -OnlyMetadata
     } else {
-        ."C:\Users\ocalvo\Documents\PowerShell\Parse-GitCommit.ps1" -Commit $_
+      .("{0}\Parse-GitCommit.ps1" -f $using:sr) -Commit $_
     }
 } -ThrottleLimit 32 |% {
     $gitCommit = $_
