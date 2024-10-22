@@ -1,5 +1,6 @@
 [CmdLetBinding()]
 param(
+  [string[]]$Files = ('*.*'),
   [switch]$OnlyMetadata,
   [switch]$Parallel = $true,
   $ThrottleLimit=32
@@ -8,7 +9,9 @@ param(
 $location = Get-Location
 $cDir = $location.Path
 $total = 0;
-$commits = git log --oneline $cDir |% {
+$filePatterns = $Files -join " "
+Write-Verbose "git log --oneline $filePatterns"
+$commits = git log --oneline -- @Files |% {
     $_.Split(" ")[0]
     $total++
 }
