@@ -54,8 +54,8 @@ $vimCmd = get-command vim -ErrorAction Ignore
 $codeCmd = get-command code -ErrorAction Ignore
 if ($null -eq $vimCmd)
 {
-   winget install vim.vim
-   $vimPath = (dir "C:\Program Files\Vim\vim*\" | select -first 1).FullName
+   $vimExe = dir "C:\Program Files\Vim\vim*\vim.exe" | select -first 1
+   $vimPath = $vimExe.Directory.FullName
    $env:path += ";$vimPath"
    $vimCmd = get-command vim -ErrorAction Ignore
 }
@@ -76,8 +76,7 @@ function global:Edit()
   .$env:SDEDITOR $args
 }
 
-$_profilePath = (get-item $profile).Directory.FullName
-$_profileModulesPath = $_profilePath+"/Modules"
+$_profileModulesPath = $PSScriptRoot+"/Modules"
 if (!$env:PSModulePath.Contains($_profileModulesPath))
 {
   $separator = ";"
