@@ -33,15 +33,12 @@ $env:BUILD_DASHBOARD=1
 $env:BUILD_LESS_OUTPUT=1
 $env:MSBUILD_VERBOSITY='binlog'
 
-[string]$global:myhome = '~/Documents'
-[string]$global:scriptFolder = $global:myhome +'/'
-if ($PSEdition -eq "Desktop") { $global:scriptFolder += 'Windows' }
-$global:scriptFolder += 'PowerShell'
 $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h/Documents/PowerShell/profile.vim"
+  $_PsScriptRoot = $PSScriptRoot.Replace("\","/")
+  set-content -path $vimRC "source $_PsScriptRoot/profile.vim"
 }
 
 set-alias bcomp               $env:ProgramFiles'/Beyond Compare 5/bcomp.com'     -scope global
