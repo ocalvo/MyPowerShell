@@ -33,20 +33,20 @@ $env:BUILD_DASHBOARD=1
 $env:BUILD_LESS_OUTPUT=1
 $env:MSBUILD_VERBOSITY='binlog'
 
-[string]$global:myhome = '~/Documents'
-[string]$global:scriptFolder = $global:myhome +'/'
-if ($PSEdition -eq "Desktop") { $global:scriptFolder += 'Windows' }
-$global:scriptFolder += 'PowerShell'
 $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
 if (!(test-path $vimRC))
 {
-  set-content -path $vimRC "source <sfile>:p:h/Documents/PowerShell/profile.vim"
+  $_PsScriptRoot = $PSScriptRoot.Replace("\","/")
+  set-content -path $vimRC "source $_PsScriptRoot/profile.vim"
 }
 
-set-alias bcomp               $env:ProgramFiles'/Beyond Compare 4/bcomp.com'     -scope global
+set-alias bcomp               $env:ProgramFiles'/Beyond Compare 5/bcomp.com'     -scope global
 set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
 set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
+set-alias Parse-GitCommit     "$PSScriptRoot\Parse-GitCommit.ps1"                -scope global
+set-alias Get-GitCommit       "$PSScriptRoot\Get-GitCommit.ps1"                  -scope global
+
 #."$PSScriptRoot\Set-GitConfig.ps1"
 
 # SD settings
@@ -54,8 +54,8 @@ $vimCmd = get-command vim -ErrorAction Ignore
 $codeCmd = get-command code -ErrorAction Ignore
 if ($null -eq $vimCmd)
 {
-   winget install vim.vim
-   $vimPath = (dir "C:\Program Files\Vim\vim*\" | select -first 1).FullName
+   $vimExe = dir "C:\Program Files\Vim\vim*\vim.exe" | select -first 1
+   $vimPath = $vimExe.Directory.FullName
    $env:path += ";$vimPath"
    $vimCmd = get-command vim -ErrorAction Ignore
 }
@@ -76,8 +76,7 @@ function global:Edit()
   .$env:SDEDITOR $args
 }
 
-$_profilePath = (get-item $profile).Directory.FullName
-$_profileModulesPath = $_profilePath+"/Modules"
+$_profileModulesPath = $PSScriptRoot+"/Modules"
 if (!$env:PSModulePath.Contains($_profileModulesPath))
 {
   $separator = ";"
