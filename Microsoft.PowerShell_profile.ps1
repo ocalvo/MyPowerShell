@@ -86,21 +86,21 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
-if ("ConstrainedLanguage" -ne $ExecutionContext.SessionState.LanguageMode) {
-  $notInPath = ($null -eq (get-command oh-my-posh -ErrorAction Ignore))
+if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
   if (Test-IsUnix) {
     $poshDir = "~/bin"
     if ($notInPath) { $env:PATH += ":$poshDir" }
   } else {
     $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
-    if (!(Test-Path $poshDir)) {
-       winget install JanDeDobbeleer.OhMyPosh -s winget
-    }
     if ($notInPath) { $env:PATH += ";$poshDir" }
   }
+}
+if ($null -ne (get-command oh-my-posh -ErrorAction Ignore)) {
   # $poshTheme = "Jandedobbeleer.omp.json"
   $poshTheme = "markbull.omp.custom.yaml"
   oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme" | Invoke-Expression
+} else {
+  # Fallback to old PowerShell Module
 }
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')
@@ -122,11 +122,11 @@ Import-Module PwrSearch
 Import-Module PwrDev
 Import-Module PwrRazzle
 
-Import-Module Terminal-Icons -ErrorAction Ignore | Out-Null
-if ($null -eq $global:glyphs) {
-  $glPath = Split-path (get-module Terminal-Icons).Path
-  $global:glyphs = Invoke-Expression "& '$glPath/Data/glyphs.ps1'"
-}
+Import-Module Terminal-Icons
+#if ($null -eq $global:glyphs) {
+#  $glPath = Split-path (get-module Terminal-Icons).Path
+#  $global:glyphs = Invoke-Expression "& '$glPath/Data/glyphs.ps1'"
+#}
 
 if (!(Test-IsUnix))
 {
