@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="41" errors="0" failures="41" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-12-10" time="12:30:58">
+  <environment platform="Microsoft Windows Server 2019 Datacenter|C:\Windows|\Device\Harddisk0\Partition4" os-version="10.0.17763" machine-name="APPVEYOR-VM" cwd="C:\projects\oh-my-posh" nunit-version="2.5.8.0" user-domain="APPVEYOR-VM" user="appveyor" clr-version="Unknown" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="3.9985" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\projects\oh-my-posh\Helpers\PoshGit.Tests.ps1" executed="True" result="Failure" success="False" time="0.7397" asserts="0" description="C:\projects\oh-my-posh\Helpers\PoshGit.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-GetBranchSymbol" executed="True" result="Failure" success="False" time="0.3302" asserts="0" description="Test-GetBranchSymbol">
+            <results>
+              <test-suite type="TestFixture" name="Test-GetBranchSymbol.Is disabled" executed="True" result="Failure" success="False" time="0.1294" asserts="0" description="Test-GetBranchSymbol.Is disabled">
+                <results>
+                  <test-case description="Has Enabled set to False" name="Test-GetBranchSymbol.Is disabled.Has Enabled set to False" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="Has has no upstream" name="Test-GetBranchSymbol.Is disabled.Has has no upstream" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test-GetBranchSymbol.Is enabled" executed="True" result="Failure" success="False" time="0.2163" asserts="0" description="Test-GetBranchSymbol.Is enabled">
+                <results>
+                  <test-case description="Uses GitHub" name="Test-GetBranchSymbol.Is enabled.Uses GitHub" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="Uses GitLab" name="Test-GetBranchSymbol.Is enabled.Uses GitLab" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="Uses BitBucket" name="Test-GetBranchSymbol.Is enabled.Uses BitBucket" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="Uses something else" name="Test-GetBranchSymbol.Is enabled.Uses something else" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="Has no remote" name="Test-GetBranchSymbol.Is enabled.Has no remote" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1" executed="True" result="Failure" success="False" time="3.2588" asserts="0" description="C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-IsVanillaWindow" executed="True" result="Failure" success="False" time="1.0251" asserts="0" description="Test-IsVanillaWindow">
+            <results>
+              <test-suite type="TestFixture" name="Test-IsVanillaWindow.Running in a non-vanilla window" executed="True" result="Failure" success="False" time="0.7893" asserts="0" description="Test-IsVanillaWindow.Running in a non-vanilla window">
+                <results>
+                  <test-case description="runs in ConEmu and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in ConEmu and outputs 'false'" time="0.1147" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in ConEmu and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in ConEmu and outputs 'false'" time="0.0557" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in an ANSI supported terminal and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in an ANSI supported terminal and outputs 'false'" time="0.0558" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in ConEmu and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in ConEmu and outputs 'false'" time="0.0577" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: The term 'Test-IsVanillaWindow' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:74</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in cmder and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in cmder and outputs 'false'" time="0.1193" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in cmder and conemu and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in cmder and conemu and outputs 'false'" time="0.0818" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in Hyper.js and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in Hyper.js and outputs 'false'" time="0.104" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="runs in vscode and outputs 'false'" name="Test-IsVanillaWindow.Running in a non-vanilla window.runs in vscode and outputs 'false'" time="0.1284" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test-IsVanillaWindow.Running in a vanilla window" executed="True" result="Failure" success="False" time="0.9669" asserts="0" description="Test-IsVanillaWindow.Running in a vanilla window">
+                <results>
+                  <test-case description="runs in a vanilla window and outputs 'true'" name="Test-IsVanillaWindow.Running in a vanilla window.runs in a vanilla window and outputs 'true'" time="0.1" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-AnsiTerminal</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Get-Home" executed="True" result="Failure" success="False" time="1.143" asserts="0" description="Get-Home">
+            <results>
+              <test-case description="returns C:\Users\appveyor" name="Get-Home.returns C:\Users\appveyor" time="0.0579" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>CommandNotFoundException: The term 'Get-Home' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:108</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Get-Provider" executed="True" result="Failure" success="False" time="1.2336" asserts="0" description="Get-Provider">
+            <results>
+              <test-case description="uses the provider 'AwesomeSauce'" name="Get-Provider.uses the provider 'AwesomeSauce'" time="0.0461" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>CommandNotFoundException: The term 'New-MockPath' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:115</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Get-FormattedRootLocation" executed="True" result="Failure" success="False" time="1.5587" asserts="0" description="Get-FormattedRootLocation">
+            <results>
+              <test-suite type="TestFixture" name="Get-FormattedRootLocation.Running in the FileSystem" executed="True" result="Failure" success="False" time="0.101" asserts="0" description="Get-FormattedRootLocation.Running in the FileSystem">
+                <results>
+                  <test-case description="is in the C:\Users\appveyor folder" name="Get-FormattedRootLocation.Running in the FileSystem.is in the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is somewhere in the C:\Users\appveyor folder" name="Get-FormattedRootLocation.Running in the FileSystem.is somewhere in the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is in 'Microsoft.PowerShell.Core\FileSystem::\\Test\Hello' with Drive X:" name="Get-FormattedRootLocation.Running in the FileSystem.is in 'Microsoft.PowerShell.Core\FileSystem::\\Test\Hello' with Drive X:" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is in C:" name="Get-FormattedRootLocation.Running in the FileSystem.is in C:" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is has no drive" name="Get-FormattedRootLocation.Running in the FileSystem.is has no drive" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is has no valid path" name="Get-FormattedRootLocation.Running in the FileSystem.is has no valid path" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Get-FormattedRootLocation.Running outside of the FileSystem" executed="True" result="Failure" success="False" time="0.2633" asserts="0" description="Get-FormattedRootLocation.Running outside of the FileSystem">
+                <results>
+                  <test-case description="running outside of the Filesystem in L:" name="Get-FormattedRootLocation.Running outside of the FileSystem.running outside of the Filesystem in L:" time="0.0838" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: The term 'New-MockPath' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:158</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Get-FullPath" executed="True" result="Failure" success="False" time="1.7976" asserts="0" description="Get-FullPath">
+            <results>
+              <test-suite type="TestFixture" name="Get-FullPath.Running in the FileSystem" executed="True" result="Failure" success="False" time="0.1653" asserts="0" description="Get-FullPath.Running in the FileSystem">
+                <results>
+                  <test-case description="is in the C:\Users\appveyor folder" name="Get-FullPath.Running in the FileSystem.is in the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is somewhere in the C:\Users\appveyor folder" name="Get-FullPath.Running in the FileSystem.is somewhere in the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Get-ShortPath" executed="True" result="Failure" success="False" time="2.0142" asserts="0" description="Get-ShortPath">
+            <results>
+              <test-suite type="TestFixture" name="Get-ShortPath.Running in the FileSystem on Windows" executed="True" result="Failure" success="False" time="0.1411" asserts="0" description="Get-ShortPath.Running in the FileSystem on Windows">
+                <results>
+                  <test-case description="is in a root folder" name="Get-ShortPath.Running in the FileSystem on Windows.is in a root folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is outside the C:\Users\appveyor folder" name="Get-ShortPath.Running in the FileSystem on Windows.is outside the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is in the C:\Users\appveyor folder" name="Get-ShortPath.Running in the FileSystem on Windows.is in the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is somewhere in the C:\Users\appveyor folder" name="Get-ShortPath.Running in the FileSystem on Windows.is somewhere in the C:\Users\appveyor folder" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="is in 'Microsoft.PowerShell.Core\FileSystem::\\Test\Hello'" name="Get-ShortPath.Running in the FileSystem on Windows.is in 'Microsoft.PowerShell.Core\FileSystem::\\Test\Hello'" time="0" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Test-NotDefaultUser" executed="True" result="Failure" success="False" time="2.8987" asserts="0" description="Test-NotDefaultUser">
+            <results>
+              <test-suite type="TestFixture" name="Test-NotDefaultUser.With default user set" executed="True" result="Failure" success="False" time="0.5842" asserts="0" description="Test-NotDefaultUser.With default user set">
+                <results>
+                  <test-case description="same username gives 'false'" name="Test-NotDefaultUser.With default user set.same username gives 'false'" time="0.0867" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: The term 'Test-NotDefaultUser' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:238</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="different username gives 'false'" name="Test-NotDefaultUser.With default user set.different username gives 'false'" time="0.0825" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: The term 'Test-NotDefaultUser' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:242</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="same username and outside VirtualEnv gives 'false'" name="Test-NotDefaultUser.With default user set.same username and outside VirtualEnv gives 'false'" time="0.0828" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-VirtualEnv</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="same username and inside VirtualEnv same default user gives 'false'" name="Test-NotDefaultUser.With default user set.same username and inside VirtualEnv same default user gives 'false'" time="0.1126" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-VirtualEnv</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="different username and inside VirtualEnv same default user gives 'true'" name="Test-NotDefaultUser.With default user set.different username and inside VirtualEnv same default user gives 'true'" time="0.1523" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-VirtualEnv</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Test-NotDefaultUser.With no default user set" executed="True" result="Failure" success="False" time="0.8262" asserts="0" description="Test-NotDefaultUser.With no default user set">
+                <results>
+                  <test-case description="no username gives 'true'" name="Test-NotDefaultUser.With no default user set.no username gives 'true'" time="0.0612" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: The term 'Test-NotDefaultUser' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:263</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="different username gives 'true'" name="Test-NotDefaultUser.With no default user set.different username gives 'true'" time="0.0431" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: The term 'Test-NotDefaultUser' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, C:\projects\oh-my-posh\Helpers\Prompt.Tests.ps1:267</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="different username and outside VirtualEnv gives 'true'" name="Test-NotDefaultUser.With no default user set.different username and outside VirtualEnv gives 'true'" time="0.0403" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-VirtualEnv</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                  <test-case description="no username and inside VirtualEnv gives 'true'" name="Test-NotDefaultUser.With no default user set.no username and inside VirtualEnv gives 'true'" time="0.0473" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>CommandNotFoundException: Could not find Command Test-VirtualEnv</message>
+                      <stack-trace />
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
