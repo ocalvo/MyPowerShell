@@ -7,7 +7,7 @@
 #
 @{
     # Version number of this module.
-    ModuleVersion     = '7.85.2'
+    ModuleVersion     = '3.171.0'
     # Script module or binary module file associated with this manifest.
     RootModule        = 'oh-my-posh.psm1'
     # ID used to uniquely identify this module
@@ -31,7 +31,7 @@
     # Aliases to export from this module
     AliasesToExport   = '*'
     # Functions to export from this module
-    FunctionsToExport = @('Set-PoshPrompt')
+    FunctionsToExport = @('Get-PoshThemes', 'Set-PoshPrompt', 'Get-PoshInfoForV2Users')
     # Private data to pass to the module specified in RootModule. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData       = @{
         PSData = @{
@@ -44,4 +44,67 @@
         } # End of PSData hashtable
     } # End of PrivateData hashtable
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
