@@ -41,11 +41,12 @@ if (!(test-path $vimRC))
   set-content -path $vimRC "source $_PsScriptRoot/profile.vim"
 }
 
-set-alias bcomp               $env:ProgramFiles'/Beyond Compare 5/bcomp.com'     -scope global
-set-alias ztw                 '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
-set-alias speak               "$PSScriptRoot\Speak.ps1"                          -scope global
-set-alias Parse-GitCommit     "$PSScriptRoot\Parse-GitCommit.ps1"                -scope global
-set-alias Get-GitCommit       "$PSScriptRoot\Get-GitCommit.ps1"                  -scope global
+set-alias bcomp                      $env:ProgramFiles'/Beyond Compare 5/bcomp.com'     -scope global
+set-alias ztw                        '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
+set-alias speak                      "$PSScriptRoot\Speak.ps1"                          -scope global
+set-alias Parse-GitCommit            "$PSScriptRoot\Parse-GitCommit.ps1"                -scope global
+set-alias Get-GitCommit              "$PSScriptRoot\Get-GitCommit.ps1"                  -scope global
+set-alias Set-PrivateKeyPermissions  "$PSScriptRoot\Set-PrivateKeyPermissions.ps1"      -scope global
 
 #."$PSScriptRoot\Set-GitConfig.ps1"
 
