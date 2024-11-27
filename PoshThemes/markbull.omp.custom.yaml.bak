@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+auto_upgrade: true
+blocks:
+- alignment: left
+  segments:
+  - foreground: '#ffce7b'
+    style: plain
+    template: '┌ '
+    type: text
+  - background: '#ffce7b'
+    foreground: '#1d1626'
+    powerline_symbol: 
+    style: powerline
+    template: '   {{ if .SSHSession }}  {{ end }}{{ .UserName }}{{ if (eq .OS "windows")}} {{ else if (eq .OS "ubuntu") }}🐧{{ else }}@{{ end }}{{ .HostName }} '
+    type: session
+  - background: '#C678DD'
+    foreground: '#fffef9'
+    powerline_symbol: 
+    properties:
+      windows: 
+    style: powerline
+    template: ' {{ if .WSL }}WSL at {{ end }}{{.Icon}} '
+    type: os
+  - background: '#C678DD'
+    foreground: '#fffef9'
+    powerline_symbol: 
+    properties:
+      style: full
+    style: powerline
+    template: '{{ path .Path .Location }} '
+    type: path
+  - background: '#fffffb'
+    background_templates:
+    - '{{ if or (.Working.Changed) (.Staging.Changed) }}#ffeb95{{ end }}'
+    - '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#fcaf17{{ end }}'
+    - '{{ if gt .Ahead 0 }}#95ffa4{{ end }}'
+    - '{{ if gt .Behind 0 }}#f7acbc{{ end }}'
+    - '{{ if .UpstreamGone }}#d1c7b7{{ end }}'
+    foreground: '#100e23'
+    powerline_symbol: 
+    properties:
+      azure_devops_icon: ' '
+      bitbucket_icon: ' '
+      branch_gone_icon: ' '
+      branch_icon: ' '
+      branch_identical_icon: ' '
+      commit_icon: ' '
+      fetch_stash_count: true
+      fetch_status: true
+      fetch_upstream_icon: true
+      fetch_worktree_count: true
+      git_icon: ' '
+      github_icon: ' '
+      gitlab_icon: ' '
+      tag_icon: ' '
+    style: powerline
+    template: ' {{ if( .UpstreamIcon ) }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <#ed1941> {{.Working.String}}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <#225a1f> {{.Staging.String}}</>{{ end }}{{ if gt .StashCount 0 }}   {{.StashCount}}{{ end }}{{ if gt .WorktreeCount 0 }}{{if .IsWorkTree}}<#1d953f>{{ end }}   {{if .IsWorkTree}}</>{{ end }}{{.WorktreeCount}}{{ end }} '
+    type: git
+  - background: '#33a3dc'
+    foreground: '#fffef9'
+    powerline_symbol: 
+    properties:
+      always_enabled: true
+    style: powerline
+    template: '   {{ .FormattedMs }} '
+    type: executiontime
+  - background: '#ed1941'
+    foreground: '#fffef9'
+    powerline_symbol: 
+    style: powerline
+    template: '  >>{{ reason .Code }} '
+    type: status
+  type: prompt
+- alignment: left
+  newline: true
+  segments:
+  - foreground: '#ffce7b'
+    style: plain
+    template: └
+    type: text
+  - foreground: '#ffffff'
+    style: plain
+    template: ' $'
+    type: text
+  type: prompt
+console_title_template: "{{if .Root}}⚡ {{end}}{{if .Env._XROOT}}\U0001F3ED({{.Env._BuildArch}}{{.Env._BuildType}} {{.Env._XROOT}}){{end}}{{if .Env.VSINSTALLDIR}}\U0001F3ED(MSBuild){{end}} {{ .Folder }}"
+final_space: true
+version: 2
+
