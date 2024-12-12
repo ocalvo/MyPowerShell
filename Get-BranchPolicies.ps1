@@ -4,6 +4,7 @@ param(
   $project = "OSGTools",
   $repositoryName = "ES.Build.Rings.Configuration",
   $branchName = "refs/heads/main",
+  $filenamePattern = "/rings/coreBuildTeamTools/*",
   $policyType = "pullRequest",
   $azureDevopsResourceId = "499b84ac-1321-427f-aa17-267ca6975798")
 
@@ -37,10 +38,21 @@ $policiesResponse = Invoke-RestMethod -Uri $url -Method Get -Headers $headers
 # Extract policy IDs
 $policyIds = $policiesResponse.value | ForEach-Object { $_ }
 
-$policyIds = $policyIds | where {
-  $_.settings.scope.refName -eq $branchName -and $_.settings.scope.repositoryId -eq $repositoryId -and $_.isEnabled -and $_.isBlocking -and (-not $_.isDeleted) }
+$policyIds = $policyIds | Where-Object {
+  $_.settings.scope.refName -eq $branchName -and
+  $_.settings.scope.repositoryId -eq $repositoryId -and
+  $_.isEnabled -and $_.isBlocking -and
+  (-not $_.isDeleted) }
 
 # $policyIds
 
-$policyIds | Select-Object @{Name="Id";Expression={$_.Id}},@{Name="Type";Expression={$_.type.id}},@{Name="Name";Expression={$_.type.displayName}}
+$policyIds = $policyIds |
+  Select-Object @{Name="Id";Expression={$_.Id}},
+    @{Name="Name";Expression={$_.type.displayName}},
+    @{Name="Type";Expression={$_.type.id}},
+    @{Name="FileNamePatterns";Expression={$_.settings.fileNamePatterns}},
+    @{Name="Rest";Expression={$_}}
 
+$policyIds |
+  Where-Object { $_.FileNamePatterns -eq $null -or $_.FileNamePatterns -contains $fileNamePattern } |
+  Select-Object -Property Id,Name
