@@ -40,7 +40,7 @@ set encoding=utf-8
 set clipboard+=unnamed
 
 " Use powershell as the default shell
-set shell=powershell.exe
+set shell=pwsh
 
 " The the font to be used in GUI mode
 set guifont=Consolas:h11:cANSI,Lucida\ Console,Courier\ New,System

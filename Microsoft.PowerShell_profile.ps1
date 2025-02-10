@@ -112,6 +112,16 @@ if (test-path $serverModules -ErrorAction Ignore)
   get-content ($_fd+"/../.preload") -ErrorAction Ignore |% { Import-Module $_ }
 }
 
+function global:vpack {
+  $vPackPath = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Engineering\VPack" "InstallPath" -ErrorAction Ignore
+  if ($null -ne $vPackPath) {
+    $vPackPath = $vPackPath.InstallPath
+    ."$vPackPath\vpack.exe" @args
+  } else {
+    Write-Error "VPack not found in 'HKCU:\Software\Microsoft\Engineering\VPack'"
+  }
+}
+
 Import-Module DirColors
 
 #Import-Module PowerTab
@@ -137,3 +147,5 @@ if (!(Test-IsUnix))
     Import-Module "$ChocolateyProfile"
   }
 }
+
+
