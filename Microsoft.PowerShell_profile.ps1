@@ -2,6 +2,9 @@
 # Oscar Calvo's PowerShell Profile (oscar@calvonet.com)
 #
 
+[CmdLetBinding()]
+param()
+
 $global:lastInvocation = $MyInvocation
 
 function global:Test-IsUnix
