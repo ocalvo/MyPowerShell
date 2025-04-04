@@ -1,6 +1,10 @@
 #Requires -RunAsAdministrator
 
-param($crashFolder = 'c:\CrashDumps')
+[CmdLetBinding()]
+param(
+  [string]$crashFolder = 'c:\CrashDumps',
+  [int]$dumps = 10,
+  [int]$dumpType = 2)
 
 $regKey = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
 if ( !(test-path $regKey) )
@@ -12,6 +16,6 @@ if (!(test-path $crashFolder))
   mkdir $crashFolder
 }
 set-itemproperty $regKey DumpFolder $crashFolder -type ExpandString
-set-itemproperty $regKey DumpCount 10 -type dword
-set-itemproperty $regKey DumpType 2 -type dword
+set-itemproperty $regKey DumpCount $dumps -type dword
+set-itemproperty $regKey DumpType $dumpType -type dword
 
