@@ -60,7 +60,7 @@ $vimCmd = get-command vim -ErrorAction Ignore
 $codeCmd = get-command code -ErrorAction Ignore
 if ($null -eq $vimCmd)
 {
-   $vimExe = dir "C:\Program Files\Vim\vim*\vim.exe" | select -first 1
+   $vimExe = dir "C:\Program Files\Vim\vim*\vim.exe" -ErrorAction Ignore | select -first 1
    $vimPath = $vimExe.Directory.FullName
    $env:path += ";$vimPath"
    $vimCmd = get-command vim -ErrorAction Ignore
