@@ -1,12 +1,15 @@
 [CmdLetBinding()]
 param(
-  $ImagePath = "/mnt/ServerFolders/PrivatePictures/Hazel & Oscar/2025/05/Oscar S2025-E0525.19.23.16.128.jpg",
+  $WindowsImagePath = "/mnt/ServerFolders/PrivatePictures/Hazel & Oscar/2025/05/Oscar S2025-E0525.19.23.16.128.jpg",
   $Port=3333,
   $ServerName="localhost",
   $Method="check",
   $ApiUrl = "http://${ServerName}:${Port}/${Method}"
 )
 
+# Convert to Linux-style path
+$ImagePath = $WindowsImagePath -replace "\\", "/" -replace "^//[^/]+/", "//mnt/"
+Write-Verbose "ImagePath: $ImagePath"
 Write-Verbose "$ApiUrl"
 $Response = Invoke-RestMethod -Uri $ApiUrl -Method Post -Form @{ "path" = $ImagePath }
 Write-Verbose "NSFW Analysis Result:"
