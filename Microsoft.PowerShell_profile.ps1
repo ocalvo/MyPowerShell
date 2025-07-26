@@ -84,12 +84,15 @@ function global:Edit()
   .$env:SDEDITOR $args
 }
 
+$separator = ";"
+if (Test-IsUnix) { $separator = ":" }
+
 $_profileModulesPath = $PSScriptRoot+"/Modules"
 if (!$env:PSModulePath.Contains($_profileModulesPath))
 {
-  $separator = ";"
-  if (Test-IsUnix) { $separator = ":" }
-  $env:PSModulePath += $separator+$_profileModulesPath
+  $newModPath = $separator+$_profileModulesPath
+  Write-Verbose "Adding new module path:$newModPath"
+  $env:PSModulePath += $newModPath
 }
 
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
@@ -104,18 +107,16 @@ if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
   }
 }
 if ($null -ne (get-command oh-my-posh -ErrorAction Ignore)) {
-  # $poshTheme = "Jandedobbeleer.omp.json"
   $poshTheme = "markbull.omp.custom.yaml"
   oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme" | Invoke-Expression
-} else {
-  # Fallback to old PowerShell Module
 }
 
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')
+Write-Verbose "Probing module path:$serverModules"
 if (test-path $serverModules -ErrorAction Ignore)
 {
   $_fd = (get-item $serverModules).FullName
-  $env:psmodulepath+=(';'+$_fd)
+  $env:PSModulePath+=($separator+$_fd)
   get-content ($_fd+"/../.preload") -ErrorAction Ignore |% { Import-Module $_ }
 }
 
