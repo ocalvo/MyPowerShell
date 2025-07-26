@@ -6,7 +6,7 @@ param(
     # $SKU_DESC = "nvidia-geforce-rtx-5070-12gb-gddr7-graphics-card-graphite-grey",
     $check_url = "https://www.bestbuy.com/site/${SKU_DESC}/${SKU}.p?skuId=${SKU}",
     $messageToSay  = "Hurry. The 5090 is now in stock at Best Buy.",
-    $interval = 60*1 # 5 minutes
+    $interval = 60*5 # 5 minutes
 )
 
 function Write-Log {
