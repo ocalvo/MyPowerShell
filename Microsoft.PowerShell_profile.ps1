@@ -53,6 +53,7 @@ set-alias Parse-GitCommit            "$PSScriptRoot\Parse-GitCommit.ps1"        
 set-alias Get-GitCommit              "$PSScriptRoot\Get-GitCommit.ps1"                  -scope global
 set-alias Set-PrivateKeyPermissions  "$PSScriptRoot\Set-PrivateKeyPermissions.ps1"      -scope global
 set-alias test-nsfw                  "$PSScriptRoot\Test-NSFW.ps1"                      -scope global
+set-alias Get-NSFWProperties         "$PSScriptRoot\Get-NSFWProperties.ps1"             -scope global
 
 #."$PSScriptRoot\Set-GitConfig.ps1"
 
