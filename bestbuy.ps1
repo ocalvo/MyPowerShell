@@ -100,6 +100,7 @@ while($true) {
     if ($state -eq "in") {
         New-TwilioCall
         Write-Log "Placed call"
+        break
     }
     Start-Sleep -Seconds $interval;
 }
