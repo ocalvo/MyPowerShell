@@ -6,7 +6,8 @@ param(
     # $SKU_DESC = "nvidia-geforce-rtx-5070-12gb-gddr7-graphics-card-graphite-grey",
     $check_url = "https://www.bestbuy.com/site/${SKU_DESC}/${SKU}.p?skuId=${SKU}",
     $messageToSay  = "Hurry. The 5090 is now in stock at Best Buy.",
-    $interval = 60*5 # 5 minutes
+    $interval = 30, # 30 seconds
+    $timeout = 5 # 5 seconds
 )
 
 function Write-Log {
@@ -84,19 +85,21 @@ if (-Not (Test-Path $tmp -ErrorAction Ignore)) {
 
 while($true) {
     Write-Verbose "Invoke-RestMethod -Uri $check_url"
-    $r = Invoke-RestMethod -Uri $check_url -Headers $headers -Method Get;
-    $resultFile = "$tmp\result.html"
-    $r | Set-Content -Path $resultFile
-    Write-Verbose "Response at $resultFile"
+    $r = Invoke-RestMethod -Uri $check_url -Headers $headers -Method Get -TimeoutSec $timeout -ErrorAction Ignore
     $state = "Unk"
-    if ($r.contains($SOLD_OUT_TEXT)) {
+    if ($null -eq $r) {
+        $state = "timeout"
+    } elseif ($r.contains($SOLD_OUT_TEXT)) {
         $state = "out"
     } elseif ($r -like "*$ADD_TO_CART_MARKER*") {
         $state = "in"
     } else {
         $state = "error"
     }
-    Write-Log "Out of stock: $state"; 
+    $resultFile = "$tmp/result.$state.html"
+    $r | Set-Content -Path $resultFile
+    Write-Verbose "Response at $resultFile"
+    Write-Log "State: $state";
     if ($state -eq "in") {
         New-TwilioCall
         Write-Log "Placed call"

@@ -31,6 +31,11 @@ function global:test-isadmin
   }
 }
 
+if (-Not (Test-Path env:TEMP) -And (Test-Path env:TMPDIR)) {
+    $env:TEMP = $env:TMPDIR
+    $env:TMP = $env:TMPDIR
+}
+
 $env:BUILD_TASKBAR_FLASH=1
 $env:BUILD_DASHBOARD=1
 $env:BUILD_DASHBOARD_EX=1
