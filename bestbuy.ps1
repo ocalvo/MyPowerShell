@@ -6,8 +6,9 @@ param(
     # $SKU_DESC = "nvidia-geforce-rtx-5070-12gb-gddr7-graphics-card-graphite-grey",
     $check_url = "https://www.bestbuy.com/site/${SKU_DESC}/${SKU}.p?skuId=${SKU}",
     $messageToSay  = "Hurry. The 5090 is now in stock at Best Buy.",
-    $interval = 30, # 30 seconds
-    $timeout = 5 # 5 seconds
+    $interval = 30, # seconds
+    $timeout = 5, # seconds
+    $waitAfterCall = 60 # minutes
 )
 
 function Write-Log {
@@ -103,7 +104,8 @@ while($true) {
     if ($state -eq "in") {
         New-TwilioCall
         Write-Log "Placed call"
-        break
+        Start-Sleep -Minutes $waitAfterCall;
+        continue;
     }
     Start-Sleep -Seconds $interval;
 }
