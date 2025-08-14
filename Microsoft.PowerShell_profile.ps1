@@ -36,12 +36,7 @@ if (-Not (Test-Path env:TEMP) -And (Test-Path env:TMPDIR)) {
     $env:TMP = $env:TMPDIR
 }
 
-$env:BUILD_TASKBAR_FLASH=1
-$env:BUILD_DASHBOARD=1
-$env:BUILD_DASHBOARD_EX=1
-$env:BUILD_LESS_OUTPUT=1
-$env:BUILD_PIP_OUTPUT_FREQUENCY = 100
-$env:MSBUILD_VERBOSITY='binlog'
+$env:AppxSymbolPackageEnabled='false'
 
 $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
