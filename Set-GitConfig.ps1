@@ -1,7 +1,8 @@
 [CmdLetBinding()]
 param(
   [switch]$vim,
-  $beyond = "c:/program files/beyond compare 5/bcomp.exe"
+  $beyond = "c:/program files/beyond compare 5/bcomp.exe",
+  $workEmail = "oscar.calvo@apple.com"
 )
 
 function Set-GitGlobals()
@@ -12,7 +13,7 @@ function Set-GitGlobals()
   git config --global user.name "Oscar Calvo"
   if ($env:USERNAME -eq "ocalvo")
   {
-    git config --global user.email "ocalvo@microsoft.com"
+    git config --global user.email $workEmail
   }
   else
   {

@@ -1,8 +1,8 @@
 #Requires -RunAsAdministrator
 [CmdletBinding()]
 param (
-  $srcDrive = "f:",
-  $binDrive = "w:"
+  $srcDrive = "s:",
+  $binDrive = "x:"
 )
 
 #Format-Volume -DriveLetter $binDrive -DevDrive
