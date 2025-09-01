@@ -2,13 +2,14 @@
 [CmdletBinding()]
 param (
   $srcDrive = "s:",
-  $binDrive = "x:"
+  $binDrive = "x:",
+  $symbolServer = "https://msdl.microsoft.com/download/symbols"
 )
 
 #Format-Volume -DriveLetter $binDrive -DevDrive
 #Format-Volume -DriveLetter $srcDrive -DevDrive
 
-setx /M _NT_SYMBOL_PATH "SRV*$binDrive\symbols*https://symweb.azurefd.net"
+setx /M _NT_SYMBOL_PATH "SRV*$binDrive\symbols*$symbolServer"
 setx /M npm_config_cache "$srcDrive\packages\npm"
 setx /M NUGET_PACKAGES "$srcDrive\packages\nuget"
 setx /M VCPKG_DEFAULT_BINARY_CACHE "$srcDrive\packages\vcpkg"
