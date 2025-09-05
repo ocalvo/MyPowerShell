@@ -37,6 +37,7 @@ if (-Not (Test-Path env:TEMP) -And (Test-Path env:TMPDIR)) {
 }
 
 $env:AppxSymbolPackageEnabled='false'
+$env:MSBUILDLOGALLENVIRONMENTVARIABLES=1
 
 $myHome = (get-item ~/.).FullName
 $vimRC = ($myHome + '/_vimrc')
