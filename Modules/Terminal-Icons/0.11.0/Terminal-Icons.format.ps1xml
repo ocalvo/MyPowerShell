@@ -68,6 +68,11 @@ https://github.com/DHowett/DirColors -->
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Name</Label>
+                        <!--Width>
+                            <ScriptBlock>
+                                [int]$_.Name.Length
+                            </ScriptBlock>
+                        </Width-->
                     </TableColumnHeader>
                 </TableHeaders>
                 <TableRowEntries>

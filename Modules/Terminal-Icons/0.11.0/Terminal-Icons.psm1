@@ -626,13 +626,6 @@ function Format-TerminalIcons {
         [Parameter(Mandatory, ValueFromPipeline)]
         [IO.FileSystemInfo]$FileInfo
     )
-    begin {
-         $esc      = "`e"   # Escape character (ASCII 27)
-         $bell     = "`a"   # Bell character (ASCII 7)
-         $beginUrl = "${esc}]8;;"
-         $endUrl   = "${esc}]8;;${bell}"
-    }
-
     process {
         $displayInfo = Resolve-Icon $FileInfo
         if ($displayInfo.Icon) {
@@ -642,6 +635,20 @@ function Format-TerminalIcons {
         }
     }
 }
+
+function Measure-TerminalIcons {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
+    [OutputType([int])]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [IO.FileSystemInfo]$FileInfo
+    )
+    process {
+        return $FileInfo.Name.Length + 2;
+    }
+}
+
 function Get-TerminalIconsColorTheme {
     <#
     .SYNOPSIS
@@ -3394,6 +3401,10 @@ $moduleRoot    = $PSScriptRoot
 $glyphs        = Invoke-Expression "& `"$moduleRoot/Data/glyphs.ps1`""
 $escape        = [char]27
 $colorReset    = "${escape}[0m"
+$bell          = "`a"   # Bell character (ASCII 7)
+$beginUrl      = "${escape}]8;;"
+$endUrl        = "${escape}]8;;${bell}"
+
 $defaultTheme  = 'devblackops'
 $userThemePath = Get-ThemeStoragePath
 $userThemeData = @{
