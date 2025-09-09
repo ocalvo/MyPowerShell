@@ -589,6 +589,11 @@ function Add-TerminalIconsIconTheme {
         Add-Theme @PSBoundParameters -Type Icon
     }
 }
+
+$FullName = "https://github.com/ocalvo/DirColors"
+$Name     = "DirColors on GitHub"
+
+
 function Format-TerminalIcons {
     <#
     .SYNOPSIS
@@ -621,13 +626,19 @@ function Format-TerminalIcons {
         [Parameter(Mandatory, ValueFromPipeline)]
         [IO.FileSystemInfo]$FileInfo
     )
+    begin {
+         $esc      = "`e"   # Escape character (ASCII 27)
+         $bell     = "`a"   # Bell character (ASCII 7)
+         $beginUrl = "${esc}]8;;"
+         $endUrl   = "${esc}]8;;${bell}"
+    }
 
     process {
         $displayInfo = Resolve-Icon $FileInfo
         if ($displayInfo.Icon) {
-            "$($displayInfo.Color)$($displayInfo.Icon)  $($FileInfo.Name)$($displayInfo.Target)$($script:colorReset)"
+            "$($displayInfo.Color)$($displayInfo.Icon)  ${beginUrl}$($FileInfo.FullName)${bell}$($FileInfo.Name)${endUrl}$($displayInfo.Target)$($script:colorReset)"
         } else {
-            "$($displayInfo.Color)$($FileInfo.Name)$($displayInfo.Target)$($script:colorReset)"
+            "$($displayInfo.Color) ${beginUrl}$($FileInfo.FullName)${bell}$($FileInfo.Name)${endUrl}$($displayInfo.Target)$($script:colorReset)"
         }
     }
 }

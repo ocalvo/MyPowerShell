@@ -131,8 +131,6 @@ function global:vpack {
   }
 }
 
-Import-Module DirColors
-
 #Import-Module PowerTab
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
