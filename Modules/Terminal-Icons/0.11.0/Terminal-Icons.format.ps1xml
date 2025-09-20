@@ -67,6 +67,11 @@ https://github.com/DHowett/DirColors -->
                         <Alignment>right</Alignment>
                     </TableColumnHeader>
                     <TableColumnHeader>
+                        <Label>🖼</Label>
+                        <Alignment>left</Alignment>
+                        <Width>5</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
                         <Label>Name</Label>
                         <Alignment>left</Alignment>
                         <Width>1000</Width>
@@ -86,6 +91,11 @@ https://github.com/DHowett/DirColors -->
                             </TableColumnItem>
                             <TableColumnItem>
                                 <PropertyName>Length</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <ScriptBlock>
+                                    (Terminal-Icons\Format-TerminalIcons -FileInfo $_ -IconOnly)
+                                </ScriptBlock>
                             </TableColumnItem>
                             <TableColumnItem>
                                 <ScriptBlock>
@@ -117,6 +127,12 @@ https://github.com/DHowett/DirColors -->
                                 <Label>Name</Label>
                                 <ScriptBlock>
                                     (Terminal-Icons\Format-TerminalIcons $_)
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>🖼</Label>
+                                <ScriptBlock>
+                                    (Terminal-Icons\Format-TerminalIcons $_ -IconOnly)
                                 </ScriptBlock>
                             </ListItem>
                             <ListItem>
@@ -154,6 +170,12 @@ https://github.com/DHowett/DirColors -->
                                 <Label>Name</Label>
                                 <ScriptBlock>
                                     (Terminal-Icons\Format-TerminalIcons $_)
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>🖼</Label>
+                                <ScriptBlock>
+                                    (Terminal-Icons\Format-TerminalIcons $_ -Icon)
                                 </ScriptBlock>
                             </ListItem>
                             <ListItem>

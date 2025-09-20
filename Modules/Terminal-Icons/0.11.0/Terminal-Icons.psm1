@@ -625,10 +625,26 @@ function Format-TerminalIcons {
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [IO.FileSystemInfo]$FileInfo,
-        [switch]$disableUrl
+        [switch]$disableUrl,
+        [switch]$iconOnly
     )
     process {
         $displayInfo = Resolve-Icon $FileInfo
+        $setColor = "$($displayInfo.Color)"
+        $resetColor = "$($script:colorReset)"
+        if ($iconOnly) {
+            $width = 1
+        } else {
+            $width = $FileInfo.FullName.Length
+        }
+        $moveToLeft = "${escape}[${width}D"
+        if ($iconOnly) {
+            if ($displayInfo.Icon) { $icon = "$($displayInfo.Icon)" } else { $icon = "�" }
+            $setIcon = "${setColor}${icon}${resetColor} ${moveToLeft}"
+            $result = "$setIcon"
+            return $result
+        }
+
         if ($disableUrl -or (test-path env:DISABLE_URL)) {
             $prefix = ""
             $suffix = ""
@@ -636,8 +652,7 @@ function Format-TerminalIcons {
           $prefix = "${beginUrl}$($FileInfo.FullName)${bell}"
           $suffix = "${endUrl}"
         }
-        if ($displayInfo.Icon) { $icon = "$($displayInfo.Icon)" } else { $icon = "�" }
-        $result = "$($displayInfo.Color)${icon}  ${prefix}$($FileInfo.Name)$($displayInfo.Target)$($script:colorReset)${suffix}"
+        $result = "${setColor}${prefix}$($FileInfo.Name)${suffix}${resetColor}$moveToLeft"
         return $result
     }
 }
