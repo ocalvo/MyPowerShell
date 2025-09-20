@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>ConvertTo-Sixel</command:name>
+      <command:verb>ConvertTo</command:verb>
+      <command:noun>Sixel</command:noun>
+      <maml:description>
+        <maml:para>Converts an image to Sixel, Kitty, InlineImage or Blocks.
+To display in the console
+</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The `ConvertTo-Sixel` converts an image to display in the console.
+</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-Sixel</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="FullName">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>A path to a local image.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in a sixel image.
+Max is 256 colors.
+(only applicable to sixel protocol)
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Height</maml:name>
+          <maml:description>
+            <maml:para>Height of the image in character cells, the width will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Protocol</maml:name>
+          <maml:description>
+            <maml:para>Select the image protocol to output.
+Supports Sixel, InlineImageProtocol, KittyGraphicsProtocol, Block
+It will attempt to autoselect the supported image protocol for your terminal.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ImageProtocol</command:parameterValue>
+          <dev:type>
+            <maml:name>ImageProtocol</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>ImageProtocol.Auto</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-Sixel</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="Uri">
+          <maml:name>Url</maml:name>
+          <maml:description>
+            <maml:para>A URL of the image.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in a sixel image.
+Max is 256 colors.
+(only applicable to sixel protocol)
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Height</maml:name>
+          <maml:description>
+            <maml:para>Height of the image in character cells, the width will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Protocol</maml:name>
+          <maml:description>
+            <maml:para>Select the image protocol to output.
+Supports Sixel, InlineImageProtocol, KittyGraphicsProtocol, Block
+It will attempt to autoselect the supported image protocol for your terminal.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ImageProtocol</command:parameterValue>
+          <dev:type>
+            <maml:name>ImageProtocol</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>ImageProtocol.Auto</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-Sixel</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="RawContentStream, FileStream, InputStream, ContentStream">
+          <maml:name>Stream</maml:name>
+          <maml:description>
+            <maml:para>A stream of an image.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+          <dev:type>
+            <maml:name>Stream</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in a sixel image.
+Max is 256 colors.
+(only applicable to sixel protocol)
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Height</maml:name>
+          <maml:description>
+            <maml:para>Height of the image in character cells, the width will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Protocol</maml:name>
+          <maml:description>
+            <maml:para>Select the image protocol to output.
+Supports Sixel, InlineImageProtocol, KittyGraphicsProtocol, Block
+It will attempt to autoselect the supported image protocol for your terminal.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ImageProtocol</command:parameterValue>
+          <dev:type>
+            <maml:name>ImageProtocol</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>ImageProtocol.Auto</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-Sixel</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>InputObject from Pipeline, can be filepath or base64 encoded string of an image.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in a sixel image.
+Max is 256 colors.
+(only applicable to sixel protocol)
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+          <maml:name>Height</maml:name>
+          <maml:description>
+            <maml:para>Height of the image in character cells, the width will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Protocol</maml:name>
+          <maml:description>
+            <maml:para>Select the image protocol to output.
+Supports Sixel, InlineImageProtocol, KittyGraphicsProtocol, Block
+It will attempt to autoselect the supported image protocol for your terminal.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ImageProtocol</command:parameterValue>
+          <dev:type>
+            <maml:name>ImageProtocol</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>ImageProtocol.Auto</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="FullName">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>A path to a local image.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="Uri">
+        <maml:name>Url</maml:name>
+        <maml:description>
+          <maml:para>A URL of the image.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="RawContentStream, FileStream, InputStream, ContentStream">
+        <maml:name>Stream</maml:name>
+        <maml:description>
+          <maml:para>A stream of an image.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        <dev:type>
+          <maml:name>Stream</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="none">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>InputObject from Pipeline, can be filepath or base64 encoded string of an image.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+        <maml:name>MaxColors</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of colors to use in a sixel image.
+Max is 256 colors.
+(only applicable to sixel protocol)
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>256</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+        <maml:name>Width</maml:name>
+        <maml:description>
+          <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="CellWidth">
+        <maml:name>Height</maml:name>
+        <maml:description>
+          <maml:para>Height of the image in character cells, the width will be scaled to maintain aspect ratio.
+if both Width and Height are given then it will clamp to the smaller.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Protocol</maml:name>
+        <maml:description>
+          <maml:para>Select the image protocol to output.
+Supports Sixel, InlineImageProtocol, KittyGraphicsProtocol, Block
+It will attempt to autoselect the supported image protocol for your terminal.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ImageProtocol</command:parameterValue>
+        <dev:type>
+          <maml:name>ImageProtocol</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>ImageProtocol.Auto</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Path, url, Base64 String, Stream of an image file
+</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>A sixel string
+</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>This will only work if your terminal supports sixel images.
+</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; ConvertTo-Sixel -Url 'https://imgs.xkcd.com/comics/git_commit.png'</dev:code>
+        <dev:remarks>
+          <maml:para>Converts the xkcd.
+</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; ConvertTo-Sixel -Path C:\files\smiley.png</dev:code>
+        <dev:remarks>
+          <maml:para>Converts a local file.
+</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/trackd/Sixel/blob/main/docs/en-US/ConvertTo-Sixel.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>ConvertTo-SixelGif</command:name>
+      <command:verb>ConvertTo</command:verb>
+      <command:noun>SixelGif</command:noun>
+      <maml:description>
+        <maml:para>Converts a gif to a sixel animation.
+this cmdlet only supports Sixel.
+</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The `ConvertTo-SixelGif` takes a gif and converts it to sixel animation
+</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-SixelGif</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="FullName">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para>A path to a local gif to convert to sixel.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>LoopCount</maml:name>
+          <maml:description>
+            <maml:para>The amount of times the gif will loop.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>3</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in the image.
+Max is 256.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-SixelGif</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="Uri">
+          <maml:name>Url</maml:name>
+          <maml:description>
+            <maml:para>A URL of the gif to download and convert to sixel.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+          <dev:type>
+            <maml:name>Uri</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>LoopCount</maml:name>
+          <maml:description>
+            <maml:para>The amount of times the gif will loop.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>3</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in the image.
+Max is 256.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>ConvertTo-SixelGif</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="RawContentStream, FileStream, InputStream, ContentStream">
+          <maml:name>Stream</maml:name>
+          <maml:description>
+            <maml:para>A stream of an image.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+          <dev:type>
+            <maml:name>Stream</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>LoopCount</maml:name>
+          <maml:description>
+            <maml:para>The amount of times the gif will loop.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>3</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+          <maml:name>MaxColors</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of colors to use in the image.
+Max is 256.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>256</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Width</maml:name>
+          <maml:description>
+            <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+          <dev:type>
+            <maml:name>int</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="FullName">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para>A path to a local gif to convert to sixel.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="Uri">
+        <maml:name>Url</maml:name>
+        <maml:description>
+          <maml:para>A URL of the gif to download and convert to sixel.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Uri</command:parameterValue>
+        <dev:type>
+          <maml:name>Uri</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True" position="named" aliases="RawContentStream, FileStream, InputStream, ContentStream">
+        <maml:name>Stream</maml:name>
+        <maml:description>
+          <maml:para>A stream of an image.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        <dev:type>
+          <maml:name>Stream</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+        <maml:name>LoopCount</maml:name>
+        <maml:description>
+          <maml:para>The amount of times the gif will loop.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>3</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="None">
+        <maml:name>MaxColors</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of colors to use in the image.
+Max is 256.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>256</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Width</maml:name>
+        <maml:description>
+          <maml:para>Width of the image in character cells, the height will be scaled to maintain aspect ratio.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Force the command to attempt to output sixel data even if the terminal does not support sixel.
+</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>Path or url to an gif file
+</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>a sixel animation
+</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>This will only work if your terminal supports sixel images.
+Windows Terminal version 1.22 or newer
+</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; ConvertTo-SixelGif -Url 'https://i.gifer.com/10j2.gif'</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; ConvertTo-SixelGif -Path $env:USERPROFILE\desktop\hello.gif</dev:code>
+        <dev:remarks>
+          <maml:para>Converts a local file to sixel format
+</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://github.com/trackd/Sixel/blob/main/docs/en-US/ConvertTo-SixelGif.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

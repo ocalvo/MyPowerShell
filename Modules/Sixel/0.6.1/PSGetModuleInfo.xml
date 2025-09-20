@@ -1,0 +1,147 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">Sixel</S>
+      <Version N="Version">0.6.1</Version>
+      <S N="Type">Module</S>
+      <S N="Description">Display images in the terminal using various protocols_x000D__x000A__x000D__x000A_    ✔️ Sixel_x000D__x000A_        - Gif support using ConvertTo-SixelGif._x000D__x000A_    ✔️ Inline Image Protocol (iterm2, "1337")_x000D__x000A_        - Supported by VSCode, xterm2, WezTerm, and others._x000D__x000A_    ✔️ Kitty Graphics Protocol_x000D__x000A_        - Supported by Kitty terminal and WezTerm (newer versions)_x000D__x000A_    ✔️ Block cells_x000D__x000A_        - Fallback to block cells if no image protocol is supported._x000D__x000A__x000D__x000A_    Note: Sixel requires Windows Terminal v1.22+ or VSCode 1.101+._x000D__x000A_    VSCode requires "Enable Images", "Windows Enable Conpty", "Windows Use Conpty Dll" enabled.</S>
+      <S N="Author">trackd ShaunLawrie</S>
+      <S N="CompanyName">trackd</S>
+      <S N="Copyright">(c) trackd. All rights reserved.</S>
+      <DT N="PublishedDate">2025-09-19T07:19:23-07:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2025-09-20T10:36:41.6581697-07:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://github.com/trackd/Sixel/blob/main/LICENSE</URI>
+      <URI N="ProjectUri">https://github.com/trackd/Sixel</URI>
+      <Nil N="IconUri" />
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>Sixel</S>
+          <S>Image</S>
+          <S>ConsoleImage</S>
+          <S>InlineImageProtocol</S>
+          <S>KittyGraphicsProtocol</S>
+          <S>Linux</S>
+          <S>Mac</S>
+          <S>Windows</S>
+          <S>PSModule</S>
+          <S>PSEdition_Desktop</S>
+          <S>PSEdition_Core</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">DscResource</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="2" />
+              <LST>
+                <S>ConvertTo-Sixel</S>
+                <S>ConvertTo-SixelGif</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Obj N="Value" RefId="7">
+              <TNRef RefId="2" />
+              <LST>
+                <S>ConvertTo-Sixel</S>
+                <S>ConvertTo-SixelGif</S>
+              </LST>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <S N="ReleaseNotes">0.6.1 - bugfix resizing image sometimes cuts off the left outer edge._x000D__x000A_            0.6.0 - update libraries, tweak sizing algorithm._x000D__x000A_            0.5.0 - Refactor, cleanup, bugfixes with terminal detection and stream._x000D__x000A_            0.4.0 - Added support for Windows Powershell 5.1, added parameter -Stream as input._x000D__x000A_            0.3.1 - Added GIF support, added Ascii art using halfblock cells._x000D__x000A_            0.2.5 - bugfix, cleanup, added experimental support for inline image protocol and Kitty Graphics Protocol._x000D__x000A_            0.2.0 - Added better scaling, changes -Width to use cell width instead._x000D__x000A_            0.1.0 - Initial release.</S>
+      <Obj N="Dependencies" RefId="8">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="9">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">(c) trackd. All rights reserved.</S>
+          <S N="description">Display images in the terminal using various protocols_x000D__x000A__x000D__x000A_    ✔️ Sixel_x000D__x000A_        - Gif support using ConvertTo-SixelGif._x000D__x000A_    ✔️ Inline Image Protocol (iterm2, "1337")_x000D__x000A_        - Supported by VSCode, xterm2, WezTerm, and others._x000D__x000A_    ✔️ Kitty Graphics Protocol_x000D__x000A_        - Supported by Kitty terminal and WezTerm (newer versions)_x000D__x000A_    ✔️ Block cells_x000D__x000A_        - Fallback to block cells if no image protocol is supported._x000D__x000A__x000D__x000A_    Note: Sixel requires Windows Terminal v1.22+ or VSCode 1.101+._x000D__x000A_    VSCode requires "Enable Images", "Windows Enable Conpty", "Windows Use Conpty Dll" enabled.</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="releaseNotes">0.6.1 - bugfix resizing image sometimes cuts off the left outer edge._x000D__x000A_            0.6.0 - update libraries, tweak sizing algorithm._x000D__x000A_            0.5.0 - Refactor, cleanup, bugfixes with terminal detection and stream._x000D__x000A_            0.4.0 - Added support for Windows Powershell 5.1, added parameter -Stream as input._x000D__x000A_            0.3.1 - Added GIF support, added Ascii art using halfblock cells._x000D__x000A_            0.2.5 - bugfix, cleanup, added experimental support for inline image protocol and Kitty Graphics Protocol._x000D__x000A_            0.2.0 - Added better scaling, changes -Width to use cell width instead._x000D__x000A_            0.1.0 - Initial release.</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">23</S>
+          <S N="downloadCount">3080</S>
+          <S N="packageSize">2062826</S>
+          <S N="published">9/19/2025 7:19:23 AM -07:00</S>
+          <S N="created">9/19/2025 7:19:23 AM -07:00</S>
+          <S N="lastUpdated">9/20/2025 8:30:00 AM -07:00</S>
+          <S N="tags">Sixel Image ConsoleImage InlineImageProtocol KittyGraphicsProtocol Linux Mac Windows PSModule PSEdition_Desktop PSEdition_Core PSCmdlet_ConvertTo-Sixel PSCommand_ConvertTo-Sixel PSCmdlet_ConvertTo-SixelGif PSCommand_ConvertTo-SixelGif PSIncludes_Cmdlet</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2025-09-20T08:30:00Z</S>
+          <S N="NormalizedVersion">0.6.1</S>
+          <S N="Authors">trackd ShaunLawrie</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">Sixel.nuspec|Sixel.psd1|Sixel.psm1|en-US\Sixel.dll-Help.xml|bin\net472\Sixel.dll|bin\net472\Sixel.Shared.dll|bin\net472\SixLabors.ImageSharp.dll|bin\net472\System.Buffers.dll|bin\net472\System.Memory.dll|bin\net472\System.Numerics.Vectors.dll|bin\net472\System.Runtime.CompilerServices.Unsafe.dll|bin\net472\System.Text.Encoding.CodePages.dll|bin\net8.0\Sixel.dll|bin\net8.0\Sixel.Shared.dll|bin\net8.0\SixLabors.ImageSharp.dll|Sixel.format.ps1xml</S>
+          <S N="GUID">95f4627c-f8f5-43d5-824b-4c356737f87b</S>
+          <S N="PowerShellVersion">5.1</S>
+          <S N="DotNetFrameworkVersion">4.7.2</S>
+          <S N="CLRVersion">4.0</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">X:\Users\oscar\OneDrive\Documents\PowerShell\Modules\Sixel\0.6.1</S>
+    </MS>
+  </Obj>
+</Objs>
