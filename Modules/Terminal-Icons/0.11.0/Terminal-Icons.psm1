@@ -3421,7 +3421,11 @@ function Show-TerminalIconsTheme {
 $moduleRoot    = $PSScriptRoot
 $glyphs        = Invoke-Expression "& `"$moduleRoot/Data/glyphs.ps1`""
 $escape        = [char]27
-$colorReset    = "${escape}[0m"
+$resetFColor   = "${escape}[39m"  # Reset foreground color
+$resetBColor   = "${escape}[49m"  # Reset background color
+$colorReset    = "${resetFColor}${resetBColor}"
+$saveCursor    = "${escape}[s" # Save cursor position
+$restoreCursor = "${escape}[u" # Restore cursor position
 $bell          = "`a"   # Bell character (ASCII 7)
 $beginUrl      = "${escape}]8;;"
 $endUrl        = "${escape}]8;;${bell}"
