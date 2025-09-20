@@ -68,16 +68,13 @@ https://github.com/DHowett/DirColors -->
                     </TableColumnHeader>
                     <TableColumnHeader>
                         <Label>Name</Label>
-                        <!--Width>
-                            <ScriptBlock>
-                                [int]$_.Name.Length
-                            </ScriptBlock>
-                        </Width-->
+                        <Alignment>left</Alignment>
+                        <Width>1000</Width>
                     </TableColumnHeader>
                 </TableHeaders>
                 <TableRowEntries>
                     <TableRowEntry>
-                        <Wrap/>
+                        <!--Wrap/-->
                         <TableColumnItems>
                             <TableColumnItem>
                                 <PropertyName>Mode</PropertyName>
@@ -92,7 +89,7 @@ https://github.com/DHowett/DirColors -->
                             </TableColumnItem>
                             <TableColumnItem>
                                 <ScriptBlock>
-                                    Terminal-Icons\Format-TerminalIcons $_
+                                    (Terminal-Icons\Format-TerminalIcons $_)
                                 </ScriptBlock>
                             </TableColumnItem>
                         </TableColumnItems>
@@ -119,7 +116,7 @@ https://github.com/DHowett/DirColors -->
                             <ListItem>
                                 <Label>Name</Label>
                                 <ScriptBlock>
-                                    Terminal-Icons\Format-TerminalIcons $_
+                                    (Terminal-Icons\Format-TerminalIcons $_)
                                 </ScriptBlock>
                             </ListItem>
                             <ListItem>
@@ -143,7 +140,7 @@ https://github.com/DHowett/DirColors -->
                             <ListItem>
                                 <Label>Target</Label>
                                 <ScriptBlock>
-                                    Terminal-Icons\Format-TerminalIcons $_
+                                    (Terminal-Icons\Format-TerminalIcons $_)
                                 </ScriptBlock>
                             </ListItem>
                             <!-- <ListItem>
@@ -156,7 +153,7 @@ https://github.com/DHowett/DirColors -->
                             <ListItem>
                                 <Label>Name</Label>
                                 <ScriptBlock>
-                                    Terminal-Icons\Format-TerminalIcons $_
+                                    (Terminal-Icons\Format-TerminalIcons $_)
                                 </ScriptBlock>
                             </ListItem>
                             <ListItem>
@@ -177,7 +174,7 @@ https://github.com/DHowett/DirColors -->
                             <ListItem>
                                 <Label>Target</Label>
                                 <ScriptBlock>
-                                Terminal-Icons\Format-TerminalIcons $_
+                                  (Terminal-Icons\Format-TerminalIcons $_)
                                 </ScriptBlock>
                             </ListItem>
                         </ListItems>
@@ -199,7 +196,7 @@ https://github.com/DHowett/DirColors -->
                     <WideEntry>
                         <WideItem>
                             <ScriptBlock>
-                                Terminal-Icons\Format-TerminalIcons $_
+                                (Terminal-Icons\Format-TerminalIcons $_)
                             </ScriptBlock>
                         </WideItem>
                     </WideEntry>
@@ -209,7 +206,7 @@ https://github.com/DHowett/DirColors -->
                         </EntrySelectedBy>
                         <WideItem>
                             <ScriptBlock>
-                                Terminal-Icons\Format-TerminalIcons $_
+                                (Terminal-Icons\Format-TerminalIcons $_)
                             </ScriptBlock>
                         </WideItem>
                     </WideEntry>

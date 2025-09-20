@@ -624,15 +624,21 @@ function Format-TerminalIcons {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [IO.FileSystemInfo]$FileInfo
+        [IO.FileSystemInfo]$FileInfo,
+        [switch]$disableUrl
     )
     process {
         $displayInfo = Resolve-Icon $FileInfo
-        if ($displayInfo.Icon) {
-            "$($displayInfo.Color)$($displayInfo.Icon)  ${beginUrl}$($FileInfo.FullName)${bell}$($FileInfo.Name)${endUrl}$($displayInfo.Target)$($script:colorReset)"
+        if ($disableUrl -or (test-path env:DISABLE_URL)) {
+            $prefix = ""
+            $suffix = ""
         } else {
-            "$($displayInfo.Color) ${beginUrl}$($FileInfo.FullName)${bell}$($FileInfo.Name)${endUrl}$($displayInfo.Target)$($script:colorReset)"
+          $prefix = "${beginUrl}$($FileInfo.FullName)${bell}"
+          $suffix = "${endUrl}"
         }
+        if ($displayInfo.Icon) { $icon = "$($displayInfo.Icon)" } else { $icon = "�" }
+        $result = "$($displayInfo.Color)${icon}  ${prefix}$($FileInfo.Name)$($displayInfo.Target)$($script:colorReset)${suffix}"
+        return $result
     }
 }
 
