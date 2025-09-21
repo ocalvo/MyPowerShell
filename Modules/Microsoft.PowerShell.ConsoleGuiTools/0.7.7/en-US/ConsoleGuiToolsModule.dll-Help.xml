@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Out-ConsoleGridView</command:name>
+      <command:verb>Out</command:verb>
+      <command:noun>ConsoleGridView</command:noun>
+      <maml:description>
+        <maml:para>Sends output to an interactive table in the same console window.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Out-ConsoleGridView cmdlet sends the output from a command to a grid view window where the output is displayed in an interactive table.</maml:para>
+      <maml:para>You can use the following features of the table to examine your data:</maml:para>
+      <maml:para>- Quick Filter. Use the Filter box at the top of the window to search the text in the table. You can search for text in a particular column, search for literals, and search for multiple words. You can use the `-Filter` command to pre-populate the Filter box. The filter uses regular expressions.</maml:para>
+      <maml:para>For instructions for using these features, type `Get-Help Out-ConsoleGridView -Full` and see How to Use the Grid View Window Features in the Notes section.</maml:para>
+      <maml:para>To send items from the interactive window down the pipeline, click to select the items (either the the mouse in terminals that support mouse or the `SPACE` key) and then press `ENTER`. `ESC` cancels.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Out-ConsoleGridView</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>Pre-populates the Filter edit box, allowing filtering to be specified on the command line.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>Specifies that the cmdlet accepts input for Out-ConsoleGridView .</maml:para>
+            <maml:para>When you use the InputObject parameter to send a collection of objects to Out-ConsoleGridView , Out-ConsoleGridView treats the collection as one collection object, and it displays one row that represents the collection.</maml:para>
+            <maml:para>To display the each object in the collection, use a pipeline operator (|) to send objects to Out-ConsoleGridView .</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+          <dev:type>
+            <maml:name>PSObject</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>OutputMode</maml:name>
+          <maml:description>
+            <maml:para>Specifies the items that the interactive window sends down the pipeline as input to other commands. By default, this cmdlet generates zero, one, or many items.</maml:para>
+            <maml:para>To send items from the interactive window down the pipeline, click to select the items (either the the mouse in terminals that support mouse or the `SPACE` key) and then press `ENTER`. `ESC` cancels.</maml:para>
+            <maml:para>The values of this parameter determine how many items you can send down the pipeline.</maml:para>
+            <maml:para>- None. No items. </maml:para>
+            <maml:para>- Single.  Zero items or one item. Use this value when the next command can take only one input object.</maml:para>
+            <maml:para>- Multiple.  Zero, one, or many items.  Use this value when the next command can take multiple input objects. This is the default value.</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">None</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">Single</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">Multiple</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">OutputModeOption</command:parameterValue>
+          <dev:type>
+            <maml:name>OutputModeOption</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>Multiple</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Title</maml:name>
+          <maml:description>
+            <maml:para>Specifies the text that appears in the title bar of the Out-ConsoleGridView window.</maml:para>
+            <maml:para>By default, the title bar displays the command that invokes Out-ConsoleGridView .</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>MinUi</maml:name>
+          <maml:description>
+            <maml:para>If specified no window frame, filter box, or status bar will be displayed in the Out-ConsoleGridView window.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>Pre-populates the Filter edit box, allowing filtering to be specified on the command line.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>Specifies that the cmdlet accepts input for Out-ConsoleGridView .</maml:para>
+          <maml:para>When you use the InputObject parameter to send a collection of objects to Out-ConsoleGridView , Out-ConsoleGridView treats the collection as one collection object, and it displays one row that represents the collection.</maml:para>
+          <maml:para>To display the each object in the collection, use a pipeline operator (|) to send objects to Out-ConsoleGridView .</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+        <dev:type>
+          <maml:name>PSObject</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>OutputMode</maml:name>
+        <maml:description>
+          <maml:para>Specifies the items that the interactive window sends down the pipeline as input to other commands. By default, this cmdlet generates zero, one, or many items.</maml:para>
+          <maml:para>To send items from the interactive window down the pipeline, click to select the items (either the the mouse in terminals that support mouse or the `SPACE` key) and then press `ENTER`. `ESC` cancels.</maml:para>
+          <maml:para>The values of this parameter determine how many items you can send down the pipeline.</maml:para>
+          <maml:para>- None. No items. </maml:para>
+          <maml:para>- Single.  Zero items or one item. Use this value when the next command can take only one input object.</maml:para>
+          <maml:para>- Multiple.  Zero, one, or many items.  Use this value when the next command can take multiple input objects. This is the default value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">OutputModeOption</command:parameterValue>
+        <dev:type>
+          <maml:name>OutputModeOption</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>Multiple</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Title</maml:name>
+        <maml:description>
+          <maml:para>Specifies the text that appears in the title bar of the Out-ConsoleGridView window.</maml:para>
+          <maml:para>By default, the title bar displays the command that invokes Out-ConsoleGridView .</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>MinUi</maml:name>
+        <maml:description>
+          <maml:para>If specified no window frame, filter box, or status bar will be displayed in the Out-ConsoleGridView window.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can send any object to this cmdlet.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>By default `Out-ConsoleGridView` returns objects representing the selected rows to the pipeline. Use `-OutputMode` to change this behavior.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>The command output that you send to Out-ConsoleGridView * should not be formatted, such as by using the Format-Table or Format-Wide cmdlets. To select properties, use the Select-Object cmdlet.</maml:para>
+        <maml:para>* Deserialized output from remote commands might not be formatted correctly in the grid view window.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>---------- Example 1: Output processes to a grid view ----------</maml:title>
+        <dev:code>PS C:\&gt; Get-Process | Out-ConsoleGridView</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the processes running on the local computer and sends them to a grid view window.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>- Example 2: Use a variable to output processes to a grid view -</maml:title>
+        <dev:code>PS C:\&gt; $P = Get-Process
+PS C:\&gt; $P | Out-ConsoleGridView -OutputMode Single</dev:code>
+        <dev:remarks>
+          <maml:para>This command also gets the processes running on the local computer and sends them to a grid view window.</maml:para>
+          <maml:para>The first command uses the Get-Process cmdlet to get the processes on the computer and then saves the process objects in the $P variable.</maml:para>
+          <maml:para>The second command uses a pipeline operator to send the $P variable to Out-ConsoleGridView .</maml:para>
+          <maml:para>By specifying `-OutputMode Single` the grid view window will be restricted to a single selection, ensuring now more than a single object is returned.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>----- Example 3: Display a formatted table in a grid view -----</maml:title>
+        <dev:code>PS C:\&gt; Get-Process | Select-Object -Property Name, WorkingSet, PeakWorkingSet | Sort-Object -Property WorkingSet -Descending | Out-ConsoleGridView</dev:code>
+        <dev:remarks>
+          <maml:para>This command displays a formatted table in a grid view window.</maml:para>
+          <maml:para>It uses the Get-Process cmdlet to get the processes on the computer.</maml:para>
+          <maml:para>Then, it uses a pipeline operator (|) to send the process objects to the Select-Object cmdlet. The command uses the Property parameter of Select-Object to select the Name, WorkingSet, and PeakWorkingSet properties to be displayed in the table.</maml:para>
+          <maml:para>Another pipeline operator sends the filtered objects to the Sort-Object cmdlet, which sorts them in descending order by the value of the WorkingSet property.</maml:para>
+          <maml:para>The final part of the command uses a pipeline operator (|) to send the formatted table to Out-ConsoleGridView .</maml:para>
+          <maml:para>You can now use the features of the grid view to search, sort, and filter the data.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 4: Save output to a variable, and then output a grid view</maml:title>
+        <dev:code>PS C:\&gt; ($A = Get-ChildItem -Path $pshome -Recurse) | Out-ConsoleGridView</dev:code>
+        <dev:remarks>
+          <maml:para>This command saves its output in a variable and sends it to Out-ConsoleGridView .</maml:para>
+          <maml:para>The command uses the Get-ChildItem cmdlet to get the files in the Windows PowerShell installation directory and its subdirectories. The path to the installation directory is saved in the $pshome automatic variable.</maml:para>
+          <maml:para>The command uses the assignment operator (=) to save the output in the $A variable and the pipeline operator (|) to send the output to Out-ConsoleGridView .</maml:para>
+          <maml:para>The parentheses in the command establish the order of operations. As a result, the output from the Get-ChildItem command is saved in the $A variable before it is sent to Out-ConsoleGridView .</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 5: Output processes for a specified computer to a grid view</maml:title>
+        <dev:code>PS C:\&gt; Get-Process -ComputerName "Server01" | ocgv -Title "Processes - Server01"</dev:code>
+        <dev:remarks>
+          <maml:para>This command displays the processes that are running on the Server01 computer in a grid view window.</maml:para>
+          <maml:para>The command uses `ocgv`, which is the built-in alias for the Out-ConsoleGridView cmdlet, it uses the Title parameter to specify the window title.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 6: Define a function to kill processes using a graphical chooser</maml:title>
+        <dev:code>PS C:\&gt; function killp { Get-Process | Out-ConsoleGridView -OutputMode Single -Filter $args[0] | Stop-Process -Id {$_.Id} }
+PS C:\&gt; killp note</dev:code>
+        <dev:remarks>
+          <maml:para>This example shows defining a function named `killp` that shows a grid view of all running processes and allows the user to select one to kill it.</maml:para>
+          <maml:para>The example uses the `-Filter` paramter to filter for all proceses with a name that includes `note` (thus highlighting `Notepad` if it were running. Selecting an item in the grid view and pressing `ENTER` will kill that process.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-- Example 7: Pass multiple items through Out-ConsoleGridView --</maml:title>
+        <dev:code>PS C:\&gt; Get-Process | Out-ConsoleGridView -PassThru | Export-Csv -Path .\ProcessLog.csv</dev:code>
+        <dev:remarks>
+          <maml:para>This command lets you select multiple processes from the Out-ConsoleGridView window. The processes that you select are passed to the Export-Csv command and written to the ProcessLog.csv file.</maml:para>
+          <maml:para>The command uses the PassThru parameter of Out-ConsoleGridView , which lets you send multiple items down the pipeline. The PassThru parameter is equivalent to using the Multiple value of the OutputMode parameter.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>--------- Example 8: Use F7 as "Show Command History" ---------</maml:title>
+        <dev:code></dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Out-File</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Out-Printer</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Out-String</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Show-ObjectTree</command:name>
+      <command:verb>Show</command:verb>
+      <command:noun>ObjectTree</command:noun>
+      <maml:description>
+        <maml:para>Sends output to an interactive tree in the same console window.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Show-ObjectTree cmdlet sends the output from a command to a tree view window where the output is displayed in an interactive tree.</maml:para>
+      <maml:para>You can use the following features of the tree to examine your data:</maml:para>
+      <maml:para>- Quick Filter. Use the Filter box at the top of the window to search the text in the tree. You can search for literals or multiple words. You can use the `-Filter` command to pre-populate the Filter box. The filter uses regular expressions.</maml:para>
+      <maml:para>For instructions for using these features, type `Get-Help Show-ObjectTree -Full` and see How to Use the Tree View Window Features in the Notes section.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Show-ObjectTree</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>Pre-populates the Filter edit box, allowing filtering to be specified on the command line.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>Specifies that the cmdlet accepts input for Show-ObjectTree .</maml:para>
+            <maml:para>When you use the InputObject parameter to send a collection of objects to Show-ObjectTree , Show-ObjectTree treats the collection as one collection object, and it displays one row that represents the collection.</maml:para>
+            <maml:para>To display the each object in the collection, use a pipeline operator (|) to send objects to Show-ObjectTree .</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+          <dev:type>
+            <maml:name>PSObject</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Title</maml:name>
+          <maml:description>
+            <maml:para>Specifies the text that appears in the title bar of the Show-ObjectTree window.</maml:para>
+            <maml:para>By default, the title bar displays the command that invokes Show-ObjectTree .</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>MinUi</maml:name>
+          <maml:description>
+            <maml:para>If specified no window frame, filter box, or status bar will be displayed in the Show-ObjectTree window.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>Pre-populates the Filter edit box, allowing filtering to be specified on the command line.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>Specifies that the cmdlet accepts input for Show-ObjectTree .</maml:para>
+          <maml:para>When you use the InputObject parameter to send a collection of objects to Show-ObjectTree , Show-ObjectTree treats the collection as one collection object, and it displays one row that represents the collection.</maml:para>
+          <maml:para>To display the each object in the collection, use a pipeline operator (|) to send objects to Show-ObjectTree .</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
+        <dev:type>
+          <maml:name>PSObject</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Title</maml:name>
+        <maml:description>
+          <maml:para>Specifies the text that appears in the title bar of the Show-ObjectTree window.</maml:para>
+          <maml:para>By default, the title bar displays the command that invokes Show-ObjectTree .</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>MinUi</maml:name>
+        <maml:description>
+          <maml:para>If specified no window frame, filter box, or status bar will be displayed in the Show-ObjectTree window.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Management.Automation.PSObject</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can send any object to this cmdlet.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para>`Show-ObjectTree` does not output any objects.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>The command output that you send to Show-ObjectTree * should not be formatted, such as by using the Format-Table or Format-Wide cmdlets. To select properties, use the Select-Object cmdlet.</maml:para>
+        <maml:para>* Deserialized output from remote commands might not be formatted correctly in the tree view window.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>---------- Example 1: Output processes to a tree view ----------</maml:title>
+        <dev:code>PS C:\&gt; Get-Process | Show-ObjectTree</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the processes running on the local computer and sends them to a tree view window.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Save output to a variable, and then output a tree view</maml:title>
+        <dev:code>PS C:\&gt; ($A = Get-ChildItem -Path $pshome -Recurse) | shot</dev:code>
+        <dev:remarks>
+          <maml:para>This command saves its output in a variable and sends it to Show-ObjectTree .</maml:para>
+          <maml:para>The command uses the Get-ChildItem cmdlet to get the files in the Windows PowerShell installation directory and its subdirectories. The path to the installation directory is saved in the $pshome automatic variable.</maml:para>
+          <maml:para>The command uses the assignment operator (=) to save the output in the $A variable and the pipeline operator (|) to send the output to Show-ObjectTree .</maml:para>
+          <maml:para>The parentheses in the command establish the order of operations. As a result, the output from the Get-ChildItem command is saved in the $A variable before it is sent to Show-ObjectTree .</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Out-File</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Out-Printer</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Out-String</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>
