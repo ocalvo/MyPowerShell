@@ -1,0 +1,448 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">PSWriteHTML</S>
+      <Version N="Version">1.39.0</Version>
+      <S N="Type">Module</S>
+      <S N="Description">PSWriteHTML is PowerShell Module to generate beautiful HTML reports, pages, emails without any knowledge of HTML, CSS or JavaScript. To get started basics PowerShell knowledge is required.</S>
+      <S N="Author">Przemyslaw Klys</S>
+      <S N="CompanyName">Przemyslaw.Klys</S>
+      <S N="Copyright">(c) 2011 - 2025 Przemyslaw Klys @ Evotec. All rights reserved.</S>
+      <DT N="PublishedDate">2025-09-04T17:38:16-07:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2025-09-25T11:34:57.6431017-07:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <Nil N="LicenseUri" />
+      <URI N="ProjectUri">https://github.com/EvotecIT/PSWriteHTML</URI>
+      <URI N="IconUri">https://evotec.xyz/wp-content/uploads/2018/12/PSWriteHTML.png</URI>
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>HTML</S>
+          <S>WWW</S>
+          <S>JavaScript</S>
+          <S>CSS</S>
+          <S>Reports</S>
+          <S>Reporting</S>
+          <S>Windows</S>
+          <S>MacOS</S>
+          <S>Linux</S>
+          <S>PSModule</S>
+          <S>PSEdition_Desktop</S>
+          <S>PSEdition_Core</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="2" />
+              <LST>
+                <S>Add-HTML</S>
+                <S>Add-HTMLScript</S>
+                <S>Add-HTMLStyle</S>
+                <S>ConvertTo-CascadingStyleSheets</S>
+                <S>Email</S>
+                <S>EmailAttachment</S>
+                <S>EmailBCC</S>
+                <S>EmailBody</S>
+                <S>EmailCC</S>
+                <S>EmailFrom</S>
+                <S>EmailHeader</S>
+                <S>EmailLayout</S>
+                <S>EmailLayoutColumn</S>
+                <S>EmailLayoutRow</S>
+                <S>EmailListItem</S>
+                <S>EmailOptions</S>
+                <S>EmailReplyTo</S>
+                <S>EmailServer</S>
+                <S>EmailSubject</S>
+                <S>EmailTo</S>
+                <S>Enable-HTMLFeature</S>
+                <S>New-AccordionItem</S>
+                <S>New-CalendarEvent</S>
+                <S>New-CarouselSlide</S>
+                <S>New-ChartAxisX</S>
+                <S>New-ChartAxisY</S>
+                <S>New-ChartBar</S>
+                <S>New-ChartBarOptions</S>
+                <S>New-ChartDataLabel</S>
+                <S>New-ChartDesign</S>
+                <S>New-ChartDonut</S>
+                <S>New-ChartEvent</S>
+                <S>New-ChartGrid</S>
+                <S>New-ChartLegend</S>
+                <S>New-ChartLine</S>
+                <S>New-ChartMarker</S>
+                <S>New-ChartPie</S>
+                <S>New-ChartRadial</S>
+                <S>New-ChartRadialOptions</S>
+                <S>New-ChartSpark</S>
+                <S>New-ChartTheme</S>
+                <S>New-ChartTimeLine</S>
+                <S>New-ChartToolbar</S>
+                <S>New-ChartToolTip</S>
+                <S>New-DiagramEvent</S>
+                <S>New-DiagramLink</S>
+                <S>New-DiagramNode</S>
+                <S>New-DiagramOptionsInteraction</S>
+                <S>New-DiagramOptionsLayout</S>
+                <S>New-DiagramOptionsLinks</S>
+                <S>New-DiagramOptionsManipulation</S>
+                <S>New-DiagramOptionsNodes</S>
+                <S>New-DiagramOptionsPhysics</S>
+                <S>New-GageSector</S>
+                <S>New-HierarchicalTreeNode</S>
+                <S>New-HTML</S>
+                <S>New-HTMLAccordion</S>
+                <S>New-HTMLAnchor</S>
+                <S>New-HTMLCalendar</S>
+                <S>New-HTMLCarousel</S>
+                <S>New-HTMLCarouselStyle</S>
+                <S>New-HTMLChart</S>
+                <S>New-HTMLCodeBlock</S>
+                <S>New-HTMLContainer</S>
+                <S>New-HTMLDate</S>
+                <S>New-HTMLDiagram</S>
+                <S>New-HTMLFontIcon</S>
+                <S>New-HTMLFooter</S>
+                <S>New-HTMLFrame</S>
+                <S>New-HTMLGage</S>
+                <S>New-HTMLHeader</S>
+                <S>New-HTMLHeading</S>
+                <S>New-HTMLHierarchicalTree</S>
+                <S>New-HTMLHorizontalLine</S>
+                <S>New-HTMLImage</S>
+                <S>New-HTMLInfoCard</S>
+                <S>New-HTMLList</S>
+                <S>New-HTMLListItem</S>
+                <S>New-HTMLLogo</S>
+                <S>New-HTMLMain</S>
+                <S>New-HTMLMap</S>
+                <S>New-HTMLMarkdown</S>
+                <S>New-HTMLMermeidChart</S>
+                <S>New-HTMLNav</S>
+                <S>New-HTMLNavFloat</S>
+                <S>New-HTMLNavTop</S>
+                <S>New-HTMLOrgChart</S>
+                <S>New-HTMLPage</S>
+                <S>New-HTMLPanel</S>
+                <S>New-HTMLPanelStyle</S>
+                <S>New-HTMLQRCode</S>
+                <S>New-HTMLSection</S>
+                <S>New-HTMLSectionScrolling</S>
+                <S>New-HTMLSectionScrollingItem</S>
+                <S>New-HTMLSectionStyle</S>
+                <S>New-HTMLSpanStyle</S>
+                <S>New-HTMLStatus</S>
+                <S>New-HTMLStatusItem</S>
+                <S>New-HTMLSummary</S>
+                <S>New-HTMLSummaryItem</S>
+                <S>New-HTMLSummaryItemData</S>
+                <S>New-HTMLTab</S>
+                <S>New-HTMLTable</S>
+                <S>New-HTMLTableOption</S>
+                <S>New-HTMLTableStyle</S>
+                <S>New-HTMLTabPanel</S>
+                <S>New-HTMLTabPanelColor</S>
+                <S>New-HTMLTabStyle</S>
+                <S>New-HTMLTag</S>
+                <S>New-HTMLText</S>
+                <S>New-HTMLTextBox</S>
+                <S>New-HTMLTimeline</S>
+                <S>New-HTMLTimelineItem</S>
+                <S>New-HTMLToast</S>
+                <S>New-HTMLTree</S>
+                <S>New-HTMLTreeChildCounter</S>
+                <S>New-HTMLTreeNode</S>
+                <S>New-HTMLWinBox</S>
+                <S>New-HTMLWizard</S>
+                <S>New-HTMLWizardColor</S>
+                <S>New-HTMLWizardStep</S>
+                <S>New-MapArea</S>
+                <S>New-MapLegendOption</S>
+                <S>New-MapLegendSlice</S>
+                <S>New-MapPlot</S>
+                <S>New-NavFloatWidget</S>
+                <S>New-NavFloatWidgetItem</S>
+                <S>New-NavItem</S>
+                <S>New-NavLink</S>
+                <S>New-NavTopMenu</S>
+                <S>New-OrgChartNode</S>
+                <S>New-TableAlphabetSearch</S>
+                <S>New-TableButtonColumnVisibility</S>
+                <S>New-TableButtonCopy</S>
+                <S>New-TableButtonCSV</S>
+                <S>New-TableButtonExcel</S>
+                <S>New-TableButtonPageLength</S>
+                <S>New-TableButtonPDF</S>
+                <S>New-TableButtonPrint</S>
+                <S>New-TableButtonSearchBuilder</S>
+                <S>New-TableColumnOption</S>
+                <S>New-TableCondition</S>
+                <S>New-TableConditionGroup</S>
+                <S>New-TableContent</S>
+                <S>New-TableEvent</S>
+                <S>New-TableHeader</S>
+                <S>New-TableLanguage</S>
+                <S>New-TablePercentageBar</S>
+                <S>New-TablePercentageBarCondition</S>
+                <S>New-TableReplace</S>
+                <S>New-TableRowGrouping</S>
+                <S>Out-HtmlView</S>
+                <S>Save-HTML</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="7">
+              <TNRef RefId="2" />
+              <LST>
+                <S>Add-HTML</S>
+                <S>Add-HTMLScript</S>
+                <S>Add-HTMLStyle</S>
+                <S>ConvertTo-CascadingStyleSheets</S>
+                <S>Email</S>
+                <S>EmailAttachment</S>
+                <S>EmailBCC</S>
+                <S>EmailBody</S>
+                <S>EmailCC</S>
+                <S>EmailFrom</S>
+                <S>EmailHeader</S>
+                <S>EmailLayout</S>
+                <S>EmailLayoutColumn</S>
+                <S>EmailLayoutRow</S>
+                <S>EmailListItem</S>
+                <S>EmailOptions</S>
+                <S>EmailReplyTo</S>
+                <S>EmailServer</S>
+                <S>EmailSubject</S>
+                <S>EmailTo</S>
+                <S>Enable-HTMLFeature</S>
+                <S>New-AccordionItem</S>
+                <S>New-CalendarEvent</S>
+                <S>New-CarouselSlide</S>
+                <S>New-ChartAxisX</S>
+                <S>New-ChartAxisY</S>
+                <S>New-ChartBar</S>
+                <S>New-ChartBarOptions</S>
+                <S>New-ChartDataLabel</S>
+                <S>New-ChartDesign</S>
+                <S>New-ChartDonut</S>
+                <S>New-ChartEvent</S>
+                <S>New-ChartGrid</S>
+                <S>New-ChartLegend</S>
+                <S>New-ChartLine</S>
+                <S>New-ChartMarker</S>
+                <S>New-ChartPie</S>
+                <S>New-ChartRadial</S>
+                <S>New-ChartRadialOptions</S>
+                <S>New-ChartSpark</S>
+                <S>New-ChartTheme</S>
+                <S>New-ChartTimeLine</S>
+                <S>New-ChartToolbar</S>
+                <S>New-ChartToolTip</S>
+                <S>New-DiagramEvent</S>
+                <S>New-DiagramLink</S>
+                <S>New-DiagramNode</S>
+                <S>New-DiagramOptionsInteraction</S>
+                <S>New-DiagramOptionsLayout</S>
+                <S>New-DiagramOptionsLinks</S>
+                <S>New-DiagramOptionsManipulation</S>
+                <S>New-DiagramOptionsNodes</S>
+                <S>New-DiagramOptionsPhysics</S>
+                <S>New-GageSector</S>
+                <S>New-HierarchicalTreeNode</S>
+                <S>New-HTML</S>
+                <S>New-HTMLAccordion</S>
+                <S>New-HTMLAnchor</S>
+                <S>New-HTMLCalendar</S>
+                <S>New-HTMLCarousel</S>
+                <S>New-HTMLCarouselStyle</S>
+                <S>New-HTMLChart</S>
+                <S>New-HTMLCodeBlock</S>
+                <S>New-HTMLContainer</S>
+                <S>New-HTMLDate</S>
+                <S>New-HTMLDiagram</S>
+                <S>New-HTMLFontIcon</S>
+                <S>New-HTMLFooter</S>
+                <S>New-HTMLFrame</S>
+                <S>New-HTMLGage</S>
+                <S>New-HTMLHeader</S>
+                <S>New-HTMLHeading</S>
+                <S>New-HTMLHierarchicalTree</S>
+                <S>New-HTMLHorizontalLine</S>
+                <S>New-HTMLImage</S>
+                <S>New-HTMLInfoCard</S>
+                <S>New-HTMLList</S>
+                <S>New-HTMLListItem</S>
+                <S>New-HTMLLogo</S>
+                <S>New-HTMLMain</S>
+                <S>New-HTMLMap</S>
+                <S>New-HTMLMarkdown</S>
+                <S>New-HTMLMermeidChart</S>
+                <S>New-HTMLNav</S>
+                <S>New-HTMLNavFloat</S>
+                <S>New-HTMLNavTop</S>
+                <S>New-HTMLOrgChart</S>
+                <S>New-HTMLPage</S>
+                <S>New-HTMLPanel</S>
+                <S>New-HTMLPanelStyle</S>
+                <S>New-HTMLQRCode</S>
+                <S>New-HTMLSection</S>
+                <S>New-HTMLSectionScrolling</S>
+                <S>New-HTMLSectionScrollingItem</S>
+                <S>New-HTMLSectionStyle</S>
+                <S>New-HTMLSpanStyle</S>
+                <S>New-HTMLStatus</S>
+                <S>New-HTMLStatusItem</S>
+                <S>New-HTMLSummary</S>
+                <S>New-HTMLSummaryItem</S>
+                <S>New-HTMLSummaryItemData</S>
+                <S>New-HTMLTab</S>
+                <S>New-HTMLTable</S>
+                <S>New-HTMLTableOption</S>
+                <S>New-HTMLTableStyle</S>
+                <S>New-HTMLTabPanel</S>
+                <S>New-HTMLTabPanelColor</S>
+                <S>New-HTMLTabStyle</S>
+                <S>New-HTMLTag</S>
+                <S>New-HTMLText</S>
+                <S>New-HTMLTextBox</S>
+                <S>New-HTMLTimeline</S>
+                <S>New-HTMLTimelineItem</S>
+                <S>New-HTMLToast</S>
+                <S>New-HTMLTree</S>
+                <S>New-HTMLTreeChildCounter</S>
+                <S>New-HTMLTreeNode</S>
+                <S>New-HTMLWinBox</S>
+                <S>New-HTMLWizard</S>
+                <S>New-HTMLWizardColor</S>
+                <S>New-HTMLWizardStep</S>
+                <S>New-MapArea</S>
+                <S>New-MapLegendOption</S>
+                <S>New-MapLegendSlice</S>
+                <S>New-MapPlot</S>
+                <S>New-NavFloatWidget</S>
+                <S>New-NavFloatWidgetItem</S>
+                <S>New-NavItem</S>
+                <S>New-NavLink</S>
+                <S>New-NavTopMenu</S>
+                <S>New-OrgChartNode</S>
+                <S>New-TableAlphabetSearch</S>
+                <S>New-TableButtonColumnVisibility</S>
+                <S>New-TableButtonCopy</S>
+                <S>New-TableButtonCSV</S>
+                <S>New-TableButtonExcel</S>
+                <S>New-TableButtonPageLength</S>
+                <S>New-TableButtonPDF</S>
+                <S>New-TableButtonPrint</S>
+                <S>New-TableButtonSearchBuilder</S>
+                <S>New-TableColumnOption</S>
+                <S>New-TableCondition</S>
+                <S>New-TableConditionGroup</S>
+                <S>New-TableContent</S>
+                <S>New-TableEvent</S>
+                <S>New-TableHeader</S>
+                <S>New-TableLanguage</S>
+                <S>New-TablePercentageBar</S>
+                <S>New-TablePercentageBarCondition</S>
+                <S>New-TableReplace</S>
+                <S>New-TableRowGrouping</S>
+                <S>Out-HtmlView</S>
+                <S>Save-HTML</S>
+              </LST>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <Nil N="ReleaseNotes" />
+      <Obj N="Dependencies" RefId="8">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="9">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">(c) 2011 - 2025 Przemyslaw Klys @ Evotec. All rights reserved.</S>
+          <S N="description">PSWriteHTML is PowerShell Module to generate beautiful HTML reports, pages, emails without any knowledge of HTML, CSS or JavaScript. To get started basics PowerShell knowledge is required.</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">20633</S>
+          <S N="downloadCount">7213430</S>
+          <S N="packageSize">7447595</S>
+          <S N="published">9/4/2025 5:38:16 PM -07:00</S>
+          <S N="created">9/4/2025 5:38:16 PM -07:00</S>
+          <S N="lastUpdated">9/25/2025 6:30:00 PM -07:00</S>
+          <S N="tags">HTML WWW JavaScript CSS Reports Reporting Windows MacOS Linux PSModule PSEdition_Desktop PSEdition_Core PSFunction_Add-HTML PSCommand_Add-HTML PSFunction_Add-HTMLScript PSCommand_Add-HTMLScript PSFunction_Add-HTMLStyle PSCommand_Add-HTMLStyle PSFunction_ConvertTo-CascadingStyleSheets PSCommand_ConvertTo-CascadingStyleSheets PSFunction_Email PSCommand_Email PSFunction_EmailAttachment PSCommand_EmailAttachment PSFunction_EmailBCC PSCommand_EmailBCC PSFunction_EmailBody PSCommand_EmailBody PSFunction_EmailCC PSCommand_EmailCC PSFunction_EmailFrom PSCommand_EmailFrom PSFunction_EmailHeader PSCommand_EmailHeader PSFunction_EmailLayout PSCommand_EmailLayout PSFunction_EmailLayoutColumn PSCommand_EmailLayoutColumn PSFunction_EmailLayoutRow PSCommand_EmailLayoutRow PSFunction_EmailListItem PSCommand_EmailListItem PSFunction_EmailOptions PSCommand_EmailOptions PSFunction_EmailReplyTo PSCommand_EmailReplyTo PSFunction_EmailServer PSCommand_EmailServer PSFunction_EmailSubject PSCommand_EmailSubject PSFunction_EmailTo PSCommand_EmailTo PSFunction_Enable-HTMLFeature PSCommand_Enable-HTMLFeature PSFunction_New-AccordionItem PSCommand_New-AccordionItem PSFunction_New-CalendarEvent PSCommand_New-CalendarEvent PSFunction_New-CarouselSlide PSCommand_New-CarouselSlide PSFunction_New-ChartAxisX PSCommand_New-ChartAxisX PSFunction_New-ChartAxisY PSCommand_New-ChartAxisY PSFunction_New-ChartBar PSCommand_New-ChartBar PSFunction_New-ChartBarOptions PSCommand_New-ChartBarOptions PSFunction_New-ChartDataLabel PSCommand_New-ChartDataLabel PSFunction_New-ChartDesign PSCommand_New-ChartDesign PSFunction_New-ChartDonut PSCommand_New-ChartDonut PSFunction_New-ChartEvent PSCommand_New-ChartEvent PSFunction_New-ChartGrid PSCommand_New-ChartGrid PSFunction_New-ChartLegend PSCommand_New-ChartLegend PSFunction_New-ChartLine PSCommand_New-ChartLine PSFunction_New-ChartMarker PSCommand_New-ChartMarker PSFunction_New-ChartPie PSCommand_New-ChartPie PSFunction_New-ChartRadial PSCommand_New-ChartRadial PSFunction_New-ChartRadialOptions PSCommand_New-ChartRadialOptions PSFunction_New-ChartSpark PSCommand_New-ChartSpark PSFunction_New-ChartTheme PSCommand_New-ChartTheme PSFunction_New-ChartTimeLine PSCommand_New-ChartTimeLine PSFunction_New-ChartToolbar PSCommand_New-ChartToolbar PSFunction_New-ChartToolTip PSCommand_New-ChartToolTip PSFunction_New-DiagramEvent PSCommand_New-DiagramEvent PSFunction_New-DiagramLink PSCommand_New-DiagramLink PSFunction_New-DiagramNode PSCommand_New-DiagramNode PSFunction_New-DiagramOptionsInteraction PSCommand_New-DiagramOptionsInteraction PSFunction_New-DiagramOptionsLayout PSCommand_New-DiagramOptionsLayout PSFunction_New-DiagramOptionsLinks PSCommand_New-DiagramOptionsLinks PSFunction_New-DiagramOptionsManipulation PSCommand_New-DiagramOptionsManipulation PSFunction_New-DiagramOptionsNodes PSCommand_New-DiagramOptionsNodes PSFunction_New-DiagramOptionsPhysics PSCommand_New-DiagramOptionsPhysics PSFunction_New-GageSector PSCommand_New-GageSector PSFunction_New-HierarchicalTreeNode PSCommand_New-HierarchicalTreeNode PSFunction_New-HTML PSCommand_New-HTML PSFunction_New-HTMLAccordion PSCommand_New-HTMLAccordion PSFunction_New-HTMLAnchor PSCommand_New-HTMLAnchor PSFunction_New-HTMLCalendar PSCommand_New-HTMLCalendar PSFunction_New-HTMLCarousel PSCommand_New-HTMLCarousel PSFunction_New-HTMLCarouselStyle PSCommand_New-HTMLCarouselStyle PSFunction_New-HTMLChart PSCommand_New-HTMLChart PSFunction_New-HTMLCodeBlock PSCommand_New-HTMLCodeBlock PSFunction_New-HTMLContainer PSCommand_New-HTMLContainer PSFunction_New-HTMLDate PSCommand_New-HTMLDate PSFunction_New-HTMLDiagram PSCommand_New-HTMLDiagram PSFunction_New-HTMLFontIcon PSCommand_New-HTMLFontIcon PSFunction_New-HTMLFooter PSCommand_New-HTMLFooter PSFunction_New-HTMLFrame PSCommand_New-HTMLFrame PSFunction_New-HTMLGage PSCommand_New-HTMLGage PSFunction_New-HTMLHeader PSCommand_New-HTMLHeader PSFunction_New-HTMLHeading PSCommand_New-HTMLHeading PSFunction_New-HTMLHierarchicalTree PSCommand_New-HTMLHierarchicalTree PSFunction_New-HTMLHorizontalLine PSCommand_New-HTMLHorizontalLine PSFunction_New-HTMLImage PSCommand_New-HTMLImage PSFunction_New-HTMLInfoCard PSCommand_New-HTMLInfoCard PSFunction_New-HTMLList PSCommand_New-HTMLList PSFunction_New-HTMLListItem PSCommand_New-HTMLListItem PSFunction_New-HTMLLogo PSCommand_New-HTMLLogo PSFunction_New-HTMLMain PSCommand_New-HTMLMain PSFunction_New-HTMLMap PSCommand_New-HTMLMap PSFunction_New-HTMLMarkdown PSCommand_New-HTMLMarkdown PSFunction_New-HTMLMermeidChart PSCommand_New-HTMLMermeidChart PSFunction_New-HTMLNav PSCommand_New-HTMLNav PSFunction_New-HTMLNavFloat PSCommand_New-HTMLNavFloat PSFunction_New-HTMLNavTop PSCommand_New-HTMLNavTop PSFunction_New-HTMLOrgChart PSCommand_New-HTMLOrgChart PSFunction_New-HTMLPage PSCommand_New-HTMLPage PSFunction_New-HTMLPanel PSCommand_New-HTMLPanel PSFunction_New-HTMLPanelStyle PSCommand_New-HTMLPanelStyle PSFunction_New-HTMLQRCode PSCommand_New-HTMLQRCode PSFunction_New-HTMLSection PSCommand_New-HTMLSection PSFunction_New-HTMLSectionScrolling PSCommand_New-HTMLSectionScrolling PSFunction_New-HTMLSectionScrollingItem PSCommand_New-HTMLSectionScrollingItem PSFunction_New-HTMLSectionStyle PSCommand_New-HTMLSectionStyle PSFunction_New-HTMLSpanStyle PSCommand_New-HTMLSpanStyle PSFunction_New-HTMLStatus PSCommand_New-HTMLStatus PSFunction_New-HTMLStatusItem PSCommand_New-HTMLStatusItem PSFunction_New-HTMLSummary PSCommand_New-HTMLSummary PSFunction_New-HTMLSummaryItem PSCommand_New-HTMLSummaryItem PSFunction_New-HTMLSummaryItemData PSCommand_New-HTMLSummaryItemData PSFunction_New-HTMLTab PSCommand_New-HTMLTab PSFunction_New-HTMLTable PSCommand_New-HTMLTable PSFunction_New-HTMLTableOption PSCommand_New-HTMLTableOption PSFunction_New-HTMLTableStyle PSCommand_New-HTMLTableStyle PSFunction_New-HTMLTabPanel PSCommand_New-HTMLTabPanel PSFunction_New-HTMLTabPanelColor PSCommand_New-HTMLTabPanelColor PSFunction_New-HTMLTabStyle PSCommand_New-HTMLTabStyle PSFunction_New-HTMLTag PSCommand_New-HTMLTag PSFunction_New-HTMLText PSCommand_New-HTMLText PSFunction_New-HTMLTextBox PSCommand_New-HTMLTextBox PSFunction_New-HTMLTimeline PSCommand_New-HTMLTimeline PSFunction_New-HTMLTimelineItem PSCommand_New-HTMLTimelineItem PSFunction_New-HTMLToast PSCommand_New-HTMLToast PSFunction_New-HTMLTree PSCommand_New-HTMLTree PSFunction_New-HTMLTreeChildCounter PSCommand_New-HTMLTreeChildCounter PSFunction_New-HTMLTreeNode PSCommand_New-HTMLTreeNode PSFunction_New-HTMLWinBox PSCommand_New-HTMLWinBox PSFunction_New-HTMLWizard PSCommand_New-HTMLWizard PSFunction_New-HTMLWizardColor PSCommand_New-HTMLWizardColor PSFunction_New-HTMLWizardStep PSCommand_New-HTMLWizardStep PSFunction_New-MapArea PSCommand_New-MapArea PSFunction_New-MapLegendOption PSCommand_New-MapLegendOption PSFunction_New-MapLegendSlice PSCommand_New-MapLegendSlice PSFunction_New-MapPlot PSCommand_New-MapPlot PSFunction_New-NavFloatWidget PSCommand_New-NavFloatWidget PSFunction_New-NavFloatWidgetItem PSCommand_New-NavFloatWidgetItem PSFunction_New-NavItem PSCommand_New-NavItem PSFunction_New-NavLink PSCommand_New-NavLink PSFunction_New-NavTopMenu PSCommand_New-NavTopMenu PSFunction_New-OrgChartNode PSCommand_New-OrgChartNode PSFunction_New-TableAlphabetSearch PSCommand_New-TableAlphabetSearch PSFunction_New-TableButtonColumnVisibility PSCommand_New-TableButtonColumnVisibility PSFunction_New-TableButtonCopy PSCommand_New-TableButtonCopy PSFunction_New-TableButtonCSV PSCommand_New-TableButtonCSV PSFunction_New-TableButtonExcel PSCommand_New-TableButtonExcel PSFunction_New-TableButtonPageLength PSCommand_New-TableButtonPageLength PSFunction_New-TableButtonPDF PSCommand_New-TableButtonPDF PSFunction_New-TableButtonPrint PSCommand_New-TableButtonPrint PSFunction_New-TableButtonSearchBuilder PSCommand_New-TableButtonSearchBuilder PSFunction_New-TableColumnOption PSCommand_New-TableColumnOption PSFunction_New-TableCondition PSCommand_New-TableCondition PSFunction_New-TableConditionGroup PSCommand_New-TableConditionGroup PSFunction_New-TableContent PSCommand_New-TableContent PSFunction_New-TableEvent PSCommand_New-TableEvent PSFunction_New-TableHeader PSCommand_New-TableHeader PSFunction_New-TableLanguage PSCommand_New-TableLanguage PSFunction_New-TablePercentageBar PSCommand_New-TablePercentageBar PSFunction_New-TablePercentageBarCondition PSCommand_New-TablePercentageBarCondition PSFunction_New-TableReplace PSCommand_New-TableReplace PSFunction_New-TableRowGrouping PSCommand_New-TableRowGrouping PSFunction_Out-HtmlView PSCommand_Out-HtmlView PSFunction_Save-HTML PSCommand_Save-HTML PSIncludes_Function</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2025-09-25T18:30:00Z</S>
+          <S N="NormalizedVersion">1.39.0</S>
+          <S N="Authors">Przemyslaw Klys</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">PSWriteHTML.nuspec|Resources\CSS\dataTables.alphabetSearch.css|Resources\CSS\dataTables.keyTable.min.css|Resources\CSS\dataTables.searchHighlight.css|Resources\CSS\fontsMaterialDesignIconic.min.css|Resources\CSS\jstree.min.css|Resources\CSS\showdown.css|Resources\CSS\vis-network.loadingbar.css|Resources\JS\apexcharts.min.js|Resources\JS\dataTables.buttons.toggleView.js|Resources\JS\dataTables.jquery.min.js|Resources\JS\dataTables.searchBuilder.js|Resources\JS\enlighterjs-footer.js|Resources\JS\jquery.fancytree-all-deps.min.js|Resources\JS\jquery.smartTab.min.js|Resources\JS\moment.min.js|Resources\JS\showdown-toc.min.js|Resources\JS\vis-data.min.js|Resources\JS\xss.min.js|Resources\Maps\africa\africa.js|Resources\Maps\canada\canada.js|Resources\Maps\england\greater_london_county.js|Resources\Maps\european_union\european_union.js|Resources\Maps\france\france_region_01.js|Resources\Maps\france\france_region_22.js|Resources\Maps\france\france_region_42.js|Resources\Maps\france\france_region_74.js|Resources\Maps\france\marseille_districts.js|Resources\Maps\italy\italy.js|Resources\Maps\poland\poland.js|Resources\Maps\turkey\turkey.js|Resources\Maps\wales\wales_county.js|PSWriteHTML.psd1|Resources\CSS\dataTables.autoFill.min.css|Resources\CSS\datatables.noscript.css|Resources\CSS\dataTables.searchPanes.min.css|Resources\CSS\fontsSimpleIcons.min.css|Resources\CSS\kineto.min.css|Resources\CSS\slick-theme.min.css|Resources\CSS\vis-network.min.css|Resources\JS\apexchartsEvents.js|Resources\JS\dataTables.colReorder.min.js|Resources\JS\dataTables.keyTable.min.js|Resources\JS\datatables.SearchFade.min.js|Resources\JS\enlighterjs.min.js|Resources\JS\jquery.hsmenu-dropdown.js|Resources\JS\jquery.smartWizard.min.js|Resources\JS\momentDateText.js|Resources\JS\showdown.min.js|Resources\JS\vis-network.find.js|Resources\Images\Other\Alternate.jpg|Resources\Maps\algeria\algeria.js|Resources\Maps\china\china.js|Resources\Maps\england\greater_manchester_county.js|Resources\Maps\france\france_departments.js|Resources\Maps\france\france_region_02.js|Resources\Maps\france\france_region_23.js|Resources\Maps\france\france_region_43.js|Resources\Maps\france\france_region_82.js|Resources\Maps\france\paris_districts.js|Resources\Maps\japan\japan.js|Resources\Maps\russia\russia.js|Resources\Maps\ukraine\ukraine.js|Resources\Maps\world\world_countries.js|PSWriteHTML.psm1|Resources\CSS\datatables.buttons.min.css|Resources\CSS\dataTables.responsive.min.css|Resources\CSS\dataTables.select.min.css|Resources\CSS\jquery.hsmenu-dropdown.css|Resources\CSS\kinetoStyle.css|Resources\CSS\slick.min.css|Resources\CSS\vis-timeline-graph2d.min.css|Resources\JS\dataTables.alphabetSearch.min.js|Resources\JS\dataTables.columnHighlighter.js|Resources\JS\dataTables.pageResize.min.js|Resources\JS\dataTables.searchHighlight.min.js|Resources\JS\escapeRegex.js|Resources\JS\jquery.hsmenu-sidepenal.js|Resources\JS\jspdf.min.js|Resources\JS\pdfmake.min.js|Resources\JS\slick.min.js|Resources\JS\vis-network.functions.js|Resources\Images\Other\Blank.jpg|Resources\Maps\argentina\argentina.js|Resources\Maps\colombia\co.js|Resources\Maps\england\merseyside_county.js|Resources\Maps\france\france_departments_domtom.js|Resources\Maps\france\france_region_03.js|Resources\Maps\france\france_region_24.js|Resources\Maps\france\france_region_52.js|Resources\Maps\france\france_region_83.js|Resources\Maps\france\paris_districts_without_bois.js|Resources\Maps\laos\laos.js|Resources\Maps\scandinavia\scandinavia.js|Resources\Maps\ukraine\vinnytsia_region.js|Resources\Maps\world\world_countries_mercator.js|Resources\CSS\accordion.min.css|Resources\CSS\dataTables.colReorder.min.css|Resources\CSS\dataTables.rowGroup.min.css|Resources\CSS\datatables.simplify.css|Resources\CSS\jquery.hsmenu-sidepenal.css|Resources\CSS\message.css|Resources\CSS\status.css|Resources\CSS\winbox.min.css|Resources\JS\dataTables.autoFill.min.js|Resources\JS\dataTables.dateTime.js|Resources\JS\dataTables.percentageBars.js|Resources\JS\dataTables.searchHighlightRequire.js|Resources\JS\fancyTree.jquery.min.js|Resources\JS\jquery.hsmenu.js|Resources\JS\jstree.min.js|Resources\JS\popper.min.js|Resources\JS\Sortable.js|Resources\JS\vis-network.loadingbar.js|Resources\Images\Other\Corporate.jpg|Resources\Maps\australia\australia.js|Resources\Maps\croatia\croatia.js|Resources\Maps\england\south_yorkshire_county.js|Resources\Maps\france\france_regions.js|Resources\Maps\france\france_region_04.js|Resources\Maps\france\france_region_25.js|Resources\Maps\france\france_region_53.js|Resources\Maps\france\france_region_91.js|Resources\Maps\germany\germany.js|Resources\Maps\mexico\mexico.js|Resources\Maps\spain\spain.js|Resources\Maps\united_kingdom\uk_postcode_areas.js|Resources\Maps\world\world_countries_miller.js|Resources\CSS\accordionSummary.css|Resources\CSS\dataTables.dateTime.css|Resources\CSS\dataTables.rowReorder.min.css|Resources\CSS\dataTables.stateRestore.min.css|Resources\CSS\jquery.hsmenu.css|Resources\CSS\popper.css|Resources\CSS\timeline-simple.css|Resources\CSS\winbox.modern.min.css|Resources\JS\dataTables.buttons.colVis.min.js|Resources\JS\dataTables.datetimeMoment.js|Resources\JS\dataTables.responsive.min.js|Resources\JS\dataTables.searchPanes.min.js|Resources\JS\fullCalendar.js|Resources\JS\jquery.mapael.min.js|Resources\JS\jszip.min.js|Resources\JS\raphael.min.js|Resources\JS\tabbis.js|Resources\JS\vis-network.min.js|Resources\Images\Other\external-site.gif|Resources\Maps\austria\austria_districts.js|Resources\Maps\egypt\eg.js|Resources\Maps\england\tyne_and_wear_county.js|Resources\Maps\france\france_regions_2016.js|Resources\Maps\france\france_region_06.js|Resources\Maps\france\france_region_26.js|Resources\Maps\france\france_region_54.js|Resources\Maps\france\france_region_93.js|Resources\Maps\india\india_states.js|Resources\Maps\morocco\morocco.js|Resources\Maps\srilanka\sri_lanka.js|Resources\Maps\united_kingdom\uk_postcode_areas_mercator.js|Resources\Maps\world\world_countries_with_antarctica.js|Resources\CSS\animate.min.css|Resources\CSS\dataTables.fixedColumns.min.css|Resources\CSS\dataTables.scroller.min.css|Resources\CSS\enlighterjs.min.css|Resources\CSS\jquery.orgchart.min.css|Resources\CSS\responsiveWrap.css|Resources\CSS\toasts.css|Resources\CSS\winbox.white.min.css|Resources\JS\datatables.buttons.html5.min.js|Resources\JS\dataTables.fixedColumns.min.js|Resources\JS\dataTables.rowGroup.min.js|Resources\JS\dataTables.select.min.js|Resources\JS\HideSection.js|Resources\JS\jquery.min.js|Resources\JS\justgage.min.js|Resources\JS\redrawObjects.js|Resources\JS\tabbisAdditional.js|Resources\JS\vis-timeline-graph2d.min.js|Resources\Images\Other\PowerShell.jpg|Resources\Maps\belgium\belgium.js|Resources\Maps\england\england_ceremonial_counties.js|Resources\Maps\england\west_midlands_county.js|Resources\Maps\france\france_regions_2016_domtom.js|Resources\Maps\france\france_region_11.js|Resources\Maps\france\france_region_31.js|Resources\Maps\france\france_region_72.js|Resources\Maps\france\france_region_94.js|Resources\Maps\indonesia\indonesia.js|Resources\Maps\netherlands\netherlands_provinces.js|Resources\Maps\thailand\thailand.js|Resources\Maps\united_kingdom\united_kingdom.js|Resources\Maps\world\world_countries_with_antarctica_full_long_and_lat.js|Resources\CSS\apexcharts.css|Resources\CSS\dataTables.fixedHeader.min.css|Resources\CSS\dataTables.searchBuilder.css|Resources\CSS\fancyTree.jquery.min.css|Resources\CSS\jquery.smartTab.min.css|Resources\CSS\sectionScrolling.css|Resources\CSS\ui.fancytree.min.css|Resources\JS\accordion.min.js|Resources\JS\dataTables.buttons.min.js|Resources\JS\dataTables.fixedHeader.min.js|Resources\JS\dataTables.rowReorder.min.js|Resources\JS\dataTables.stateRestore.min.js|Resources\JS\html2canvas.min.js|Resources\JS\jquery.mousewheel.min.js|Resources\JS\kineto.min.js|Resources\JS\ResizeImage.js|Resources\JS\tooltip.min.js|Resources\JS\winbox.min.js|Resources\Images\Other\Sample.jpg|Resources\Maps\brazil\brazil.js|Resources\Maps\england\england_counties.js|Resources\Maps\england\west_yorkshire_county.js|Resources\Maps\france\france_regions_domtom.js|Resources\Maps\france\france_region_21.js|Resources\Maps\france\france_region_41.js|Resources\Maps\france\france_region_73.js|Resources\Maps\france\lyon_districts.js|Resources\Maps\iran\iran.js|Resources\Maps\peru\peru.js|Resources\Maps\trinidad_and_tobago\trinidad_and_tobago.js|Resources\Maps\usa\usa_states.js|Resources\Maps\yemen\yemen.js|Resources\CSS\dashboardCards.css|Resources\CSS\dataTables.jquery.min.css|Resources\CSS\datatables.SearchFade.min.css|Resources\CSS\fontsAwesome.min.css|Resources\CSS\jquery.smartWizard.min.css|Resources\CSS\select.dataTables.min.css|Resources\CSS\vis-network.find.css|Resources\JS\accordionSummary.js|Resources\JS\datatables.buttons.print.min.js|Resources\JS\dataTables.fuzzySearch.js|Resources\JS\dataTables.scroller.min.js|Resources\JS\easy.qrcode.min.js|Resources\JS\iframeResizer.min.js|Resources\JS\jquery.orgchart.min.js|Resources\JS\mermaid.min.js|Resources\JS\sectionScrolling.js|Resources\JS\vfs_fonts.min.js|Resources\JS\winbox.support.js</S>
+          <S N="GUID">a7bdf640-f5cb-4acf-9de0-365b322d245c</S>
+          <S N="PowerShellVersion">5.1</S>
+          <S N="CompanyName">Evotec</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">C:\Users\ocalvo\OneDrive\Documents\PowerShell\Modules\PSWriteHTML\1.39.0</S>
+    </MS>
+  </Obj>
+</Objs>
