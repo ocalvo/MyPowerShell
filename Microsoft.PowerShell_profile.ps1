@@ -98,6 +98,8 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
+."$PSScriptRoot\PoshThemes\load.ps1"
+
 if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
   if (Test-IsUnix) {
     $poshDir = "~/bin"
