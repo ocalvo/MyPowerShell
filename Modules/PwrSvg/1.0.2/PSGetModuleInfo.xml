@@ -1,0 +1,134 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">PwrSvg</S>
+      <Version N="Version">1.0.2</Version>
+      <S N="Type">Module</S>
+      <S N="Description">PowerShell module for rendering SVG files to raw image buffers using SkiaSharp, optimized for terminal and pipeline integration.</S>
+      <S N="Author">Oscar Calvo</S>
+      <S N="CompanyName">OscarCalvo</S>
+      <S N="Copyright">(c) 2025 calvo-software. All rights reserved.</S>
+      <DT N="PublishedDate">2025-09-28T22:57:28-07:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2025-09-28T16:04:20.3157204-07:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://github.com/calvo-software/PwrSvg/blob/main/LICENSE</URI>
+      <URI N="ProjectUri">https://github.com/calvo-software/PwrSvg</URI>
+      <Nil N="IconUri" />
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>SVG</S>
+          <S>PNG</S>
+          <S>Image</S>
+          <S>Conversion</S>
+          <S>SkiaSharp</S>
+          <S>Graphics</S>
+          <S>Terminal</S>
+          <S>Pipeline</S>
+          <S>PSModule</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">DscResource</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <S N="ReleaseNotes">Initial release with ConvertTo-Png cmdlet for SVG to PNG conversion.</S>
+      <Obj N="Dependencies" RefId="6">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="7">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">(c) 2025 calvo-software. All rights reserved.</S>
+          <S N="description">PowerShell module for rendering SVG files to raw image buffers using SkiaSharp, optimized for terminal and pipeline integration.</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="releaseNotes">Initial release with ConvertTo-Png cmdlet for SVG to PNG conversion.</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">2</S>
+          <S N="downloadCount">11</S>
+          <S N="packageSize">74716104</S>
+          <S N="published">9/28/2025 10:57:28 PM -07:00</S>
+          <S N="created">9/28/2025 10:57:28 PM -07:00</S>
+          <S N="lastUpdated">9/28/2025 11:00:03 PM -07:00</S>
+          <S N="tags">SVG PNG Image Conversion SkiaSharp Graphics Terminal Pipeline PSModule</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2025-09-28T23:00:03Z</S>
+          <S N="NormalizedVersion">1.0.2</S>
+          <S N="Authors">Oscar Calvo</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">PwrSvg.nuspec|net48\x86\libHarfBuzzSharp.dll|net8\System.Management.Automation.dll|net48\System.Buffers.dll|net48\x86\libSkiaSharp.dll|net8\runtimes\linux-arm\native\libSkiaSharp.so|PwrSvg.psd1|net48\System.Management.Automation.dll|net8\ExCSS.dll|net8\runtimes\linux-arm64\native\libSkiaSharp.so|net48\ExCSS.dll|net48\System.Memory.dll|net8\HarfBuzzSharp.dll|net8\runtimes\linux-musl-x64\native\libSkiaSharp.so|net48\HarfBuzzSharp.dll|net48\System.Numerics.Vectors.dll|net8\PwrSvg.deps.json|net8\runtimes\linux-x64\native\libSkiaSharp.so|net48\libHarfBuzzSharp.dylib|net48\System.Runtime.CompilerServices.Unsafe.dll|net8\PwrSvg.dll|net8\runtimes\osx\native\libHarfBuzzSharp.dylib|net48\libSkiaSharp.dylib|net48\arm\libSkiaSharp.so|net8\PwrSvg.pdb|net8\runtimes\osx\native\libSkiaSharp.dylib|net48\PwrSvg.dll|net48\arm64\libHarfBuzzSharp.dll|net8\ShimSkiaSharp.dll|net8\runtimes\win-arm64\native\libHarfBuzzSharp.dll|net48\PwrSvg.pdb|net48\arm64\libSkiaSharp.dll|net8\SkiaSharp.dll|net8\runtimes\win-arm64\native\libSkiaSharp.dll|net48\ShimSkiaSharp.dll|net48\arm64\libSkiaSharp.so|net8\SkiaSharp.HarfBuzz.dll|net8\runtimes\win-x64\native\libHarfBuzzSharp.dll|net48\SkiaSharp.dll|net48\musl-x64\libSkiaSharp.so|net8\Svg.Custom.dll|net8\runtimes\win-x64\native\libSkiaSharp.dll|net48\SkiaSharp.HarfBuzz.dll|net48\x64\libHarfBuzzSharp.dll|net8\Svg.Model.dll|net8\runtimes\win-x86\native\libHarfBuzzSharp.dll|net48\Svg.Custom.dll|net48\x64\libSkiaSharp.dll|net8\Svg.Skia.dll|net8\runtimes\win-x86\native\libSkiaSharp.dll|net48\Svg.Model.dll|net48\x64\libSkiaSharp.so|net48\Svg.Skia.dll</S>
+          <S N="GUID">c23a160d-a648-41bd-963f-d42c67483018</S>
+          <S N="PowerShellVersion">5.1</S>
+          <S N="DotNetFrameworkVersion">4.8</S>
+          <S N="CLRVersion">4.0</S>
+          <S N="CompanyName">calvo-software</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">X:\Users\oscar\OneDrive\Documents\PowerShell\Modules\PwrSvg\1.0.2</S>
+    </MS>
+  </Obj>
+</Objs>
