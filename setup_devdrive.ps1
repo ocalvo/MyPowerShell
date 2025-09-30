@@ -22,6 +22,7 @@ setx /M MSRUSTUP_HOME "$srcDrive\msrust"
 
 fsutil devdrv trust $binDrive
 fsutil devdrv trust $srcDrive
-fsutil devdrv enable /disallowAv
-fsutil devdrv setfiltersallowed "PrjFlt, DfmFlt"
+fsutil devdrv enable   /disallowAv
+#fsutil devdrv disable  /disallowAv
+fsutil devdrv setfiltersallowed "PrjFlt, DfmFlt, cbfsconnect2017"
 
