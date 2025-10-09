@@ -21,8 +21,16 @@ function Set-GitGlobals()
   }
 
   git config --global log.date local
-  git config --global core.autocrlf true
   git config --global submodule.recurse true
+
+  if (Test-Path env:WinDir) {
+    git config --global core.autocrlf true
+    git config --global core.eol crlf
+    git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
+  } else {
+    git config --global core.autocrlf input
+    git config --global core.eol lf
+  }
 
   if ((Get-Command bcomp -ErrorAction Ignore) -ne $null)
   {

@@ -1,7 +1,7 @@
 [CmdLetBinding()]
 param(
   $poshTheme = "markbull.omp.custom.yaml",
-  $poshDebugScript = "/.cache/_poshdebug.ps1"
+  $poshDebugScript = "~/.cache/_poshdebug.ps1"
 )
 
 if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
@@ -18,11 +18,16 @@ if ($null -ne (get-command oh-my-posh -ErrorAction Ignore)) {
   if ($DebugPreference -eq 'Continue') {
     $Error.Clear()
   }
-  $global:__poshScript = oh-my-posh init pwsh --config "$PSScriptRoot/$poshTheme"
+  $global:__poshTheme = "$PSScriptRoot/$poshTheme"
+  Write-Verbose "PoshTheme:${global:__poshTheme}"
+  #$DebugPreference = 'Continue'
   if ($DebugPreference -eq 'Continue') {
-    oh-my-posh init pwsh --config "$PSScriptRoot/$poshTheme" --debug | Write-Debug
+    oh-my-posh init pwsh --config $global:__poshTheme --debug | Write-Debug
+    $global:__poshScript = oh-my-posh init pwsh --config $global:__poshTheme
     $poshScript | Set-Content -Path $poshDebugScript -Force
     Write-Debug ("PoshScript saved at {0}" -f $poshDebugScript)
+  } else {
+    $global:__poshScript = oh-my-posh init pwsh --config $global:__poshTheme
   }
   $result = $global:__poshScript | Invoke-Expression
   if ($DebugPreference -eq 'Continue') {
