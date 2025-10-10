@@ -1,7 +1,7 @@
 [CmdLetBinding()]
 param(
   [switch]$vim,
-  $beyond = "c:/program files/beyond compare 5/bcomp.exe",
+  $beyond = (get-command bcomp).Definition,
   $workEmail = "oscar.calvo@apple.com"
 )
 

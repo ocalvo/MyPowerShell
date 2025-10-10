@@ -7,6 +7,13 @@ param()
 
 $global:lastInvocation = $MyInvocation
 
+$global:__platform = switch -Regex ([System.Runtime.InteropServices.RuntimeInformation]::OSDescription) {
+   'Windows' { 'Windows' }
+   'Darwin'  { 'macOS' }
+   'Linux'   { 'Linux' }
+   default   { 'Unknown OS' }
+}
+
 function global:Test-IsUnix
 {
   return (($PSVersionTable.PSEdition -eq 'Core') -and ($PSVersionTable.Platform -eq 'Unix'))
@@ -47,7 +54,14 @@ if (!(test-path $vimRC))
   set-content -path $vimRC "source $_PsScriptRoot/profile.vim"
 }
 
-set-alias bcomp                      $env:ProgramFiles'/Beyond Compare 5/bcomp.com'     -scope global
+$__bcomp = if ($global:__platform -eq "macOS") {
+  "/Applications/Beyond Compare.app/Contents/MacOS/bcomp"
+} elseif ($global:__platform -eq "Linux") {
+  "/usr/local/bin/bcomp"
+} else {
+  "$env:ProgramFiles/Beyond Compare 5/bcomp.com"
+}
+set-alias bcomp                      $__bcomp                                           -scope global
 set-alias ztw                        '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
 set-alias speak                      "$PSScriptRoot\Speak.ps1"                          -scope global
 set-alias Parse-GitCommit            "$PSScriptRoot\Parse-GitCommit.ps1"                -scope global
