@@ -14,13 +14,11 @@ $global:__platform = switch -Regex ([System.Runtime.InteropServices.RuntimeInfor
    default   { 'Unknown OS' }
 }
 
-function global:Test-IsUnix
-{
+function global:Test-IsUnix {
   return (($PSVersionTable.PSEdition -eq 'Core') -and ($PSVersionTable.Platform -eq 'Unix'))
 }
 
-function global:test-isadmin
-{
+function global:test-isadmin {
   $isUnix = Test-IsUnix
   if ($isUnix) {
     return ((id -u) -eq 0)
@@ -70,7 +68,7 @@ set-alias Set-PrivateKeyPermissions  "$PSScriptRoot\Set-PrivateKeyPermissions.ps
 set-alias test-nsfw                  "$PSScriptRoot\Test-NSFW.ps1"                      -scope global
 set-alias Get-NSFWProperties         "$PSScriptRoot\Get-NSFWProperties.ps1"             -scope global
 
-#."$PSScriptRoot\Set-GitConfig.ps1"
+."$PSScriptRoot\Set-GitConfig.ps1"
 
 # SD settings
 $vimCmd = get-command vim -ErrorAction Ignore
@@ -114,20 +112,6 @@ if (!$env:PSModulePath.Contains($_profileModulesPath))
 
 ."$PSScriptRoot\PoshThemes\load.ps1"
 
-if ($null -eq (get-command oh-my-posh -ErrorAction Ignore)) {
-  if (Test-IsUnix) {
-    $poshDir = "~/bin"
-    if ($notInPath) { $env:PATH += ":$poshDir" }
-  } else {
-    $poshDir = "$env:LOCALAPPDATA\Programs\oh-my-posh\bin"
-    if ($notInPath) { $env:PATH += ";$poshDir" }
-  }
-}
-if ($null -ne (get-command oh-my-posh -ErrorAction Ignore)) {
-  $poshTheme = "markbull.omp.custom.yaml"
-  oh-my-posh init pwsh --config "$PSScriptRoot\PoshThemes\$poshTheme" | Invoke-Expression
-}
-
 $serverModules = ($PSScriptRoot+'/../PSModules/Modules')
 Write-Verbose "Probing module path:$serverModules"
 if (test-path $serverModules -ErrorAction Ignore)
@@ -137,17 +121,7 @@ if (test-path $serverModules -ErrorAction Ignore)
   get-content ($_fd+"/../.preload") -ErrorAction Ignore |% { Import-Module $_ }
 }
 
-function global:vpack {
-  $vPackPath = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Engineering\VPack" "InstallPath" -ErrorAction Ignore
-  if ($null -ne $vPackPath) {
-    $vPackPath = $vPackPath.InstallPath
-    ."$vPackPath\vpack.exe" @args
-  } else {
-    Write-Error "VPack not found in 'HKCU:\Software\Microsoft\Engineering\VPack'"
-  }
-}
 
-#Import-Module PowerTab
 Import-Module PSReadLine
 Set-PSReadLineOption –HistoryNoDuplicates:$True
 Set-PSReadLineOption -PredictionSource History
@@ -157,18 +131,12 @@ Import-Module PwrDev
 Import-Module PwrRazzle
 
 Import-Module Terminal-Icons
-#if ($null -eq $global:glyphs) {
-#  $glPath = Split-path (get-module Terminal-Icons).Path
-#  $global:glyphs = Invoke-Expression "& '$glPath/Data/glyphs.ps1'"
-#}
 
-if (!(Test-IsUnix))
-{
+if (!(Test-IsUnix)) {
   # Chocolatey profile
   $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
   if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
   }
 }
-
 

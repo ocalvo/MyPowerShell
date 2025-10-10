@@ -8,7 +8,7 @@ param(
 function Set-GitGlobals()
 {
   if (Test-Path "~/.gitconfig") {
-      Remove-Item "~/.gitconfig"
+      Remove-Item "~/.gitconfig" -Force
   }
   git config --global user.name "Oscar Calvo"
   if ($env:USERNAME -eq "ocalvo")
