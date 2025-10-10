@@ -1,6 +1,7 @@
 [CmdLetBinding()]
 param(
   [switch]$vim,
+  [switch]$Force,
   $beyond = (get-command bcomp).Definition,
   $workEmail = "oscar.calvo@apple.com"
 )
@@ -8,10 +9,15 @@ param(
 function Set-GitGlobals()
 {
   if (Test-Path "~/.gitconfig") {
-      Remove-Item "~/.gitconfig" -Force
+      if ($Force) {
+        Remove-Item "~/.gitconfig" -Force
+      } else {
+        return;
+      }
   }
+
   git config --global user.name "Oscar Calvo"
-  if ($env:USERNAME -eq "ocalvo")
+  if ("${env:USERNAME}${env:USER}" -eq "ocalvo")
   {
     git config --global user.email $workEmail
   }
