@@ -1,0 +1,1295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" schema="maml" xmlns="http://msh">
+  <command:command>
+    <command:details>
+      <command:name>Export-CrescendoCommand</command:name>
+      <maml:description>
+        <maml:para>Creates JSON configuration files for Crescendo **Command** objects.</maml:para>
+      </maml:description>
+      <command:verb>Export</command:verb>
+      <command:noun>CrescendoCommand</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet creates JSON configuration files for Crescendo **Command** objects. It can create one JSON file per **Command** object or create one JSON file containing all objects passed to it.</maml:para>
+      <maml:para>Crescendo **Command** objects can be created using `New-CrescendoCommand` or imported from an existing configuration using `Import-CommandConfiguration`.</maml:para>
+      <maml:para>This cmdlet was added in **Microsoft.PowerShell.Crescendo** v1.1.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Export-CrescendoCommand</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>command</maml:name>
+          <maml:description>
+            <maml:para>One or more Crescendo **Command** objects to be exported.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Command[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>targetDirectory</maml:name>
+          <maml:description>
+            <maml:para>The output location for the JSON files created for each **Command** object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet isn't run.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Export-CrescendoCommand</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>command</maml:name>
+          <maml:description>
+            <maml:para>One or more Crescendo **Command** objects to be exported.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Command[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>fileName</maml:name>
+          <maml:description>
+            <maml:para>The name of the JSON file to create.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Overwrite existing files.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet isn't run.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>command</maml:name>
+        <maml:description>
+          <maml:para>One or more Crescendo **Command** objects to be exported.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">Command[]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>fileName</maml:name>
+        <maml:description>
+          <maml:para>The name of the JSON file to create.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Overwrite existing files.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>targetDirectory</maml:name>
+        <maml:description>
+          <maml:para>The output location for the JSON files created for each **Command** object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet isn't run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>Command</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 - Create separate JSON files per command ---------</maml:title>
+        <maml:introduction>
+          <maml:para>In this example, **Command** objects are imported from an existing JSON configuration file.
+`Export-CrescendoCommand` is used to create separate JSON files for each cmdlet.</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```powershell
+$config = Import-CommandConfiguration C:\projects\vssadmin\vssadmin.crescendo.config.json
+Export-CrescendoCommand -command $config -targetDirectory .
+Get-ChildItem
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+    Directory: D:\temp\Crescendo</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          12/13/2022  3:24 PM            869 Get-VssProvider.crescendo.json
+-a---          12/13/2022  3:24 PM           3483 Get-VssShadow.crescendo.json
+-a---          12/13/2022  3:24 PM           2474 Get-VssShadowStorage.crescendo.json
+-a---          12/13/2022  3:24 PM            863 Get-VssVolume.crescendo.json
+-a---          12/13/2022  3:24 PM            860 Get-VssWriter.crescendo.json
+-a---          12/13/2022  3:24 PM           4973 Resize-VssShadowStorage.crescendo.json
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+      <command:example>
+        <maml:title>--------- Example 2 - Create a new JSON configuration file for existing commands ---------</maml:title>
+        <maml:introduction>
+          <maml:para>In this example, **Command** objects are imported from an existing JSON configuration file.
+`Export-CrescendoCommand` is used to create a new JSON configuration file containing all the
+commands.</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```powershell
+$config = Import-CommandConfiguration C:\projects\vssadmin\vssadmin.crescendo.config.json
+Export-CrescendoCommand -command $config -fileName VssAdmin.crescendo.json
+Get-ChildItem
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+    Directory: D:\temp\Crescendo</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          12/13/2022  3:10 PM          15313 VssAdmin.crescendo.json
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>The new JSON file contains new properties for the current version of Crescendo and references the
+new schema URL. This is a convenient way to convert an old JSON configuration file to the new
+format.</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Export-CrescendoModule</maml:linkText>
+        <command:uri>Export-CrescendoModule.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Import-CommandConfiguration</maml:linkText>
+        <command:uri>Import-CommandConfiguration.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>Export-CrescendoModule</command:name>
+      <maml:description>
+        <maml:para>Creates a module from PowerShell Crescendo JSON configuration files</maml:para>
+      </maml:description>
+      <command:verb>Export</command:verb>
+      <command:noun>CrescendoModule</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet exports an object that can be converted into a function that acts as a proxy for a platform specific command. The resultant module file should be executable down to version 5.1 of PowerShell.</maml:para>
+      <maml:para>The cmdlet creates both the module `.psm1` and the module manifest `.psd1` files. This can create problems when you have customized the module manifest beyond the scope of Crescendo. Use the **NoClobberManifest** parameter to prevent overwriting the manifest.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Export-CrescendoModule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="true" pipelineInput="false" position="1" aliases="none">
+          <maml:name>ConfigurationFile</maml:name>
+          <maml:description>
+            <maml:para>This is a list of JSON files that represent the proxies for the module.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>By default, if `Export-CrescendoModule` doesn't overwrite an existing module. Use the **Force**
+parameter to overwrite the existing file, or remove it before running `Export-CrescendoModule`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>ModuleName</maml:name>
+          <maml:description>
+            <maml:para>The name of the module file you wish to create. You can omit the trailing `.psm1`.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>NoClobberManifest</maml:name>
+          <maml:description>
+            <maml:para>Prevents overwriting the module manifest.</maml:para>
+            <maml:para>You must manually update the manifest with any new cmdlets and settings.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>PassThru</maml:name>
+          <maml:description>
+            <maml:para>Emit an object with the path to the .psm1 and the arguments to New-ModuleManifest.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet isn't run.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="true" pipelineInput="false" position="1" aliases="none">
+        <maml:name>ConfigurationFile</maml:name>
+        <maml:description>
+          <maml:para>This is a list of JSON files that represent the proxies for the module.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String[]</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>By default, if `Export-CrescendoModule` doesn't overwrite an existing module. Use the **Force**
+parameter to overwrite the existing file, or remove it before running `Export-CrescendoModule`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>ModuleName</maml:name>
+        <maml:description>
+          <maml:para>The name of the module file you wish to create. You can omit the trailing `.psm1`.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>NoClobberManifest</maml:name>
+        <maml:description>
+          <maml:para>Prevents overwriting the module manifest.</maml:para>
+          <maml:para>You must manually update the manifest with any new cmdlets and settings.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>PassThru</maml:name>
+        <maml:description>
+          <maml:para>Emit an object with the path to the .psm1 and the arguments to New-ModuleManifest.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="Named" aliases="none">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet isn't run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.Management.Automation.SwitchParameter</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>System.String</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Internally, this function calls the `Import-CommandConfiguration` cmdlet that returns a command
+object. All files provided in the **ConfigurationFile** parameter are then used to create each
+individual function. Finally, all proxies are used to create an `Export-ModuleMember` command
+invocation, so when the resultant module is imported, the module has all the command proxies
+available.
+
+`Export-CrescendoModule` adds the **CrescendoBuilt** tag to the module manifest. You can use this
+tag to find modules in the PowerShell Gallery that were created using Crescendo. For more
+information, see:
+
+- [Gallery Search Syntax](/powershell/scripting/gallery/how-to/finding-packages/search-syntax)
+- [Find-Module](/powershell/module/powershellget/find-module)</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- EXAMPLE 1 ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+Export-CrescendoModule -ModuleName netsh -ConfigurationFile netsh*.json
+Import-Module ./netsh.psm1
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+      <command:example>
+        <maml:title>--------- EXAMPLE 2 ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+Export-CrescendoModule netsh netsh*.json -force
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/export-crescendomodule?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Import-CommandConfiguration</maml:linkText>
+        <command:uri>Import-CommandConfiguration.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>Export-Schema</command:name>
+      <maml:description>
+        <maml:para>Exports the JSON schema for command configuration as a PowerShell object.</maml:para>
+      </maml:description>
+      <command:verb>Export</command:verb>
+      <command:noun>Schema</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Exports the JSON schema for command configuration as a PowerShell object.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Export-Schema</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+Export-Schema
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/export-schema?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Import-CommandConfiguration</maml:linkText>
+        <command:uri>Import-CommandConfiguration.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>Import-CommandConfiguration</command:name>
+      <maml:description>
+        <maml:para>Import a PowerShell Crescendo json file.</maml:para>
+      </maml:description>
+      <command:verb>Import</command:verb>
+      <command:noun>CommandConfiguration</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>This cmdlet exports an object that can be converted into a function that acts as a proxy for the platform specific command. The resultant object may then be used to call a native command that can participate in the PowerShell pipeline. The `ToString` method of the output object returns a string that can be used to create a function that calls the native command. Microsoft Windows, Linux, and macOS can run the generated function, if the native command is on all platforms.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Import-CommandConfiguration</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>file</maml:name>
+          <maml:description>
+            <maml:para>The JSON file that represents the command to be wrapped.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>file</maml:name>
+        <maml:description>
+          <maml:para>The JSON file that represents the command to be wrapped.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>A Command object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>The object returned by `Import-CommandConfiguration` is converted through the `ToString` method.
+Generally, you should use the `Export-CrescendoModule` to create a PowerShell `.psm1` file.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- EXAMPLE 1 ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+Import-CommandConfiguration ifconfig.crescendo.json
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+Verb                    : Invoke
+Noun                    : ifconfig
+OriginalName            : ifconfig
+OriginalCommandElements :
+Aliases                 :
+DefaultParameterSetName :
+SupportsShouldProcess   : False
+SupportsTransactions    : False
+NoInvocation            : False
+Description             : This is a description of the generated function
+Usage                   : .SYNOPSIS
+                          Run invoke-ifconfig
+Parameters              : {[Parameter()]
+                          [string]$Interface = ""}
+Examples                :
+OriginalText            :
+HelpLinks               :
+OutputHandlers          :
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/import-commandconfiguration?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Export-CrescendoModule</maml:linkText>
+        <command:uri>Export-CrescendoModule.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>New-CrescendoCommand</command:name>
+      <maml:description>
+        <maml:para>Creates a PowerShell command object.</maml:para>
+      </maml:description>
+      <command:verb>New</command:verb>
+      <command:noun>CrescendoCommand</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates a PowerShell command object. You can use this object to set the properties of the command you are defining. The resulting object can be converted to JSON to be added to a configuration file.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-CrescendoCommand</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+          <maml:name>Noun</maml:name>
+          <maml:description>
+            <maml:para>The noun of the cmdlet you are defining.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
+          <maml:name>OriginalName</maml:name>
+          <maml:description>
+            <maml:para>The name of the native command executable to run.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>Verb</maml:name>
+          <maml:description>
+            <maml:para>The verb of the cmdlet you are defining.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+        <maml:name>Noun</maml:name>
+        <maml:description>
+          <maml:para>The noun of the cmdlet you are defining.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
+        <maml:name>OriginalName</maml:name>
+        <maml:description>
+          <maml:para>The name of the native command executable to run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>Verb</maml:name>
+        <maml:description>
+          <maml:para>The verb of the cmdlet you are defining.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 - Create a new command and convert it to JSON ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+New-CrescendoCommand -Verb Get -Noun Something -OriginalName "native.exe" | ConvertTo-Json
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+{
+  "Verb": "Get",
+  "Noun": "Something",
+  "OriginalName": "native.exe",
+  "OriginalCommandElements": null,
+  "Platform": [
+    "Windows",
+    "Linux",
+    "MacOS"
+  ],
+  "Elevation": null,
+  "Aliases": null,
+  "DefaultParameterSetName": null,
+  "SupportsShouldProcess": false,
+  "ConfirmImpact": null,
+  "SupportsTransactions": false,
+  "NoInvocation": false,
+  "Description": null,
+  "Usage": null,
+  "Parameters": [],
+  "Examples": [],
+  "OriginalText": null,
+  "HelpLinks": null,
+  "OutputHandlers": null,
+  "FunctionName": "Get-Something"
+}
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/new-crescendocommand?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ExampleInfo</maml:linkText>
+        <command:uri>New-ExampleInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-OutputHandler</maml:linkText>
+        <command:uri>New-OutputHandler.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ParameterInfo</maml:linkText>
+        <command:uri>New-ParameterInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-UsageInfo</maml:linkText>
+        <command:uri>New-UsageInfo.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>New-ExampleInfo</command:name>
+      <maml:description>
+        <maml:para>Creates a PowerShell object representing an example used in a Crescendo command object.</maml:para>
+      </maml:description>
+      <command:verb>New</command:verb>
+      <command:noun>ExampleInfo</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates a PowerShell object representing an example used in a Crescendo command object. The resulting object can be converted to JSON to be inserted into a configuration file or added to a command object conversion to JSON later.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-ExampleInfo</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>command</maml:name>
+          <maml:description>
+            <maml:para>The command line for the example being described.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+          <maml:name>description</maml:name>
+          <maml:description>
+            <maml:para>The description of the example.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
+          <maml:name>originalCommand</maml:name>
+          <maml:description>
+            <maml:para>The original native command that's run for this cmdlet example.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>command</maml:name>
+        <maml:description>
+          <maml:para>The command line for the example being described.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+        <maml:name>description</maml:name>
+        <maml:description>
+          <maml:para>The description of the example.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
+        <maml:name>originalCommand</maml:name>
+        <maml:description>
+          <maml:para>The original native command that's run for this cmdlet example.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+New-ExampleInfo -command Get-Something -originalCommand native.exe -description 'this is some text' |
+    ConvertTo-Json
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+{
+  "Command": "Get-Something",
+  "OriginalCommand": "native.exe",
+  "Description": "this is some text"
+}
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/new-exampleinfo?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-CrescendoCommand</maml:linkText>
+        <command:uri>New-CrescendoCommand.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-OutputHandler</maml:linkText>
+        <command:uri>New-OutputHandler.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ParameterInfo</maml:linkText>
+        <command:uri>New-ParameterInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-UsageInfo</maml:linkText>
+        <command:uri>New-UsageInfo.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>New-OutputHandler</command:name>
+      <maml:description>
+        <maml:para>Creates a PowerShell object representing a Crescendo output handler.</maml:para>
+      </maml:description>
+      <command:verb>New</command:verb>
+      <command:noun>OutputHandler</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates a PowerShell object representing a Crescendo output handler. You can assign values to the properties of the object. The resulting object can be added to the **OutputHandlers** property of a command object or it can be converted to JSON to be inserted in the configuration file.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-OutputHandler</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 - Create a new output handler object and convert it to JSON ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+$outhandler = New-OutputHandler
+$outhandler.ParameterSetName = 'Default'
+$outhandler.Handler = 'ParseShadowStorage'
+$outhandler.HandlerType = 'Function'
+$outhandler | ConvertTo-Json
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+{
+  "ParameterSetName": "Default",
+  "Handler": "ParseShadowStorage",
+  "HandlerType": "Function",
+  "StreamOutput": false
+}
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/new-outputhandler?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-CrescendoCommand</maml:linkText>
+        <command:uri>New-CrescendoCommand.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ExampleInfo</maml:linkText>
+        <command:uri>New-ExampleInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ParameterInfo</maml:linkText>
+        <command:uri>New-ParameterInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-UsageInfo</maml:linkText>
+        <command:uri>New-UsageInfo.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>New-ParameterInfo</command:name>
+      <maml:description>
+        <maml:para>Creates a PowerShell object representing a Crescendo Parameter definition.</maml:para>
+      </maml:description>
+      <command:verb>New</command:verb>
+      <command:noun>ParameterInfo</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates a PowerShell object representing a Crescendo Parameter definition. You can assign values to the properties of the object. The resulting object can be added to the **Parameters** property of a command object or it can be converted to JSON to be inserted in the configuration file.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-ParameterInfo</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the parameter for the cmdlet being defined.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+          <maml:name>OriginalName</maml:name>
+          <maml:description>
+            <maml:para>The original parameter used by the native executable.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the parameter for the cmdlet being defined.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+        <maml:name>OriginalName</maml:name>
+        <maml:description>
+          <maml:para>The original parameter used by the native executable.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 - Create a new parameter object ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+$param = New-ParameterInfo -Name ComputerName -OriginalName '--targethost'
+$param
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+Name                            : ComputerName
+OriginalName                    : --targethost
+OriginalText                    :
+Description                     :
+DefaultValue                    :
+DefaultMissingValue             :
+ApplyToExecutable               : False
+ParameterType                   : object
+AdditionalParameterAttributes   :
+Mandatory                       : False
+ParameterSetName                :
+Aliases                         :
+Position                        : 2147483647
+OriginalPosition                : 0
+ValueFromPipeline               : False
+ValueFromPipelineByPropertyName : False
+ValueFromRemainingArguments     : False
+NoGap                           : False
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/new-parameterinfo?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-CrescendoCommand</maml:linkText>
+        <command:uri>New-CrescendoCommand.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ExampleInfo</maml:linkText>
+        <command:uri>New-ExampleInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-OutputHandler</maml:linkText>
+        <command:uri>New-OutputHandler.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-UsageInfo</maml:linkText>
+        <command:uri>New-UsageInfo.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>New-UsageInfo</command:name>
+      <maml:description>
+        <maml:para>Creates a PowerShell object representing a Crescendo Usage definition.</maml:para>
+      </maml:description>
+      <command:verb>New</command:verb>
+      <command:noun>UsageInfo</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates a PowerShell object representing a Crescendo Usage definition. You can assign values to the properties of the object. The resulting object can be added to the **Usage** property of a command object or it can be converted to JSON to be inserted in the configuration file. The **Synopsis** of the object is inserted in the module as comment-based help under the `.SYNOPSIS` keyword.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-UsageInfo</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>usage</maml:name>
+          <maml:description>
+            <maml:para>The text describing the purpose of the cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>usage</maml:name>
+        <maml:description>
+          <maml:para>The text describing the purpose of the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">System.String</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>None</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 - Create a Usage object and convert it to JSON ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+$usage = New-UsageInfo -usage 'This is a description for how to use the cmdlet.'
+$usage | ConvertTo-Json
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+{
+  "Synopsis": "This is a description for how to use the cmdlet.",
+  "SupportsFlags": false,
+  "HasOptions": false,
+  "OriginalText": null
+}
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/new-usageinfo?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-CrescendoCommand</maml:linkText>
+        <command:uri>New-CrescendoCommand.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ExampleInfo</maml:linkText>
+        <command:uri>New-ExampleInfo.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-OutputHandler</maml:linkText>
+        <command:uri>New-OutputHandler.md</command:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-ParameterInfo</maml:linkText>
+        <command:uri>New-ParameterInfo.md</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command>
+    <command:details>
+      <command:name>Test-IsCrescendoCommand</command:name>
+      <maml:description>
+        <maml:para>Tests whether a cmdlet was created by Crescendo.</maml:para>
+      </maml:description>
+      <command:verb>Test</command:verb>
+      <command:noun>IsCrescendoCommand</command:noun>
+    </command:details>
+    <maml:description>
+      <maml:para>Tests a cmdlet to see if it was created by Crescendo.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Test-IsCrescendoCommand</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+          <maml:name>Command</maml:name>
+          <maml:description>
+            <maml:para>The name of the cmdlet to test.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Object[]</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0" aliases="none">
+        <maml:name>Command</maml:name>
+        <maml:description>
+          <maml:para>The name of the cmdlet to test.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">Object[]</command:parameterValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <dev:name>System.Object</dev:name>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------- Example 1 - Test various cmdlet to see if they were created by Crescendo ---------</maml:title>
+        <maml:introduction>
+          <maml:para>```powershell
+Test-IsCrescendoCommand Get-Command
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+Test-IsCrescendoCommand: 'Get-Command' is not a function
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```powershell
+Test-IsCrescendoCommand Expand-Archive
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+   Module: Microsoft.PowerShell.Archive</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>Name           IsCrescendoCommand RequiresElevation
+----           ------------------ -----------------
+Expand-Archive False              False
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```powershell
+Test-IsCrescendoCommand Get-VssProvider
+```</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>```Output
+   Module: VssAdmin</maml:para>
+          <maml:para>&#x80;</maml:para>
+          <maml:para>Name            IsCrescendoCommand RequiresElevation
+----            ------------------ -----------------
+Get-VssProvider True               False
+```</maml:para>
+        </maml:introduction>
+        <dev:code />
+        <dev:remarks />
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version</maml:linkText>
+        <command:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.crescendo/test-iscrescendocommand?view=ps-modules&amp;wt.mc_id=ps-gethelp</command:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>
