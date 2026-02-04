@@ -95,6 +95,7 @@ elseif ($null -ne $vimCmd)
 $env:BUILD_CUSTOM_PARAM01 = "TV"
 $env:BUILD_DEFAULT_TARGET = "Apps\{0}\{0}Package"
 $env:BUILD_APPX_RECIPE = ".\BuildResults\{0}-{1}\{2}Package\bin\{2}Package\{2}Package.build.appxrecipe"
+$env:PlatformToolset="v145" # Force VS2026
 
 function global:Edit()
 {
