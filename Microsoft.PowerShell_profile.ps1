@@ -11,8 +11,10 @@ $global:__platform = switch -Regex ([System.Runtime.InteropServices.RuntimeInfor
    'Windows' { 'Windows' }
    'Darwin'  { 'macOS' }
    'Linux'   { 'Linux' }
+   'Ubuntu'  { 'Linux' }
    default   { 'Unknown OS' }
 }
+Write-Verbose "Detected platform:$global:__platform"
 
 function global:Test-IsUnix {
   return (($PSVersionTable.PSEdition -eq 'Core') -and ($PSVersionTable.Platform -eq 'Unix'))
@@ -55,7 +57,7 @@ if (!(test-path $vimRC))
 $__bcomp = if ($global:__platform -eq "macOS") {
   "/Applications/Beyond Compare.app/Contents/MacOS/bcomp"
 } elseif ($global:__platform -eq "Linux") {
-  "/usr/local/bin/bcomp"
+  (get-command bcompare).definition
 } else {
   "$env:ProgramFiles/Beyond Compare 5/bcomp.com"
 }

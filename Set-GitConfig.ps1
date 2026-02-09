@@ -11,7 +11,9 @@ function Set-GitGlobals()
   if (Test-Path "~/.gitconfig") {
       if ($Force) {
         Remove-Item "~/.gitconfig" -Force
+        Write-Verbose "Removing old config"
       } else {
+        Write-Verbose "Git Config already exists, use -Force to overwrite"
         return;
       }
   }
@@ -38,7 +40,7 @@ function Set-GitGlobals()
     git config --global core.eol lf
   }
 
-  if ((Get-Command bcomp -ErrorAction Ignore) -ne $null)
+  if ($beyond -ne $null)
   {
     git config --global diff.tool bc
     git config --global difftool.prompt false
