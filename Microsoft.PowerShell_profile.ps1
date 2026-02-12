@@ -62,14 +62,17 @@ $__bcomp = if ($global:__platform -eq "macOS") {
   "$env:ProgramFiles/Beyond Compare 5/bcomp.com"
 }
 set-alias bcomp                      $__bcomp                                           -scope global
-set-alias ztw                        '~/OneDrive/Apps/ZtreeWin/ztw64.exe'               -scope global
 set-alias speak                      "$PSScriptRoot\Speak.ps1"                          -scope global
 set-alias Parse-GitCommit            "$PSScriptRoot\Parse-GitCommit.ps1"                -scope global
 set-alias Get-GitCommit              "$PSScriptRoot\Get-GitCommit.ps1"                  -scope global
 set-alias Set-PrivateKeyPermissions  "$PSScriptRoot\Set-PrivateKeyPermissions.ps1"      -scope global
 set-alias test-nsfw                  "$PSScriptRoot\Test-NSFW.ps1"                      -scope global
 set-alias Get-NSFWProperties         "$PSScriptRoot\Get-NSFWProperties.ps1"             -scope global
-set-alias docker                     "$PSScriptRoot\Invoke-Docker.ps1"                  -scope global
+if ("Windows" -eq $global:__platform) {
+  set-alias ztw                        '~/OneDrive/Apps/ZtreeWin/ztw64.exe'             -scope global
+  set-alias docker                     "$PSScriptRoot\Invoke-Docker.ps1"                -scope global
+}
+
 
 ."$PSScriptRoot\Set-GitConfig.ps1"
 

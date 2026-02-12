@@ -1,7 +1,12 @@
 [CmdletBinding()]
 param(
+    [Parameter(Mandatory=$false,Position=0,ValueFromRemainingArguments=$true)]
+    [string[]]$DockerArgs,
+    [Parameter(Mandatory=$false)]
     [string]$InstallDir = "$env:USERPROFILE\.docker-cli",
+    [Parameter(Mandatory=$false)]
     [int]$CheckIntervalDays = 7,
+    [Parameter(Mandatory=$false)]
     [switch]$ForceCheck
 )
 
@@ -116,9 +121,9 @@ if (Get-Alias docker -ErrorAction SilentlyContinue) {
 Write-Verbose "Creating docker alias -> $DockerExe"
 Set-Alias -Name docker -Value $DockerExe -Scope Global
 
-# 🔹 Critical: forward all original arguments to docker.exe
+# Forward all original arguments to docker.exe
 if (Test-Path $DockerExe) {
-    Write-Verbose "Invoking docker.exe with args: $args"
-    & $DockerExe @args
+    Write-Verbose "Invoking docker.exe with args: $DockerArgs"
+    & $DockerExe @DockerArgs
 }
 
