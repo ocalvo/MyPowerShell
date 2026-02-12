@@ -12,8 +12,9 @@ Write-Verbose "CheckIntervalDays: $CheckIntervalDays"
 Write-Verbose "ForceCheck: $ForceCheck"
 
 # Paths
-$MetaFile  = Join-Path $InstallDir "version.json"
-$DockerExe = Join-Path $InstallDir "docker.exe"
+$MetaFile   = Join-Path $InstallDir "version.json"
+$DockerRoot = Join-Path $InstallDir "docker"
+$DockerExe  = Join-Path $DockerRoot "docker.exe"
 
 # Detect install directory existence
 $InstallDirExists = Test-Path $InstallDir
