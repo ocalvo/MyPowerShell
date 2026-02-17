@@ -70,6 +70,7 @@ set-alias test-nsfw                  "$PSScriptRoot\Test-NSFW.ps1"              
 set-alias Get-NSFWProperties         "$PSScriptRoot\Get-NSFWProperties.ps1"             -scope global
 if ("Windows" -eq $global:__platform) {
   set-alias ztw                        '~/OneDrive/Apps/ZtreeWin/ztw64.exe'             -scope global
+  $env:DOCKER_HOST="tcp://127.0.0.1:2375"
   set-alias docker                     "$PSScriptRoot\Invoke-Docker.ps1"                -scope global
 }
 
