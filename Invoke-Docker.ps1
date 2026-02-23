@@ -112,6 +112,61 @@ else {
     Write-Verbose "Skipping version check (last check was $LastCheck)."
 }
 
+# --- Compose Plugin Install ----------------------------------------------------
+$ComposeDir = Join-Path $DockerRoot "cli-plugins"
+$ComposeExe = Join-Path $ComposeDir "docker-compose.exe"
+$ComposeMeta = Join-Path $InstallDir "compose-version.json"
+# Ensure plugin directory exists
+if (-not (Test-Path $ComposeDir)) {
+    New-Item -ItemType Directory -Path $ComposeDir | Out-Null
+}
+# Load compose metadata
+$LocalComposeVersion = $null
+$ComposeLastCheck = $null
+$ComposeMetaExists = Test-Path $ComposeMeta
+if ($ComposeMetaExists) {
+    try {
+        $cmeta = Get-Content $ComposeMeta | ConvertFrom-Json
+        $LocalComposeVersion = $cmeta.version
+        $ComposeLastCheck = Get-Date $cmeta.lastCheck
+    } catch {
+        $ComposeMetaExists = $false
+    }
+}
+
+# Determine if compose needs update
+$NeedComposeCheck = $ForceCheck -or 
+    (-not $ComposeMetaExists) -or
+    (-not (Test-Path $ComposeExe)) -or
+    (-not $ComposeLastCheck) -or ((Get-Date) - $ComposeLastCheck).Days -ge $CheckIntervalDays
+
+Write-Verbose "NeedComposeCheck: $NeedComposeCheck"
+if ($NeedComposeCheck) {
+    Write-Verbose "Checking latest Docker Compose V2 version..."
+    $composeIndex = Invoke-WebRequest "https://api.github.com/repos/docker/compose/releases/latest"
+    $composeJson = $composeIndex.Content | ConvertFrom-Json
+    $RemoteComposeVersion = $composeJson.tag_name.TrimStart("v")
+    Write-Verbose "Compose remote version: $RemoteComposeVersion"
+    Write-Verbose "Compose local version: $LocalComposeVersion"
+    $IsComposeUpToDate = (Test-Path $ComposeExe) -and
+        $LocalComposeVersion -and ([version]$RemoteComposeVersion -le [version]$LocalComposeVersion)
+    if (-not $IsComposeUpToDate) {
+        Write-Verbose "Downloading Compose V2 plugin..."
+        $asset = $composeJson.assets | Where-Object { $_.name -match "docker-compose-windows-x86_64.exe" } | Select-Object -First 1
+        if (-not $asset) {
+            throw "Could not find docker-compose-windows-x86_64.exe in release assets."
+        }
+        $ComposeDownload = "$env:TEMP\docker-compose.exe"
+        Invoke-WebRequest $asset.browser_download_url -OutFile $ComposeDownload
+        Write-Verbose "Installing Compose plugin to $ComposeExe"
+        Copy-Item $ComposeDownload $ComposeExe -Force
+        @{ version = $RemoteComposeVersion; lastCheck = (Get-Date) } | ConvertTo-Json | Set-Content $ComposeMeta
+    } else {
+        Write-Verbose "Compose plugin already up to date." 
+        @{ version = $LocalComposeVersion; lastCheck = (Get-Date) } | ConvertTo-Json | Set-Content $ComposeMeta
+    }
+}
+
 # Recreate docker alias
 if (Get-Alias docker -ErrorAction SilentlyContinue) {
     Write-Verbose "Removing old docker alias..."
